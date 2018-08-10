@@ -7,9 +7,6 @@
 //
 
 #import "JXCategoryBaseView.h"
-#import "JXCategoryBaseCell.h"
-#import "JXCategoryBaseCellModel.h"
-#import "JXCategoryCollectionView.h"
 
 const CGFloat JXCategoryViewAutomaticDimension = -1;
 
@@ -278,7 +275,7 @@ const CGFloat JXCategoryViewAutomaticDimension = -1;
         JXCategoryBaseCellModel *cellModel = self.dataSource[i];
         x += cellModel.cellWidth + self.cellSpacing;
     }
-    CGFloat width = [(JXCategoryBaseCellModel *)self.dataSource[targetIndex] cellWidth];
+    CGFloat width = self.dataSource[targetIndex].cellWidth;
     return CGRectMake(x, 0, width, self.bounds.size.height);
 }
 

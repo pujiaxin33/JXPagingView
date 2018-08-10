@@ -7,8 +7,6 @@
 //
 
 #import "JXCategoryLineStyleView.h"
-#import "JXCategoryComponentCellModel.h"
-#import "JXCategoryBaseCell.h"
 
 @implementation JXCategoryLineStyleView
 
@@ -30,7 +28,6 @@
     if (!self.indicatorViewPanGestureManualEnabled) {
         return;
     }
-
 
     CGFloat ratio = contentOffset.x/self.contentScrollView.bounds.size.width;
     ratio = MAX(0, MIN(self.dataSource.count - 1, ratio));

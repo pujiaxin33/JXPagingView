@@ -7,8 +7,6 @@
 //
 
 #import "JXCategoryTitleView.h"
-#import "JXCategoryTitleCell.h"
-#import "JXCategoryTitleCellModel.h"
 #import "UIColor+JXAdd.h"
 
 @interface JXCategoryTitleView ()
@@ -25,6 +23,7 @@
     _titleSelectedColor = [UIColor redColor];
     _titleFont = [UIFont systemFontOfSize:15];
     _titleColorGradientEnabled = NO;
+    self.backgroundEllipseLayerWidthIncrement = 10;
 }
 
 #pragma mark - Override
@@ -57,11 +56,11 @@
 - (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio {
     [super refreshLeftCellModel:leftCellModel rightCellModel:rightCellModel ratio:ratio];
 
-    //处理颜色渐变
     if (!self.titleColorGradientEnabled) {
         return;
     }
 
+    //处理颜色渐变
     JXCategoryTitleCellModel *leftModel = (JXCategoryTitleCellModel *)leftCellModel;
     JXCategoryTitleCellModel *rightModel = (JXCategoryTitleCellModel *)rightCellModel;
     if (leftModel.selected) {
@@ -102,9 +101,9 @@
 
 - (UIColor *)interpolationColorFrom:(UIColor *)fromColor to:(UIColor *)toColor percent:(CGFloat)percent
 {
-    CGFloat red = [self interpolationFrom:fromColor.red to:toColor.red percent:percent];
-    CGFloat green = [self interpolationFrom:fromColor.green to:toColor.green percent:percent];
-    CGFloat blue = [self interpolationFrom:fromColor.blue to:toColor.blue percent:percent];
+    CGFloat red = [self interpolationFrom:fromColor.jx_red to:toColor.jx_red percent:percent];
+    CGFloat green = [self interpolationFrom:fromColor.jx_green to:toColor.jx_green percent:percent];
+    CGFloat blue = [self interpolationFrom:fromColor.jx_blue to:toColor.jx_blue percent:percent];
     return [UIColor colorWithRed:red green:green blue:blue alpha:1];
 
 }

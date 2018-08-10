@@ -7,6 +7,8 @@
 //
 
 #import "JXCategoryBaseView.h"
+#import "JXCategoryComponentCell.h"
+#import "JXCategoryComponentCellModel.h"
 
 @interface JXCategoryComponentView : JXCategoryBaseView
 
@@ -38,7 +40,7 @@
 //----------------------backgroundViews-----------------------//
 
 /**
- 承载背景指示器视图的容器，比如backgroundEllipseLayer、backgroundImageView就被添加到这上面。
+ 承载背景指示器视图的容器，比如backgroundEllipseLayer、backgroundImageView就被添加到这上面。backgroundContainerView的frame和选中的cell相同。
  */
 @property (nonatomic, strong, readonly) UIView *backgroundContainerView;
 
@@ -47,6 +49,8 @@
 @property (nonatomic, assign) BOOL backgroundEllipseLayerShowEnabled;     //默认为NO
 
 @property (nonatomic, assign) CGFloat backgroundEllipseLayerWidth;     //默认JXCategoryViewAutomaticDimension（与cellWidth相等）
+
+@property (nonatomic, assign) CGFloat backgroundEllipseLayerWidthIncrement;    //宽度增量补偿，因为backgroundEllipseLayer一般会比实际内容大一些。默认0
 
 @property (nonatomic, assign) CGFloat backgroundEllipseLayerHeight;   //默认20
 
@@ -78,7 +82,7 @@
 
 - (CGFloat)getLineWidthWithIndex:(NSInteger)index;
 
-- (CGFloat)getbackgroundEllipseLayerWidthWithIndex:(NSInteger)index;
+- (CGFloat)getBackgroundEllipseLayerWidthWithIndex:(NSInteger)index;
 
 - (CGFloat)getbackgroundEllipseLayerCornerRadius;
 
