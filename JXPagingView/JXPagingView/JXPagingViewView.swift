@@ -9,38 +9,68 @@
 import UIKit
 
 //该协议主要用于mainTableView已经显示了header，listView的contentOffset需要重置时，内部需要访问到外部传入进来的listView内的scrollView
-@objc protocol JXPagingViewListViewDelegate {
+@objc protocol JXPagingViewListViewDelegate: NSObjectProtocol {
     var scrollView: UIScrollView { get }
 }
 
-@objc protocol JXPagingViewDelegate {
+@objc protocol JXPagingViewDelegate: NSObjectProtocol {
 
-    ///mainTableView的滚动回调，用于实现头图跟随缩放
-    @objc optional func mainTableViewDidScroll(_ scrollView: UIScrollView)
 
-    ///tableHeaderView的高度
+    /// tableHeaderView的高度
+    ///
+    /// - Parameter pagingView: JXPagingViewView
+    /// - Returns: height
     func tableHeaderViewHeight(in pagingView: JXPagingViewView) -> CGFloat
 
-    ///返回tableHeaderView
+
+    /// 返回tableHeaderView
+    ///
+    /// - Parameter pagingView: JXPagingViewView
+    /// - Returns: view
     func tableHeaderView(in pagingView: JXPagingViewView) -> UIView
 
-    ///heightForHeaderOfSection，就是分类视图的高度
-    func heightForHeaderOfSection(in pagingView: JXPagingViewView) -> CGFloat
 
-    ///viewForHeaderOfSection，分类视图，我用的是自己封装的JXCategoryView，你也可以选择其他的或者自己写
-    func viewForHeaderOfSection(in pagingView: JXPagingViewView) -> UIView
+    /// 返回悬浮HeaderView的高度。
+    ///
+    /// - Parameter pagingView: JXPagingViewView
+    /// - Returns: height
+    func heightForHeaderInSection(in pagingView: JXPagingViewView) -> CGFloat
 
-    ///底部listView的条数
+
+    /// 返回悬浮HeaderView。我用的是自己封装的JXCategoryView（Github:https://github.com/pujiaxin33/JXCategoryView），你也可以选择其他的三方库或者自己写
+    ///
+    /// - Parameter pagingView: JXPagingViewView
+    /// - Returns: view
+    func viewForHeaderInSection(in pagingView: JXPagingViewView) -> UIView
+
+
+    /// 底部listView的条数
+    ///
+    /// - Parameter pagingView: JXPagingViewView
+    /// - Returns: count
     func numberOfListViews(in pagingView: JXPagingViewView) -> Int
 
-    ///返回对应index的listView，需要是UIView的子类，且要遵循JXPagingViewListViewDelegate。这里要求返回一个UIView而不是一个UIScrollView，因为listView可能并不只是一个单纯的TableView，还会有其他的元素
+
+    /// 返回对应index的listView，需要是UIView的子类，且要遵循JXPagingViewListViewDelegate。
+    /// 这里要求返回一个UIView而不是一个UIScrollView，因为listView可能并不只是一个单纯的UITableView或UICollectionView，可能还会有其他的子视图。
+    ///
+    /// - Parameters:
+    ///   - pagingView: JXPagingViewView
+    ///   - row: row
+    /// - Returns: view
     func pagingView(_ pagingView: JXPagingViewView, listViewInRow row: Int) -> JXPagingViewListViewDelegate & UIView
+
+
+    /// mainTableView的滚动回调，用于实现头图跟随缩放
+    ///
+    /// - Parameter scrollView: JXPagingViewMainTableView
+    @objc optional func mainTableViewDidScroll(_ scrollView: UIScrollView)
 }
 
 class JXPagingViewView: UIView {
+    open unowned var delegate: JXPagingViewDelegate
+    open var mainTableView: JXPagingViewMainTableView!
     open var listContainerView: JXPagingViewListContainerView!
-    unowned var delegate: JXPagingViewDelegate
-    var mainTableView: JXPagingViewMainTableView!
     fileprivate var currentScrollingListView: UIScrollView?
 
     init(delegate: JXPagingViewDelegate) {
@@ -56,7 +86,6 @@ class JXPagingViewView: UIView {
     }
 
     fileprivate func initializeViews(){
-
         mainTableView = JXPagingViewMainTableView(frame: CGRect.zero, style: .plain)
         mainTableView.showsVerticalScrollIndicator = false
         mainTableView.showsHorizontalScrollIndicator = false
@@ -76,7 +105,6 @@ class JXPagingViewView: UIView {
 
         mainTableView.frame = self.bounds
     }
-
 
     /// 外部传入的listView，当其内部的scrollView滚动时，需要调用该方法
     open func listViewDidScroll(scrollView: UIScrollView) {
@@ -106,22 +134,25 @@ extension JXPagingViewView: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.bounds.height - self.delegate.heightForHeaderOfSection(in: self)
+        return self.bounds.height - self.delegate.heightForHeaderInSection(in: self)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        for subview in cell.contentView.subviews {
+            subview.removeFromSuperview()
+        }
         listContainerView.frame = cell.contentView.bounds
         cell.contentView.addSubview(listContainerView)
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.delegate.heightForHeaderOfSection(in: self)
+        return self.delegate.heightForHeaderInSection(in: self)
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self.delegate.viewForHeaderOfSection(in: self)
+        return self.delegate.viewForHeaderInSection(in: self)
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

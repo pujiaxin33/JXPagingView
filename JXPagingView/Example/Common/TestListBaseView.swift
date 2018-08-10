@@ -15,6 +15,7 @@ import UIKit
 class TestListBaseView: UIView {
     var tableView: UITableView!
     var dataSource: [String]?
+    var isNeedFooter = false
     weak var delegate: TestListViewDelegate?
 
     override init(frame: CGRect) {
@@ -27,8 +28,16 @@ class TestListBaseView: UIView {
         tableView.delegate = self
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
         addSubview(tableView)
+    }
 
-        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
+    override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+
+        if newSuperview != nil {
+            if isNeedFooter {
+                tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
+            }
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -188,9 +188,9 @@
 		1912A552211D2F1500A80826 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				1912A554211D2F1500A80826 /* Refresh */,
 				1912A585211D2F1500A80826 /* Common */,
 				1912A588211D2F1500A80826 /* Zoom */,
+				1912A554211D2F1500A80826 /* Refresh */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -322,8 +322,8 @@
 		1912A58D211D2F1500A80826 /* JXPagingView */ = {
 			isa = PBXGroup;
 			children = (
-				1912A58E211D2F1500A80826 /* JXPagingViewMainTableView.swift */,
 				1912A58F211D2F1500A80826 /* JXPagingViewView.swift */,
+				1912A58E211D2F1500A80826 /* JXPagingViewMainTableView.swift */,
 				1912A590211D2F1500A80826 /* JXPagingViewListContainerView.swift */,
 			);
 			path = JXPagingView;

@@ -53,7 +53,6 @@ class JXPagingViewListContainerView: UIView {
         super.layoutSubviews()
 
         collectionView.frame = self.bounds
-
     }
 
     open func reloadData() {
@@ -62,9 +61,11 @@ class JXPagingViewListContainerView: UIView {
 }
 
 extension JXPagingViewListContainerView: UICollectionViewDataSource, UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.delegate.numberOfRows(in: self)
     }
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         for view in cell.contentView.subviews {

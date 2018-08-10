@@ -9,7 +9,7 @@
 import UIKit
 
 fileprivate let JXTableHeaderViewHeight: CGFloat = 200
-fileprivate let JXHeightForHeaderOfSection: CGFloat = 50
+fileprivate let JXheightForHeaderInSection: CGFloat = 50
 
 class ZoomViewController: UIViewController {
     var pagingView: JXPagingViewView!
@@ -37,7 +37,7 @@ class ZoomViewController: UIViewController {
 
         userHeaderView = PagingViewTableHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: JXTableHeaderViewHeight))
 
-        categoryView = JXCategoryView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: JXHeightForHeaderOfSection))
+        categoryView = JXCategoryView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: JXheightForHeaderInSection))
         categoryView.titles = titles
         categoryView.indicatorLineWidth = 30
         categoryView.backgroundColor = UIColor.white
@@ -80,11 +80,11 @@ extension ZoomViewController: JXPagingViewDelegate {
         return userHeaderView
     }
 
-    func heightForHeaderOfSection(in pagingView: JXPagingViewView) -> CGFloat {
-        return JXHeightForHeaderOfSection
+    func heightForHeaderInSection(in pagingView: JXPagingViewView) -> CGFloat {
+        return JXheightForHeaderInSection
     }
 
-    func viewForHeaderOfSection(in pagingView: JXPagingViewView) -> UIView {
+    func viewForHeaderInSection(in pagingView: JXPagingViewView) -> UIView {
         return categoryView
     }
 
