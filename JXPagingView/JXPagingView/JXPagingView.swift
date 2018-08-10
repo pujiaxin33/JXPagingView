@@ -69,8 +69,8 @@ import UIKit
 
 open class JXPagingView: UIView {
     open unowned var delegate: JXPagingViewDelegate
-    open var mainTableView: JXPagingViewMainTableView!
-    open var listContainerView: JXPagingViewListContainerView!
+    open var mainTableView: JXPagingMainTableView!
+    open var listContainerView: JXPagingListContainerView!
     fileprivate var currentScrollingListView: UIScrollView?
 
     init(delegate: JXPagingViewDelegate) {
@@ -86,7 +86,7 @@ open class JXPagingView: UIView {
     }
 
     fileprivate func initializeViews(){
-        mainTableView = JXPagingViewMainTableView(frame: CGRect.zero, style: .plain)
+        mainTableView = JXPagingMainTableView(frame: CGRect.zero, style: .plain)
         mainTableView.showsVerticalScrollIndicator = false
         mainTableView.showsHorizontalScrollIndicator = false
         mainTableView.separatorStyle = .none
@@ -96,7 +96,7 @@ open class JXPagingView: UIView {
         mainTableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
         addSubview(mainTableView)
 
-        listContainerView = JXPagingViewListContainerView(delegate: self)
+        listContainerView = JXPagingListContainerView(delegate: self)
         listContainerView.mainTableView = mainTableView
     }
 
@@ -173,11 +173,11 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension JXPagingView: JXPagingViewListContainerViewDelegate {
-    func numberOfRows(in listContainerView: JXPagingViewListContainerView) -> Int {
+extension JXPagingView: JXPagingListContainerViewDelegate {
+    func numberOfRows(in listContainerView: JXPagingListContainerView) -> Int {
         return self.delegate.numberOfListViews(in: self)
     }
-    func listContainerView(_ listContainerView: JXPagingViewListContainerView, viewForListInRow row: Int) -> UIView {
+    func listContainerView(_ listContainerView: JXPagingListContainerView, viewForListInRow row: Int) -> UIView {
         return self.delegate.pagingView(self, listViewInRow: row)
     }
 }

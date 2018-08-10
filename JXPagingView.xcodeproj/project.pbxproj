@@ -40,9 +40,9 @@
 		1912A5C2211D2F1500A80826 /* PowerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A58A211D2F1500A80826 /* PowerListView.swift */; };
 		1912A5C3211D2F1500A80826 /* TestListBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A58B211D2F1500A80826 /* TestListBaseView.swift */; };
 		1912A5C4211D2F1500A80826 /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1912A58C211D2F1500A80826 /* lufei.jpg */; };
-		1912A5C5211D2F1500A80826 /* JXPagingViewMainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A58E211D2F1500A80826 /* JXPagingViewMainTableView.swift */; };
+		1912A5C5211D2F1500A80826 /* JXPagingMainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A58E211D2F1500A80826 /* JXPagingMainTableView.swift */; };
 		1912A5C6211D2F1500A80826 /* JXPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A58F211D2F1500A80826 /* JXPagingView.swift */; };
-		1912A5C7211D2F1500A80826 /* JXPagingViewListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A590211D2F1500A80826 /* JXPagingViewListContainerView.swift */; };
+		1912A5C7211D2F1500A80826 /* JXPagingListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A590211D2F1500A80826 /* JXPagingListContainerView.swift */; };
 		1912A659211D3DA300A80826 /* JXCategoryTitleCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A627211D3DA200A80826 /* JXCategoryTitleCellModel.m */; };
 		1912A65A211D3DA300A80826 /* JXCategoryTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A628211D3DA200A80826 /* JXCategoryTitleCell.m */; };
 		1912A65B211D3DA300A80826 /* JXCategoryTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A629211D3DA200A80826 /* JXCategoryTitleView.m */; };
@@ -125,9 +125,9 @@
 		1912A58A211D2F1500A80826 /* PowerListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerListView.swift; sourceTree = "<group>"; };
 		1912A58B211D2F1500A80826 /* TestListBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestListBaseView.swift; sourceTree = "<group>"; };
 		1912A58C211D2F1500A80826 /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lufei.jpg; sourceTree = "<group>"; };
-		1912A58E211D2F1500A80826 /* JXPagingViewMainTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingViewMainTableView.swift; sourceTree = "<group>"; };
+		1912A58E211D2F1500A80826 /* JXPagingMainTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingMainTableView.swift; sourceTree = "<group>"; };
 		1912A58F211D2F1500A80826 /* JXPagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingView.swift; sourceTree = "<group>"; };
-		1912A590211D2F1500A80826 /* JXPagingViewListContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingViewListContainerView.swift; sourceTree = "<group>"; };
+		1912A590211D2F1500A80826 /* JXPagingListContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingListContainerView.swift; sourceTree = "<group>"; };
 		1912A5D3211D2FDC00A80826 /* Swift-Bridge-Objective-C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift-Bridge-Objective-C.h"; sourceTree = "<group>"; };
 		1912A624211D3DA200A80826 /* JXCategoryTitleCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleCellModel.h; sourceTree = "<group>"; };
 		1912A625211D3DA200A80826 /* JXCategoryTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleCell.h; sourceTree = "<group>"; };
@@ -362,8 +362,8 @@
 			isa = PBXGroup;
 			children = (
 				1912A58F211D2F1500A80826 /* JXPagingView.swift */,
-				1912A58E211D2F1500A80826 /* JXPagingViewMainTableView.swift */,
-				1912A590211D2F1500A80826 /* JXPagingViewListContainerView.swift */,
+				1912A58E211D2F1500A80826 /* JXPagingMainTableView.swift */,
+				1912A590211D2F1500A80826 /* JXPagingListContainerView.swift */,
 			);
 			path = JXPagingView;
 			sourceTree = "<group>";
@@ -575,7 +575,7 @@
 				1912A5B1211D2F1500A80826 /* MJRefreshBackGifFooter.m in Sources */,
 				1912A5B9211D2F1500A80826 /* MJRefreshGifHeader.m in Sources */,
 				1912A5BE211D2F1500A80826 /* MJRefreshComponent.m in Sources */,
-				1912A5C5211D2F1500A80826 /* JXPagingViewMainTableView.swift in Sources */,
+				1912A5C5211D2F1500A80826 /* JXPagingMainTableView.swift in Sources */,
 				1912A5C1211D2F1500A80826 /* ZoomViewController.swift in Sources */,
 				1912A5AF211D2F1500A80826 /* NSBundle+MJRefresh.m in Sources */,
 				1912A65B211D3DA300A80826 /* JXCategoryTitleView.m in Sources */,
@@ -586,7 +586,7 @@
 				1912A5C2211D2F1500A80826 /* PowerListView.swift in Sources */,
 				1912A5BD211D2F1500A80826 /* MJRefreshAutoFooter.m in Sources */,
 				1912A5AC211D2F1500A80826 /* MJRefreshConst.m in Sources */,
-				1912A5C7211D2F1500A80826 /* JXPagingViewListContainerView.swift in Sources */,
+				1912A5C7211D2F1500A80826 /* JXPagingListContainerView.swift in Sources */,
 				1912A66B211D3DA300A80826 /* JXCategoryBackgroundImageCell.m in Sources */,
 				1912A5B4211D2F1500A80826 /* MJRefreshAutoStateFooter.m in Sources */,
 				1912A5C0211D2F1500A80826 /* PagingViewTableHeaderView.swift in Sources */,

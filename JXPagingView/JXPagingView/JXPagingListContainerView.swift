@@ -8,19 +8,19 @@
 
 import UIKit
 
-@objc protocol JXPagingViewListContainerViewDelegate {
+@objc protocol JXPagingListContainerViewDelegate {
 
-    func numberOfRows(in listContainerView: JXPagingViewListContainerView) -> Int
+    func numberOfRows(in listContainerView: JXPagingListContainerView) -> Int
 
-    func listContainerView(_ listContainerView: JXPagingViewListContainerView, viewForListInRow row: Int) -> UIView
+    func listContainerView(_ listContainerView: JXPagingListContainerView, viewForListInRow row: Int) -> UIView
 }
 
-open class JXPagingViewListContainerView: UIView {
+open class JXPagingListContainerView: UIView {
     open var collectionView: UICollectionView!
-    unowned var delegate: JXPagingViewListContainerViewDelegate
-    weak var mainTableView: JXPagingViewMainTableView?
+    unowned var delegate: JXPagingListContainerViewDelegate
+    weak var mainTableView: JXPagingMainTableView?
 
-    init(delegate: JXPagingViewListContainerViewDelegate) {
+    init(delegate: JXPagingListContainerViewDelegate) {
         self.delegate = delegate
 
         super.init(frame: CGRect.zero)
@@ -60,7 +60,7 @@ open class JXPagingViewListContainerView: UIView {
     }
 }
 
-extension JXPagingViewListContainerView: UICollectionViewDataSource, UICollectionViewDelegate {
+extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionViewDelegate {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.delegate.numberOfRows(in: self)
@@ -94,7 +94,7 @@ extension JXPagingViewListContainerView: UICollectionViewDataSource, UICollectio
     }
 }
 
-extension JXPagingViewListContainerView: UICollectionViewDelegateFlowLayout {
+extension JXPagingListContainerView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return self.bounds.size
     }
