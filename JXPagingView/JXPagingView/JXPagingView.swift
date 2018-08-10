@@ -9,46 +9,46 @@
 import UIKit
 
 //该协议主要用于mainTableView已经显示了header，listView的contentOffset需要重置时，内部需要访问到外部传入进来的listView内的scrollView
-@objc protocol JXPagingViewListViewDelegate: NSObjectProtocol {
+@objc public protocol JXPagingViewListViewDelegate: NSObjectProtocol {
     var scrollView: UIScrollView { get }
 }
 
-@objc protocol JXPagingViewDelegate: NSObjectProtocol {
+@objc public protocol JXPagingViewDelegate: NSObjectProtocol {
 
 
     /// tableHeaderView的高度
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: height
-    func tableHeaderViewHeight(in pagingView: JXPagingViewView) -> CGFloat
+    func tableHeaderViewHeight(in pagingView: JXPagingView) -> CGFloat
 
 
     /// 返回tableHeaderView
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: view
-    func tableHeaderView(in pagingView: JXPagingViewView) -> UIView
+    func tableHeaderView(in pagingView: JXPagingView) -> UIView
 
 
     /// 返回悬浮HeaderView的高度。
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: height
-    func heightForHeaderInSection(in pagingView: JXPagingViewView) -> CGFloat
+    func heightForHeaderInSection(in pagingView: JXPagingView) -> CGFloat
 
 
     /// 返回悬浮HeaderView。我用的是自己封装的JXCategoryView（Github:https://github.com/pujiaxin33/JXCategoryView），你也可以选择其他的三方库或者自己写
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: view
-    func viewForHeaderInSection(in pagingView: JXPagingViewView) -> UIView
+    func viewForHeaderInSection(in pagingView: JXPagingView) -> UIView
 
 
     /// 底部listView的条数
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: count
-    func numberOfListViews(in pagingView: JXPagingViewView) -> Int
+    func numberOfListViews(in pagingView: JXPagingView) -> Int
 
 
     /// 返回对应index的listView，需要是UIView的子类，且要遵循JXPagingViewListViewDelegate。
@@ -58,7 +58,7 @@ import UIKit
     ///   - pagingView: JXPagingViewView
     ///   - row: row
     /// - Returns: view
-    func pagingView(_ pagingView: JXPagingViewView, listViewInRow row: Int) -> JXPagingViewListViewDelegate & UIView
+    func pagingView(_ pagingView: JXPagingView, listViewInRow row: Int) -> JXPagingViewListViewDelegate & UIView
 
 
     /// mainTableView的滚动回调，用于实现头图跟随缩放
@@ -67,7 +67,7 @@ import UIKit
     @objc optional func mainTableViewDidScroll(_ scrollView: UIScrollView)
 }
 
-class JXPagingViewView: UIView {
+open class JXPagingView: UIView {
     open unowned var delegate: JXPagingViewDelegate
     open var mainTableView: JXPagingViewMainTableView!
     open var listContainerView: JXPagingViewListContainerView!
@@ -81,7 +81,7 @@ class JXPagingViewView: UIView {
     }
 
     @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -100,7 +100,7 @@ class JXPagingViewView: UIView {
         listContainerView.mainTableView = mainTableView
     }
 
-    override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
 
         mainTableView.frame = self.bounds
@@ -128,16 +128,16 @@ class JXPagingViewView: UIView {
 }
 
 //MARK: - UITableViewDataSource, UITableViewDelegate
-extension JXPagingViewView: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.bounds.height - self.delegate.heightForHeaderInSection(in: self)
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         for subview in cell.contentView.subviews {
             subview.removeFromSuperview()
@@ -147,15 +147,15 @@ extension JXPagingViewView: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return self.delegate.heightForHeaderInSection(in: self)
     }
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return self.delegate.viewForHeaderInSection(in: self)
     }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.delegate.mainTableViewDidScroll?(scrollView)
 
         if (self.currentScrollingListView != nil && self.currentScrollingListView!.contentOffset.y > 0) {
@@ -173,7 +173,7 @@ extension JXPagingViewView: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension JXPagingViewView: JXPagingViewListContainerViewDelegate {
+extension JXPagingView: JXPagingViewListContainerViewDelegate {
     func numberOfRows(in listContainerView: JXPagingViewListContainerView) -> Int {
         return self.delegate.numberOfListViews(in: self)
     }

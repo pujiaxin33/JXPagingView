@@ -41,7 +41,7 @@
 		1912A5C3211D2F1500A80826 /* TestListBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A58B211D2F1500A80826 /* TestListBaseView.swift */; };
 		1912A5C4211D2F1500A80826 /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1912A58C211D2F1500A80826 /* lufei.jpg */; };
 		1912A5C5211D2F1500A80826 /* JXPagingViewMainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A58E211D2F1500A80826 /* JXPagingViewMainTableView.swift */; };
-		1912A5C6211D2F1500A80826 /* JXPagingViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A58F211D2F1500A80826 /* JXPagingViewView.swift */; };
+		1912A5C6211D2F1500A80826 /* JXPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A58F211D2F1500A80826 /* JXPagingView.swift */; };
 		1912A5C7211D2F1500A80826 /* JXPagingViewListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A590211D2F1500A80826 /* JXPagingViewListContainerView.swift */; };
 		1912A659211D3DA300A80826 /* JXCategoryTitleCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A627211D3DA200A80826 /* JXCategoryTitleCellModel.m */; };
 		1912A65A211D3DA300A80826 /* JXCategoryTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A628211D3DA200A80826 /* JXCategoryTitleCell.m */; };
@@ -126,7 +126,7 @@
 		1912A58B211D2F1500A80826 /* TestListBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestListBaseView.swift; sourceTree = "<group>"; };
 		1912A58C211D2F1500A80826 /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lufei.jpg; sourceTree = "<group>"; };
 		1912A58E211D2F1500A80826 /* JXPagingViewMainTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingViewMainTableView.swift; sourceTree = "<group>"; };
-		1912A58F211D2F1500A80826 /* JXPagingViewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingViewView.swift; sourceTree = "<group>"; };
+		1912A58F211D2F1500A80826 /* JXPagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingView.swift; sourceTree = "<group>"; };
 		1912A590211D2F1500A80826 /* JXPagingViewListContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingViewListContainerView.swift; sourceTree = "<group>"; };
 		1912A5D3211D2FDC00A80826 /* Swift-Bridge-Objective-C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift-Bridge-Objective-C.h"; sourceTree = "<group>"; };
 		1912A624211D3DA200A80826 /* JXCategoryTitleCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleCellModel.h; sourceTree = "<group>"; };
@@ -361,7 +361,7 @@
 		1912A58D211D2F1500A80826 /* JXPagingView */ = {
 			isa = PBXGroup;
 			children = (
-				1912A58F211D2F1500A80826 /* JXPagingViewView.swift */,
+				1912A58F211D2F1500A80826 /* JXPagingView.swift */,
 				1912A58E211D2F1500A80826 /* JXPagingViewMainTableView.swift */,
 				1912A590211D2F1500A80826 /* JXPagingViewListContainerView.swift */,
 			);
@@ -560,7 +560,7 @@
 			files = (
 				1912A65C211D3DA300A80826 /* JXCategoryComponentCell.m in Sources */,
 				1912A5BC211D2F1500A80826 /* MJRefreshBackFooter.m in Sources */,
-				1912A5C6211D2F1500A80826 /* JXPagingViewView.swift in Sources */,
+				1912A5C6211D2F1500A80826 /* JXPagingView.swift in Sources */,
 				1912A667211D3DA300A80826 /* JXCategoryLineStyleCellModel.m in Sources */,
 				1912A5AA211D2F1500A80826 /* RefreshViewController.swift in Sources */,
 				1912A662211D3DA300A80826 /* JXCategoryNumberView.m in Sources */,

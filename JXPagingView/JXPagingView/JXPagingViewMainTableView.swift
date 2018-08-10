@@ -8,9 +8,9 @@
 
 import UIKit
 
-class JXPagingViewMainTableView: UITableView, UIGestureRecognizerDelegate {
+open class JXPagingViewMainTableView: UITableView, UIGestureRecognizerDelegate {
 
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return gestureRecognizer.isKind(of: UIPanGestureRecognizer.classForCoder()) && otherGestureRecognizer.isKind(of: UIPanGestureRecognizer.classForCoder())
     }
 }

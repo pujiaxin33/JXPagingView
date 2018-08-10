@@ -12,7 +12,7 @@ fileprivate let JXTableHeaderViewHeight: CGFloat = 200
 fileprivate let JXheightForHeaderInSection: CGFloat = 50
 
 class BaseViewController: UIViewController {
-    var pagingView: JXPagingViewView!
+    var pagingView: JXPagingView!
     var userHeaderView: PagingViewTableHeaderView!
     var categoryView: JXCategoryTitleView!
     var listViewArray: [TestListBaseView]!
@@ -53,7 +53,7 @@ class BaseViewController: UIViewController {
         lineLayer.frame = CGRect(x: 0, y: categoryView.bounds.height - lineWidth, width: categoryView.bounds.width, height: lineWidth)
         categoryView.layer.addSublayer(lineLayer)
 
-        pagingView = JXPagingViewView(delegate: self)
+        pagingView = JXPagingView(delegate: self)
         pagingView.delegate = self
         self.view.addSubview(pagingView)
 
@@ -70,27 +70,27 @@ class BaseViewController: UIViewController {
 
 extension BaseViewController: JXPagingViewDelegate {
 
-    func tableHeaderViewHeight(in pagingView: JXPagingViewView) -> CGFloat {
+    func tableHeaderViewHeight(in pagingView: JXPagingView) -> CGFloat {
         return JXTableHeaderViewHeight
     }
 
-    func tableHeaderView(in pagingView: JXPagingViewView) -> UIView {
+    func tableHeaderView(in pagingView: JXPagingView) -> UIView {
         return userHeaderView
     }
 
-    func heightForHeaderInSection(in pagingView: JXPagingViewView) -> CGFloat {
+    func heightForHeaderInSection(in pagingView: JXPagingView) -> CGFloat {
         return JXheightForHeaderInSection
     }
 
-    func viewForHeaderInSection(in pagingView: JXPagingViewView) -> UIView {
+    func viewForHeaderInSection(in pagingView: JXPagingView) -> UIView {
         return categoryView
     }
 
-    func numberOfListViews(in pagingView: JXPagingViewView) -> Int {
+    func numberOfListViews(in pagingView: JXPagingView) -> Int {
         return titles.count
     }
 
-    func pagingView(_ pagingView: JXPagingViewView, listViewInRow row: Int) -> UIView & JXPagingViewListViewDelegate {
+    func pagingView(_ pagingView: JXPagingView, listViewInRow row: Int) -> UIView & JXPagingViewListViewDelegate {
         return listViewArray[row]
     }
 }

@@ -15,7 +15,7 @@ import UIKit
     func listContainerView(_ listContainerView: JXPagingViewListContainerView, viewForListInRow row: Int) -> UIView
 }
 
-class JXPagingViewListContainerView: UIView {
+open class JXPagingViewListContainerView: UIView {
     open var collectionView: UICollectionView!
     unowned var delegate: JXPagingViewListContainerViewDelegate
     weak var mainTableView: JXPagingViewMainTableView?
@@ -29,7 +29,7 @@ class JXPagingViewListContainerView: UIView {
     }
 
     @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -49,7 +49,7 @@ class JXPagingViewListContainerView: UIView {
         self.addSubview(collectionView)
     }
 
-    override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
 
         collectionView.frame = self.bounds
@@ -62,11 +62,11 @@ class JXPagingViewListContainerView: UIView {
 
 extension JXPagingViewListContainerView: UICollectionViewDataSource, UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.delegate.numberOfRows(in: self)
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         for view in cell.contentView.subviews {
             view.removeFromSuperview()
@@ -77,25 +77,25 @@ extension JXPagingViewListContainerView: UICollectionViewDataSource, UICollectio
         return cell
     }
 
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.mainTableView?.isScrollEnabled = true
     }
 
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         self.mainTableView?.isScrollEnabled = true
     }
 
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         self.mainTableView?.isScrollEnabled = true
     }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.mainTableView?.isScrollEnabled = false
     }
 }
 
 extension JXPagingViewListContainerView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return self.bounds.size
     }
 }
