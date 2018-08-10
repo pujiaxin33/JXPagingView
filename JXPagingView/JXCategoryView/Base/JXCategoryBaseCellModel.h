@@ -15,10 +15,7 @@
 
 @property (nonatomic, assign) CGFloat cellWidth;
 
-@property (nonatomic, assign) BOOL zoomEnabled;
+@property (nonatomic, assign) CGFloat cellSpacing;
 
-@property (nonatomic, assign) CGFloat zoomScale;
-
-@property (nonatomic, assign) BOOL sepratorLineShowEnabled;
 
 @end

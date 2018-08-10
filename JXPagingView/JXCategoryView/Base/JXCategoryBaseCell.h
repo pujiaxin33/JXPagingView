@@ -11,8 +11,10 @@
 
 @interface JXCategoryBaseCell : UICollectionViewCell
 
-- (void)initializeViews;
+@property (nonatomic, strong) JXCategoryBaseCellModel *cellModel;
 
-- (void)reloadDatas:(JXCategoryBaseCellModel *)cellModel;
+- (void)initializeViews NS_REQUIRES_SUPER;
+
+- (void)reloadDatas:(JXCategoryBaseCellModel *)cellModel NS_REQUIRES_SUPER;
 
 @end

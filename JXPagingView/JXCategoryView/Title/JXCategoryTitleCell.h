@@ -1,15 +1,17 @@
 //
-//  JXCategoryCell.h
+//  JXCategoryTitleCell.h
 //  UI系列测试
 //
 //  Created by jiaxin on 2018/3/15.
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXCategoryBaseCell.h"
+#import "JXCategoryComponentCell.h"
 
-@interface JXCategoryCell : JXCategoryBaseCell
+@interface JXCategoryTitleCell : JXCategoryComponentCell
 
 @property (nonatomic, strong) UILabel *titleLabel;
+
+@property (nonatomic, strong) UILabel *maskTitleLabel;
 
 @end

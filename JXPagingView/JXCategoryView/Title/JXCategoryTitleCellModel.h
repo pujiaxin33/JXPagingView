@@ -1,15 +1,15 @@
 //
-//  JXCategoryCellModel.h
+//  JXCategoryTitleCellModel.h
 //  UI系列测试
 //
 //  Created by jiaxin on 2018/3/15.
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXCategoryBaseCellModel.h"
+#import "JXCategoryComponentCellModel.h"
 #import <UIKit/UIKit.h>
 
-@interface JXCategoryCellModel : JXCategoryBaseCellModel
+@interface JXCategoryTitleCellModel : JXCategoryComponentCellModel
 
 @property (nonatomic, copy) NSString *title;
 
@@ -17,6 +17,6 @@
 
 @property (nonatomic, strong) UIColor *titleSelectedColor;
 
-@property (nonatomic, assign) CGFloat titleFontSize;
+@property (nonatomic, strong) UIFont *titleFont;
 
 @end

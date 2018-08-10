@@ -10,6 +10,6 @@
 
 @interface JXCategoryCollectionView : UICollectionView
 
-@property (nonatomic, weak) CAShapeLayer *backEllipseLayer;
+@property (nonatomic, weak) UIView *backgroundContainerView;
 
 @end

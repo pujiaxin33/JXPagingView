@@ -6,9 +6,9 @@
 //  Copyright © 2018年 jingbo. All rights reserved.
 //
 
-#import "JXCategoryView.h"
+#import "JXCategoryTitleView.h"
 
-@interface JXCategoryNumberView : JXCategoryView
+@interface JXCategoryNumberView : JXCategoryTitleView
 
 /**
  需要与titles的count对应

@@ -6,9 +6,9 @@
 //  Copyright © 2018年 jingbo. All rights reserved.
 //
 
-#import "JXCategoryCellModel.h"
+#import "JXCategoryTitleCellModel.h"
 
-@interface JXCategoryNumberCellModel : JXCategoryCellModel
+@interface JXCategoryNumberCellModel : JXCategoryTitleCellModel
 
 @property (nonatomic, assign) NSInteger count;
 
