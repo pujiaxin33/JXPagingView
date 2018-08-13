@@ -12,7 +12,7 @@
 ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/Refresh.gif)
 
 # 头图缩放说明
-头图缩放原理，有不明白的可以参考我写的：[JXTableViewZoomHeaderImageView](https://github.com/pujiaxin33/JXTableViewZoomHeaderImageView)  一看就能懂了。
+头图缩放原理，有不明白的可以参考我写的：[JXTableViewZoomHeaderImageView](https://github.com/pujiaxin33/JXTableViewZoomHeaderImageView)  一看就懂了。
 
 # HeaderView说明
 悬浮的HeaderView，用的是我写的：[JXCategoryView](https://github.com/pujiaxin33/JXCategoryView) 几乎实现了所有主流效果，而且非常容易自定义扩展，强烈推荐阅读。
@@ -91,11 +91,16 @@
 }
 ```
 
-4.将外部listView的滚动事件传入userProfileView
+4.将外部listView的滚动事件传入View
 ```
 func listViewDidScroll(_ scrollView: UIScrollView) {
      pagingView.listViewDidScroll(scrollView: scrollView)
 }
 ```
+
+
+# 补充
+
+有不明白的地方，建议多看下源码。再有疑问的，欢迎提Issue交流🤝
 
 
