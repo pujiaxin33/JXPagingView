@@ -46,6 +46,7 @@ class BaseViewController: UIViewController {
         categoryView.titleColor = UIColor.black
         categoryView.titleColorGradientEnabled = true
         categoryView.zoomEnabled = true
+        categoryView.delegate = self
 
         let lineWidth = 1/UIScreen.main.scale
         let lineLayer = CALayer()
@@ -58,6 +59,8 @@ class BaseViewController: UIViewController {
         self.view.addSubview(pagingView)
 
         categoryView.contentScrollView = pagingView.listContainerView.collectionView
+
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
 
     override func viewDidLayoutSubviews() {
@@ -101,3 +104,8 @@ extension BaseViewController: TestListViewDelegate {
     }
 }
 
+extension BaseViewController: JXCategoryViewDelegate {
+    func categoryView(_ categoryView: JXCategoryBaseView!, didSelectedItemAt index: Int) {
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = (index == 0)
+    }
+}
