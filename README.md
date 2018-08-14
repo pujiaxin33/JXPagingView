@@ -1,23 +1,30 @@
 # JXPagingView
-类似微博主页、简书主页等效果。既可以上下滑动，也可以左右滑动切换页面。支持HeaderView悬浮、支持下拉刷新、上拉加载更多。
 
-# 预览
+类似微博主页、简书主页等效果。多页面嵌套，既可以上下滑动，也可以左右滑动切换页面。支持HeaderView悬浮、支持下拉刷新、上拉加载更多。
 
-**头图缩放**
+与其他同类三方库对比有何优点：
+- 手势交互更自然；
+- 悬浮的categoryView支持更多效果，而且支持自定义扩展；
+- 封装性更好，不用关心内部实现，只需要实现对应delegate方法即可；
+- 支持像使用普通UITableView一样，添加下拉刷新、上拉加载更多功能；
+
+## 预览
+
+### **头图缩放**
 
 ![Zoom](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/Zoom.gif)
 
-**下拉刷新、上拉加载更多**
+### **下拉刷新、上拉加载更多**
 
 ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/Refresh.gif)
 
-# 头图缩放说明
+## 头图缩放说明
 头图缩放原理，有不明白的可以参考我写的：[JXTableViewZoomHeaderImageView](https://github.com/pujiaxin33/JXTableViewZoomHeaderImageView)  一看就懂了。
 
-# HeaderView说明
+## HeaderView说明
 悬浮的HeaderView，用的是我写的：[JXCategoryView](https://github.com/pujiaxin33/JXCategoryView) 几乎实现了所有主流效果，而且非常容易自定义扩展，强烈推荐阅读。
 
-# 使用
+## 使用
 
 1.实例化`JXPagingView`
 ```swift
@@ -99,7 +106,7 @@ func listViewDidScroll(_ scrollView: UIScrollView) {
 ```
 
 
-# 补充
+## 补充
 
 有不明白的地方，建议多看下源码。再有疑问的，欢迎提Issue交流🤝
 
