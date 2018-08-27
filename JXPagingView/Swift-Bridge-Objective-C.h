@@ -6,5 +6,5 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXCategoryTitleView.h"
+#import "JXCategoryView.h"
 #import "MJRefresh.h"
