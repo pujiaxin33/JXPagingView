@@ -52,7 +52,7 @@ import UIKit
 
 
     /// 返回对应index的listView，需要是UIView的子类，且要遵循JXPagingViewListViewDelegate。
-    /// 这里要求返回一个UIView而不是一个UIScrollView，因为listView可能并不只是一个单纯的UITableView或UICollectionView，可能还会有其他的子视图。
+    /// 这里要求返回一个UIView而不是一个UIScrollView，因为列表的UIScrollView一般是被包装到一个view里面，里面会处理数据源和其他逻辑。
     ///
     /// - Parameters:
     ///   - pagingView: JXPagingViewView
