@@ -1,6 +1,6 @@
 # JXPagingView
 
-[OC版本现已加入豪华套餐](https://github.com/pujiaxin33/JXPagingView/tree/master/JXPagingView-OC)
+[OC版本现已加入豪华套餐，使用方法与swift版本相同](https://github.com/pujiaxin33/JXPagingView/tree/master/JXPagingView-OC)
 
 类似微博主页、简书主页、QQ联系人页面等效果。多页面嵌套，既可以上下滑动，也可以左右滑动切换页面。支持HeaderView悬浮、支持下拉刷新、上拉加载更多。
 
