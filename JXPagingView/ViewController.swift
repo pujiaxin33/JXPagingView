@@ -12,8 +12,8 @@ class ViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            let zoomVC = ZoomViewController()
-            self.navigationController?.pushViewController(zoomVC, animated: true)
+        let zoomVC = ZoomViewController()
+        self.navigationController?.pushViewController(zoomVC, animated: true)
         }else if indexPath.row == 1 {
             let refreshVC = RefreshViewController()
             self.navigationController?.pushViewController(refreshVC, animated: true)

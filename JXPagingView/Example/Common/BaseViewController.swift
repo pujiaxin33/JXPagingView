@@ -81,11 +81,11 @@ extension BaseViewController: JXPagingViewDelegate {
         return userHeaderView
     }
 
-    func heightForHeaderInSection(in pagingView: JXPagingView) -> CGFloat {
+    func heightForPinSectionHeader(in pagingView: JXPagingView) -> CGFloat {
         return JXheightForHeaderInSection
     }
 
-    func viewForHeaderInSection(in pagingView: JXPagingView) -> UIView {
+    func viewForPinSectionHeader(in pagingView: JXPagingView) -> UIView {
         return categoryView
     }
 

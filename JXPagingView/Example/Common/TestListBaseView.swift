@@ -8,15 +8,15 @@
 
 import UIKit
 
-@objc protocol TestListViewDelegate {
+@objc public protocol TestListViewDelegate {
     func listViewDidScroll(_ scrollView: UIScrollView)
 }
 
-class TestListBaseView: UIView {
-    var tableView: UITableView!
-    var dataSource: [String]?
-    var isNeedFooter = false
-    weak var delegate: TestListViewDelegate?
+@objc public class TestListBaseView: UIView {
+    @objc public var tableView: UITableView!
+    @objc public var dataSource: [String]?
+    @objc public var isNeedFooter = false
+    @objc public weak var delegate: TestListViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,7 +30,7 @@ class TestListBaseView: UIView {
         addSubview(tableView)
     }
 
-    override func willMove(toSuperview newSuperview: UIView?) {
+    override public func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
 
         if newSuperview != nil {
@@ -40,11 +40,11 @@ class TestListBaseView: UIView {
         }
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
 
         tableView.frame = self.bounds
@@ -61,27 +61,27 @@ class TestListBaseView: UIView {
 }
 
 extension TestListBaseView: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource?.count ?? 0
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = dataSource?[indexPath.row]
         return cell
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.delegate?.listViewDidScroll(scrollView)
     }
 }
 
 extension TestListBaseView: JXPagingViewListViewDelegate {
-    var scrollView: UIScrollView {
+    public func listScrollView() -> UIScrollView {
         return self.tableView
     }
 }

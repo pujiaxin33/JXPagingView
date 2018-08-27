@@ -10,7 +10,7 @@ import UIKit
 
 //该协议主要用于mainTableView已经显示了header，listView的contentOffset需要重置时，内部需要访问到外部传入进来的listView内的scrollView
 @objc public protocol JXPagingViewListViewDelegate: NSObjectProtocol {
-    var scrollView: UIScrollView { get }
+    func listScrollView() -> UIScrollView
 }
 
 @objc public protocol JXPagingViewDelegate: NSObjectProtocol {
@@ -34,14 +34,14 @@ import UIKit
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: height
-    func heightForHeaderInSection(in pagingView: JXPagingView) -> CGFloat
+    func heightForPinSectionHeader(in pagingView: JXPagingView) -> CGFloat
 
 
     /// 返回悬浮HeaderView。我用的是自己封装的JXCategoryView（Github:https://github.com/pujiaxin33/JXCategoryView），你也可以选择其他的三方库或者自己写
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: view
-    func viewForHeaderInSection(in pagingView: JXPagingView) -> UIView
+    func viewForPinSectionHeader(in pagingView: JXPagingView) -> UIView
 
 
     /// 底部listView的条数
@@ -134,7 +134,7 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.bounds.height - self.delegate.heightForHeaderInSection(in: self)
+        return self.bounds.height - self.delegate.heightForPinSectionHeader(in: self)
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -148,11 +148,11 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.delegate.heightForHeaderInSection(in: self)
+        return self.delegate.heightForPinSectionHeader(in: self)
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self.delegate.viewForHeaderInSection(in: self)
+        return self.delegate.viewForPinSectionHeader(in: self)
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -167,7 +167,7 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
             //mainTableView已经显示了header，listView的contentOffset需要重置
             for index in 0..<self.delegate.numberOfListViews(in: self) {
                 let listView = self.delegate.pagingView(self, listViewInRow: index)
-                listView.scrollView.contentOffset = CGPoint.zero
+                listView.listScrollView().contentOffset = CGPoint.zero
             }
         }
     }
