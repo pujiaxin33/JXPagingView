@@ -15,6 +15,7 @@ import UIKit
 @objc public class TestListBaseView: UIView {
     @objc public var tableView: UITableView!
     @objc public var dataSource: [String]?
+    @objc public var isNeedHeader = false
     @objc public var isNeedFooter = false
     @objc public weak var delegate: TestListViewDelegate?
 
@@ -30,10 +31,19 @@ import UIKit
         addSubview(tableView)
     }
 
+    @objc func headerRefresh() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(2)) {
+            self.tableView.mj_header.endRefreshing()
+        }
+    }
+
     override public func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
 
         if newSuperview != nil {
+            if isNeedHeader {
+                self.tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(headerRefresh))
+            }
             if isNeedFooter {
                 tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
             }

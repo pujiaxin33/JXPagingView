@@ -48,8 +48,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="64.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下拉刷新&amp;上拉加载更多" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgt-cU-XJV">
-                                                    <rect key="frame" x="16" y="22" width="185" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主页下拉刷新&amp;列表上拉加载更多" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgt-cU-XJV">
+                                                    <rect key="frame" x="16" y="22" width="255" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -59,6 +59,27 @@
                                                 <constraint firstItem="sgt-cU-XJV" firstAttribute="centerY" secondItem="Pca-wj-3oq" secondAttribute="centerY" id="YTy-1s-n8C"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sgt-cU-XJV" secondAttribute="trailing" constant="20" symbolic="YES" id="lN2-J7-S36"/>
                                                 <constraint firstItem="sgt-cU-XJV" firstAttribute="leading" secondItem="Pca-wj-3oq" secondAttribute="leading" constant="16" id="x3c-Ro-oNQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="65" id="2jP-dP-ddy">
+                                        <rect key="frame" x="0.0" y="130" width="375" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2jP-dP-ddy" id="aUI-58-oPZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="64.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="列表下拉刷新" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBW-Sp-ytc">
+                                                    <rect key="frame" x="16" y="22" width="104" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hBW-Sp-ytc" firstAttribute="centerY" secondItem="aUI-58-oPZ" secondAttribute="centerY" id="6H6-aS-Af7"/>
+                                                <constraint firstItem="hBW-Sp-ytc" firstAttribute="leading" secondItem="aUI-58-oPZ" secondAttribute="leading" constant="16" id="NaW-Oh-KvY"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hBW-Sp-ytc" secondAttribute="trailing" constant="20" symbolic="YES" id="izW-9P-Zvm"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

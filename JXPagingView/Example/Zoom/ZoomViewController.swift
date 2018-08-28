@@ -13,7 +13,6 @@ class ZoomViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "头图缩放"
     }
 
     func mainTableViewDidScroll(_ scrollView: UIScrollView) {

@@ -99,14 +99,17 @@
 
 - (instancetype)initWithDelegate:(id<JXPagingViewDelegate>)delegate NS_DESIGNATED_INITIALIZER;
 
+@property (nonatomic, strong, readonly) UIScrollView *currentScrollingListView;
+
 - (instancetype)init NS_UNAVAILABLE;
 
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
 
-- (void)reloadData;
+- (void)initializeViews NS_REQUIRES_SUPER;
 
+- (void)reloadData;
 
 /**
  外部传入的listView，当其内部的scrollView滚动时，需要调用该方法

@@ -73,6 +73,14 @@
 		194DCDAE2133C7C2000E89EF /* JXCategoryBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCD902133C7C2000E89EF /* JXCategoryBaseView.m */; };
 		194DCDAF2133C7C2000E89EF /* JXCategoryBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCD912133C7C2000E89EF /* JXCategoryBaseCell.m */; };
 		194DCDB02133C7C2000E89EF /* JXCategoryBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCD922133C7C2000E89EF /* JXCategoryBaseCellModel.m */; };
+		194DCDD92134F81F000E89EF /* ListRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDD82134F81F000E89EF /* ListRefreshViewController.swift */; };
+		194DCDDB2135178F000E89EF /* JXPagingListRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDDA2135178F000E89EF /* JXPagingListRefreshView.swift */; };
+		194DCDDF21351C4F000E89EF /* Refresh.gif in Resources */ = {isa = PBXBuildFile; fileRef = 194DCDDD21351C4F000E89EF /* Refresh.gif */; };
+		194DCDE021351C4F000E89EF /* Zoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 194DCDDE21351C4F000E89EF /* Zoom.gif */; };
+		194DCDEC21351E8B000E89EF /* JXPagingListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDE521351E8B000E89EF /* JXPagingListContainerView.m */; };
+		194DCDED21351E8B000E89EF /* JXPagingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDE621351E8B000E89EF /* JXPagingView.m */; };
+		194DCDEE21351E8B000E89EF /* JXPagingListRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDE821351E8B000E89EF /* JXPagingListRefreshView.m */; };
+		194DCDEF21351E8B000E89EF /* JXPagingMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDEB21351E8B000E89EF /* JXPagingMainTableView.m */; };
 		19870C27211D852400C23CAA /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19870C26211D852400C23CAA /* lufei.jpg */; };
 		19870C7F2121604F00C23CAA /* Refresh.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C7D2121604F00C23CAA /* Refresh.gif */; };
 		19870C802121605000C23CAA /* Zoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C7E2121604F00C23CAA /* Zoom.gif */; };
@@ -138,7 +146,6 @@
 		194DCD432133C408000E89EF /* JXPagingMainTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingMainTableView.swift; sourceTree = "<group>"; };
 		194DCD442133C408000E89EF /* JXPagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingView.swift; sourceTree = "<group>"; };
 		194DCD452133C408000E89EF /* JXPagingListContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingListContainerView.swift; sourceTree = "<group>"; };
-		194DCD492133C596000E89EF /* JXPagingView-OC */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "JXPagingView-OC"; sourceTree = SOURCE_ROOT; };
 		194DCD4C2133C7C1000E89EF /* JXCategoryIndicatorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorCell.h; sourceTree = "<group>"; };
 		194DCD4D2133C7C1000E89EF /* JXCategoryIndicatorCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorCellModel.h; sourceTree = "<group>"; };
 		194DCD4E2133C7C1000E89EF /* JXCategoryIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorView.h; sourceTree = "<group>"; };
@@ -202,6 +209,18 @@
 		194DCD902133C7C2000E89EF /* JXCategoryBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseView.m; sourceTree = "<group>"; };
 		194DCD912133C7C2000E89EF /* JXCategoryBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCell.m; sourceTree = "<group>"; };
 		194DCD922133C7C2000E89EF /* JXCategoryBaseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCellModel.m; sourceTree = "<group>"; };
+		194DCDD82134F81F000E89EF /* ListRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRefreshViewController.swift; sourceTree = "<group>"; };
+		194DCDDA2135178F000E89EF /* JXPagingListRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXPagingListRefreshView.swift; sourceTree = "<group>"; };
+		194DCDDD21351C4F000E89EF /* Refresh.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Refresh.gif; sourceTree = "<group>"; };
+		194DCDDE21351C4F000E89EF /* Zoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Zoom.gif; sourceTree = "<group>"; };
+		194DCDE421351E8B000E89EF /* JXPagingListRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagingListRefreshView.h; sourceTree = "<group>"; };
+		194DCDE521351E8B000E89EF /* JXPagingListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagingListContainerView.m; sourceTree = "<group>"; };
+		194DCDE621351E8B000E89EF /* JXPagingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagingView.m; sourceTree = "<group>"; };
+		194DCDE721351E8B000E89EF /* JXPagingMainTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagingMainTableView.h; sourceTree = "<group>"; };
+		194DCDE821351E8B000E89EF /* JXPagingListRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagingListRefreshView.m; sourceTree = "<group>"; };
+		194DCDE921351E8B000E89EF /* JXPagingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagingView.h; sourceTree = "<group>"; };
+		194DCDEA21351E8B000E89EF /* JXPagingListContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagingListContainerView.h; sourceTree = "<group>"; };
+		194DCDEB21351E8B000E89EF /* JXPagingMainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagingMainTableView.m; sourceTree = "<group>"; };
 		19870C26211D852400C23CAA /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lufei.jpg; sourceTree = "<group>"; };
 		19870C7D2121604F00C23CAA /* Refresh.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Refresh.gif; sourceTree = "<group>"; };
 		19870C7E2121604F00C23CAA /* Zoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Zoom.gif; sourceTree = "<group>"; };
@@ -237,8 +256,8 @@
 		1912A53F211D2AB700A80826 /* JXPagingView */ = {
 			isa = PBXGroup;
 			children = (
+				194DCDE321351E8B000E89EF /* JXPagingView-OC */,
 				194DCD4A2133C7C1000E89EF /* JXCategoryView */,
-				194DCD492133C596000E89EF /* JXPagingView-OC */,
 				194DCD422133C408000E89EF /* JXPagingView-Swift */,
 				19870C7C2121601700C23CAA /* Gif */,
 				1912A552211D2F1500A80826 /* Example */,
@@ -269,6 +288,7 @@
 			children = (
 				1912A556211D2F1500A80826 /* MJRefresh */,
 				1912A555211D2F1500A80826 /* RefreshViewController.swift */,
+				194DCDD82134F81F000E89EF /* ListRefreshViewController.swift */,
 			);
 			path = Refresh;
 			sourceTree = "<group>";
@@ -393,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				194DCD442133C408000E89EF /* JXPagingView.swift */,
+				194DCDDA2135178F000E89EF /* JXPagingListRefreshView.swift */,
 				194DCD432133C408000E89EF /* JXPagingMainTableView.swift */,
 				194DCD452133C408000E89EF /* JXPagingListContainerView.swift */,
 			);
@@ -541,9 +562,34 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		194DCDDC21351C4F000E89EF /* Gif */ = {
+			isa = PBXGroup;
+			children = (
+				194DCDDD21351C4F000E89EF /* Refresh.gif */,
+				194DCDDE21351C4F000E89EF /* Zoom.gif */,
+			);
+			name = Gif;
+			sourceTree = "<group>";
+		};
+		194DCDE321351E8B000E89EF /* JXPagingView-OC */ = {
+			isa = PBXGroup;
+			children = (
+				194DCDE421351E8B000E89EF /* JXPagingListRefreshView.h */,
+				194DCDE521351E8B000E89EF /* JXPagingListContainerView.m */,
+				194DCDE621351E8B000E89EF /* JXPagingView.m */,
+				194DCDE721351E8B000E89EF /* JXPagingMainTableView.h */,
+				194DCDE821351E8B000E89EF /* JXPagingListRefreshView.m */,
+				194DCDE921351E8B000E89EF /* JXPagingView.h */,
+				194DCDEA21351E8B000E89EF /* JXPagingListContainerView.h */,
+				194DCDEB21351E8B000E89EF /* JXPagingMainTableView.m */,
+			);
+			path = "JXPagingView-OC";
+			sourceTree = SOURCE_ROOT;
+		};
 		19870C7C2121601700C23CAA /* Gif */ = {
 			isa = PBXGroup;
 			children = (
+				194DCDDC21351C4F000E89EF /* Gif */,
 				19870C7D2121604F00C23CAA /* Refresh.gif */,
 				19870C7E2121604F00C23CAA /* Zoom.gif */,
 			);
@@ -613,7 +659,9 @@
 				19870C27211D852400C23CAA /* lufei.jpg in Resources */,
 				1912A548211D2ABA00A80826 /* Assets.xcassets in Resources */,
 				19870C802121605000C23CAA /* Zoom.gif in Resources */,
+				194DCDE021351C4F000E89EF /* Zoom.gif in Resources */,
 				1912A5AD211D2F1500A80826 /* MJRefresh.bundle in Resources */,
+				194DCDDF21351C4F000E89EF /* Refresh.gif in Resources */,
 				1912A546211D2AB700A80826 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -629,9 +677,11 @@
 				194DCDA32133C7C2000E89EF /* JXCategoryTitleCell.m in Sources */,
 				194DCDAC2133C7C2000E89EF /* JXCategoryCollectionView.m in Sources */,
 				194DCDA12133C7C2000E89EF /* JXCategoryTitleImageCellModel.m in Sources */,
+				194DCDEC21351E8B000E89EF /* JXPagingListContainerView.m in Sources */,
 				194DCD9A2133C7C2000E89EF /* JXCategoryIndicatorCell.m in Sources */,
 				1912A5AA211D2F1500A80826 /* RefreshViewController.swift in Sources */,
 				1912A5B5211D2F1500A80826 /* MJRefreshAutoGifFooter.m in Sources */,
+				194DCDEE21351E8B000E89EF /* JXPagingListRefreshView.m in Sources */,
 				194DCD462133C408000E89EF /* JXPagingMainTableView.swift in Sources */,
 				1912A5C3211D2F1500A80826 /* TestListBaseView.swift in Sources */,
 				194DCDA52133C7C2000E89EF /* JXCategoryImageView.m in Sources */,
@@ -657,8 +707,11 @@
 				194DCDA22133C7C2000E89EF /* JXCategoryTitleCellModel.m in Sources */,
 				1912A5BD211D2F1500A80826 /* MJRefreshAutoFooter.m in Sources */,
 				194DCD9E2133C7C2000E89EF /* JXCategoryDotCellModel.m in Sources */,
+				194DCDD92134F81F000E89EF /* ListRefreshViewController.swift in Sources */,
 				1912A5AC211D2F1500A80826 /* MJRefreshConst.m in Sources */,
 				1912A5B4211D2F1500A80826 /* MJRefreshAutoStateFooter.m in Sources */,
+				194DCDED21351E8B000E89EF /* JXPagingView.m in Sources */,
+				194DCDEF21351E8B000E89EF /* JXPagingMainTableView.m in Sources */,
 				194DCDB02133C7C2000E89EF /* JXCategoryBaseCellModel.m in Sources */,
 				194DCDAE2133C7C2000E89EF /* JXCategoryBaseView.m in Sources */,
 				1912A5C0211D2F1500A80826 /* PagingViewTableHeaderView.swift in Sources */,
@@ -678,6 +731,7 @@
 				194DCDA92133C7C2000E89EF /* JXCategoryNumberCell.m in Sources */,
 				1912A5BA211D2F1500A80826 /* MJRefreshFooter.m in Sources */,
 				194DCD9B2133C7C2000E89EF /* JXCategoryIndicatorView.m in Sources */,
+				194DCDDB2135178F000E89EF /* JXPagingListRefreshView.swift in Sources */,
 				1912A5B6211D2F1500A80826 /* MJRefreshAutoNormalFooter.m in Sources */,
 				1912A5BB211D2F1500A80826 /* MJRefreshHeader.m in Sources */,
 				1912A5B3211D2F1500A80826 /* MJRefreshBackNormalFooter.m in Sources */,

@@ -57,8 +57,7 @@ class BaseViewController: UIViewController {
         lineLayer.frame = CGRect(x: 0, y: categoryView.bounds.height - lineWidth, width: categoryView.bounds.width, height: lineWidth)
         categoryView.layer.addSublayer(lineLayer)
 
-        pagingView = JXPagingView(delegate: self)
-        pagingView.delegate = self
+        pagingView = preferredPagingView()
         self.view.addSubview(pagingView)
 
         categoryView.contentScrollView = pagingView.listContainerView.collectionView
@@ -70,6 +69,10 @@ class BaseViewController: UIViewController {
         super.viewDidLayoutSubviews()
 
         pagingView.frame = self.view.bounds
+    }
+
+    func preferredPagingView() -> JXPagingView {
+        return JXPagingView(delegate: self)
     }
 
 }

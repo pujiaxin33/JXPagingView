@@ -68,10 +68,10 @@ import UIKit
 }
 
 open class JXPagingView: UIView {
-    open unowned var delegate: JXPagingViewDelegate
+    open unowned let delegate: JXPagingViewDelegate
     open var mainTableView: JXPagingMainTableView!
     open var listContainerView: JXPagingListContainerView!
-    fileprivate var currentScrollingListView: UIScrollView?
+    var currentScrollingListView: UIScrollView?
 
     init(delegate: JXPagingViewDelegate) {
         self.delegate = delegate
@@ -85,7 +85,7 @@ open class JXPagingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    fileprivate func initializeViews(){
+    open func initializeViews(){
         mainTableView = JXPagingMainTableView(frame: CGRect.zero, style: .plain)
         mainTableView.showsVerticalScrollIndicator = false
         mainTableView.showsHorizontalScrollIndicator = false
@@ -110,20 +110,39 @@ open class JXPagingView: UIView {
     open func listViewDidScroll(scrollView: UIScrollView) {
         self.currentScrollingListView = scrollView
 
-        if (self.mainTableView.contentOffset.y < self.delegate.tableHeaderViewHeight(in: self)) {
-            //mainTableView的header还没有消失，让listScrollView一直为0
-            scrollView.contentOffset = CGPoint.zero;
-            scrollView.showsVerticalScrollIndicator = false;
-        } else {
-            //mainTableView的header刚好消失，固定mainTableView的位置，显示listScrollView的滚动条
-            self.mainTableView.contentOffset = CGPoint(x: 0, y: self.delegate.tableHeaderViewHeight(in: self));
-            scrollView.showsVerticalScrollIndicator = true;
-        }
+        preferredProcessListViewDidScroll(scrollView: scrollView)
     }
 
     open func reloadData() {
         self.mainTableView.reloadData()
         self.listContainerView.reloadData()
+    }
+
+    open func preferredProcessListViewDidScroll(scrollView: UIScrollView) {
+        if (self.mainTableView.contentOffset.y < self.delegate.tableHeaderViewHeight(in: self)) {
+            //mainTableView的header还没有消失，让listScrollView一直为0
+            currentScrollingListView!.contentOffset = CGPoint.zero;
+            currentScrollingListView!.showsVerticalScrollIndicator = false;
+        } else {
+            //mainTableView的header刚好消失，固定mainTableView的位置，显示listScrollView的滚动条
+            self.mainTableView.contentOffset = CGPoint(x: 0, y: self.delegate.tableHeaderViewHeight(in: self));
+            currentScrollingListView!.showsVerticalScrollIndicator = true;
+        }
+    }
+
+    open func preferredProcessMainTableViewDidScroll(_ scrollView: UIScrollView) {
+        if (self.currentScrollingListView != nil && self.currentScrollingListView!.contentOffset.y > 0) {
+            //mainTableView的header已经滚动不见，开始滚动某一个listView，那么固定mainTableView的contentOffset，让其不动
+            self.mainTableView.contentOffset = CGPoint(x: 0, y: self.delegate.tableHeaderViewHeight(in: self))
+        }
+
+        if (mainTableView.contentOffset.y < self.delegate.tableHeaderViewHeight(in: self)) {
+            //mainTableView已经显示了header，listView的contentOffset需要重置
+            for index in 0..<self.delegate.numberOfListViews(in: self) {
+                let listView = self.delegate.pagingView(self, listViewInRow: index)
+                listView.listScrollView().contentOffset = CGPoint.zero
+            }
+        }
     }
 }
 
@@ -158,18 +177,7 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.delegate.mainTableViewDidScroll?(scrollView)
 
-        if (self.currentScrollingListView != nil && self.currentScrollingListView!.contentOffset.y > 0) {
-            //mainTableView的header已经滚动不见，开始滚动某一个listView，那么固定mainTableView的contentOffset，让其不动
-            self.mainTableView.contentOffset = CGPoint(x: 0, y: self.delegate.tableHeaderViewHeight(in: self))
-        }
-
-        if (scrollView.contentOffset.y < self.delegate.tableHeaderViewHeight(in: self)) {
-            //mainTableView已经显示了header，listView的contentOffset需要重置
-            for index in 0..<self.delegate.numberOfListViews(in: self) {
-                let listView = self.delegate.pagingView(self, listViewInRow: index)
-                listView.listScrollView().contentOffset = CGPoint.zero
-            }
-        }
+        preferredProcessMainTableViewDidScroll(scrollView)
     }
 }
 

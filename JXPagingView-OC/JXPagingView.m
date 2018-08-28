@@ -56,6 +56,10 @@
 - (void)listViewDidScroll:(UIScrollView *)scrollView {
     self.currentScrollingListView = scrollView;
 
+    [self preferredProcessListViewDidScroll:scrollView];
+}
+
+- (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView {
     if (self.mainTableView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagingView:self]) {
         //mainTableView的header还没有消失，让listScrollView一直为0
         scrollView.contentOffset = CGPointZero;
@@ -67,7 +71,21 @@
     }
 }
 
+- (void)preferredProcessMainTableViewDidScroll:(UIScrollView *)scrollView {
+    if (self.currentScrollingListView != nil && self.currentScrollingListView.contentOffset.y > 0) {
+        //mainTableView的header已经滚动不见，开始滚动某一个listView，那么固定mainTableView的contentOffset，让其不动
+        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagingView:self]);
+    }
 
+    if (scrollView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagingView:self]) {
+        //mainTableView已经显示了header，listView的contentOffset需要重置
+        for (int i = 0; i < [self.delegate numberOfListViewsInPagingView:self]; i ++) {
+            UIView <JXPagingViewListViewDelegate> *listView = [self.delegate pagingView:self listViewInRow:i];
+            UIScrollView *listScrollView = [listView listScrollView];
+            listScrollView.contentOffset = CGPointZero;
+        }
+    }
+}
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
@@ -102,19 +120,7 @@
         [self.delegate mainTableViewDidScroll:scrollView];
     }
 
-    if (self.currentScrollingListView != nil && self.currentScrollingListView.contentOffset.y > 0) {
-        //mainTableView的header已经滚动不见，开始滚动某一个listView，那么固定mainTableView的contentOffset，让其不动
-        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagingView:self]);
-    }
-
-    if (scrollView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagingView:self]) {
-        //mainTableView已经显示了header，listView的contentOffset需要重置
-        for (int i = 0; i < [self.delegate numberOfListViewsInPagingView:self]; i ++) {
-            UIView <JXPagingViewListViewDelegate> *listView = [self.delegate pagingView:self listViewInRow:i];
-            UIScrollView *listScrollView = [listView listScrollView];
-            listScrollView.contentOffset = CGPointZero;
-        }
-    }
+    [self preferredProcessMainTableViewDidScroll:scrollView];
 }
 
 #pragma mark - JXPagingListContainerViewDelegate

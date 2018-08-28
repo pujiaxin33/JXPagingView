@@ -14,8 +14,6 @@ class RefreshViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "下拉刷新&上拉加载更多"
-
         for listView in listViewArray {
             listView.isNeedFooter = true
         }
