@@ -75,12 +75,11 @@
 		194DCDB02133C7C2000E89EF /* JXCategoryBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCD922133C7C2000E89EF /* JXCategoryBaseCellModel.m */; };
 		194DCDD92134F81F000E89EF /* ListRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDD82134F81F000E89EF /* ListRefreshViewController.swift */; };
 		194DCDDB2135178F000E89EF /* JXPagingListRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDDA2135178F000E89EF /* JXPagingListRefreshView.swift */; };
-		194DCDDF21351C4F000E89EF /* Refresh.gif in Resources */ = {isa = PBXBuildFile; fileRef = 194DCDDD21351C4F000E89EF /* Refresh.gif */; };
-		194DCDE021351C4F000E89EF /* Zoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 194DCDDE21351C4F000E89EF /* Zoom.gif */; };
 		194DCDEC21351E8B000E89EF /* JXPagingListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDE521351E8B000E89EF /* JXPagingListContainerView.m */; };
 		194DCDED21351E8B000E89EF /* JXPagingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDE621351E8B000E89EF /* JXPagingView.m */; };
 		194DCDEE21351E8B000E89EF /* JXPagingListRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDE821351E8B000E89EF /* JXPagingListRefreshView.m */; };
 		194DCDEF21351E8B000E89EF /* JXPagingMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDEB21351E8B000E89EF /* JXPagingMainTableView.m */; };
+		194DCDF121352285000E89EF /* ListRefresh.gif in Resources */ = {isa = PBXBuildFile; fileRef = 194DCDF021352285000E89EF /* ListRefresh.gif */; };
 		19870C27211D852400C23CAA /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19870C26211D852400C23CAA /* lufei.jpg */; };
 		19870C7F2121604F00C23CAA /* Refresh.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C7D2121604F00C23CAA /* Refresh.gif */; };
 		19870C802121605000C23CAA /* Zoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C7E2121604F00C23CAA /* Zoom.gif */; };
@@ -211,8 +210,6 @@
 		194DCD922133C7C2000E89EF /* JXCategoryBaseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCellModel.m; sourceTree = "<group>"; };
 		194DCDD82134F81F000E89EF /* ListRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRefreshViewController.swift; sourceTree = "<group>"; };
 		194DCDDA2135178F000E89EF /* JXPagingListRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXPagingListRefreshView.swift; sourceTree = "<group>"; };
-		194DCDDD21351C4F000E89EF /* Refresh.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Refresh.gif; sourceTree = "<group>"; };
-		194DCDDE21351C4F000E89EF /* Zoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Zoom.gif; sourceTree = "<group>"; };
 		194DCDE421351E8B000E89EF /* JXPagingListRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagingListRefreshView.h; sourceTree = "<group>"; };
 		194DCDE521351E8B000E89EF /* JXPagingListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagingListContainerView.m; sourceTree = "<group>"; };
 		194DCDE621351E8B000E89EF /* JXPagingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagingView.m; sourceTree = "<group>"; };
@@ -221,6 +218,7 @@
 		194DCDE921351E8B000E89EF /* JXPagingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagingView.h; sourceTree = "<group>"; };
 		194DCDEA21351E8B000E89EF /* JXPagingListContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagingListContainerView.h; sourceTree = "<group>"; };
 		194DCDEB21351E8B000E89EF /* JXPagingMainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagingMainTableView.m; sourceTree = "<group>"; };
+		194DCDF021352285000E89EF /* ListRefresh.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ListRefresh.gif; sourceTree = "<group>"; };
 		19870C26211D852400C23CAA /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lufei.jpg; sourceTree = "<group>"; };
 		19870C7D2121604F00C23CAA /* Refresh.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Refresh.gif; sourceTree = "<group>"; };
 		19870C7E2121604F00C23CAA /* Zoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Zoom.gif; sourceTree = "<group>"; };
@@ -562,15 +560,6 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		194DCDDC21351C4F000E89EF /* Gif */ = {
-			isa = PBXGroup;
-			children = (
-				194DCDDD21351C4F000E89EF /* Refresh.gif */,
-				194DCDDE21351C4F000E89EF /* Zoom.gif */,
-			);
-			name = Gif;
-			sourceTree = "<group>";
-		};
 		194DCDE321351E8B000E89EF /* JXPagingView-OC */ = {
 			isa = PBXGroup;
 			children = (
@@ -589,7 +578,7 @@
 		19870C7C2121601700C23CAA /* Gif */ = {
 			isa = PBXGroup;
 			children = (
-				194DCDDC21351C4F000E89EF /* Gif */,
+				194DCDF021352285000E89EF /* ListRefresh.gif */,
 				19870C7D2121604F00C23CAA /* Refresh.gif */,
 				19870C7E2121604F00C23CAA /* Zoom.gif */,
 			);
@@ -659,9 +648,8 @@
 				19870C27211D852400C23CAA /* lufei.jpg in Resources */,
 				1912A548211D2ABA00A80826 /* Assets.xcassets in Resources */,
 				19870C802121605000C23CAA /* Zoom.gif in Resources */,
-				194DCDE021351C4F000E89EF /* Zoom.gif in Resources */,
 				1912A5AD211D2F1500A80826 /* MJRefresh.bundle in Resources */,
-				194DCDDF21351C4F000E89EF /* Refresh.gif in Resources */,
+				194DCDF121352285000E89EF /* ListRefresh.gif in Resources */,
 				1912A546211D2AB700A80826 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
