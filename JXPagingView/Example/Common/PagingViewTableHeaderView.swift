@@ -17,7 +17,7 @@ class PagingViewTableHeaderView: UIView {
 
         imageView = UIImageView(image: UIImage(named: "lufei.jpg"))
         imageView.clipsToBounds = true
-        imageView.frame = frame
+        imageView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         imageView.contentMode = .scaleAspectFill
         self.addSubview(imageView)
 

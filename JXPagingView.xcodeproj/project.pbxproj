@@ -80,6 +80,9 @@
 		194DCDEE21351E8B000E89EF /* JXPagingListRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDE821351E8B000E89EF /* JXPagingListRefreshView.m */; };
 		194DCDEF21351E8B000E89EF /* JXPagingMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDEB21351E8B000E89EF /* JXPagingMainTableView.m */; };
 		194DCDF121352285000E89EF /* ListRefresh.gif in Resources */ = {isa = PBXBuildFile; fileRef = 194DCDF021352285000E89EF /* ListRefresh.gif */; };
+		194DCDF421352689000E89EF /* NaviHiddenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDF321352689000E89EF /* NaviHiddenViewController.swift */; };
+		194DCDF621352CE6000E89EF /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDF521352CE6000E89EF /* BaseNavigationController.swift */; };
+		1968DA692135486F00A51C83 /* NaviHidden.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1968DA682135486F00A51C83 /* NaviHidden.gif */; };
 		19870C27211D852400C23CAA /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19870C26211D852400C23CAA /* lufei.jpg */; };
 		19870C7F2121604F00C23CAA /* Refresh.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C7D2121604F00C23CAA /* Refresh.gif */; };
 		19870C802121605000C23CAA /* Zoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C7E2121604F00C23CAA /* Zoom.gif */; };
@@ -219,6 +222,9 @@
 		194DCDEA21351E8B000E89EF /* JXPagingListContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagingListContainerView.h; sourceTree = "<group>"; };
 		194DCDEB21351E8B000E89EF /* JXPagingMainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagingMainTableView.m; sourceTree = "<group>"; };
 		194DCDF021352285000E89EF /* ListRefresh.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ListRefresh.gif; sourceTree = "<group>"; };
+		194DCDF321352689000E89EF /* NaviHiddenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviHiddenViewController.swift; sourceTree = "<group>"; };
+		194DCDF521352CE6000E89EF /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		1968DA682135486F00A51C83 /* NaviHidden.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = NaviHidden.gif; sourceTree = "<group>"; };
 		19870C26211D852400C23CAA /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lufei.jpg; sourceTree = "<group>"; };
 		19870C7D2121604F00C23CAA /* Refresh.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Refresh.gif; sourceTree = "<group>"; };
 		19870C7E2121604F00C23CAA /* Zoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Zoom.gif; sourceTree = "<group>"; };
@@ -274,6 +280,7 @@
 		1912A552211D2F1500A80826 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				194DCDF221352667000E89EF /* NavigationBarHidden */,
 				1912A585211D2F1500A80826 /* Common */,
 				1912A588211D2F1500A80826 /* Zoom */,
 				1912A554211D2F1500A80826 /* Refresh */,
@@ -390,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				1912A670211D3E8600A80826 /* BaseViewController.swift */,
+				194DCDF521352CE6000E89EF /* BaseNavigationController.swift */,
 				1912A587211D2F1500A80826 /* PagingViewTableHeaderView.swift */,
 				1912A58B211D2F1500A80826 /* TestListBaseView.swift */,
 				1912A586211D2F1500A80826 /* PartnerListView.swift */,
@@ -575,9 +583,18 @@
 			path = "JXPagingView-OC";
 			sourceTree = SOURCE_ROOT;
 		};
+		194DCDF221352667000E89EF /* NavigationBarHidden */ = {
+			isa = PBXGroup;
+			children = (
+				194DCDF321352689000E89EF /* NaviHiddenViewController.swift */,
+			);
+			path = NavigationBarHidden;
+			sourceTree = "<group>";
+		};
 		19870C7C2121601700C23CAA /* Gif */ = {
 			isa = PBXGroup;
 			children = (
+				1968DA682135486F00A51C83 /* NaviHidden.gif */,
 				194DCDF021352285000E89EF /* ListRefresh.gif */,
 				19870C7D2121604F00C23CAA /* Refresh.gif */,
 				19870C7E2121604F00C23CAA /* Zoom.gif */,
@@ -648,6 +665,7 @@
 				19870C27211D852400C23CAA /* lufei.jpg in Resources */,
 				1912A548211D2ABA00A80826 /* Assets.xcassets in Resources */,
 				19870C802121605000C23CAA /* Zoom.gif in Resources */,
+				1968DA692135486F00A51C83 /* NaviHidden.gif in Resources */,
 				1912A5AD211D2F1500A80826 /* MJRefresh.bundle in Resources */,
 				194DCDF121352285000E89EF /* ListRefresh.gif in Resources */,
 				1912A546211D2AB700A80826 /* Main.storyboard in Resources */,
@@ -669,6 +687,7 @@
 				194DCD9A2133C7C2000E89EF /* JXCategoryIndicatorCell.m in Sources */,
 				1912A5AA211D2F1500A80826 /* RefreshViewController.swift in Sources */,
 				1912A5B5211D2F1500A80826 /* MJRefreshAutoGifFooter.m in Sources */,
+				194DCDF621352CE6000E89EF /* BaseNavigationController.swift in Sources */,
 				194DCDEE21351E8B000E89EF /* JXPagingListRefreshView.m in Sources */,
 				194DCD462133C408000E89EF /* JXPagingMainTableView.swift in Sources */,
 				1912A5C3211D2F1500A80826 /* TestListBaseView.swift in Sources */,
@@ -709,6 +728,7 @@
 				1912A541211D2AB700A80826 /* AppDelegate.swift in Sources */,
 				194DCD952133C7C2000E89EF /* JXCategoryIndicatorImageView.m in Sources */,
 				194DCDAB2133C7C2000E89EF /* JXCategoryFactory.m in Sources */,
+				194DCDF421352689000E89EF /* NaviHiddenViewController.swift in Sources */,
 				194DCDA72133C7C2000E89EF /* JXCategoryImageCellModel.m in Sources */,
 				194DCD982133C7C2000E89EF /* JXCategoryIndicatorBackgroundView.m in Sources */,
 				194DCDAA2133C7C2000E89EF /* JXCategoryNumberCellModel.m in Sources */,

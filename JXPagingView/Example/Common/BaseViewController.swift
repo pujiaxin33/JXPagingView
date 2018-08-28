@@ -8,8 +8,8 @@
 
 import UIKit
 
-fileprivate let JXTableHeaderViewHeight: CGFloat = 200
-fileprivate let JXheightForHeaderInSection: CGFloat = 50
+let JXTableHeaderViewHeight: CGFloat = 200
+let JXheightForHeaderInSection: CGFloat = 50
 
 class BaseViewController: UIViewController {
     var pagingView: JXPagingView!

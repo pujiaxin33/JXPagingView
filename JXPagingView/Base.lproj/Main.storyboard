@@ -83,6 +83,27 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="65" id="6eK-G6-7rf">
+                                        <rect key="frame" x="0.0" y="195" width="375" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6eK-G6-7rf" id="reu-7a-LQM">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="64.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="导航栏隐藏" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuO-Ae-57p">
+                                                    <rect key="frame" x="16" y="22" width="87" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="JuO-Ae-57p" firstAttribute="centerY" secondItem="reu-7a-LQM" secondAttribute="centerY" id="Ejg-B4-svT"/>
+                                                <constraint firstItem="JuO-Ae-57p" firstAttribute="leading" secondItem="reu-7a-LQM" secondAttribute="leading" constant="16" id="ubW-SC-Nv1"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JuO-Ae-57p" secondAttribute="trailing" constant="20" symbolic="YES" id="y6F-Su-6Qd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -97,10 +118,10 @@
             </objects>
             <point key="canvasLocation" x="933.60000000000002" y="133.5832083958021"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Base Navigation Controller-->
         <scene sceneID="zpf-25-dfE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DaU-CD-93W" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DaU-CD-93W" customClass="BaseNavigationController" customModule="JXPagingView" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SSz-7X-Vhl">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

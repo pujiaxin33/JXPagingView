@@ -32,6 +32,9 @@ class ViewController: UITableViewController {
         case 2:
             let vc = ListRefreshViewController()
             self.navigationController?.pushViewController(vc, animated: true)
+        case 3:
+            let vc = NaviHiddenViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }
