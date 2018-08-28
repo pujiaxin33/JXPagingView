@@ -96,6 +96,10 @@ open class JXPagingView: UIView {
         mainTableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
         addSubview(mainTableView)
 
+        if #available(iOS 11.0, *) {
+            mainTableView.contentInsetAdjustmentBehavior = .never
+        } 
+
         listContainerView = JXPagingListContainerView(delegate: self)
         listContainerView.mainTableView = mainTableView
     }

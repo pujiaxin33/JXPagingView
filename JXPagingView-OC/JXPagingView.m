@@ -36,6 +36,9 @@
     self.mainTableView.delegate = self;
     self.mainTableView.tableHeaderView = [self.delegate tableHeaderViewInPagingView:self];
     [self.mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    if (@available(iOS 11.0, *)) {
+        self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     [self addSubview:self.mainTableView];
 
     _listContainerView = [[JXPagingListContainerView alloc] initWithDelegate:self];
