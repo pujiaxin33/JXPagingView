@@ -39,6 +39,7 @@ open class JXPagingListContainerView: UIView {
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
         collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: layout)
+        collectionView.backgroundColor = .white
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isPagingEnabled = true
