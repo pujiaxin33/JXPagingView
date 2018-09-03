@@ -48,9 +48,7 @@
 2.实现`JXPagingViewDelegate`
 ```swift
 @objc public protocol JXPagingViewDelegate: NSObjectProtocol {
-
-
-    /// tableHeaderView的高度
+        /// tableHeaderView的高度
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: height
@@ -68,14 +66,14 @@
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: height
-    func heightForHeaderInSection(in pagingView: JXPagingView) -> CGFloat
+    func heightForPinSectionHeader(in pagingView: JXPagingView) -> CGFloat
 
 
     /// 返回悬浮HeaderView。我用的是自己封装的JXCategoryView（Github:https://github.com/pujiaxin33/JXCategoryView），你也可以选择其他的三方库或者自己写
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: view
-    func viewForHeaderInSection(in pagingView: JXPagingView) -> UIView
+    func viewForPinSectionHeader(in pagingView: JXPagingView) -> UIView
 
 
     /// 底部listView的条数
@@ -86,7 +84,7 @@
 
 
     /// 返回对应index的listView，需要是UIView的子类，且要遵循JXPagingViewListViewDelegate。
-    /// 这里要求返回一个UIView而不是一个UIScrollView，因为listView可能并不只是一个单纯的UITableView或UICollectionView，可能还会有其他的子视图。
+    /// 这里要求返回一个UIView而不是一个UIScrollView，因为列表的UIScrollView一般是被包装到一个view里面，里面会处理数据源和其他逻辑。
     ///
     /// - Parameters:
     ///   - pagingView: JXPagingViewView
@@ -106,7 +104,7 @@
 ```swift
 //该协议主要用于mainTableView已经显示了header，listView的contentOffset需要重置时，内部需要访问到外部传入进来的listView内的scrollView
 @objc public protocol JXPagingViewListViewDelegate: NSObjectProtocol {
-    var scrollView: UIScrollView { get }
+    func listScrollView() -> UIScrollView
 }
 ```
 
