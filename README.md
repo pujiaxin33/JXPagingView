@@ -31,6 +31,32 @@
 
 需要使用`JXPagingListRefreshView`类（是`JXPagingView`的子类）
 
+## 安装
+
+### 手动
+
+Swift：Clone代码，拖入JXPagingView-Swift文件夹；
+OC:Clone代码，投入JXPagerView文件夹；
+
+### CocoaPods
+
+- Swift
+```ruby
+target '<Your Target Name>' do
+    pod 'JXPagingView/Paging'
+end
+```
+
+- OC
+```ruby
+target '<Your Target Name>' do
+    pod 'JXPagingView/Pager'
+end
+```
+
+`pod install`之前务必`pod repo udpate`一下
+
+
 ## 使用
 
 主要遵从`JXPagingViewDelegate`和`JXPagingViewListViewDelegate`协议就可以实现了，逻辑非常简单明了。
