@@ -35,8 +35,8 @@
 
 ### 手动
 
-Swift：Clone代码，拖入JXPagingView-Swift文件夹；
-OC:Clone代码，投入JXPagerView文件夹；
+Swift：Clone代码，拖入JXPagingView-Swift文件夹，使用`JXPagingView`类；
+OC:Clone代码，拖入JXPagerView文件夹，使用`JXPagerView`类；
 
 ### CocoaPods
 
@@ -54,7 +54,8 @@ target '<Your Target Name>' do
 end
 ```
 
-`pod install`之前务必`pod repo udpate`一下
+Swift与OC的仓库地址不一样，请注意选择！
+`pod install`之前最好`pod repo udpate`一下！
 
 
 ## 使用
@@ -131,7 +132,7 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
 }
 ```
 
-OC版本使用类似，查看源码就明白了。
+OC版本使用类似，只是类名及相关API更改为`JXPagerView`，具体细节请查看源码。
 
 
 ## 补充
