@@ -6,13 +6,13 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXPagingListRefreshView.h"
+#import "JXPagerListRefreshView.h"
 
-@interface JXPagingListRefreshView()
+@interface JXPagerListRefreshView()
 @property (nonatomic, assign) CGFloat lastScrollingListViewContentOffsetY;
 @end
 
-@implementation JXPagingListRefreshView
+@implementation JXPagerListRefreshView
 
 
 - (void)initializeViews {
@@ -73,7 +73,7 @@
     if (scrollView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagingView:self]) {
         //mainTableView已经显示了header，listView的contentOffset需要重置
         NSArray *listViews = [self.delegate listViewsInPagingView:self];
-        for (UIView <JXPagingViewListViewDelegate>* listView in listViews) {
+        for (UIView <JXPagerViewListViewDelegate>* listView in listViews) {
             //正在下拉刷新时，不需要重置
             UIScrollView *listScrollView = [listView listScrollView];
             if (listScrollView.contentOffset.y > 0) {

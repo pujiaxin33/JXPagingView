@@ -6,16 +6,16 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXPagingListContainerView.h"
-#import "JXPagingMainTableView.h"
+#import "JXPagerListContainerView.h"
+#import "JXPagerMainTableView.h"
 
-@interface JXPagingListContainerView() <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface JXPagerListContainerView() <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @end
 
-@implementation JXPagingListContainerView
+@implementation JXPagerListContainerView
 
-- (instancetype)initWithDelegate:(id<JXPagingListContainerViewDelegate>)delegate {
+- (instancetype)initWithDelegate:(id<JXPagerListContainerViewDelegate>)delegate {
     self = [super initWithFrame:CGRectZero];
     if (self) {
         _delegate = delegate;

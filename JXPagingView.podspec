@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
   s.swift_version = "4.0"
   s.source       = { :git => "https://github.com/pujiaxin33/JXPagingView.git", :tag => "#{s.version}" }
-  s.source_files  = "JXPagingView", "JXPagingView/*.swift"
+  s.source_files  = "JXPagingView-Swift", "JXPagingView-Swift/*.swift"
   s.license      = "MIT"
   s.subspec 'OC' do |oc|
     oc.source_files = 'JXPagerView', 'JXPagerView/*.{h,m}'

@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JXPagingMainTableView.h"
-#import "JXPagingListContainerView.h"
+#import "JXPagerMainTableView.h"
+#import "JXPagerListContainerView.h"
 
-@class JXPagingView;
+@class JXPagerView;
 
 /**
  该协议主要用于mainTableView已经显示了header，listView的contentOffset需要重置时，内部需要访问到外部传入进来的listView内的scrollView
  */
-@protocol JXPagingViewListViewDelegate <NSObject>
+@protocol JXPagerViewListViewDelegate <NSObject>
 
 
 /**
@@ -36,7 +36,7 @@
 
 @end
 
-@protocol JXPagingViewDelegate <NSObject>
+@protocol JXPagerViewDelegate <NSObject>
 
 
 /**
@@ -45,7 +45,7 @@
  @param pagingView pagingView description
  @return return tableHeaderView的高度
  */
-- (CGFloat)tableHeaderViewHeightInPagingView:(JXPagingView *)pagingView;
+- (CGFloat)tableHeaderViewHeightInPagingView:(JXPagerView *)pagingView;
 
 
 /**
@@ -54,7 +54,7 @@
  @param pagingView pagingView description
  @return tableHeaderView
  */
-- (UIView *)tableHeaderViewInPagingView:(JXPagingView *)pagingView;
+- (UIView *)tableHeaderViewInPagingView:(JXPagerView *)pagingView;
 
 
 /**
@@ -63,7 +63,7 @@
  @param pagingView pagingView description
  @return 悬浮HeaderView的高度
  */
-- (CGFloat)heightForPinSectionHeaderInPagingView:(JXPagingView *)pagingView;
+- (CGFloat)heightForPinSectionHeaderInPagingView:(JXPagerView *)pagingView;
 
 
 /**
@@ -72,16 +72,16 @@
  @param pagingView pagingView description
  @return 悬浮HeaderView
  */
-- (UIView *)viewForPinSectionHeaderInPagingView:(JXPagingView *)pagingView;
+- (UIView *)viewForPinSectionHeaderInPagingView:(JXPagerView *)pagingView;
 
 /**
- 返回listViews，数组的item需要是UIView的子类，且要遵循JXPagingViewListViewDelegate。
+ 返回listViews，数组的item需要是UIView的子类，且要遵循JXPagerViewListViewDelegate。
  数组item要求返回一个UIView而不是一个UIScrollView，因为列表的UIScrollView一般是被包装到一个view里面，里面会处理数据源和其他逻辑。
 
  @param pagingView pagingView description
  @return listViews
  */
-- (NSArray <UIView <JXPagingViewListViewDelegate>*>*)listViewsInPagingView:(JXPagingView *)pagingView;
+- (NSArray <UIView <JXPagerViewListViewDelegate>*>*)listViewsInPagingView:(JXPagerView *)pagingView;
 
 @optional
 
@@ -94,15 +94,15 @@
 
 @end
 
-@interface JXPagingView : UIView
+@interface JXPagerView : UIView
 
-@property (nonatomic, weak) id<JXPagingViewDelegate> delegate;
+@property (nonatomic, weak) id<JXPagerViewDelegate> delegate;
 
-@property (nonatomic, strong, readonly) JXPagingMainTableView *mainTableView;
+@property (nonatomic, strong, readonly) JXPagerMainTableView *mainTableView;
 
-@property (nonatomic, strong, readonly) JXPagingListContainerView *listContainerView;
+@property (nonatomic, strong, readonly) JXPagerListContainerView *listContainerView;
 
-- (instancetype)initWithDelegate:(id<JXPagingViewDelegate>)delegate NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, strong, readonly) UIScrollView *currentScrollingListView;
 

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JXPagingView.h"
+#import "JXPagerView.h"
 
-@interface JXPagingListRefreshView : JXPagingView
+@interface JXPagerListRefreshView : JXPagerView
 
 @end

@@ -6,13 +6,13 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXPagingMainTableView.h"
+#import "JXPagerMainTableView.h"
 
-@interface JXPagingMainTableView ()<UIGestureRecognizerDelegate>
+@interface JXPagerMainTableView ()<UIGestureRecognizerDelegate>
 
 @end
 
-@implementation JXPagingMainTableView
+@implementation JXPagerMainTableView
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return [gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]];

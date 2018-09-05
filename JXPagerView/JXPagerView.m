@@ -6,19 +6,19 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXPagingView.h"
+#import "JXPagerView.h"
 
-@interface JXPagingView () <UITableViewDataSource, UITableViewDelegate, JXPagingListContainerViewDelegate>
+@interface JXPagerView () <UITableViewDataSource, UITableViewDelegate, JXPagerListContainerViewDelegate>
 
-@property (nonatomic, strong) JXPagingMainTableView *mainTableView;
-@property (nonatomic, strong) JXPagingListContainerView *listContainerView;
+@property (nonatomic, strong) JXPagerMainTableView *mainTableView;
+@property (nonatomic, strong) JXPagerListContainerView *listContainerView;
 @property (nonatomic, strong) UIScrollView *currentScrollingListView;
 
 @end
 
-@implementation JXPagingView
+@implementation JXPagerView
 
-- (instancetype)initWithDelegate:(id<JXPagingViewDelegate>)delegate {
+- (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate {
     self = [super initWithFrame:CGRectZero];
     if (self) {
         _delegate = delegate;
@@ -28,7 +28,7 @@
 }
 
 - (void)initializeViews {
-    _mainTableView = [[JXPagingMainTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    _mainTableView = [[JXPagerMainTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     self.mainTableView.showsVerticalScrollIndicator = NO;
     self.mainTableView.showsHorizontalScrollIndicator = NO;
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -41,7 +41,7 @@
     }
     [self addSubview:self.mainTableView];
 
-    _listContainerView = [[JXPagingListContainerView alloc] initWithDelegate:self];
+    _listContainerView = [[JXPagerListContainerView alloc] initWithDelegate:self];
     self.listContainerView.mainTableView = self.mainTableView;
 
     [self configListViewDidScrollCallback];
@@ -80,7 +80,7 @@
     if (scrollView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagingView:self]) {
         //mainTableView已经显示了header，listView的contentOffset需要重置
         NSArray *listViews = [self.delegate listViewsInPagingView:self];
-        for (UIView <JXPagingViewListViewDelegate>* listView in listViews) {
+        for (UIView <JXPagerViewListViewDelegate>* listView in listViews) {
             [listView listScrollView].contentOffset = CGPointZero;
         }
     }
@@ -90,7 +90,7 @@
 
 - (void)configListViewDidScrollCallback {
     NSArray *listViews = [self.delegate listViewsInPagingView:self];
-    for (UIView <JXPagingViewListViewDelegate>* listView in listViews) {
+    for (UIView <JXPagerViewListViewDelegate>* listView in listViews) {
         __weak typeof(self)weakSelf = self;
         [listView listViewDidScrollCallback:^(UIScrollView *scrollView) {
             [weakSelf listViewDidScroll:scrollView];
@@ -152,12 +152,12 @@
 
 #pragma mark - JXPagingListContainerViewDelegate
 
-- (NSInteger)numberOfRowsInListContainerView:(JXPagingListContainerView *)listContainerView {
+- (NSInteger)numberOfRowsInListContainerView:(JXPagerListContainerView *)listContainerView {
     NSArray *listViews = [self.delegate listViewsInPagingView:self];
     return listViews.count;
 }
 
-- (UIView *)listContainerView:(JXPagingListContainerView *)listContainerView listViewInRow:(NSInteger)row {
+- (UIView *)listContainerView:(JXPagerListContainerView *)listContainerView listViewInRow:(NSInteger)row {
     NSArray *listViews = [self.delegate listViewsInPagingView:self];
     return listViews[row];
 }
