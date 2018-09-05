@@ -210,11 +210,11 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension JXPagingView: JXPagingListContainerViewDelegate {
-    func numberOfRows(in listContainerView: JXPagingListContainerView) -> Int {
+    public func numberOfRows(in listContainerView: JXPagingListContainerView) -> Int {
         let listViews = self.delegate.listViews(in: self)
         return listViews.count
     }
-    func listContainerView(_ listContainerView: JXPagingListContainerView, viewForListInRow row: Int) -> UIView {
+    public func listContainerView(_ listContainerView: JXPagingListContainerView, viewForListInRow row: Int) -> UIView {
         let listViews = self.delegate.listViews(in: self)
         return listViews[row]
     }
