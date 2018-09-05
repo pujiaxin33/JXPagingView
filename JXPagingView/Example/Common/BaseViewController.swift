@@ -25,13 +25,10 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
 
         let powerListView = PowerListView()
-        powerListView.delegate = self
 
         let hobbyListView = HobbyListView()
-        hobbyListView.delegate = self
 
         let partnerListView = PartnerListView()
-        partnerListView.delegate = self
 
         listViewArray = [powerListView, hobbyListView, partnerListView]
 
@@ -97,12 +94,6 @@ extension BaseViewController: JXPagingViewDelegate {
 
     func listViews(in pagingView: JXPagingView) -> [UIView & JXPagingViewListViewDelegate] {
         return listViewArray
-    }
-}
-
-extension BaseViewController: TestListViewDelegate {
-    func listViewDidScroll(_ scrollView: UIScrollView) {
-        pagingView.listViewDidScroll(scrollView: scrollView)
     }
 }
 

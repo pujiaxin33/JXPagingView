@@ -8,9 +8,19 @@
 
 import UIKit
 
-//该协议主要用于mainTableView已经显示了header，listView的contentOffset需要重置时，内部需要访问到外部传入进来的listView内的scrollView
 @objc public protocol JXPagingViewListViewDelegate: NSObjectProtocol {
+
+    /// 返回listView内部持有的UIScrollView或UITableView或UICollectionView
+    /// 主要用于mainTableView已经显示了header，listView的contentOffset需要重置时，内部需要访问到外部传入进来的listView内的scrollView
+    ///
+    /// - Returns: listView内部持有的UIScrollView或UITableView或UICollectionView
     func listScrollView() -> UIScrollView
+
+
+    /// 当listView内部持有的UIScrollView或UITableView或UICollectionView的代理方法`scrollViewDidScroll`回调时，需要调用该代理方法传入的callback
+    ///
+    /// - Parameter callback: `scrollViewDidScroll`回调时调用的callback
+    func listViewDidScrollCallback(callback: @escaping (UIScrollView)->())
 }
 
 @objc public protocol JXPagingViewDelegate: NSObjectProtocol {
@@ -91,6 +101,8 @@ open class JXPagingView: UIView {
 
         listContainerView = JXPagingListContainerView(delegate: self)
         listContainerView.mainTableView = mainTableView
+
+        configListViewDidScrollCallback()
     }
 
     override open func layoutSubviews() {
@@ -99,14 +111,9 @@ open class JXPagingView: UIView {
         mainTableView.frame = self.bounds
     }
 
-    /// 外部传入的listView，当其内部的scrollView滚动时，需要调用该方法
-    open func listViewDidScroll(scrollView: UIScrollView) {
-        self.currentScrollingListView = scrollView
-
-        preferredProcessListViewDidScroll(scrollView: scrollView)
-    }
 
     open func reloadData() {
+        configListViewDidScrollCallback()
         self.mainTableView.reloadData()
         self.listContainerView.reloadData()
     }
@@ -135,6 +142,24 @@ open class JXPagingView: UIView {
                 listView.listScrollView().contentOffset = CGPoint.zero
             }
         }
+    }
+
+    //MARK: - Private
+
+    func configListViewDidScrollCallback() {
+        let listViews = self.delegate.listViews(in: self)
+        for listView in listViews {
+            listView.listViewDidScrollCallback {[weak self] (scrollView) in
+                self?.listViewDidScroll(scrollView: scrollView)
+            }
+        }
+    }
+
+    /// 外部传入的listView，当其内部的scrollView滚动时，需要调用该方法
+    internal func listViewDidScroll(scrollView: UIScrollView) {
+        self.currentScrollingListView = scrollView
+
+        preferredProcessListViewDidScroll(scrollView: scrollView)
     }
 }
 

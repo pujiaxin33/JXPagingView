@@ -43,6 +43,8 @@
 
     _listContainerView = [[JXPagingListContainerView alloc] initWithDelegate:self];
     self.listContainerView.mainTableView = self.mainTableView;
+
+    [self configListViewDidScrollCallback];
 }
 
 - (void)layoutSubviews {
@@ -52,14 +54,9 @@
 }
 
 - (void)reloadData {
+    [self configListViewDidScrollCallback];
     [self.mainTableView reloadData];
     [self.listContainerView reloadData];
-}
-
-- (void)listViewDidScroll:(UIScrollView *)scrollView {
-    self.currentScrollingListView = scrollView;
-
-    [self preferredProcessListViewDidScroll:scrollView];
 }
 
 - (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView {
@@ -87,6 +84,24 @@
             [listView listScrollView].contentOffset = CGPointZero;
         }
     }
+}
+
+#pragma mark - Private
+
+- (void)configListViewDidScrollCallback {
+    NSArray *listViews = [self.delegate listViewsInPagingView:self];
+    for (UIView <JXPagingViewListViewDelegate>* listView in listViews) {
+        __weak typeof(self)weakSelf = self;
+        [listView listViewDidScrollCallback:^(UIScrollView *scrollView) {
+            [weakSelf listViewDidScroll:scrollView];
+        }];
+    }
+}
+
+- (void)listViewDidScroll:(UIScrollView *)scrollView {
+    self.currentScrollingListView = scrollView;
+
+    [self preferredProcessListViewDidScroll:scrollView];
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate

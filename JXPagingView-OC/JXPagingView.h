@@ -17,7 +17,22 @@
  */
 @protocol JXPagingViewListViewDelegate <NSObject>
 
+
+/**
+ 返回listView内部持有的UIScrollView或UITableView或UICollectionView
+ 主要用于mainTableView已经显示了header，listView的contentOffset需要重置时，内部需要访问到外部传入进来的listView内的scrollView
+
+ @return listView内部持有的UIScrollView或UITableView或UICollectionView
+ */
 - (UIScrollView *)listScrollView;
+
+
+/**
+ 当listView内部持有的UIScrollView或UITableView或UICollectionView的代理方法`scrollViewDidScroll`回调时，需要调用该代理方法传入的callback
+
+ @param callback `scrollViewDidScroll`回调时调用的callback
+ */
+- (void)listViewDidScrollCallback:(void (^)(UIScrollView *scrollView))callback;
 
 @end
 
@@ -101,13 +116,11 @@
 
 - (void)reloadData;
 
-/**
- 外部传入的listView，当其内部的scrollView滚动时，需要调用该方法
+#pragma mark - Subclass
 
- @param scrollView scrollView
- */
-- (void)listViewDidScroll:(UIScrollView *)scrollView;
+- (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView;
 
+- (void)preferredProcessMainTableViewDidScroll:(UIScrollView *)scrollView;
 
 @end
 

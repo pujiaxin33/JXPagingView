@@ -8,16 +8,16 @@
 
 import UIKit
 
-@objc public protocol TestListViewDelegate {
-    func listViewDidScroll(_ scrollView: UIScrollView)
-}
-
 @objc public class TestListBaseView: UIView {
     @objc public var tableView: UITableView!
     @objc public var dataSource: [String]?
     @objc public var isNeedHeader = false
     @objc public var isNeedFooter = false
-    @objc public weak var delegate: TestListViewDelegate?
+    var listViewDidScrollCallback: ((UIScrollView) -> ())?
+
+    deinit {
+        listViewDidScrollCallback = nil
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -86,11 +86,15 @@ extension TestListBaseView: UITableViewDataSource, UITableViewDelegate {
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.delegate?.listViewDidScroll(scrollView)
+        self.listViewDidScrollCallback?(scrollView)
     }
 }
 
 extension TestListBaseView: JXPagingViewListViewDelegate {
+    public func listViewDidScrollCallback(callback: @escaping (UIScrollView) -> ()) {
+        self.listViewDidScrollCallback = callback
+    }
+
     public func listScrollView() -> UIScrollView {
         return self.tableView
     }
