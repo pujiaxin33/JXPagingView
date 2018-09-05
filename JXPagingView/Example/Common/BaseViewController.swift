@@ -95,12 +95,8 @@ extension BaseViewController: JXPagingViewDelegate {
         return categoryView
     }
 
-    func numberOfListViews(in pagingView: JXPagingView) -> Int {
-        return titles.count
-    }
-
-    func pagingView(_ pagingView: JXPagingView, listViewInRow row: Int) -> UIView & JXPagingViewListViewDelegate {
-        return listViewArray[row]
+    func listViews(in pagingView: JXPagingView) -> [UIView & JXPagingViewListViewDelegate] {
+        return listViewArray
     }
 }
 

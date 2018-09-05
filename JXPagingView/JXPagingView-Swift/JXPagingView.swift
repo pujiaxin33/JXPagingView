@@ -43,23 +43,12 @@ import UIKit
     /// - Returns: view
     func viewForPinSectionHeader(in pagingView: JXPagingView) -> UIView
 
-
-    /// 底部listView的条数
+    /// 返回listViews，数组的item需要是UIView的子类，且要遵循JXPagingViewListViewDelegate。
+    /// 数组item要求返回一个UIView而不是一个UIScrollView，因为列表的UIScrollView一般是被包装到一个view里面，里面会处理数据源和其他逻辑。
     ///
     /// - Parameter pagingView: JXPagingViewView
-    /// - Returns: count
-    func numberOfListViews(in pagingView: JXPagingView) -> Int
-
-
-    /// 返回对应index的listView，需要是UIView的子类，且要遵循JXPagingViewListViewDelegate。
-    /// 这里要求返回一个UIView而不是一个UIScrollView，因为列表的UIScrollView一般是被包装到一个view里面，里面会处理数据源和其他逻辑。
-    ///
-    /// - Parameters:
-    ///   - pagingView: JXPagingViewView
-    ///   - row: row
-    /// - Returns: view
-    func pagingView(_ pagingView: JXPagingView, listViewInRow row: Int) -> JXPagingViewListViewDelegate & UIView
-
+    /// - Returns: listViews
+    func listViews(in pagingView: JXPagingView) -> [JXPagingViewListViewDelegate & UIView]
 
     /// mainTableView的滚动回调，用于实现头图跟随缩放
     ///
@@ -142,8 +131,7 @@ open class JXPagingView: UIView {
 
         if (mainTableView.contentOffset.y < self.delegate.tableHeaderViewHeight(in: self)) {
             //mainTableView已经显示了header，listView的contentOffset需要重置
-            for index in 0..<self.delegate.numberOfListViews(in: self) {
-                let listView = self.delegate.pagingView(self, listViewInRow: index)
+            for listView in self.delegate.listViews(in: self) {
                 listView.listScrollView().contentOffset = CGPoint.zero
             }
         }
@@ -187,10 +175,12 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
 
 extension JXPagingView: JXPagingListContainerViewDelegate {
     func numberOfRows(in listContainerView: JXPagingListContainerView) -> Int {
-        return self.delegate.numberOfListViews(in: self)
+        let listViews = self.delegate.listViews(in: self)
+        return listViews.count
     }
     func listContainerView(_ listContainerView: JXPagingListContainerView, viewForListInRow row: Int) -> UIView {
-        return self.delegate.pagingView(self, listViewInRow: row)
+        let listViews = self.delegate.listViews(in: self)
+        return listViews[row]
     }
 }
 

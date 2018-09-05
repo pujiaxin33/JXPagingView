@@ -72,10 +72,10 @@
 
     if (scrollView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagingView:self]) {
         //mainTableView已经显示了header，listView的contentOffset需要重置
-        for (int i = 0; i < [self.delegate numberOfListViewsInPagingView:self]; i ++) {
-            UIView <JXPagingViewListViewDelegate> *listView = [self.delegate pagingView:self listViewInRow:i];
-            UIScrollView *listScrollView = [listView listScrollView];
+        NSArray *listViews = [self.delegate listViewsInPagingView:self];
+        for (UIView <JXPagingViewListViewDelegate>* listView in listViews) {
             //正在下拉刷新时，不需要重置
+            UIScrollView *listScrollView = [listView listScrollView];
             if (listScrollView.contentOffset.y > 0) {
                 listScrollView.contentOffset = CGPointZero;
             }

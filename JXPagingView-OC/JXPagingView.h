@@ -60,23 +60,13 @@
 - (UIView *)viewForPinSectionHeaderInPagingView:(JXPagingView *)pagingView;
 
 /**
- 底部listView的条数
+ 返回listViews，数组的item需要是UIView的子类，且要遵循JXPagingViewListViewDelegate。
+ 数组item要求返回一个UIView而不是一个UIScrollView，因为列表的UIScrollView一般是被包装到一个view里面，里面会处理数据源和其他逻辑。
 
  @param pagingView pagingView description
- @return 底部listView的条数
+ @return listViews
  */
-- (NSInteger)numberOfListViewsInPagingView:(JXPagingView *)pagingView;
-
-
-/**
- 返回对应index的listView，需要是UIView的子类，且要遵循JXPagingViewListViewDelegate。
- 这里要求返回一个UIView而不是一个UIScrollView，因为列表的UIScrollView一般是被包装到一个view里面，里面会处理数据源和其他逻辑。
-
- @param pagingView pagingView description
- @param row row index
- @return 遵循JXPagingViewListViewDelegate的UIView
- */
-- (UIView <JXPagingViewListViewDelegate>*)pagingView:(JXPagingView *)pagingView listViewInRow:(NSInteger)row;
+- (NSArray <UIView <JXPagingViewListViewDelegate>*>*)listViewsInPagingView:(JXPagingView *)pagingView;
 
 @optional
 
