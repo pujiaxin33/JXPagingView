@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc protocol JXPagingListContainerViewDelegate {
+@objc public protocol JXPagingListContainerViewDelegate {
 
     func numberOfRows(in listContainerView: JXPagingListContainerView) -> Int
 
@@ -20,7 +20,7 @@ open class JXPagingListContainerView: UIView {
     unowned var delegate: JXPagingListContainerViewDelegate
     weak var mainTableView: JXPagingMainTableView?
 
-    init(delegate: JXPagingListContainerViewDelegate) {
+    public init(delegate: JXPagingListContainerViewDelegate) {
         self.delegate = delegate
 
         super.init(frame: CGRect.zero)
@@ -33,7 +33,7 @@ open class JXPagingListContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func initializeViews() {
+    open func initializeViews() {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0

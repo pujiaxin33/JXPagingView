@@ -72,7 +72,7 @@ open class JXPagingView: UIView {
     open var listContainerView: JXPagingListContainerView!
     var currentScrollingListView: UIScrollView?
 
-    init(delegate: JXPagingViewDelegate) {
+    public init(delegate: JXPagingViewDelegate) {
         self.delegate = delegate
         super.init(frame: CGRect.zero)
 
@@ -156,7 +156,7 @@ open class JXPagingView: UIView {
     }
 
     /// 外部传入的listView，当其内部的scrollView滚动时，需要调用该方法
-    internal func listViewDidScroll(scrollView: UIScrollView) {
+    func listViewDidScroll(scrollView: UIScrollView) {
         self.currentScrollingListView = scrollView
 
         preferredProcessListViewDidScroll(scrollView: scrollView)

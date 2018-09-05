@@ -8,10 +8,10 @@
 
 import UIKit
 
-class JXPagingListRefreshView: JXPagingView {
+open class JXPagingListRefreshView: JXPagingView {
     fileprivate var lastScrollingListViewContentOffsetY: CGFloat = 0
 
-    override func initializeViews() {
+    override open func initializeViews() {
         super.initializeViews()
 
         mainTableView.bounces = false
@@ -34,7 +34,7 @@ class JXPagingListRefreshView: JXPagingView {
         }
     }
     
-    override func preferredProcessListViewDidScroll(scrollView: UIScrollView) {
+    override open func preferredProcessListViewDidScroll(scrollView: UIScrollView) {
         var shouldProcess = true
         if currentScrollingListView!.contentOffset.y > self.lastScrollingListViewContentOffsetY {
             //往上滚动
