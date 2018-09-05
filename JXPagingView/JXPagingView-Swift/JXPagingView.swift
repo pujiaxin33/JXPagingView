@@ -191,6 +191,17 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
         return self.delegate.viewForPinSectionHeader(in: self)
     }
 
+    //加上footer之后，下滑滚动就变得丝般顺滑了
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1
+    }
+
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect.zero)
+        footerView.backgroundColor = UIColor.clear
+        return footerView
+    }
+
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.delegate.mainTableViewDidScroll?(scrollView)
 

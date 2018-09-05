@@ -132,6 +132,16 @@
     return [self.delegate viewForPinSectionHeaderInPagingView:self];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 1;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *footer = [[UIView alloc] initWithFrame:CGRectZero];
+    footer.backgroundColor = [UIColor clearColor];
+    return footer;
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if ([self.delegate respondsToSelector:@selector(mainTableViewDidScroll:)]) {
         [self.delegate mainTableViewDidScroll:scrollView];
