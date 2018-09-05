@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190F6A74213FB89300870498 /* JXPagingMainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F6A70213FB89300870498 /* JXPagingMainTableView.swift */; };
+		190F6A75213FB89300870498 /* JXPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F6A71213FB89300870498 /* JXPagingView.swift */; };
+		190F6A76213FB89300870498 /* JXPagingListRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F6A72213FB89300870498 /* JXPagingListRefreshView.swift */; };
+		190F6A77213FB89300870498 /* JXPagingListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F6A73213FB89300870498 /* JXPagingListContainerView.swift */; };
 		1912A541211D2AB700A80826 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A540211D2AB700A80826 /* AppDelegate.swift */; };
 		1912A543211D2AB700A80826 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A542211D2AB700A80826 /* ViewController.swift */; };
 		1912A546211D2AB700A80826 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1912A544211D2AB700A80826 /* Main.storyboard */; };
@@ -40,9 +44,6 @@
 		1912A5C2211D2F1500A80826 /* PowerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A58A211D2F1500A80826 /* PowerListView.swift */; };
 		1912A5C3211D2F1500A80826 /* TestListBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A58B211D2F1500A80826 /* TestListBaseView.swift */; };
 		1912A671211D3E8600A80826 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A670211D3E8600A80826 /* BaseViewController.swift */; };
-		194DCD462133C408000E89EF /* JXPagingMainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCD432133C408000E89EF /* JXPagingMainTableView.swift */; };
-		194DCD472133C408000E89EF /* JXPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCD442133C408000E89EF /* JXPagingView.swift */; };
-		194DCD482133C408000E89EF /* JXPagingListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCD452133C408000E89EF /* JXPagingListContainerView.swift */; };
 		194DCD932133C7C2000E89EF /* JXCategoryIndicatorLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCD502133C7C1000E89EF /* JXCategoryIndicatorLineView.m */; };
 		194DCD942133C7C2000E89EF /* JXCategoryIndicatorTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCD512133C7C1000E89EF /* JXCategoryIndicatorTriangleView.m */; };
 		194DCD952133C7C2000E89EF /* JXCategoryIndicatorImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCD532133C7C1000E89EF /* JXCategoryIndicatorImageView.m */; };
@@ -74,7 +75,6 @@
 		194DCDAF2133C7C2000E89EF /* JXCategoryBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCD912133C7C2000E89EF /* JXCategoryBaseCell.m */; };
 		194DCDB02133C7C2000E89EF /* JXCategoryBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCD922133C7C2000E89EF /* JXCategoryBaseCellModel.m */; };
 		194DCDD92134F81F000E89EF /* ListRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDD82134F81F000E89EF /* ListRefreshViewController.swift */; };
-		194DCDDB2135178F000E89EF /* JXPagingListRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDDA2135178F000E89EF /* JXPagingListRefreshView.swift */; };
 		194DCDEC21351E8B000E89EF /* JXPagingListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDE521351E8B000E89EF /* JXPagingListContainerView.m */; };
 		194DCDED21351E8B000E89EF /* JXPagingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDE621351E8B000E89EF /* JXPagingView.m */; };
 		194DCDEE21351E8B000E89EF /* JXPagingListRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDE821351E8B000E89EF /* JXPagingListRefreshView.m */; };
@@ -89,6 +89,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		190F6A70213FB89300870498 /* JXPagingMainTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingMainTableView.swift; sourceTree = "<group>"; };
+		190F6A71213FB89300870498 /* JXPagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingView.swift; sourceTree = "<group>"; };
+		190F6A72213FB89300870498 /* JXPagingListRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingListRefreshView.swift; sourceTree = "<group>"; };
+		190F6A73213FB89300870498 /* JXPagingListContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingListContainerView.swift; sourceTree = "<group>"; };
 		1912A53D211D2AB700A80826 /* JXPagingView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JXPagingView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1912A540211D2AB700A80826 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1912A542211D2AB700A80826 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -145,9 +149,6 @@
 		1912A58B211D2F1500A80826 /* TestListBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestListBaseView.swift; sourceTree = "<group>"; };
 		1912A5D3211D2FDC00A80826 /* Swift-Bridge-Objective-C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift-Bridge-Objective-C.h"; sourceTree = "<group>"; };
 		1912A670211D3E8600A80826 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		194DCD432133C408000E89EF /* JXPagingMainTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingMainTableView.swift; sourceTree = "<group>"; };
-		194DCD442133C408000E89EF /* JXPagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingView.swift; sourceTree = "<group>"; };
-		194DCD452133C408000E89EF /* JXPagingListContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingListContainerView.swift; sourceTree = "<group>"; };
 		194DCD4C2133C7C1000E89EF /* JXCategoryIndicatorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorCell.h; sourceTree = "<group>"; };
 		194DCD4D2133C7C1000E89EF /* JXCategoryIndicatorCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorCellModel.h; sourceTree = "<group>"; };
 		194DCD4E2133C7C1000E89EF /* JXCategoryIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorView.h; sourceTree = "<group>"; };
@@ -212,7 +213,6 @@
 		194DCD912133C7C2000E89EF /* JXCategoryBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCell.m; sourceTree = "<group>"; };
 		194DCD922133C7C2000E89EF /* JXCategoryBaseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCellModel.m; sourceTree = "<group>"; };
 		194DCDD82134F81F000E89EF /* ListRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRefreshViewController.swift; sourceTree = "<group>"; };
-		194DCDDA2135178F000E89EF /* JXPagingListRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXPagingListRefreshView.swift; sourceTree = "<group>"; };
 		194DCDE421351E8B000E89EF /* JXPagingListRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagingListRefreshView.h; sourceTree = "<group>"; };
 		194DCDE521351E8B000E89EF /* JXPagingListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagingListContainerView.m; sourceTree = "<group>"; };
 		194DCDE621351E8B000E89EF /* JXPagingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagingView.m; sourceTree = "<group>"; };
@@ -241,6 +241,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		190F6A6F213FB89300870498 /* JXPagingView-Swift */ = {
+			isa = PBXGroup;
+			children = (
+				190F6A70213FB89300870498 /* JXPagingMainTableView.swift */,
+				190F6A71213FB89300870498 /* JXPagingView.swift */,
+				190F6A72213FB89300870498 /* JXPagingListRefreshView.swift */,
+				190F6A73213FB89300870498 /* JXPagingListContainerView.swift */,
+			);
+			path = "JXPagingView-Swift";
+			sourceTree = SOURCE_ROOT;
+		};
 		1912A534211D2AB700A80826 = {
 			isa = PBXGroup;
 			children = (
@@ -260,9 +271,9 @@
 		1912A53F211D2AB700A80826 /* JXPagingView */ = {
 			isa = PBXGroup;
 			children = (
+				190F6A6F213FB89300870498 /* JXPagingView-Swift */,
 				194DCDE321351E8B000E89EF /* JXPagingView-OC */,
 				194DCD4A2133C7C1000E89EF /* JXCategoryView */,
-				194DCD422133C408000E89EF /* JXPagingView-Swift */,
 				19870C7C2121601700C23CAA /* Gif */,
 				1912A552211D2F1500A80826 /* Example */,
 				1912A540211D2AB700A80826 /* AppDelegate.swift */,
@@ -413,17 +424,6 @@
 				1912A589211D2F1500A80826 /* ZoomViewController.swift */,
 			);
 			path = Zoom;
-			sourceTree = "<group>";
-		};
-		194DCD422133C408000E89EF /* JXPagingView-Swift */ = {
-			isa = PBXGroup;
-			children = (
-				194DCD442133C408000E89EF /* JXPagingView.swift */,
-				194DCDDA2135178F000E89EF /* JXPagingListRefreshView.swift */,
-				194DCD432133C408000E89EF /* JXPagingMainTableView.swift */,
-				194DCD452133C408000E89EF /* JXPagingListContainerView.swift */,
-			);
-			path = "JXPagingView-Swift";
 			sourceTree = "<group>";
 		};
 		194DCD4A2133C7C1000E89EF /* JXCategoryView */ = {
@@ -689,7 +689,6 @@
 				1912A5B5211D2F1500A80826 /* MJRefreshAutoGifFooter.m in Sources */,
 				194DCDF621352CE6000E89EF /* BaseNavigationController.swift in Sources */,
 				194DCDEE21351E8B000E89EF /* JXPagingListRefreshView.m in Sources */,
-				194DCD462133C408000E89EF /* JXPagingMainTableView.swift in Sources */,
 				1912A5C3211D2F1500A80826 /* TestListBaseView.swift in Sources */,
 				194DCDA52133C7C2000E89EF /* JXCategoryImageView.m in Sources */,
 				1912A5B2211D2F1500A80826 /* MJRefreshBackStateFooter.m in Sources */,
@@ -698,7 +697,6 @@
 				1912A5AE211D2F1500A80826 /* UIScrollView+MJExtension.m in Sources */,
 				1912A5B1211D2F1500A80826 /* MJRefreshBackGifFooter.m in Sources */,
 				1912A5B9211D2F1500A80826 /* MJRefreshGifHeader.m in Sources */,
-				194DCD472133C408000E89EF /* JXPagingView.swift in Sources */,
 				194DCDA02133C7C2000E89EF /* JXCategoryTitleImageCell.m in Sources */,
 				1912A5BE211D2F1500A80826 /* MJRefreshComponent.m in Sources */,
 				194DCD9D2133C7C2000E89EF /* JXCategoryDotView.m in Sources */,
@@ -709,7 +707,7 @@
 				1912A5BF211D2F1500A80826 /* PartnerListView.swift in Sources */,
 				1912A5C2211D2F1500A80826 /* PowerListView.swift in Sources */,
 				194DCDA42133C7C2000E89EF /* JXCategoryTitleView.m in Sources */,
-				194DCD482133C408000E89EF /* JXPagingListContainerView.swift in Sources */,
+				190F6A77213FB89300870498 /* JXPagingListContainerView.swift in Sources */,
 				194DCD972133C7C2000E89EF /* JXCategoryIndicatorComponentView.m in Sources */,
 				194DCDA22133C7C2000E89EF /* JXCategoryTitleCellModel.m in Sources */,
 				1912A5BD211D2F1500A80826 /* MJRefreshAutoFooter.m in Sources */,
@@ -726,7 +724,9 @@
 				1912A5B7211D2F1500A80826 /* MJRefreshNormalHeader.m in Sources */,
 				1912A671211D3E8600A80826 /* BaseViewController.swift in Sources */,
 				1912A541211D2AB700A80826 /* AppDelegate.swift in Sources */,
+				190F6A76213FB89300870498 /* JXPagingListRefreshView.swift in Sources */,
 				194DCD952133C7C2000E89EF /* JXCategoryIndicatorImageView.m in Sources */,
+				190F6A74213FB89300870498 /* JXPagingMainTableView.swift in Sources */,
 				194DCDAB2133C7C2000E89EF /* JXCategoryFactory.m in Sources */,
 				194DCDF421352689000E89EF /* NaviHiddenViewController.swift in Sources */,
 				194DCDA72133C7C2000E89EF /* JXCategoryImageCellModel.m in Sources */,
@@ -737,9 +737,9 @@
 				194DCD932133C7C2000E89EF /* JXCategoryIndicatorLineView.m in Sources */,
 				194DCDA82133C7C2000E89EF /* JXCategoryNumberView.m in Sources */,
 				194DCDA92133C7C2000E89EF /* JXCategoryNumberCell.m in Sources */,
+				190F6A75213FB89300870498 /* JXPagingView.swift in Sources */,
 				1912A5BA211D2F1500A80826 /* MJRefreshFooter.m in Sources */,
 				194DCD9B2133C7C2000E89EF /* JXCategoryIndicatorView.m in Sources */,
-				194DCDDB2135178F000E89EF /* JXPagingListRefreshView.swift in Sources */,
 				1912A5B6211D2F1500A80826 /* MJRefreshAutoNormalFooter.m in Sources */,
 				1912A5BB211D2F1500A80826 /* MJRefreshHeader.m in Sources */,
 				1912A5B3211D2F1500A80826 /* MJRefreshBackNormalFooter.m in Sources */,
