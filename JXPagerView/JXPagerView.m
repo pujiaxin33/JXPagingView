@@ -1,6 +1,6 @@
 //
-//  JXPagingView.m
-//  JXPagingView
+//  JXPagerView.m
+//  JXPagerView
 //
 //  Created by jiaxin on 2018/8/27.
 //  Copyright © 2018年 jiaxin. All rights reserved.
@@ -34,7 +34,7 @@
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.mainTableView.dataSource = self;
     self.mainTableView.delegate = self;
-    self.mainTableView.tableHeaderView = [self.delegate tableHeaderViewInPagingView:self];
+    self.mainTableView.tableHeaderView = [self.delegate tableHeaderViewInPagerView:self];
     [self.mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     if (@available(iOS 11.0, *)) {
         self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -60,13 +60,13 @@
 }
 
 - (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView {
-    if (self.mainTableView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagingView:self]) {
+    if (self.mainTableView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagerView:self]) {
         //mainTableView的header还没有消失，让listScrollView一直为0
         scrollView.contentOffset = CGPointZero;
         scrollView.showsVerticalScrollIndicator = NO;
     }else {
         //mainTableView的header刚好消失，固定mainTableView的位置，显示listScrollView的滚动条
-        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagingView:self]);
+        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagerView:self]);
         scrollView.showsVerticalScrollIndicator = YES;
     }
 }
@@ -74,12 +74,12 @@
 - (void)preferredProcessMainTableViewDidScroll:(UIScrollView *)scrollView {
     if (self.currentScrollingListView != nil && self.currentScrollingListView.contentOffset.y > 0) {
         //mainTableView的header已经滚动不见，开始滚动某一个listView，那么固定mainTableView的contentOffset，让其不动
-        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagingView:self]);
+        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagerView:self]);
     }
 
-    if (scrollView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagingView:self]) {
+    if (scrollView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagerView:self]) {
         //mainTableView已经显示了header，listView的contentOffset需要重置
-        NSArray *listViews = [self.delegate listViewsInPagingView:self];
+        NSArray *listViews = [self.delegate listViewsInPagerView:self];
         for (UIView <JXPagerViewListViewDelegate>* listView in listViews) {
             [listView listScrollView].contentOffset = CGPointZero;
         }
@@ -89,7 +89,7 @@
 #pragma mark - Private
 
 - (void)configListViewDidScrollCallback {
-    NSArray *listViews = [self.delegate listViewsInPagingView:self];
+    NSArray *listViews = [self.delegate listViewsInPagerView:self];
     for (UIView <JXPagerViewListViewDelegate>* listView in listViews) {
         __weak typeof(self)weakSelf = self;
         [listView listViewDidScrollCallback:^(UIScrollView *scrollView) {
@@ -111,7 +111,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.bounds.size.height - [self.delegate heightForPinSectionHeaderInPagingView:self];
+    return self.bounds.size.height - [self.delegate heightForPinSectionHeaderInPagerView:self];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -125,11 +125,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return [self.delegate heightForPinSectionHeaderInPagingView:self];
+    return [self.delegate heightForPinSectionHeaderInPagerView:self];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return [self.delegate viewForPinSectionHeaderInPagingView:self];
+    return [self.delegate viewForPinSectionHeaderInPagerView:self];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -153,12 +153,12 @@
 #pragma mark - JXPagingListContainerViewDelegate
 
 - (NSInteger)numberOfRowsInListContainerView:(JXPagerListContainerView *)listContainerView {
-    NSArray *listViews = [self.delegate listViewsInPagingView:self];
+    NSArray *listViews = [self.delegate listViewsInPagerView:self];
     return listViews.count;
 }
 
 - (UIView *)listContainerView:(JXPagerListContainerView *)listContainerView listViewInRow:(NSInteger)row {
-    NSArray *listViews = [self.delegate listViewsInPagingView:self];
+    NSArray *listViews = [self.delegate listViewsInPagerView:self];
     return listViews[row];
 }
 

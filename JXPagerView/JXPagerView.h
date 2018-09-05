@@ -1,6 +1,6 @@
 //
-//  JXPagingView.h
-//  JXPagingView
+//  JXPagerView.h
+//  JXPagerView
 //
 //  Created by jiaxin on 2018/8/27.
 //  Copyright © 2018年 jiaxin. All rights reserved.
@@ -42,46 +42,46 @@
 /**
  返回tableHeaderView的高度
 
- @param pagingView pagingView description
+ @param pagerView pagerView description
  @return return tableHeaderView的高度
  */
-- (CGFloat)tableHeaderViewHeightInPagingView:(JXPagerView *)pagingView;
+- (CGFloat)tableHeaderViewHeightInPagerView:(JXPagerView *)pagerView;
 
 
 /**
  返回tableHeaderView
 
- @param pagingView pagingView description
+ @param pagerView pagerView description
  @return tableHeaderView
  */
-- (UIView *)tableHeaderViewInPagingView:(JXPagerView *)pagingView;
+- (UIView *)tableHeaderViewInPagerView:(JXPagerView *)pagerView;
 
 
 /**
  返回悬浮HeaderView的高度。
 
- @param pagingView pagingView description
+ @param pagerView pagerView description
  @return 悬浮HeaderView的高度
  */
-- (CGFloat)heightForPinSectionHeaderInPagingView:(JXPagerView *)pagingView;
+- (CGFloat)heightForPinSectionHeaderInPagerView:(JXPagerView *)pagerView;
 
 
 /**
  返回悬浮HeaderView。我用的是自己封装的JXCategoryView（Github:https://github.com/pujiaxin33/JXCategoryView），你也可以选择其他的三方库或者自己写
 
- @param pagingView pagingView description
+ @param pagerView pagerView description
  @return 悬浮HeaderView
  */
-- (UIView *)viewForPinSectionHeaderInPagingView:(JXPagerView *)pagingView;
+- (UIView *)viewForPinSectionHeaderInPagerView:(JXPagerView *)pagerView;
 
 /**
  返回listViews，数组的item需要是UIView的子类，且要遵循JXPagerViewListViewDelegate。
  数组item要求返回一个UIView而不是一个UIScrollView，因为列表的UIScrollView一般是被包装到一个view里面，里面会处理数据源和其他逻辑。
 
- @param pagingView pagingView description
+ @param pagerView pagerView description
  @return listViews
  */
-- (NSArray <UIView <JXPagerViewListViewDelegate>*>*)listViewsInPagingView:(JXPagerView *)pagingView;
+- (NSArray <UIView <JXPagerViewListViewDelegate>*>*)listViewsInPagerView:(JXPagerView *)pagerView;
 
 @optional
 
