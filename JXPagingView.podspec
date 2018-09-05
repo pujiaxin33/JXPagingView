@@ -6,11 +6,12 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/pujiaxin33/JXPagingView"
   s.author       = { "pujiaxin33" => "317437084@qq.com" }
   s.platform     = :ios, "8.0"
+  s.swift_version = "4.0"
   s.source       = { :git => "https://github.com/pujiaxin33/JXPagingView.git", :tag => "#{s.version}" }
-  s.source_files  = "JXPagingView-OC", "JXPagingView-OC/*.{h,m}"
+  s.source_files  = "JXPagingView", "JXPagingView/*.swift"
   s.license      = "MIT"
-  s.subspec 'Swift' do |swift|
-    swift.source_files = 'JXPagingView-Swift', 'JXPagingView-Swift/*.swift'
+  s.subspec 'OC' do |oc|
+    oc.source_files = 'JXPagerView', 'JXPagerView/*.{h,m}'
   end
 
   s.requires_arc = true
