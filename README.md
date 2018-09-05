@@ -27,7 +27,13 @@
 ## 悬浮HeaderView说明
 悬浮的HeaderView，用的是我写的：[JXCategoryView](https://github.com/pujiaxin33/JXCategoryView) 几乎实现了所有主流效果，而且非常容易自定义扩展，强烈推荐阅读。
 
+## 列表下拉刷新说明
+
+需要使用`JXPagingListRefreshView`类（是`JXPagingView`的子类）
+
 ## 使用
+
+主要遵从`JXPagingViewDelegate`和`JXPagingViewListViewDelegate`协议就可以实现了，逻辑非常简单明了。
 
 1.实例化`JXPagingView`
 ```swift
@@ -66,23 +72,12 @@
     /// - Returns: view
     func viewForPinSectionHeader(in pagingView: JXPagingView) -> UIView
 
-
-    /// 底部listView的条数
+    /// 返回listViews，数组的item需要是UIView的子类，且要遵循JXPagingViewListViewDelegate。
+    /// 数组item要求返回一个UIView而不是一个UIScrollView，因为列表的UIScrollView一般是被包装到一个view里面，里面会处理数据源和其他逻辑。
     ///
     /// - Parameter pagingView: JXPagingViewView
-    /// - Returns: count
-    func numberOfListViews(in pagingView: JXPagingView) -> Int
-
-
-    /// 返回对应index的listView，需要是UIView的子类，且要遵循JXPagingViewListViewDelegate。
-    /// 这里要求返回一个UIView而不是一个UIScrollView，因为列表的UIScrollView一般是被包装到一个view里面，里面会处理数据源和其他逻辑。
-    ///
-    /// - Parameters:
-    ///   - pagingView: JXPagingViewView
-    ///   - row: row
-    /// - Returns: view
-    func pagingView(_ pagingView: JXPagingView, listViewInRow row: Int) -> JXPagingViewListViewDelegate & UIView
-
+    /// - Returns: listViews
+    func listViews(in pagingView: JXPagingView) -> [JXPagingViewListViewDelegate & UIView]
 
     /// mainTableView的滚动回调，用于实现头图跟随缩放
     ///
@@ -91,18 +86,22 @@
 }
 ```
 
-3.让外部listView遵从`JXPagingViewListViewDelegate`协议
+3.让底部listView遵从`JXPagingViewListViewDelegate`协议
 ```swift
-//该协议主要用于mainTableView已经显示了header，listView的contentOffset需要重置时，内部需要访问到外部传入进来的listView内的scrollView
+/// 返回listView内部持有的UIScrollView或UITableView或UICollectionView
+/// 主要用于mainTableView已经显示了header，listView的contentOffset需要重置时，内部需要访问到外部传入进来的listView内的scrollView
 @objc public protocol JXPagingViewListViewDelegate: NSObjectProtocol {
     func listScrollView() -> UIScrollView
 }
-```
 
-4.将外部listView的滚动事件传入View
-```
-func listViewDidScroll(_ scrollView: UIScrollView) {
-     pagingView.listViewDidScroll(scrollView: scrollView)
+///当listView内部持有的UIScrollView或UITableView或UICollectionView的代理方法`scrollViewDidScroll`回调时，需要调用该代理方法传入的callback
+func listViewDidScrollCallback(callback: @escaping (UIScrollView) -> ()) {
+    self.listViewDidScrollCallback = callback
+}
+
+//self.listViewDidScrollCallback在listView的scrollViewDidScroll代理方法里面回调
+func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    self.listViewDidScrollCallback?(scrollView)
 }
 ```
 
