@@ -24,7 +24,7 @@ class PagingViewTableHeaderView: UIView {
         imageViewFrame = imageView.frame
 
         let label = UILabel(frame: CGRect(x: 10, y: frame.size.height - 30, width: 200, height: 30))
-        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 20)
         label.text = "Monkey·D·路飞"
         label.textColor = UIColor.red
         self.addSubview(label)
