@@ -35,8 +35,9 @@
 
 ### 手动
 
-Swift：Clone代码，拖入JXPagingView-Swift文件夹，使用`JXPagingView`类；
-OC:Clone代码，拖入JXPagerView文件夹，使用`JXPagerView`类；
+Swift版本：Clone代码，拖入JXPagingView-Swift文件夹，使用`JXPagingView`类；
+
+OC版本:Clone代码，拖入JXPagerView文件夹，使用`JXPagerView`类；
 
 ### CocoaPods
 
@@ -55,12 +56,13 @@ end
 ```
 
 Swift与OC的仓库地址不一样，请注意选择！
+
 `pod install`之前最好`pod repo udpate`一下！
 
 
 ## 使用
 
-主要遵从`JXPagingViewDelegate`和`JXPagingViewListViewDelegate`协议就可以实现了，逻辑非常简单明了。
+主要遵从`JXPagingViewDelegate`和`JXPagingViewListViewDelegate`协议就可以实现了，逻辑非常简单明了。具体实现细节请查阅源码。
 
 1.实例化`JXPagingView`
 ```swift
