@@ -66,7 +66,7 @@ Swift与OC的仓库地址不一样，请注意选择！
 
 1.实例化`JXPagingView`
 ```swift
-    pagingView = JXPagingView(delegate: self)
+    let pagingView = JXPagingView(delegate: self)
     self.view.addSubview(pagingView)
 ```
 
