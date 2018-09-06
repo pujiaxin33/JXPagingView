@@ -66,15 +66,14 @@ Swift与OC的仓库地址不一样，请注意选择！
 
 1.实例化`JXPagingView`
 ```swift
-        pagingView = JXPagingView(delegate: self)
-        pagingView.delegate = self
-        self.view.addSubview(pagingView)
+    pagingView = JXPagingView(delegate: self)
+    self.view.addSubview(pagingView)
 ```
 
 2.实现`JXPagingViewDelegate`
 ```swift
 @objc public protocol JXPagingViewDelegate: NSObjectProtocol {
-        /// tableHeaderView的高度
+    /// tableHeaderView的高度
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: height
