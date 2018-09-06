@@ -35,20 +35,20 @@
 
 ### 手动
 
-Swift版本：Clone代码，拖入JXPagingView-Swift文件夹，使用`JXPagingView`类；
+**Swift版本：** Clone代码，拖入JXPagingView-Swift文件夹，使用`JXPagingView`类；
 
-OC版本:Clone代码，拖入JXPagerView文件夹，使用`JXPagerView`类；
+**OC版本：** Clone代码，拖入JXPagerView文件夹，使用`JXPagerView`类；
 
 ### CocoaPods
 
-- Swift
+- **Swift版本**
 ```ruby
 target '<Your Target Name>' do
     pod 'JXPagingView/Paging'
 end
 ```
 
-- OC
+- **OC版本**
 ```ruby
 target '<Your Target Name>' do
     pod 'JXPagingView/Pager'
