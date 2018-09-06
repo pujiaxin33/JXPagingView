@@ -31,21 +31,49 @@
 
 需要使用`JXPagingListRefreshView`类（是`JXPagingView`的子类）
 
+## 安装
+
+### 手动
+
+**Swift版本：** Clone代码，拖入JXPagingView-Swift文件夹，使用`JXPagingView`类；
+
+**OC版本：** Clone代码，拖入JXPagerView文件夹，使用`JXPagerView`类；
+
+### CocoaPods
+
+- **Swift版本**
+```ruby
+target '<Your Target Name>' do
+    pod 'JXPagingView/Paging'
+end
+```
+
+- **OC版本**
+```ruby
+target '<Your Target Name>' do
+    pod 'JXPagingView/Pager'
+end
+```
+
+Swift与OC的仓库地址不一样，请注意选择！
+
+`pod install`之前最好`pod repo udpate`一下！
+
+
 ## 使用
 
-主要遵从`JXPagingViewDelegate`和`JXPagingViewListViewDelegate`协议就可以实现了，逻辑非常简单明了。
+主要遵从`JXPagingViewDelegate`和`JXPagingViewListViewDelegate`协议就可以实现了，逻辑非常简单明了。具体实现细节请查阅源码。
 
 1.实例化`JXPagingView`
 ```swift
-        pagingView = JXPagingView(delegate: self)
-        pagingView.delegate = self
-        self.view.addSubview(pagingView)
+    let pagingView = JXPagingView(delegate: self)
+    self.view.addSubview(pagingView)
 ```
 
 2.实现`JXPagingViewDelegate`
 ```swift
 @objc public protocol JXPagingViewDelegate: NSObjectProtocol {
-        /// tableHeaderView的高度
+    /// tableHeaderView的高度
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: height
@@ -105,7 +133,7 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
 }
 ```
 
-OC版本使用类似，查看源码就明白了。
+OC版本使用类似，只是类名及相关API更改为`JXPagerView`，具体细节请查看源码。
 
 
 ## 补充
