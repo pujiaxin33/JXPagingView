@@ -22,16 +22,6 @@
 }
 
 - (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView {
-    if (self.mainTableView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagerView:self]) {
-        //mainTableView的header还没有消失，让listScrollView一直为0
-        scrollView.contentOffset = CGPointZero;
-        scrollView.showsVerticalScrollIndicator = NO;
-    }else {
-        //mainTableView的header刚好消失，固定mainTableView的位置，显示listScrollView的滚动条
-        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagerView:self]);
-        scrollView.showsVerticalScrollIndicator = YES;
-    }
-
     BOOL shouldProcess = YES;
     if (self.currentScrollingListView.contentOffset.y > self.lastScrollingListViewContentOffsetY) {
         //往上滚动
