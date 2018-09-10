@@ -14,6 +14,7 @@ let JXheightForHeaderInSection: CGFloat = 50
 class BaseViewController: UIViewController {
     var pagingView: JXPagingView!
     var userHeaderView: PagingViewTableHeaderView!
+    var userHeaderContainerView: UIView!
     var categoryView: JXCategoryTitleView!
     var listViewArray: [TestListBaseView]!
     var titles = ["能力", "爱好", "队友"]
@@ -32,7 +33,9 @@ class BaseViewController: UIViewController {
 
         listViewArray = [powerListView, hobbyListView, partnerListView]
 
-        userHeaderView = PagingViewTableHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: JXTableHeaderViewHeight))
+        userHeaderContainerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: JXTableHeaderViewHeight))
+        userHeaderView = PagingViewTableHeaderView(frame: userHeaderContainerView.bounds)
+        userHeaderContainerView.addSubview(userHeaderView)
 
         categoryView = JXCategoryTitleView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: JXheightForHeaderInSection))
         categoryView.titles = titles
@@ -81,7 +84,7 @@ extension BaseViewController: JXPagingViewDelegate {
     }
 
     func tableHeaderView(in pagingView: JXPagingView) -> UIView {
-        return userHeaderView
+        return userHeaderContainerView
     }
 
     func heightForPinSectionHeader(in pagingView: JXPagingView) -> CGFloat {
