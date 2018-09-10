@@ -14,6 +14,7 @@ import UIKit
     @objc public var isNeedHeader = false
     @objc public var isNeedFooter = false
     var listViewDidScrollCallback: ((UIScrollView) -> ())?
+    var lastSelectedIndexPath: IndexPath?
 
     deinit {
         listViewDidScrollCallback = nil
@@ -27,7 +28,7 @@ import UIKit
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
+        tableView.register(TestTableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
         addSubview(tableView)
     }
 
@@ -68,6 +69,19 @@ import UIKit
         }
     }
 
+    func selectedCell(at indexPath: IndexPath) {
+        if lastSelectedIndexPath == indexPath {
+            return
+        }
+        if lastSelectedIndexPath != nil {
+            let cell = tableView.cellForRow(at: lastSelectedIndexPath!)
+            cell?.setSelected(false, animated: false)
+        }
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.setSelected(true, animated: false)
+        lastSelectedIndexPath = indexPath
+    }
+
 }
 
 extension TestListBaseView: UITableViewDataSource, UITableViewDelegate {
@@ -76,8 +90,12 @@ extension TestListBaseView: UITableViewDataSource, UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TestTableViewCell
         cell.textLabel?.text = dataSource?[indexPath.row]
+        cell.bgButtonClicked = {[weak self] in
+            print("bgButtonClicked:\(indexPath)")
+            self?.selectedCell(at: indexPath)
+        }
         return cell
     }
 
