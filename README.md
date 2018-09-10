@@ -145,6 +145,14 @@ OC版本使用类似，只是类名及相关API更改为`JXPagerView`，具体�
 
 代码：请参考`TestTableViewCell`类的配置。
 
+## TableHeaderView使用tips
+
+如果TableHeaderView逻辑较多，一般都会用ViewController来包裹，然后使用ViewController.view当做TableHeaderView。又或者视图较多，使用xib来布局。
+
+以上两种情况，都需要创建一个ContainerView，把ContainerView赋值给TableHeaderView，然后add真正的ViewController.view或xib视图到ContainerView上面。不这么做布局会有异常。
+
+参考：demo工程`BaseViewController`文件里`userHeaderContainerView`的使用方式。
+
 
 ## 补充
 
