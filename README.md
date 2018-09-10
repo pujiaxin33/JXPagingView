@@ -135,6 +135,16 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
 OC版本使用类似，只是类名及相关API更改为`JXPagerView`，具体细节请查看源码。
 
+## 关于下方列表视图的代理方法`func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)`有时候需要点击两次才回调
+
+出现步骤：当手指放在下方列表视图往下拉，直到TableHeaderView完全显示。
+
+原因：经过上面的步骤之后，手指已经离开屏幕且列表视图已经完全静止，UIScrollView的isDragging属性却依然是true。就导致了后续的第一次点击，让系统认为当前UIScrollView依然在滚动，该点击就让UIScrollView停止下来，没有继续转发给UITableView，就没有转化成didSelectRow事件。
+
+解决方案：经过N种尝试之后，还是没有回避掉系统的`isDragging`异常为true的bug。大家可以在自定义cell最下方放置一个与cell同大小的button，把button的touchUpInside事件当做`didSelectRow`的回调。因为UIButton在响应链中的优先级要高于UIGestureRecognizer。
+
+代码：请参考`TestTableViewCell`类的配置。
+
 
 ## 补充
 
