@@ -20,7 +20,6 @@
 		1912A546211D2AB700A80826 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1912A544211D2AB700A80826 /* Main.storyboard */; };
 		1912A548211D2ABA00A80826 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1912A547211D2ABA00A80826 /* Assets.xcassets */; };
 		1912A54B211D2ABA00A80826 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1912A549211D2ABA00A80826 /* LaunchScreen.storyboard */; };
-		1912A5A9211D2F1500A80826 /* HobbyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A553211D2F1500A80826 /* HobbyListView.swift */; };
 		1912A5AA211D2F1500A80826 /* RefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A555211D2F1500A80826 /* RefreshViewController.swift */; };
 		1912A5AB211D2F1500A80826 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A557211D2F1500A80826 /* UIScrollView+MJRefresh.m */; };
 		1912A5AC211D2F1500A80826 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A558211D2F1500A80826 /* MJRefreshConst.m */; };
@@ -42,10 +41,8 @@
 		1912A5BC211D2F1500A80826 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A57F211D2F1500A80826 /* MJRefreshBackFooter.m */; };
 		1912A5BD211D2F1500A80826 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A580211D2F1500A80826 /* MJRefreshAutoFooter.m */; };
 		1912A5BE211D2F1500A80826 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A582211D2F1500A80826 /* MJRefreshComponent.m */; };
-		1912A5BF211D2F1500A80826 /* PartnerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A586211D2F1500A80826 /* PartnerListView.swift */; };
 		1912A5C0211D2F1500A80826 /* PagingViewTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A587211D2F1500A80826 /* PagingViewTableHeaderView.swift */; };
 		1912A5C1211D2F1500A80826 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A589211D2F1500A80826 /* ZoomViewController.swift */; };
-		1912A5C2211D2F1500A80826 /* PowerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A58A211D2F1500A80826 /* PowerListView.swift */; };
 		1912A5C3211D2F1500A80826 /* TestListBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A58B211D2F1500A80826 /* TestListBaseView.swift */; };
 		1912A671211D3E8600A80826 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A670211D3E8600A80826 /* BaseViewController.swift */; };
 		194DCD932133C7C2000E89EF /* JXCategoryIndicatorLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCD502133C7C1000E89EF /* JXCategoryIndicatorLineView.m */; };
@@ -109,7 +106,6 @@
 		1912A547211D2ABA00A80826 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1912A54A211D2ABA00A80826 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1912A54C211D2ABA00A80826 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1912A553211D2F1500A80826 /* HobbyListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HobbyListView.swift; sourceTree = "<group>"; };
 		1912A555211D2F1500A80826 /* RefreshViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshViewController.swift; sourceTree = "<group>"; };
 		1912A557211D2F1500A80826 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		1912A558211D2F1500A80826 /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
@@ -151,10 +147,8 @@
 		1912A582211D2F1500A80826 /* MJRefreshComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshComponent.m; sourceTree = "<group>"; };
 		1912A583211D2F1500A80826 /* MJRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooter.h; sourceTree = "<group>"; };
 		1912A584211D2F1500A80826 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
-		1912A586211D2F1500A80826 /* PartnerListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerListView.swift; sourceTree = "<group>"; };
 		1912A587211D2F1500A80826 /* PagingViewTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingViewTableHeaderView.swift; sourceTree = "<group>"; };
 		1912A589211D2F1500A80826 /* ZoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
-		1912A58A211D2F1500A80826 /* PowerListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerListView.swift; sourceTree = "<group>"; };
 		1912A58B211D2F1500A80826 /* TestListBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestListBaseView.swift; sourceTree = "<group>"; };
 		1912A5D3211D2FDC00A80826 /* Swift-Bridge-Objective-C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift-Bridge-Objective-C.h"; sourceTree = "<group>"; };
 		1912A670211D3E8600A80826 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -429,9 +423,6 @@
 				1912A587211D2F1500A80826 /* PagingViewTableHeaderView.swift */,
 				1912A58B211D2F1500A80826 /* TestListBaseView.swift */,
 				19B614C721463D8B00FF4B8E /* TestTableViewCell.swift */,
-				1912A586211D2F1500A80826 /* PartnerListView.swift */,
-				1912A553211D2F1500A80826 /* HobbyListView.swift */,
-				1912A58A211D2F1500A80826 /* PowerListView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -707,8 +698,6 @@
 				194DCD992133C7C2000E89EF /* JXCategoryIndicatorCellModel.m in Sources */,
 				1912A5AF211D2F1500A80826 /* NSBundle+MJRefresh.m in Sources */,
 				1912A5B0211D2F1500A80826 /* UIView+MJExtension.m in Sources */,
-				1912A5BF211D2F1500A80826 /* PartnerListView.swift in Sources */,
-				1912A5C2211D2F1500A80826 /* PowerListView.swift in Sources */,
 				194DCDA42133C7C2000E89EF /* JXCategoryTitleView.m in Sources */,
 				190F6A77213FB89300870498 /* JXPagingListContainerView.swift in Sources */,
 				194DCD972133C7C2000E89EF /* JXCategoryIndicatorComponentView.m in Sources */,
@@ -751,7 +740,6 @@
 				194DCD9F2133C7C2000E89EF /* JXCategoryTitleImageView.m in Sources */,
 				1912A5B8211D2F1500A80826 /* MJRefreshStateHeader.m in Sources */,
 				194DCDAD2133C7C2000E89EF /* UIColor+JXAdd.m in Sources */,
-				1912A5A9211D2F1500A80826 /* HobbyListView.swift in Sources */,
 				194DCD962133C7C2000E89EF /* JXCategoryIndicatorBallView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
