@@ -1,11 +1,10 @@
 # JXPagingView
 
-[OC版本现已加入豪华套餐，使用方法与swift版本相同](https://github.com/pujiaxin33/JXPagingView/tree/master/JXPagingView-OC)
-
 类似微博主页、简书主页、QQ联系人页面等效果。多页面嵌套，既可以上下滑动，也可以左右滑动切换页面。支持HeaderView悬浮、支持下拉刷新、上拉加载更多。
 
 ## 功能特点
 
+- 支持OC与Swift，OC版本细节查看`JXPagerViewExample-OC`工程；
 - 手势交互更自然；
 - 悬浮的categoryView支持更多效果，而且支持自定义扩展；
 - 封装性更好，不用关心内部实现，只需要实现对应delegate方法即可；
@@ -133,7 +132,7 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
 }
 ```
 
-OC版本使用类似，只是类名及相关API更改为`JXPagerView`，具体细节请查看源码。
+OC版本使用类似，只是类名及相关API更改为`JXPagerView`，具体细节请查看`JXPagerViewExample-OC`工程。
 
 ## 关于下方列表视图的代理方法`func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)`有时候需要点击两次才回调
 
