@@ -162,4 +162,9 @@
     return listViews[row];
 }
 
+- (void)listContainerView:(JXPagerListContainerView *)listContainerView willDisplayCellAtRow:(NSInteger)row {
+    NSArray *listViews = [self.delegate listViewsInPagerView:self];
+    self.currentScrollingListView = [listViews[row] listScrollView];
+}
+
 @end

@@ -68,6 +68,10 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self.delegate listContainerView:self willDisplayCellAtRow:indexPath.item];
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     self.mainTableView.scrollEnabled = YES;
 }

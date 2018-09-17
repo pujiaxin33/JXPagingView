@@ -218,6 +218,10 @@ extension JXPagingView: JXPagingListContainerViewDelegate {
         let listViews = self.delegate.listViews(in: self)
         return listViews[row]
     }
+
+    public func listContainerView(_ listContainerView: JXPagingListContainerView, willDisplayCellAt row: Int) {let listViews = self.delegate.listViews(in: self)
+        self.currentScrollingListView = listViews[row].listScrollView()
+    }
 }
 
 

@@ -13,6 +13,8 @@ import UIKit
     func numberOfRows(in listContainerView: JXPagingListContainerView) -> Int
 
     func listContainerView(_ listContainerView: JXPagingListContainerView, viewForListInRow row: Int) -> UIView
+
+    func listContainerView(_ listContainerView: JXPagingListContainerView, willDisplayCellAt row: Int)
 }
 
 open class JXPagingListContainerView: UIView {
@@ -76,6 +78,10 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
         listView.frame = cell.contentView.bounds
         cell.contentView.addSubview(listView)
         return cell
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        self.delegate.listContainerView(self, willDisplayCellAt: indexPath.item)
     }
 
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
