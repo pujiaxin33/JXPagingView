@@ -97,7 +97,9 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.mainTableView?.isScrollEnabled = false
+        if scrollView.isTracking || scrollView.isDecelerating {
+            self.mainTableView?.isScrollEnabled = false
+        }
     }
 }
 

@@ -85,7 +85,9 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    self.mainTableView.scrollEnabled = NO;
+    if (scrollView.isTracking || scrollView.isDecelerating) {
+        self.mainTableView.scrollEnabled = NO;
+    }
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
