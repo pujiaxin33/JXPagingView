@@ -67,7 +67,7 @@ import UIKit
 }
 
 open class JXPagingView: UIView {
-    open unowned let delegate: JXPagingViewDelegate
+    public unowned let delegate: JXPagingViewDelegate
     open var mainTableView: JXPagingMainTableView!
     open var listContainerView: JXPagingListContainerView!
     var currentScrollingListView: UIScrollView?

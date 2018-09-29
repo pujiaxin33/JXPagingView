@@ -19,13 +19,8 @@ class NaviHiddenViewController: BaseViewController {
 
         self.automaticallyAdjustsScrollViewInsets = false
 
-        var topSafeMargin: CGFloat = 20
-        if #available(iOS 11.0, *) {
-            if UIScreen.main.bounds.size.height == 812 {
-                topSafeMargin = UIApplication.shared.keyWindow!.safeAreaInsets.top
-            }
-        }
-        let naviHeight = topSafeMargin + 44
+        let topSafeMargin = UIApplication.shared.keyWindow!.jx_layoutInsets().top
+        let naviHeight = UIApplication.shared.keyWindow!.jx_navigationHeight()
         pinHeaderViewInsetTop = naviHeight
 
         //自定义导航栏

@@ -80,6 +80,7 @@
 		19870C7F2121604F00C23CAA /* Refresh.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C7D2121604F00C23CAA /* Refresh.gif */; };
 		19870C802121605000C23CAA /* Zoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C7E2121604F00C23CAA /* Zoom.gif */; };
 		19B614C821463D8B00FF4B8E /* TestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B614C721463D8B00FF4B8E /* TestTableViewCell.swift */; };
+		19C417CA215F18FC0090E518 /* UIWindow+JXSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C417C9215F18FC0090E518 /* UIWindow+JXSafeArea.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,6 +213,7 @@
 		19870C7D2121604F00C23CAA /* Refresh.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Refresh.gif; sourceTree = "<group>"; };
 		19870C7E2121604F00C23CAA /* Zoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Zoom.gif; sourceTree = "<group>"; };
 		19B614C721463D8B00FF4B8E /* TestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewCell.swift; sourceTree = "<group>"; };
+		19C417C9215F18FC0090E518 /* UIWindow+JXSafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+JXSafeArea.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,6 +397,7 @@
 				1912A587211D2F1500A80826 /* PagingViewTableHeaderView.swift */,
 				1912A58B211D2F1500A80826 /* TestListBaseView.swift */,
 				19B614C721463D8B00FF4B8E /* TestTableViewCell.swift */,
+				19C417C9215F18FC0090E518 /* UIWindow+JXSafeArea.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				TargetAttributes = {
 					1912A53C211D2AB700A80826 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -678,6 +682,7 @@
 				1912A5AC211D2F1500A80826 /* MJRefreshConst.m in Sources */,
 				1912A5B4211D2F1500A80826 /* MJRefreshAutoStateFooter.m in Sources */,
 				19B614C821463D8B00FF4B8E /* TestTableViewCell.swift in Sources */,
+				19C417CA215F18FC0090E518 /* UIWindow+JXSafeArea.swift in Sources */,
 				194DCDB02133C7C2000E89EF /* JXCategoryBaseCellModel.m in Sources */,
 				194DCDAE2133C7C2000E89EF /* JXCategoryBaseView.m in Sources */,
 				1912A5C0211D2F1500A80826 /* PagingViewTableHeaderView.swift in Sources */,
@@ -866,7 +871,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "JXPagingView/Swift-Bridge-Objective-C.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -889,7 +894,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "JXPagingView/Swift-Bridge-Objective-C.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
