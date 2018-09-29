@@ -7,6 +7,7 @@
 //
 
 #import "NaviBarHiddenViewController.h"
+#import "UIWindow+JXSafeArea.h"
 
 @interface NaviBarHiddenViewController ()
 @property (nonatomic, strong) UIView *naviBGView;
@@ -19,13 +20,8 @@
     [super viewDidLoad];
 
     self.automaticallyAdjustsScrollViewInsets = NO;
-    CGFloat topSafeMargin = 20;
-    if (@available(iOS 11.0, *)) {
-        if ([UIScreen mainScreen].bounds.size.height == 812) {
-            topSafeMargin = [UIApplication sharedApplication].keyWindow.safeAreaInsets.top;
-        }
-    }
-    CGFloat naviHeight = topSafeMargin + 44;
+    CGFloat topSafeMargin = [UIApplication.sharedApplication.keyWindow jx_layoutInsets].top;
+    CGFloat naviHeight = [UIApplication.sharedApplication.keyWindow jx_navigationHeight];
     self.pinHeaderViewInsetTop = naviHeight;
 
     self.naviBGView = [[UIView alloc] init];

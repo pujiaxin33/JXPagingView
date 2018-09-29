@@ -76,6 +76,7 @@
 		196428F32148ECB1009C1D31 /* ListRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428F22148ECB1009C1D31 /* ListRefreshViewController.m */; };
 		196428F62148EF19009C1D31 /* NaviBarHiddenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428F52148EF19009C1D31 /* NaviBarHiddenViewController.m */; };
 		196428F92148F419009C1D31 /* TestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428F82148F419009C1D31 /* TestTableViewCell.m */; };
+		19C417CD215F1B630090E518 /* UIWindow+JXSafeArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -217,6 +218,8 @@
 		196428F52148EF19009C1D31 /* NaviBarHiddenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NaviBarHiddenViewController.m; sourceTree = "<group>"; };
 		196428F72148F419009C1D31 /* TestTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTableViewCell.h; sourceTree = "<group>"; };
 		196428F82148F419009C1D31 /* TestTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTableViewCell.m; sourceTree = "<group>"; };
+		19C417CB215F1B630090E518 /* UIWindow+JXSafeArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+JXSafeArea.h"; sourceTree = "<group>"; };
+		19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+JXSafeArea.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,6 +450,8 @@
 				196428F82148F419009C1D31 /* TestTableViewCell.m */,
 				196428222148E58C009C1D31 /* PagingViewTableHeaderView.h */,
 				1964281C2148E58C009C1D31 /* PagingViewTableHeaderView.m */,
+				19C417CB215F1B630090E518 /* UIWindow+JXSafeArea.h */,
+				19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -655,6 +660,7 @@
 				196428E72148E9D0009C1D31 /* MJRefreshStateHeader.m in Sources */,
 				196428E42148E9D0009C1D31 /* MJRefreshAutoGifFooter.m in Sources */,
 				1964289C2148E61B009C1D31 /* JXCategoryFactory.m in Sources */,
+				19C417CD215F1B630090E518 /* UIWindow+JXSafeArea.m in Sources */,
 				1964283A2148E5EC009C1D31 /* JXPagerListRefreshView.m in Sources */,
 				196428EB2148E9D0009C1D31 /* MJRefreshBackFooter.m in Sources */,
 				196428E02148E9D0009C1D31 /* MJRefreshBackGifFooter.m in Sources */,
