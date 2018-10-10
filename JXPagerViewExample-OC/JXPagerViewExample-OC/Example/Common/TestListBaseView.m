@@ -111,6 +111,10 @@
 
 #pragma mark - JXPagingViewListViewDelegate
 
+- (UIView *)listView {
+    return self;
+}
+
 - (UIScrollView *)listScrollView {
     return self.tableView;
 }

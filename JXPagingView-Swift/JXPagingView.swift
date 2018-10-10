@@ -10,6 +10,11 @@ import UIKit
 
 @objc public protocol JXPagingViewListViewDelegate: NSObjectProtocol {
 
+    /// 返回listView
+    ///
+    /// - Returns: UIView
+    func listView() -> UIView
+
     /// 返回listView内部持有的UIScrollView或UITableView或UICollectionView
     /// 主要用于mainTableView已经显示了header，listView的contentOffset需要重置时，内部需要访问到外部传入进来的listView内的scrollView
     ///
@@ -53,12 +58,11 @@ import UIKit
     /// - Returns: view
     func viewForPinSectionHeader(in pagingView: JXPagingView) -> UIView
 
-    /// 返回listViews，数组的item需要是UIView的子类，且要遵循JXPagingViewListViewDelegate。
-    /// 数组item要求返回一个UIView而不是一个UIScrollView，因为列表的UIScrollView一般是被包装到一个view里面，里面会处理数据源和其他逻辑。
+    /// 返回listViews，只要遵循JXPagingViewListViewDelegate即可，无论你返回的是UIView还是UIViewController都可以。
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: listViews
-    func listViews(in pagingView: JXPagingView) -> [JXPagingViewListViewDelegate & UIView]
+    func listViews(in pagingView: JXPagingView) -> [JXPagingViewListViewDelegate]
 
     /// mainTableView的滚动回调，用于实现头图跟随缩放
     ///
@@ -216,7 +220,7 @@ extension JXPagingView: JXPagingListContainerViewDelegate {
     }
     public func listContainerView(_ listContainerView: JXPagingListContainerView, viewForListInRow row: Int) -> UIView {
         let listViews = self.delegate.listViews(in: self)
-        return listViews[row]
+        return listViews[row].listView()
     }
 
     public func listContainerView(_ listContainerView: JXPagingListContainerView, willDisplayCellAt row: Int) {let listViews = self.delegate.listViews(in: self)

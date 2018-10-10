@@ -159,7 +159,7 @@
 
 - (UIView *)listContainerView:(JXPagerListContainerView *)listContainerView listViewInRow:(NSInteger)row {
     NSArray *listViews = [self.delegate listViewsInPagerView:self];
-    return listViews[row];
+    return [listViews[row] listView];
 }
 
 - (void)listContainerView:(JXPagerListContainerView *)listContainerView willDisplayCellAtRow:(NSInteger)row {

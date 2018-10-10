@@ -84,6 +84,10 @@ extension TestListCollectionView: UICollectionViewDataSource, UICollectionViewDe
 }
 
 extension TestListCollectionView: JXPagingViewListViewDelegate {
+    public func listView() -> UIView {
+        return self
+    }
+
     public func listViewDidScrollCallback(callback: @escaping (UIScrollView) -> ()) {
         self.listViewDidScrollCallback = callback
     }

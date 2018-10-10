@@ -90,7 +90,7 @@
     return self.categoryView;
 }
 
-- (NSArray<UIView<JXPagerViewListViewDelegate> *> *)listViewsInPagerView:(JXPagerView *)pagerView {
+- (NSArray<id<JXPagerViewListViewDelegate>> *)listViewsInPagerView:(JXPagerView *)pagerView {
     return self.listViewArray;
 }
 

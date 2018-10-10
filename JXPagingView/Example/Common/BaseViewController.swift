@@ -99,7 +99,7 @@ extension BaseViewController: JXPagingViewDelegate {
         return categoryView
     }
 
-    func listViews(in pagingView: JXPagingView) -> [UIView & JXPagingViewListViewDelegate] {
+    func listViews(in pagingView: JXPagingView) -> [ JXPagingViewListViewDelegate] {
         return listViewArray
     }
 }

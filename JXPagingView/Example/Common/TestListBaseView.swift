@@ -109,6 +109,10 @@ extension TestListBaseView: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension TestListBaseView: JXPagingViewListViewDelegate {
+    public func listView() -> UIView {
+        return self
+    }
+    
     public func listViewDidScrollCallback(callback: @escaping (UIScrollView) -> ()) {
         self.listViewDidScrollCallback = callback
     }

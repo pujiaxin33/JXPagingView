@@ -17,6 +17,12 @@
  */
 @protocol JXPagerViewListViewDelegate <NSObject>
 
+/**
+ 返回listView
+
+ @return UIView
+ */
+- (UIView *)listView;
 
 /**
  返回listView内部持有的UIScrollView或UITableView或UICollectionView
@@ -75,13 +81,12 @@
 - (UIView *)viewForPinSectionHeaderInPagerView:(JXPagerView *)pagerView;
 
 /**
- 返回listViews，数组的item需要是UIView的子类，且要遵循JXPagerViewListViewDelegate。
- 数组item要求返回一个UIView而不是一个UIScrollView，因为列表的UIScrollView一般是被包装到一个view里面，里面会处理数据源和其他逻辑。
+ 返回listViews，只要遵循JXPagerViewListViewDelegate即可，无论你返回的是UIView还是UIViewController都可以。
 
  @param pagerView pagerView description
  @return listViews
  */
-- (NSArray <UIView <JXPagerViewListViewDelegate>*>*)listViewsInPagerView:(JXPagerView *)pagerView;
+- (NSArray <id<JXPagerViewListViewDelegate>> *)listViewsInPagerView:(JXPagerView *)pagerView;
 
 @optional
 
