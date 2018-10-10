@@ -15,7 +15,7 @@ class RefreshViewController: BaseViewController {
         super.viewDidLoad()
 
         for listView in listViewArray {
-            listView.isNeedFooter = true
+            (listView as! TestListBaseView).isNeedFooter = true
         }
 
         pagingView.mainTableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(headerRefresh))

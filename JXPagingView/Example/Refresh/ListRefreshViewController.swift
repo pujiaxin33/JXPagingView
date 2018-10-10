@@ -14,7 +14,7 @@ class ListRefreshViewController: BaseViewController {
         super.viewDidLoad()
 
         for listView in listViewArray {
-            listView.isNeedHeader = true
+            (listView as! TestListBaseView).isNeedHeader = true
         }
     }
 

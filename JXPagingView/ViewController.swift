@@ -38,6 +38,9 @@ class ViewController: UITableViewController {
         case 4:
             let vc = CollectionViewViewController()
             self.navigationController?.pushViewController(vc, animated: true)
+        case 5:
+            let vc = VCViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }

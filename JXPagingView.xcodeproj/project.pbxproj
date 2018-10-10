@@ -84,6 +84,8 @@
 		19CF1844216C93C40093C775 /* TestListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CF1843216C93C40093C775 /* TestListCollectionView.swift */; };
 		19CF1846216C94D90093C775 /* CollectionViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CF1845216C94D90093C775 /* CollectionViewViewController.swift */; };
 		19CF1848216C993D0093C775 /* CollectionViewList.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19CF1847216C993D0093C775 /* CollectionViewList.gif */; };
+		19CF1857216DF27A0093C775 /* VCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CF1856216DF27A0093C775 /* VCViewController.swift */; };
+		19CF1859216DF3230093C775 /* VCListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CF1858216DF3230093C775 /* VCListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -220,6 +222,8 @@
 		19CF1843216C93C40093C775 /* TestListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestListCollectionView.swift; sourceTree = "<group>"; };
 		19CF1845216C94D90093C775 /* CollectionViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewViewController.swift; sourceTree = "<group>"; };
 		19CF1847216C993D0093C775 /* CollectionViewList.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = CollectionViewList.gif; sourceTree = "<group>"; };
+		19CF1856216DF27A0093C775 /* VCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCViewController.swift; sourceTree = "<group>"; };
+		19CF1858216DF3230093C775 /* VCListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +286,7 @@
 		1912A552211D2F1500A80826 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				19CF1855216DF2560093C775 /* VCContainer */,
 				19CF1842216C937C0093C775 /* CollectionView */,
 				194DCDF221352667000E89EF /* NavigationBarHidden */,
 				1912A585211D2F1500A80826 /* Common */,
@@ -588,6 +593,15 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
+		19CF1855216DF2560093C775 /* VCContainer */ = {
+			isa = PBXGroup;
+			children = (
+				19CF1856216DF27A0093C775 /* VCViewController.swift */,
+				19CF1858216DF3230093C775 /* VCListViewController.swift */,
+			);
+			path = VCContainer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -668,6 +682,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1912A5BC211D2F1500A80826 /* MJRefreshBackFooter.m in Sources */,
+				19CF1857216DF27A0093C775 /* VCViewController.swift in Sources */,
 				194DCDA32133C7C2000E89EF /* JXCategoryTitleCell.m in Sources */,
 				194DCDAC2133C7C2000E89EF /* JXCategoryCollectionView.m in Sources */,
 				194DCDA12133C7C2000E89EF /* JXCategoryTitleImageCellModel.m in Sources */,
@@ -702,6 +717,7 @@
 				19B614C821463D8B00FF4B8E /* TestTableViewCell.swift in Sources */,
 				19C417CA215F18FC0090E518 /* UIWindow+JXSafeArea.swift in Sources */,
 				194DCDB02133C7C2000E89EF /* JXCategoryBaseCellModel.m in Sources */,
+				19CF1859216DF3230093C775 /* VCListViewController.swift in Sources */,
 				194DCDAE2133C7C2000E89EF /* JXCategoryBaseView.m in Sources */,
 				19CF1844216C93C40093C775 /* TestListCollectionView.swift in Sources */,
 				1912A5C0211D2F1500A80826 /* PagingViewTableHeaderView.swift in Sources */,
