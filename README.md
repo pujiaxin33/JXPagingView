@@ -100,12 +100,11 @@ Swift与OC的仓库地址不一样，请注意选择！
     /// - Returns: view
     func viewForPinSectionHeader(in pagingView: JXPagingView) -> UIView
 
-    /// 返回listViews，数组的item需要是UIView的子类，且要遵循JXPagingViewListViewDelegate。
-    /// 数组item要求返回一个UIView而不是一个UIScrollView，因为列表的UIScrollView一般是被包装到一个view里面，里面会处理数据源和其他逻辑。
+    /// 返回listViews，只要遵循JXPagingViewListViewDelegate即可，无论你返回的是UIView还是UIViewController都可以。
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: listViews
-    func listViews(in pagingView: JXPagingView) -> [JXPagingViewListViewDelegate & UIView]
+    func listViews(in pagingView: JXPagingView) -> [JXPagingViewListViewDelegate]
 
     /// mainTableView的滚动回调，用于实现头图跟随缩放
     ///
@@ -114,12 +113,27 @@ Swift与OC的仓库地址不一样，请注意选择！
 }
 ```
 
-3.让底部listView遵从`JXPagingViewListViewDelegate`协议
+3.让底部listView（无论是UIView还是UIViewController都可以，swift版本demo工程有VC列表使用示例）遵从`JXPagingViewListViewDelegate`协议
 ```swift
-/// 返回listView内部持有的UIScrollView或UITableView或UICollectionView
-/// 主要用于mainTableView已经显示了header，listView的contentOffset需要重置时，内部需要访问到外部传入进来的listView内的scrollView
+//协议说明
 @objc public protocol JXPagingViewListViewDelegate: NSObjectProtocol {
+
+    /// 返回listView
+    ///
+    /// - Returns: UIView
+    func listView() -> UIView
+
+    /// 返回listView内部持有的UIScrollView或UITableView或UICollectionView
+    /// 主要用于mainTableView已经显示了header，listView的contentOffset需要重置时，内部需要访问到外部传入进来的listView内的scrollView
+    ///
+    /// - Returns: listView内部持有的UIScrollView或UITableView或UICollectionView
     func listScrollView() -> UIScrollView
+
+
+    /// 当listView内部持有的UIScrollView或UITableView或UICollectionView的代理方法`scrollViewDidScroll`回调时，需要调用该代理方法传入的callback
+    ///
+    /// - Parameter callback: `scrollViewDidScroll`回调时调用的callback
+    func listViewDidScrollCallback(callback: @escaping (UIScrollView)->())
 }
 
 ///当listView内部持有的UIScrollView或UITableView或UICollectionView的代理方法`scrollViewDidScroll`回调时，需要调用该代理方法传入的callback
