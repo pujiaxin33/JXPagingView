@@ -106,7 +106,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    self.scrollCallback(scrollView);
+    !self.scrollCallback ?: self.scrollCallback(scrollView);
 }
 
 #pragma mark - JXPagingViewListViewDelegate
