@@ -31,7 +31,7 @@ import UIKit
 @objc public protocol JXPagingViewDelegate: NSObjectProtocol {
 
 
-    /// tableHeaderView的高度
+    /// tableHeaderView的高度，不能有小数位。
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: height
@@ -45,7 +45,7 @@ import UIKit
     func tableHeaderView(in pagingView: JXPagingView) -> UIView
 
 
-    /// 返回悬浮HeaderView的高度。
+    /// 返回悬浮HeaderView的高度，不能有小数位。
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: height

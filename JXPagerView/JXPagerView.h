@@ -46,7 +46,7 @@
 
 
 /**
- 返回tableHeaderView的高度
+ 返回tableHeaderView的高度，不能有小数位。
 
  @param pagerView pagerView description
  @return return tableHeaderView的高度
@@ -64,7 +64,7 @@
 
 
 /**
- 返回悬浮HeaderView的高度。
+ 返回悬浮HeaderView的高度，不能有小数位。
 
  @param pagerView pagerView description
  @return 悬浮HeaderView的高度
