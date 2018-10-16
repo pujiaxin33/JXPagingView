@@ -84,6 +84,10 @@
             [listView listScrollView].contentOffset = CGPointZero;
         }
     }
+
+    if (scrollView.contentOffset.y > [self.delegate tableHeaderViewHeightInPagerView:self] && self.currentScrollingListView.contentOffset.y == 0) {
+        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagerView:self]);
+    }
 }
 
 #pragma mark - Private
