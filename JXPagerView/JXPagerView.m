@@ -86,6 +86,7 @@
     }
 
     if (scrollView.contentOffset.y > [self.delegate tableHeaderViewHeightInPagerView:self] && self.currentScrollingListView.contentOffset.y == 0) {
+        //当往上滚动mainTableView的headerView时，滚动到底时，修复listView往上小幅度滚动
         self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagerView:self]);
     }
 }
