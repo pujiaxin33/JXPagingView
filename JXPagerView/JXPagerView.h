@@ -18,7 +18,7 @@
 @protocol JXPagerViewListViewDelegate <NSObject>
 
 /**
- 返回listView
+ 返回listView。如果是vc包裹的就是vc.view；如果是自定义view包裹的，就是自定义view自己。
 
  @return UIView
  */

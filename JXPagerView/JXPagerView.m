@@ -80,7 +80,7 @@
     if (scrollView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagerView:self]) {
         //mainTableView已经显示了header，listView的contentOffset需要重置
         NSArray *listViews = [self.delegate listViewsInPagerView:self];
-        for (UIView <JXPagerViewListViewDelegate>* listView in listViews) {
+        for (id<JXPagerViewListViewDelegate> listView in listViews) {
             [listView listScrollView].contentOffset = CGPointZero;
         }
     }
@@ -95,7 +95,7 @@
 
 - (void)configListViewDidScrollCallback {
     NSArray *listViews = [self.delegate listViewsInPagerView:self];
-    for (UIView <JXPagerViewListViewDelegate>* listView in listViews) {
+    for (id<JXPagerViewListViewDelegate> listView in listViews) {
         __weak typeof(self)weakSelf = self;
         [listView listViewDidScrollCallback:^(UIScrollView *scrollView) {
             [weakSelf listViewDidScroll:scrollView];
