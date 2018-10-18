@@ -189,6 +189,8 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
         }
         listContainerView.frame = cell.contentView.bounds
         cell.contentView.addSubview(listContainerView)
+        listContainerView.setNeedsLayout()
+        listContainerView.layoutIfNeeded()
         return cell
     }
 

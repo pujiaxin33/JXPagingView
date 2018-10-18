@@ -126,6 +126,8 @@
     }
     self.listContainerView.frame = cell.contentView.bounds;
     [cell.contentView addSubview:self.listContainerView];
+    [self.listContainerView setNeedsLayout];
+    [self.listContainerView layoutIfNeeded];
     return cell;
 }
 
