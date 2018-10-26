@@ -26,6 +26,9 @@ import UIKit
     ///
     /// - Parameter callback: `scrollViewDidScroll`回调时调用的callback
     func listViewDidScrollCallback(callback: @escaping (UIScrollView)->())
+
+    /// 将要重置listScrollView的contentOffset
+    @objc optional func listScrollViewWillResetContentOffset()
 }
 
 @objc public protocol JXPagingViewDelegate: NSObjectProtocol {
@@ -75,6 +78,7 @@ open class JXPagingView: UIView {
     open var mainTableView: JXPagingMainTableView!
     open var listContainerView: JXPagingListContainerView!
     var currentScrollingListView: UIScrollView?
+    var currentListView: JXPagingViewListViewDelegate?
 
     public init(delegate: JXPagingViewDelegate) {
         self.delegate = delegate
@@ -125,6 +129,7 @@ open class JXPagingView: UIView {
     open func preferredProcessListViewDidScroll(scrollView: UIScrollView) {
         if (self.mainTableView.contentOffset.y < self.delegate.tableHeaderViewHeight(in: self)) {
             //mainTableView的header还没有消失，让listScrollView一直为0
+            self.currentListView?.listScrollViewWillResetContentOffset?()
             currentScrollingListView!.contentOffset = CGPoint.zero;
             currentScrollingListView!.showsVerticalScrollIndicator = false;
         } else {
@@ -143,6 +148,7 @@ open class JXPagingView: UIView {
         if (mainTableView.contentOffset.y < self.delegate.tableHeaderViewHeight(in: self)) {
             //mainTableView已经显示了header，listView的contentOffset需要重置
             for listView in self.delegate.listViews(in: self) {
+                listView.listScrollViewWillResetContentOffset?()
                 listView.listScrollView().contentOffset = CGPoint.zero
             }
         }

@@ -21,7 +21,7 @@
 
     _titleLabelZoomEnabled = NO;
     _titleLabelZoomScale = 1.2;
-    _titleLabelZoomScale = YES;
+    _titleLabelZoomEnabled = YES;
     _titleColor = [UIColor blackColor];
     _titleSelectedColor = [UIColor redColor];
     _titleFont = [UIFont systemFontOfSize:15];

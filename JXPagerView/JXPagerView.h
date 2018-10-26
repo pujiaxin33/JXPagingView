@@ -40,6 +40,13 @@
  */
 - (void)listViewDidScrollCallback:(void (^)(UIScrollView *scrollView))callback;
 
+@optional
+
+/**
+ 将要重置listScrollView的contentOffset
+ */
+- (void)listScrollViewWillResetContentOffset;
+
 @end
 
 @protocol JXPagerViewDelegate <NSObject>
@@ -110,6 +117,8 @@
 - (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, strong, readonly) UIScrollView *currentScrollingListView;
+
+@property (nonatomic, strong, readonly) id<JXPagerViewListViewDelegate> currentListView;
 
 - (instancetype)init NS_UNAVAILABLE;
 

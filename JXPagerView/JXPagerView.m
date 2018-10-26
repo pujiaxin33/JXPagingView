@@ -13,6 +13,7 @@
 @property (nonatomic, strong) JXPagerMainTableView *mainTableView;
 @property (nonatomic, strong) JXPagerListContainerView *listContainerView;
 @property (nonatomic, strong) UIScrollView *currentScrollingListView;
+@property (nonatomic, strong) id<JXPagerViewListViewDelegate> currentListView;
 
 @end
 
@@ -62,6 +63,9 @@
 - (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView {
     if (self.mainTableView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagerView:self]) {
         //mainTableView的header还没有消失，让listScrollView一直为0
+        if (self.currentListView && [self.currentListView respondsToSelector:@selector(listScrollViewWillResetContentOffset)]) {
+            [self.currentListView listScrollViewWillResetContentOffset];
+        }
         scrollView.contentOffset = CGPointZero;
         scrollView.showsVerticalScrollIndicator = NO;
     }else {
@@ -81,6 +85,9 @@
         //mainTableView已经显示了header，listView的contentOffset需要重置
         NSArray *listViews = [self.delegate listViewsInPagerView:self];
         for (id<JXPagerViewListViewDelegate> listView in listViews) {
+            if ([listView respondsToSelector:@selector(listScrollViewWillResetContentOffset)]) {
+                [listView listScrollViewWillResetContentOffset];
+            }
             [listView listScrollView].contentOffset = CGPointZero;
         }
     }
@@ -98,6 +105,7 @@
     for (id<JXPagerViewListViewDelegate> listView in listViews) {
         __weak typeof(self)weakSelf = self;
         [listView listViewDidScrollCallback:^(UIScrollView *scrollView) {
+            weakSelf.currentListView = listView;
             [weakSelf listViewDidScroll:scrollView];
         }];
     }

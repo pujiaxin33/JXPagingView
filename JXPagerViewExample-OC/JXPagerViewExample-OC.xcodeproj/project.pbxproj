@@ -76,6 +76,9 @@
 		196428F32148ECB1009C1D31 /* ListRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428F22148ECB1009C1D31 /* ListRefreshViewController.m */; };
 		196428F62148EF19009C1D31 /* NaviBarHiddenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428F52148EF19009C1D31 /* NaviBarHiddenViewController.m */; };
 		196428F92148F419009C1D31 /* TestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428F82148F419009C1D31 /* TestTableViewCell.m */; };
+		197B3A382182B13E00561F08 /* NestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197B3A372182B13E00561F08 /* NestViewController.m */; };
+		197B3A3B2182B17F00561F08 /* TestNestlistView.m in Sources */ = {isa = PBXBuildFile; fileRef = 197B3A3A2182B17F00561F08 /* TestNestlistView.m */; };
+		197B3A3E2182B22900561F08 /* TestNestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 197B3A3D2182B22900561F08 /* TestNestListBaseView.m */; };
 		19C417CD215F1B630090E518 /* UIWindow+JXSafeArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */; };
 /* End PBXBuildFile section */
 
@@ -218,6 +221,12 @@
 		196428F52148EF19009C1D31 /* NaviBarHiddenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NaviBarHiddenViewController.m; sourceTree = "<group>"; };
 		196428F72148F419009C1D31 /* TestTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTableViewCell.h; sourceTree = "<group>"; };
 		196428F82148F419009C1D31 /* TestTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTableViewCell.m; sourceTree = "<group>"; };
+		197B3A362182B13E00561F08 /* NestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NestViewController.h; sourceTree = "<group>"; };
+		197B3A372182B13E00561F08 /* NestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NestViewController.m; sourceTree = "<group>"; };
+		197B3A392182B17F00561F08 /* TestNestlistView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNestlistView.h; sourceTree = "<group>"; };
+		197B3A3A2182B17F00561F08 /* TestNestlistView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNestlistView.m; sourceTree = "<group>"; };
+		197B3A3C2182B22900561F08 /* TestNestListBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestNestListBaseView.h; sourceTree = "<group>"; };
+		197B3A3D2182B22900561F08 /* TestNestListBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestNestListBaseView.m; sourceTree = "<group>"; };
 		19C417CB215F1B630090E518 /* UIWindow+JXSafeArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+JXSafeArea.h"; sourceTree = "<group>"; };
 		19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+JXSafeArea.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -272,6 +281,7 @@
 		196428192148E58C009C1D31 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				197B3A352182B11400561F08 /* Nest */,
 				196428A72148E8E2009C1D31 /* NavigationBarHidden */,
 				196428A62148E8D6009C1D31 /* Refresh */,
 				196428A52148E8D0009C1D31 /* Zoom */,
@@ -582,6 +592,19 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		197B3A352182B11400561F08 /* Nest */ = {
+			isa = PBXGroup;
+			children = (
+				197B3A362182B13E00561F08 /* NestViewController.h */,
+				197B3A372182B13E00561F08 /* NestViewController.m */,
+				197B3A392182B17F00561F08 /* TestNestlistView.h */,
+				197B3A3A2182B17F00561F08 /* TestNestlistView.m */,
+				197B3A3C2182B22900561F08 /* TestNestListBaseView.h */,
+				197B3A3D2182B22900561F08 /* TestNestListBaseView.m */,
+			);
+			path = Nest;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -660,6 +683,7 @@
 				196428E72148E9D0009C1D31 /* MJRefreshStateHeader.m in Sources */,
 				196428E42148E9D0009C1D31 /* MJRefreshAutoGifFooter.m in Sources */,
 				1964289C2148E61B009C1D31 /* JXCategoryFactory.m in Sources */,
+				197B3A3B2182B17F00561F08 /* TestNestlistView.m in Sources */,
 				19C417CD215F1B630090E518 /* UIWindow+JXSafeArea.m in Sources */,
 				1964283A2148E5EC009C1D31 /* JXPagerListRefreshView.m in Sources */,
 				196428EB2148E9D0009C1D31 /* MJRefreshBackFooter.m in Sources */,
@@ -674,6 +698,7 @@
 				196428372148E5EC009C1D31 /* JXPagerListContainerView.m in Sources */,
 				196428F92148F419009C1D31 /* TestTableViewCell.m in Sources */,
 				196428E52148E9D0009C1D31 /* MJRefreshAutoNormalFooter.m in Sources */,
+				197B3A3E2182B22900561F08 /* TestNestListBaseView.m in Sources */,
 				196428272148E58C009C1D31 /* PagingViewTableHeaderView.m in Sources */,
 				196428862148E61B009C1D31 /* JXCategoryIndicatorImageView.m in Sources */,
 				1964288A2148E61B009C1D31 /* JXCategoryIndicatorCellModel.m in Sources */,
@@ -696,6 +721,7 @@
 				1964288E2148E61B009C1D31 /* JXCategoryDotView.m in Sources */,
 				196428852148E61B009C1D31 /* JXCategoryIndicatorTriangleView.m in Sources */,
 				1964288D2148E61B009C1D31 /* JXCategoryDotCell.m in Sources */,
+				197B3A382182B13E00561F08 /* NestViewController.m in Sources */,
 				1964288B2148E61B009C1D31 /* JXCategoryIndicatorCell.m in Sources */,
 				196428E32148E9D0009C1D31 /* MJRefreshAutoStateFooter.m in Sources */,
 				196428DB2148E9D0009C1D31 /* MJRefreshConst.m in Sources */,
