@@ -23,7 +23,7 @@ open class JXPagingListRefreshView: JXPagingView {
             self.mainTableView.contentOffset = CGPoint(x: 0, y: self.delegate.tableHeaderViewHeight(in: self))
         }
 
-        if (mainTableView.contentOffset.y < self.delegate.tableHeaderViewHeight(in: self)) {
+        if (mainTableView.contentOffset.y < getTableHeaderViewHeight()) {
             //mainTableView已经显示了header，listView的contentOffset需要重置
             for listView in self.delegate.listViews(in: self) {
                 //正在下拉刷新时，不需要重置
@@ -43,7 +43,7 @@ open class JXPagingListRefreshView: JXPagingView {
             if self.mainTableView.contentOffset.y == 0 {
                 shouldProcess = false
             }else {
-                if (self.mainTableView.contentOffset.y < self.delegate.tableHeaderViewHeight(in: self)) {
+                if (self.mainTableView.contentOffset.y < getTableHeaderViewHeight()) {
                     //mainTableView的header还没有消失，让listScrollView一直为0
                     currentScrollingListView!.contentOffset = CGPoint.zero;
                     currentScrollingListView!.showsVerticalScrollIndicator = false;
@@ -51,7 +51,7 @@ open class JXPagingListRefreshView: JXPagingView {
             }
         }
         if shouldProcess {
-            if (self.mainTableView.contentOffset.y < self.delegate.tableHeaderViewHeight(in: self)) {
+            if (self.mainTableView.contentOffset.y < getTableHeaderViewHeight()) {
                 //处于下拉刷新的状态，scrollView.contentOffset.y为负数，就重置为0
                 if currentScrollingListView!.contentOffset.y > 0 {
                     //mainTableView的header还没有消失，让listScrollView一直为0
@@ -66,6 +66,5 @@ open class JXPagingListRefreshView: JXPagingView {
         }
         self.lastScrollingListViewContentOffsetY = currentScrollingListView!.contentOffset.y;
     }
-
 
 }

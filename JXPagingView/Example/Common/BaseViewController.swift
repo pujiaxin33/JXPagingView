@@ -8,8 +8,8 @@
 
 import UIKit
 
-let JXTableHeaderViewHeight: CGFloat = 200
-let JXheightForHeaderInSection: CGFloat = 50
+let JXTableHeaderViewHeight: Int = 200
+let JXheightForHeaderInSection: Int = 50
 
 class BaseViewController: UIViewController {
     var pagingView: JXPagingView!
@@ -27,11 +27,11 @@ class BaseViewController: UIViewController {
 
         listViewArray = preferredListViewsArray()
 
-        userHeaderContainerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: JXTableHeaderViewHeight))
+        userHeaderContainerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(JXTableHeaderViewHeight)))
         userHeaderView = PagingViewTableHeaderView(frame: userHeaderContainerView.bounds)
         userHeaderContainerView.addSubview(userHeaderView)
 
-        categoryView = JXCategoryTitleView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: JXheightForHeaderInSection))
+        categoryView = JXCategoryTitleView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(JXheightForHeaderInSection)))
         categoryView.titles = titles
         categoryView.backgroundColor = UIColor.white
         categoryView.titleSelectedColor = UIColor(red: 105/255, green: 144/255, blue: 239/255, alpha: 1)
@@ -86,7 +86,7 @@ class BaseViewController: UIViewController {
 
 extension BaseViewController: JXPagingViewDelegate {
 
-    func tableHeaderViewHeight(in pagingView: JXPagingView) -> CGFloat {
+    func tableHeaderViewHeight(in pagingView: JXPagingView) -> Int {
         return JXTableHeaderViewHeight
     }
 
@@ -94,7 +94,7 @@ extension BaseViewController: JXPagingViewDelegate {
         return userHeaderContainerView
     }
 
-    func heightForPinSectionHeader(in pagingView: JXPagingView) -> CGFloat {
+    func heightForPinSectionHeader(in pagingView: JXPagingView) -> Int {
         return JXheightForHeaderInSection
     }
 

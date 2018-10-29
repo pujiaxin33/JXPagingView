@@ -53,12 +53,12 @@
 
 
 /**
- 返回tableHeaderView的高度，不能有小数位。
+ 返回tableHeaderView的高度，因为内部需要比对判断，只能是整型数
 
  @param pagerView pagerView description
  @return return tableHeaderView的高度
  */
-- (CGFloat)tableHeaderViewHeightInPagerView:(JXPagerView *)pagerView;
+- (NSUInteger)tableHeaderViewHeightInPagerView:(JXPagerView *)pagerView;
 
 
 /**
@@ -71,12 +71,12 @@
 
 
 /**
- 返回悬浮HeaderView的高度，不能有小数位。
+ 返回悬浮HeaderView的高度，因为内部需要比对判断，只能是整型数
 
  @param pagerView pagerView description
  @return 悬浮HeaderView的高度
  */
-- (CGFloat)heightForPinSectionHeaderInPagerView:(JXPagerView *)pagerView;
+- (NSUInteger)heightForPinSectionHeaderInPagerView:(JXPagerView *)pagerView;
 
 
 /**

@@ -34,11 +34,11 @@ import UIKit
 @objc public protocol JXPagingViewDelegate: NSObjectProtocol {
 
 
-    /// tableHeaderView的高度，不能有小数位。
+    /// tableHeaderView的高度，因为内部需要比对判断，只能是整型数
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: height
-    func tableHeaderViewHeight(in pagingView: JXPagingView) -> CGFloat
+    func tableHeaderViewHeight(in pagingView: JXPagingView) -> Int
 
 
     /// 返回tableHeaderView
@@ -48,11 +48,11 @@ import UIKit
     func tableHeaderView(in pagingView: JXPagingView) -> UIView
 
 
-    /// 返回悬浮HeaderView的高度，不能有小数位。
+    /// 返回悬浮HeaderView的高度，因为内部需要比对判断，只能是整型数
     ///
     /// - Parameter pagingView: JXPagingViewView
     /// - Returns: height
-    func heightForPinSectionHeader(in pagingView: JXPagingView) -> CGFloat
+    func heightForPinSectionHeader(in pagingView: JXPagingView) -> Int
 
 
     /// 返回悬浮HeaderView。我用的是自己封装的JXCategoryView（Github:https://github.com/pujiaxin33/JXCategoryView），你也可以选择其他的三方库或者自己写
@@ -127,7 +127,7 @@ open class JXPagingView: UIView {
     }
 
     open func preferredProcessListViewDidScroll(scrollView: UIScrollView) {
-        if (self.mainTableView.contentOffset.y < self.delegate.tableHeaderViewHeight(in: self)) {
+        if (self.mainTableView.contentOffset.y < getTableHeaderViewHeight()) {
             //mainTableView的header还没有消失，让listScrollView一直为0
             self.currentListView?.listScrollViewWillResetContentOffset?()
             currentScrollingListView!.contentOffset = CGPoint.zero;
@@ -145,7 +145,7 @@ open class JXPagingView: UIView {
             self.mainTableView.contentOffset = CGPoint(x: 0, y: self.delegate.tableHeaderViewHeight(in: self))
         }
 
-        if (mainTableView.contentOffset.y < self.delegate.tableHeaderViewHeight(in: self)) {
+        if (mainTableView.contentOffset.y < getTableHeaderViewHeight()) {
             //mainTableView已经显示了header，listView的contentOffset需要重置
             for listView in self.delegate.listViews(in: self) {
                 listView.listScrollViewWillResetContentOffset?()
@@ -153,7 +153,7 @@ open class JXPagingView: UIView {
             }
         }
 
-        if scrollView.contentOffset.y > self.delegate.tableHeaderViewHeight(in: self) && self.currentScrollingListView?.contentOffset.y == 0 {
+        if scrollView.contentOffset.y > getTableHeaderViewHeight() && self.currentScrollingListView?.contentOffset.y == 0 {
             //当往上滚动mainTableView的headerView时，滚动到底时，修复listView往上小幅度滚动
             self.mainTableView.contentOffset = CGPoint(x: 0, y: self.delegate.tableHeaderViewHeight(in: self))
         }
@@ -168,6 +168,14 @@ open class JXPagingView: UIView {
                 self?.listViewDidScroll(scrollView: scrollView)
             }
         }
+    }
+
+    func getTableHeaderViewHeight() -> CGFloat {
+        return CGFloat(self.delegate.tableHeaderViewHeight(in: self))
+    }
+
+    func getPinSectionHeaderHeight() -> CGFloat {
+        return CGFloat(self.delegate.heightForPinSectionHeader(in: self))
     }
 
     /// 外部传入的listView，当其内部的scrollView滚动时，需要调用该方法
@@ -185,7 +193,7 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.bounds.height - self.delegate.heightForPinSectionHeader(in: self)
+        return self.bounds.height - getPinSectionHeaderHeight()
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -201,7 +209,7 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.delegate.heightForPinSectionHeader(in: self)
+        return getPinSectionHeaderHeight()
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

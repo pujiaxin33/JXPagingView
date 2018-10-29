@@ -45,7 +45,7 @@ class NaviHiddenViewController: BaseViewController {
         //让mainTableView可以显示范围外
         self.pagingView.mainTableView.clipsToBounds = false
         //让头图的布局往上移动naviHeight高度，填充导航栏下面的内容
-        self.userHeaderView.imageView.frame = CGRect(x: 0, y: -naviHeight, width: self.view.bounds.size.width, height: naviHeight + JXTableHeaderViewHeight)
+        self.userHeaderView.imageView.frame = CGRect(x: 0, y: -naviHeight, width: self.view.bounds.size.width, height: naviHeight + CGFloat(JXTableHeaderViewHeight))
     }
 
     override func viewDidLayoutSubviews() {

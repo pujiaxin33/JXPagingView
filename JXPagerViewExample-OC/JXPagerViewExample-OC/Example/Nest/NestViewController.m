@@ -83,11 +83,11 @@ static const CGFloat JXheightForHeaderInSection = 50;
     return self.userHeaderView;
 }
 
-- (CGFloat)tableHeaderViewHeightInPagerView:(JXPagerView *)pagerView {
+- (NSUInteger)tableHeaderViewHeightInPagerView:(JXPagerView *)pagerView {
     return JXTableHeaderViewHeight;
 }
 
-- (CGFloat)heightForPinSectionHeaderInPagerView:(JXPagerView *)pagerView {
+- (NSUInteger)heightForPinSectionHeaderInPagerView:(JXPagerView *)pagerView {
     return JXheightForHeaderInSection;
 }
 
