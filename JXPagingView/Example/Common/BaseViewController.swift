@@ -52,10 +52,13 @@ class BaseViewController: UIViewController {
         categoryView.layer.addSublayer(lineLayer)
 
         pagingView = preferredPagingView()
+
         self.view.addSubview(pagingView)
 
         categoryView.contentScrollView = pagingView.listContainerView.collectionView
 
+        pagingView.listContainerView.collectionView.panGestureRecognizer.require(toFail: self.navigationController!.interactivePopGestureRecognizer!)
+        pagingView.mainTableView.panGestureRecognizer.require(toFail: self.navigationController!.interactivePopGestureRecognizer!)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
 
