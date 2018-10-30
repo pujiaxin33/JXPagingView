@@ -162,7 +162,23 @@
         [self.delegate mainTableViewDidScroll:scrollView];
     }
 
+    if (scrollView.isTracking || scrollView.isDecelerating) {
+        self.listContainerView.collectionView.scrollEnabled = NO;
+    }
+
     [self preferredProcessMainTableViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    self.listContainerView.collectionView.scrollEnabled = YES;
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    self.listContainerView.collectionView.scrollEnabled = YES;
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    self.listContainerView.collectionView.scrollEnabled = YES;
 }
 
 #pragma mark - JXPagingListContainerViewDelegate
