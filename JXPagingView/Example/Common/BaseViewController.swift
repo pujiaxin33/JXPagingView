@@ -57,6 +57,7 @@ class BaseViewController: UIViewController {
 
         categoryView.contentScrollView = pagingView.listContainerView.collectionView
 
+        //扣边返回处理，下面的代码要加上
         pagingView.listContainerView.collectionView.panGestureRecognizer.require(toFail: self.navigationController!.interactivePopGestureRecognizer!)
         pagingView.mainTableView.panGestureRecognizer.require(toFail: self.navigationController!.interactivePopGestureRecognizer!)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
