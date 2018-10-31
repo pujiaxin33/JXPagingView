@@ -230,7 +230,7 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.delegate.mainTableViewDidScroll?(scrollView)
         //用户正在上下滚动的时候，就不允许左右滚动
-        if scrollView.isTracking || scrollView.isDecelerating {
+        if scrollView.isTracking {
             self.listContainerView.collectionView.isScrollEnabled = false
         }
 

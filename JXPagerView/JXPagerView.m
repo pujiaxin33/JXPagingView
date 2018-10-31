@@ -162,7 +162,7 @@
         [self.delegate mainTableViewDidScroll:scrollView];
     }
 
-    if (scrollView.isTracking || scrollView.isDecelerating) {
+    if (scrollView.isTracking) {
         self.listContainerView.collectionView.scrollEnabled = NO;
     }
 
