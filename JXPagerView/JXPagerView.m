@@ -55,6 +55,8 @@
 }
 
 - (void)reloadData {
+    self.currentListView = nil;
+    self.currentScrollingListView = nil;
     [self configListViewDidScrollCallback];
     [self.mainTableView reloadData];
     [self.listContainerView reloadData];

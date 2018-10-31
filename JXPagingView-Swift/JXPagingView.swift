@@ -121,6 +121,8 @@ open class JXPagingView: UIView {
 
 
     open func reloadData() {
+        self.currentListView = nil
+        self.currentScrollingListView = nil
         configListViewDidScrollCallback()
         self.mainTableView.reloadData()
         self.listContainerView.reloadData()
