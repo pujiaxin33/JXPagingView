@@ -168,6 +168,10 @@ OC版本使用类似，只是类名及相关API更改为`JXPagerView`，具体�
 
 参考：demo工程`BaseViewController`文件里`userHeaderContainerView`的使用方式。
 
+## 迁移指南
+- 0.0.9版本将下面两个API的返回值修改为了Int(OC版本为NSUInteger)，之前版本是CGFloat，升级为0.0.9及以上的时候，记得修改一下使用地方的返回值类型，不然会引起crash。OC版本同理修改。
+    - `func heightForPinSectionHeader(in pagingView: JXPagingView) -> Int`
+    - `func tableHeaderViewHeight(in pagingView: JXPagingView) -> Int`
 
 ## 补充
 
