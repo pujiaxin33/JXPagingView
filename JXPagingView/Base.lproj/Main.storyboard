@@ -146,6 +146,27 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="65" id="wWH-kb-LFG">
+                                        <rect key="frame" x="0.0" y="390" width="375" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wWH-kb-LFG" id="AAJ-tM-wAB">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="64.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CategoryView嵌套PagingView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLX-cI-PA2">
+                                                    <rect key="frame" x="16" y="22" width="231" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eLX-cI-PA2" firstAttribute="centerY" secondItem="AAJ-tM-wAB" secondAttribute="centerY" id="4tm-Fw-xgy"/>
+                                                <constraint firstItem="eLX-cI-PA2" firstAttribute="leading" secondItem="AAJ-tM-wAB" secondAttribute="leading" constant="16" id="7vQ-rG-ghV"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eLX-cI-PA2" secondAttribute="trailing" constant="20" symbolic="YES" id="xcb-JC-Lgk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>

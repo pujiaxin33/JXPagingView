@@ -41,6 +41,9 @@ class ViewController: UITableViewController {
         case 5:
             let vc = VCViewController()
             self.navigationController?.pushViewController(vc, animated: true)
+        case 6:
+            let vc = NestViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }

@@ -18,6 +18,7 @@ class BaseViewController: UIViewController {
     var categoryView: JXCategoryTitleView!
     var listViewArray: [JXPagingViewListViewDelegate]!
     var titles = ["能力", "爱好", "队友"]
+    weak var nestContentScrollView: UIScrollView?    //嵌套demo使用
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,7 @@ class BaseViewController: UIViewController {
         categoryView.layer.addSublayer(lineLayer)
 
         pagingView = preferredPagingView()
+        pagingView.mainTableView.gestureDelegate = self
 
         self.view.addSubview(pagingView)
 
@@ -114,5 +116,15 @@ extension BaseViewController: JXPagingViewDelegate {
 extension BaseViewController: JXCategoryViewDelegate {
     func categoryView(_ categoryView: JXCategoryBaseView!, didSelectedItemAt index: Int) {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = (index == 0)
+    }
+}
+
+extension BaseViewController: JXPagingMainTableViewGestureDelegate {
+    func mainTableViewGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        //禁止Nest嵌套效果的时候，上下和左右都可以滚动
+        if otherGestureRecognizer.view == nestContentScrollView {
+            return false
+        }
+        return gestureRecognizer.isKind(of: UIPanGestureRecognizer.classForCoder()) && otherGestureRecognizer.isKind(of: UIPanGestureRecognizer.classForCoder())
     }
 }

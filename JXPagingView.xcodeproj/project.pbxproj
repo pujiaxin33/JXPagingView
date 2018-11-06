@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190639B021918BAD00153BE9 /* CategoryNestPaging.gif in Resources */ = {isa = PBXBuildFile; fileRef = 190639AF21918BAD00153BE9 /* CategoryNestPaging.gif */; };
 		190F6A74213FB89300870498 /* JXPagingMainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F6A70213FB89300870498 /* JXPagingMainTableView.swift */; };
 		190F6A75213FB89300870498 /* JXPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F6A71213FB89300870498 /* JXPagingView.swift */; };
 		190F6A76213FB89300870498 /* JXPagingListRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F6A72213FB89300870498 /* JXPagingListRefreshView.swift */; };
@@ -41,6 +42,7 @@
 		1912A5C1211D2F1500A80826 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A589211D2F1500A80826 /* ZoomViewController.swift */; };
 		1912A5C3211D2F1500A80826 /* TestListBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A58B211D2F1500A80826 /* TestListBaseView.swift */; };
 		1912A671211D3E8600A80826 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A670211D3E8600A80826 /* BaseViewController.swift */; };
+		1939226D218C56B100C7B564 /* NestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1939226C218C56B100C7B564 /* NestViewController.swift */; };
 		194DCD932133C7C2000E89EF /* JXCategoryIndicatorLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCD502133C7C1000E89EF /* JXCategoryIndicatorLineView.m */; };
 		194DCD942133C7C2000E89EF /* JXCategoryIndicatorTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCD512133C7C1000E89EF /* JXCategoryIndicatorTriangleView.m */; };
 		194DCD952133C7C2000E89EF /* JXCategoryIndicatorImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCD532133C7C1000E89EF /* JXCategoryIndicatorImageView.m */; };
@@ -90,6 +92,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		190639AF21918BAD00153BE9 /* CategoryNestPaging.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = CategoryNestPaging.gif; sourceTree = "<group>"; };
 		190F6A70213FB89300870498 /* JXPagingMainTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingMainTableView.swift; sourceTree = "<group>"; };
 		190F6A71213FB89300870498 /* JXPagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingView.swift; sourceTree = "<group>"; };
 		190F6A72213FB89300870498 /* JXPagingListRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingListRefreshView.swift; sourceTree = "<group>"; };
@@ -147,6 +150,7 @@
 		1912A58B211D2F1500A80826 /* TestListBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestListBaseView.swift; sourceTree = "<group>"; };
 		1912A5D3211D2FDC00A80826 /* Swift-Bridge-Objective-C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift-Bridge-Objective-C.h"; sourceTree = "<group>"; };
 		1912A670211D3E8600A80826 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		1939226C218C56B100C7B564 /* NestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestViewController.swift; sourceTree = "<group>"; };
 		194DCD4C2133C7C1000E89EF /* JXCategoryIndicatorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorCell.h; sourceTree = "<group>"; };
 		194DCD4D2133C7C1000E89EF /* JXCategoryIndicatorCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorCellModel.h; sourceTree = "<group>"; };
 		194DCD4E2133C7C1000E89EF /* JXCategoryIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorView.h; sourceTree = "<group>"; };
@@ -288,6 +292,7 @@
 		1912A552211D2F1500A80826 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				1939226B218C568800C7B564 /* CategoryNestPaging */,
 				19CF1855216DF2560093C775 /* VCContainer */,
 				19CF1842216C937C0093C775 /* CollectionView */,
 				194DCDF221352667000E89EF /* NavigationBarHidden */,
@@ -423,6 +428,14 @@
 				1912A589211D2F1500A80826 /* ZoomViewController.swift */,
 			);
 			path = Zoom;
+			sourceTree = "<group>";
+		};
+		1939226B218C568800C7B564 /* CategoryNestPaging */ = {
+			isa = PBXGroup;
+			children = (
+				1939226C218C56B100C7B564 /* NestViewController.swift */,
+			);
+			path = CategoryNestPaging;
 			sourceTree = "<group>";
 		};
 		194DCD4A2133C7C1000E89EF /* JXCategoryView */ = {
@@ -578,6 +591,7 @@
 		19870C7C2121601700C23CAA /* Gif */ = {
 			isa = PBXGroup;
 			children = (
+				190639AF21918BAD00153BE9 /* CategoryNestPaging.gif */,
 				197D66AD2182FC7600B20483 /* Nest.gif */,
 				19CF1847216C993D0093C775 /* CollectionViewList.gif */,
 				1968DA682135486F00A51C83 /* NaviHidden.gif */,
@@ -668,6 +682,7 @@
 				1912A54B211D2ABA00A80826 /* LaunchScreen.storyboard in Resources */,
 				19870C27211D852400C23CAA /* lufei.jpg in Resources */,
 				1912A548211D2ABA00A80826 /* Assets.xcassets in Resources */,
+				190639B021918BAD00153BE9 /* CategoryNestPaging.gif in Resources */,
 				19870C802121605000C23CAA /* Zoom.gif in Resources */,
 				1968DA692135486F00A51C83 /* NaviHidden.gif in Resources */,
 				1912A5AD211D2F1500A80826 /* MJRefresh.bundle in Resources */,
@@ -695,6 +710,7 @@
 				1912A5B5211D2F1500A80826 /* MJRefreshAutoGifFooter.m in Sources */,
 				194DCDF621352CE6000E89EF /* BaseNavigationController.swift in Sources */,
 				1912A5C3211D2F1500A80826 /* TestListBaseView.swift in Sources */,
+				1939226D218C56B100C7B564 /* NestViewController.swift in Sources */,
 				194DCDA52133C7C2000E89EF /* JXCategoryImageView.m in Sources */,
 				1912A5B2211D2F1500A80826 /* MJRefreshBackStateFooter.m in Sources */,
 				1912A543211D2AB700A80826 /* ViewController.swift in Sources */,
