@@ -48,6 +48,7 @@ class TestListCollectionView: UIView {
         layout.sectionInset = UIEdgeInsets.init(top: itemMargin, left: itemMargin, bottom: itemMargin, right: itemMargin)
         layout.scrollDirection = .vertical
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        collectionView?.alwaysBounceHorizontal = false
         collectionView?.backgroundColor = .white
         collectionView?.dataSource = self
         collectionView?.delegate = self
