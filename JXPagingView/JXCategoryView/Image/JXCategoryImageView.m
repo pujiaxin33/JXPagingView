@@ -16,8 +16,8 @@
     self.loadImageCallback = nil;
 }
 
-- (void)initializeDatas {
-    [super initializeDatas];
+- (void)initializeData {
+    [super initializeData];
 
     _imageSize = CGSizeMake(20, 20);
     _imageZoomEnabled = NO;
@@ -83,7 +83,7 @@
     }
 }
 
-- (CGFloat)preferredCellWidthWithIndex:(NSInteger)index {
+- (CGFloat)preferredCellWidthAtIndex:(NSInteger)index {
     return self.imageSize.width;
 }
 

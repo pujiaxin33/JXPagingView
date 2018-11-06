@@ -41,18 +41,23 @@
     self.maskTitleLabel.center = self.contentView.center;
 }
 
-- (void)reloadDatas:(JXCategoryBaseCellModel *)cellModel {
-    [super reloadDatas:cellModel];
+- (void)reloadData:(JXCategoryBaseCellModel *)cellModel {
+    [super reloadData:cellModel];
 
     JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)cellModel;
-    self.titleLabel.font = myCellModel.titleFont;
 
+    CGFloat pointSize = myCellModel.titleFont.pointSize;
+    UIFontDescriptor *fontDescriptor = myCellModel.titleFont.fontDescriptor;
+    if (myCellModel.selected) {
+        fontDescriptor = myCellModel.titleSelectedFont.fontDescriptor;
+        pointSize = myCellModel.titleSelectedFont.pointSize;
+    }
     if (myCellModel.titleLabelZoomEnabled) {
-        self.titleLabel.transform = CGAffineTransformMakeScale(myCellModel.titleLabelZoomScale, myCellModel.titleLabelZoomScale);
-        self.maskTitleLabel.transform = CGAffineTransformMakeScale(myCellModel.titleLabelZoomScale, myCellModel.titleLabelZoomScale);
+        self.titleLabel.font = [UIFont fontWithDescriptor:fontDescriptor size:pointSize*myCellModel.titleLabelZoomScale];
+        self.maskTitleLabel.font = [UIFont fontWithDescriptor:fontDescriptor size:pointSize*myCellModel.titleLabelZoomScale];
     }else {
-        self.titleLabel.transform = CGAffineTransformIdentity;
-        self.maskTitleLabel.transform = CGAffineTransformIdentity;
+        self.titleLabel.font = [UIFont fontWithDescriptor:fontDescriptor size:pointSize];
+        self.maskTitleLabel.font = [UIFont fontWithDescriptor:fontDescriptor size:pointSize];
     }
 
     self.maskTitleLabel.hidden = !myCellModel.titleLabelMaskEnabled;

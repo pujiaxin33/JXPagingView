@@ -42,6 +42,15 @@
  */
 - (void)categoryView:(JXCategoryBaseView *)categoryView didScrollSelectedItemAtIndex:(NSInteger)index;
 
+
+/**
+  因为用户点击，contentScrollView即将过渡到目标index的配置。内部默认实现`[self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:YES];`。如果实现该代理方法，以自定义实现为准。比如将animated设置为NO，点击切换时无需滚动效果。类似于今日头条APP。
+
+ @param categoryView categoryView description
+ @param index index description
+ */
+- (void)categoryView:(JXCategoryBaseView *)categoryView contentScrollViewTransitionToIndex:(NSInteger)index;
+
 /**
  正在滚动中的回调
 
@@ -68,13 +77,17 @@
 
 @property (nonatomic, assign, readonly) NSInteger selectedIndex;
 
+@property (nonatomic, assign) CGFloat contentEdgeInsetLeft;     //整体内容的左边距，默认JXCategoryViewAutomaticDimension（等于cellSpacing）
+
+@property (nonatomic, assign) CGFloat contentEdgeInsetRight;    //整体内容的右边距，默认JXCategoryViewAutomaticDimension（等于cellSpacing）
+
 @property (nonatomic, assign) CGFloat cellWidth;    //默认JXCategoryViewAutomaticDimension
 
 @property (nonatomic, assign) CGFloat cellWidthIncrement;    //cell宽度补偿。默认：0
 
 @property (nonatomic, assign) CGFloat cellSpacing;    //cell之间的间距，默认20
 
-@property (nonatomic, assign) BOOL averageCellWidthEnabled;     //当cell内容总宽度小于JXCategoryBaseView的宽度，是否将cellWidth均分。默认为YES。
+@property (nonatomic, assign) BOOL averageCellSpacingEnabled;     //当item内容总宽度小于JXCategoryBaseView的宽度，是否将cellSpacing均分。默认为YES。
 
 //----------------------cellWidthZoomEnabled-----------------------//
 //cell宽度的缩放主要是为了腾讯视频效果打造的，一般情况下慎用，不太好控制。
@@ -89,19 +102,19 @@
 
  @param index 目标index
  */
-- (void)selectItemWithIndex:(NSUInteger)index;
+- (void)selectItemAtIndex:(NSInteger)index;
 
 /**
  初始化的时候无需调用。初始化之后更新其他配置属性，需要调用该方法，进行刷新。
  */
-- (void)reloadDatas;
+- (void)reloadData;
 
 /**
  刷新指定的index的cell
 
  @param index 指定cell的index
  */
-- (void)reloadCell:(NSUInteger)index;
+- (void)reloadCellAtIndex:(NSInteger)index;
 
 #pragma mark - Subclass use
 
@@ -109,17 +122,17 @@
 
 #pragma mark - Subclass Override
 
-- (void)initializeDatas NS_REQUIRES_SUPER;
+- (void)initializeData NS_REQUIRES_SUPER;
 
 - (void)initializeViews NS_REQUIRES_SUPER;
 
 /**
- reloadDatas方法调用，重新生成数据源赋值到self.dataSource
+ reloadData方法调用，重新生成数据源赋值到self.dataSource
  */
 - (void)refreshDataSource;
 
 /**
- reloadDatas方法调用，根据数据源重新刷新状态；
+ reloadData方法调用，根据数据源重新刷新状态；
  */
 - (void)refreshState NS_REQUIRES_SUPER;
 
@@ -140,13 +153,13 @@
 
 
 /**
- 该方法用于子类重载，如果外部要选中某个index，请使用`- (void)selectItemWithIndex:(NSUInteger)index;`
+ 该方法用于子类重载，如果外部要选中某个index，请使用`- (void)selectItemAtIndex:(NSUInteger)index;`
  点击某一个item，或者contentScrollView滚动到某一个item的时候调用。根据selectIndex刷新选中状态。
 
  @param index 选中的index
  @return 返回值为NO，表示触发内部某些判断（点击了同一个cell），子类无需后续操作。
  */
-- (BOOL)selectCellWithIndex:(NSInteger)index NS_REQUIRES_SUPER;
+- (BOOL)selectCellAtIndex:(NSInteger)index NS_REQUIRES_SUPER;
 
 /**
  reloadData时，返回每个cell的宽度
@@ -154,7 +167,7 @@
  @param index 目标index
  @return cellWidth
  */
-- (CGFloat)preferredCellWidthWithIndex:(NSInteger)index;
+- (CGFloat)preferredCellWidthAtIndex:(NSInteger)index;
 
 
 /**

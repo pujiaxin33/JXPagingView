@@ -9,9 +9,20 @@
 #import "JXCategoryBaseView.h"
 #import "JXCategoryFactory.h"
 
+struct DelegateFlags {
+    unsigned int didSelectedItemAtIndexFlag : 1;
+    unsigned int didClickSelectedItemAtIndexFlag : 1;
+    unsigned int didScrollSelectedItemAtIndexFlag : 1;
+    unsigned int contentScrollViewTransitionToIndexFlag : 1;
+    unsigned int scrollingFromLeftIndexToRightIndexFlag : 1;
+};
+
 @interface JXCategoryBaseView () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
+@property (nonatomic, assign) struct DelegateFlags delegateFlags;
 @property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, assign) CGFloat innerCellSpacing;
+@property (nonatomic, assign) CGPoint lastContentViewContentOffset;
 
 @end
 
@@ -28,7 +39,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self initializeDatas];
+        [self initializeData];
         [self initializeViews];
     }
     return self;
@@ -38,23 +49,36 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        [self initializeDatas];
+        [self initializeData];
         [self initializeViews];
     }
     return self;
 }
 
-- (void)initializeDatas
+- (void)setDelegate:(id<JXCategoryViewDelegate>)delegate {
+    _delegate = delegate;
+
+    _delegateFlags.didSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didSelectedItemAtIndex:)];
+    _delegateFlags.didClickSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didClickSelectedItemAtIndex:)];
+    _delegateFlags.didScrollSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didScrollSelectedItemAtIndex:)];
+    _delegateFlags.contentScrollViewTransitionToIndexFlag = [delegate respondsToSelector:@selector(categoryView:contentScrollViewTransitionToIndex:)];
+    _delegateFlags.scrollingFromLeftIndexToRightIndexFlag = [delegate respondsToSelector:@selector(categoryView:scrollingFromLeftIndex:toRightIndex:ratio:)];
+}
+
+- (void)initializeData
 {
     _dataSource = [NSMutableArray array];
     _selectedIndex = 0;
     _cellWidth = JXCategoryViewAutomaticDimension;
     _cellWidthIncrement = 0;
     _cellSpacing = 20;
-    _averageCellWidthEnabled = YES;
+    _averageCellSpacingEnabled = YES;
     _cellWidthZoomEnabled = NO;
     _cellWidthZoomScale = 1.2;
     _cellWidthZoomScrollGradientEnabled = YES;
+    _contentEdgeInsetLeft = JXCategoryViewAutomaticDimension;
+    _contentEdgeInsetRight = JXCategoryViewAutomaticDimension;
+    _lastContentViewContentOffset = CGPointZero;
 }
 
 - (void)initializeViews
@@ -85,32 +109,32 @@
 - (void)setContentScrollView:(UIScrollView *)contentScrollView
 {
     if (_contentScrollView != nil) {
-        [_collectionView removeObserver:self forKeyPath:@"contentOffset"];
+        [_contentScrollView removeObserver:self forKeyPath:@"contentOffset"];
     }
     _contentScrollView = contentScrollView;
 
     [contentScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
 }
 
-- (void)reloadDatas {
+- (void)reloadData {
     [self refreshDataSource];
     [self refreshState];
     [self.collectionView.collectionViewLayout invalidateLayout];
     [self.collectionView reloadData];
 }
 
-- (void)reloadCell:(NSUInteger)index {
+- (void)reloadCellAtIndex:(NSInteger)index {
     if (index >= self.dataSource.count) {
         return;
     }
     JXCategoryBaseCellModel *cellModel = self.dataSource[index];
     [self refreshCellModel:cellModel index:index];
     JXCategoryBaseCell *cell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-    [cell reloadDatas:cellModel];
+    [cell reloadData:cellModel];
 }
 
-- (void)selectItemWithIndex:(NSUInteger)index {
-    [self selectCellWithIndex:index];
+- (void)selectItemAtIndex:(NSInteger)index {
+    [self selectCellAtIndex:index];
 }
 
 
@@ -118,7 +142,7 @@
 {
     [super layoutSubviews];
 
-    [self reloadDatas];
+    [self reloadData];
 }
 
 #pragma mark - Subclass Override
@@ -132,15 +156,22 @@
         self.selectedIndex = 0;
     }
 
-    CGFloat totalItemWidth = self.cellSpacing;
+    self.innerCellSpacing = self.cellSpacing;
+    __block CGFloat totalItemWidth = [self getContentEdgeInsetLeft];
+    CGFloat totalCellWidth = 0;
     for (int i = 0; i < self.dataSource.count; i++) {
         JXCategoryBaseCellModel *cellModel = self.dataSource[i];
         cellModel.index = i;
-        cellModel.cellWidth = [self preferredCellWidthWithIndex:i] + self.cellWidthIncrement;
+        cellModel.cellWidth = [self preferredCellWidthAtIndex:i] + self.cellWidthIncrement;
+        totalCellWidth += cellModel.cellWidth;
         cellModel.cellWidthZoomEnabled = self.cellWidthZoomEnabled;
         cellModel.cellWidthZoomScale = 1.0;
         cellModel.cellSpacing = self.cellSpacing;
-        totalItemWidth += cellModel.cellWidth + self.cellSpacing;
+        if (i == self.dataSource.count - 1) {
+            totalItemWidth += cellModel.cellWidth + [self getContentEdgeInsetRight];
+        }else {
+            totalItemWidth += cellModel.cellWidth + self.cellSpacing;
+        }
         if (i == self.selectedIndex) {
             cellModel.selected = YES;
             cellModel.cellWidthZoomScale = self.cellWidthZoomScale;
@@ -150,47 +181,71 @@
         [self refreshCellModel:cellModel index:i];
     }
 
-    if (self.averageCellWidthEnabled && totalItemWidth < self.bounds.size.width) {
+    if (self.averageCellSpacingEnabled && totalItemWidth < self.bounds.size.width) {
         //如果总的内容宽度都没有超过视图度，就将cellWidth等分
-        CGFloat cellWidth = 0;
-        if (self.dataSource.count > 0) {
-            cellWidth = (self.bounds.size.width - (self.dataSource.count + 1)*self.cellSpacing)/self.dataSource.count;
+        NSInteger cellSpacingItemCount = self.dataSource.count - 1;
+        CGFloat totalCellSpacingWidth = self.bounds.size.width - totalCellWidth;
+        //如果内容左边距是Automatic，就加1
+        if (self.contentEdgeInsetLeft == JXCategoryViewAutomaticDimension) {
+            cellSpacingItemCount += 1;
+        }else {
+            totalCellSpacingWidth -= self.contentEdgeInsetLeft;
         }
+        //如果内容右边距是Automatic，就加1
+        if (self.contentEdgeInsetRight == JXCategoryViewAutomaticDimension) {
+            cellSpacingItemCount += 1;
+        }else {
+            totalCellSpacingWidth -= self.contentEdgeInsetRight;
+        }
+
+        CGFloat cellSpacing = 0;
+        if (cellSpacingItemCount > 0) {
+            cellSpacing = totalCellSpacingWidth/cellSpacingItemCount;
+        }
+        self.innerCellSpacing = cellSpacing;
         [self.dataSource enumerateObjectsUsingBlock:^(JXCategoryBaseCellModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            obj.cellWidth = cellWidth;
+            obj.cellSpacing = cellSpacing;
         }];
     }
 
-    __block CGFloat frameXOfSelectedCell = self.cellSpacing;
+    __block CGFloat frameXOfSelectedCell = self.innerCellSpacing;
     __block CGFloat selectedCellWidth = 0;
-    __block CGFloat totalCellWidth = self.cellSpacing;
+    totalItemWidth = self.innerCellSpacing;
     [self.dataSource enumerateObjectsUsingBlock:^(JXCategoryBaseCellModel * cellModel, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx < self.selectedIndex) {
-            frameXOfSelectedCell += cellModel.cellWidth + self.cellSpacing;
+            frameXOfSelectedCell += cellModel.cellWidth + self.innerCellSpacing;
         }else if (idx == self.selectedIndex) {
             selectedCellWidth = cellModel.cellWidth;
         }
-        totalCellWidth += cellModel.cellWidth + self.cellSpacing;
+        totalItemWidth += cellModel.cellWidth + self.innerCellSpacing;
     }];
 
     CGFloat minX = 0;
-    CGFloat maxX = totalCellWidth - self.bounds.size.width;
+    CGFloat maxX = totalItemWidth - self.bounds.size.width;
     CGFloat targetX = frameXOfSelectedCell - self.bounds.size.width/2.0 + selectedCellWidth/2.0;
     [self.collectionView setContentOffset:CGPointMake(MAX(MIN(maxX, targetX), minX), 0) animated:NO];
 
+    if (CGRectEqualToRect(self.contentScrollView.frame, CGRectZero) && self.contentScrollView.superview != nil) {
+        //某些情况、系统会出现JXCategoryView先布局，contentScrollView后布局。就会导致下面指定defaultSelectedIndex失效，所以发现frame为zero时，强行触发布局。
+        [self.contentScrollView.superview setNeedsLayout];
+        [self.contentScrollView.superview layoutIfNeeded];
+    }
     [self.contentScrollView setContentOffset:CGPointMake(self.selectedIndex*self.contentScrollView.bounds.size.width, 0) animated:NO];
 }
 
-- (BOOL)selectCellWithIndex:(NSInteger)targetIndex {
+- (BOOL)selectCellAtIndex:(NSInteger)targetIndex {
+    return [self _selectCellAtIndex:targetIndex handleContentScrollView:YES];
+}
+
+- (BOOL)_selectCellAtIndex:(NSInteger)targetIndex handleContentScrollView:(BOOL)handleContentScrollView{
     if (targetIndex >= self.dataSource.count) {
         return NO;
     }
 
-    if (self.delegate && [self.delegate respondsToSelector:@selector(categoryView:didSelectedItemAtIndex:)]) {
-        [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
-    }
-
-    if (targetIndex == self.selectedIndex) {
+    if (self.selectedIndex == targetIndex) {
+        if (self.delegateFlags.didSelectedItemAtIndexFlag) {
+            [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
+        }
         return NO;
     }
 
@@ -199,10 +254,10 @@
     [self refreshSelectedCellModel:selectedCellModel unselectedCellModel:lastCellModel];
 
     JXCategoryBaseCell *lastCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.selectedIndex inSection:0]];
-    [lastCell reloadDatas:lastCellModel];
+    [lastCell reloadData:lastCellModel];
 
     JXCategoryBaseCell *selectedCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0]];
-    [selectedCell reloadDatas:selectedCellModel];
+    [selectedCell reloadData:selectedCellModel];
 
     if (self.cellWidthZoomEnabled) {
         [self.collectionView.collectionViewLayout invalidateLayout];
@@ -215,9 +270,18 @@
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }
 
-    [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:YES];
+    if (handleContentScrollView) {
+        if (self.delegateFlags.contentScrollViewTransitionToIndexFlag) {
+            [self.delegate categoryView:self contentScrollViewTransitionToIndex:targetIndex];
+        }else {
+            [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:YES];
+        }
+    }
 
     self.selectedIndex = targetIndex;
+    if (self.delegateFlags.didSelectedItemAtIndexFlag) {
+        [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
+    }
 
     return YES;
 }
@@ -236,14 +300,37 @@
         //超过了边界，不需要处理
         return;
     }
+    if (contentOffset.x == 0 && self.selectedIndex == 0 && self.lastContentViewContentOffset.x == 0) {
+        //滚动到了最左边，且已经选中了第一个，且之前的contentOffset.x为0
+        return;
+    }
+    CGFloat maxContentOffsetX = self.contentScrollView.contentSize.width - self.contentScrollView.bounds.size.width;
+    if (contentOffset.x == maxContentOffsetX && self.selectedIndex == self.dataSource.count - 1 && self.lastContentViewContentOffset.x == maxContentOffsetX) {
+        //滚动到了最右边，且已经选中了最后一个，且之前的contentOffset.x为maxContentOffsetX
+        return;
+    }
     ratio = MAX(0, MIN(self.dataSource.count - 1, ratio));
     NSInteger baseIndex = floorf(ratio);
     CGFloat remainderRatio = ratio - baseIndex;
 
     if (remainderRatio == 0) {
-        //连续滑动翻页，需要更新选中状态
-        [self scrollSelectItemWithIndex:baseIndex];
+        //滑动翻页，需要更新选中状态
+        //滑动一小段距离，然后放开回到原位，contentOffset同样的值会回调多次。例如在index为1的情况，滑动放开回到原位，contentOffset会多次回调CGPoint(width, 0)
+        if (!(self.lastContentViewContentOffset.x == contentOffset.x && self.selectedIndex == baseIndex)) {
+            [self scrollselectItemAtIndex:baseIndex];
+        }
     }else {
+        //快速滑动翻页，当remainderRatio没有变成0，但是已经翻页了，需要通过下面的判断，触发选中
+        if (fabs(ratio - self.selectedIndex) > 1) {
+            NSInteger targetIndex = baseIndex;
+            if (ratio < self.selectedIndex) {
+                targetIndex = baseIndex + 1;
+            }
+            if (self.delegateFlags.didScrollSelectedItemAtIndexFlag) {
+                [self.delegate categoryView:self didScrollSelectedItemAtIndex:targetIndex];
+            }
+            [self _selectCellAtIndex:targetIndex handleContentScrollView:NO];
+        }
         if (self.cellWidthZoomEnabled && self.cellWidthZoomScrollGradientEnabled) {
             JXCategoryBaseCellModel *leftCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex];
             JXCategoryBaseCellModel *rightCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex + 1];
@@ -251,10 +338,15 @@
             rightCellModel.cellWidthZoomScale = [JXCategoryFactory interpolationFrom:1.0 to:self.cellWidthZoomScale percent:remainderRatio];
             [self.collectionView.collectionViewLayout invalidateLayout];
         }
+
+        if (self.delegateFlags.scrollingFromLeftIndexToRightIndexFlag) {
+            [self.delegate categoryView:self scrollingFromLeftIndex:baseIndex toRightIndex:baseIndex + 1 ratio:remainderRatio];
+        }
     }
+    self.lastContentViewContentOffset = contentOffset;
 }
 
-- (CGFloat)preferredCellWidthWithIndex:(NSInteger)index {
+- (CGFloat)preferredCellWidthAtIndex:(NSInteger)index {
     return 0;
 }
 
@@ -282,17 +374,17 @@
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     JXCategoryBaseCell *categoryCell = (JXCategoryBaseCell *)cell;
-    [categoryCell reloadDatas:self.dataSource[indexPath.item]];
+    [categoryCell reloadData:self.dataSource[indexPath.item]];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self clickSelectItemWithIndex:indexPath.row];
+    [self clickselectItemAtIndex:indexPath.row];
 }
 
 #pragma mark - <UICollectionViewDelegateFlowLayout>
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, self.cellSpacing, 0, self.cellSpacing);
+    return UIEdgeInsetsMake(0, [self getContentEdgeInsetLeft], 0, [self getContentEdgeInsetRight]);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -302,11 +394,11 @@
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return self.cellSpacing;
+    return self.innerCellSpacing;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return self.cellSpacing;
+    return self.innerCellSpacing;
 }
 
 #pragma mark - KVO
@@ -324,10 +416,10 @@
 
 - (CGRect)getTargetCellFrame:(NSInteger)targetIndex
 {
-    CGFloat x = self.cellSpacing;
+    CGFloat x = [self getContentEdgeInsetLeft];
     for (int i = 0; i < targetIndex; i ++) {
         JXCategoryBaseCellModel *cellModel = self.dataSource[i];
-        x += cellModel.cellWidth + self.cellSpacing;
+        x += cellModel.cellWidth + self.innerCellSpacing;
     }
     CGFloat width = self.dataSource[targetIndex].cellWidth;
     return CGRectMake(x, 0, width, self.bounds.size.height);
@@ -335,20 +427,34 @@
 
 #pragma mark - Private
 
-- (void)clickSelectItemWithIndex:(NSInteger)index {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(categoryView:didClickSelectedItemAtIndex:)]) {
+- (CGFloat)getContentEdgeInsetLeft {
+    if (self.contentEdgeInsetLeft == JXCategoryViewAutomaticDimension) {
+        return self.innerCellSpacing;
+    }
+    return self.contentEdgeInsetLeft;
+}
+
+- (CGFloat)getContentEdgeInsetRight {
+    if (self.contentEdgeInsetRight == JXCategoryViewAutomaticDimension) {
+        return self.innerCellSpacing;
+    }
+    return self.contentEdgeInsetRight;
+}
+
+- (void)clickselectItemAtIndex:(NSInteger)index {
+    if (self.delegateFlags.didClickSelectedItemAtIndexFlag) {
         [self.delegate categoryView:self didClickSelectedItemAtIndex:index];
     }
 
-    [self selectCellWithIndex:index];
+    [self selectCellAtIndex:index];
 }
 
-- (void)scrollSelectItemWithIndex:(NSInteger)index {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(categoryView:didScrollSelectedItemAtIndex:)]) {
+- (void)scrollselectItemAtIndex:(NSInteger)index {
+    if (self.delegateFlags.didScrollSelectedItemAtIndexFlag) {
         [self.delegate categoryView:self didScrollSelectedItemAtIndex:index];
     }
 
-    [self selectCellWithIndex:index];
+    [self selectCellAtIndex:index];
 }
 
 @end

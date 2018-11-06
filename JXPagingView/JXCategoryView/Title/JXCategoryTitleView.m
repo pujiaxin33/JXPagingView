@@ -15,19 +15,25 @@
 
 @implementation JXCategoryTitleView
 
-- (void)initializeDatas
+- (void)initializeData
 {
-    [super initializeDatas];
+    [super initializeData];
 
     _titleLabelZoomEnabled = NO;
     _titleLabelZoomScale = 1.2;
-    _titleLabelZoomEnabled = YES;
     _titleColor = [UIColor blackColor];
     _titleSelectedColor = [UIColor redColor];
     _titleFont = [UIFont systemFontOfSize:15];
     _titleColorGradientEnabled = NO;
     _titleLabelMaskEnabled = NO;
     _titleLabelZoomScrollGradientEnabled = YES;
+}
+
+- (UIFont *)titleSelectedFont {
+    if (_titleSelectedFont != nil) {
+        return _titleSelectedFont;
+    }
+    return self.titleFont;
 }
 
 #pragma mark - Override
@@ -89,7 +95,7 @@
     }
 }
 
-- (CGFloat)preferredCellWidthWithIndex:(NSInteger)index {
+- (CGFloat)preferredCellWidthAtIndex:(NSInteger)index {
     if (self.cellWidth == JXCategoryViewAutomaticDimension) {
         return ceilf([self.titles[index] boundingRectWithSize:CGSizeMake(MAXFLOAT, self.bounds.size.height) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName : self.titleFont} context:nil].size.width);
     }else {
@@ -102,6 +108,7 @@
 
     JXCategoryTitleCellModel *model = (JXCategoryTitleCellModel *)cellModel;
     model.titleFont = self.titleFont;
+    model.titleSelectedFont = self.titleSelectedFont;
     model.titleColor = self.titleColor;
     model.titleSelectedColor = self.titleSelectedColor;
     model.title = self.titles[index];

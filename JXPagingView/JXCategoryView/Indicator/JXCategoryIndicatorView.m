@@ -18,8 +18,8 @@
 
 @implementation JXCategoryIndicatorView
 
-- (void)initializeDatas {
-    [super initializeDatas];
+- (void)initializeData {
+    [super initializeData];
 
     _separatorLineShowEnabled = NO;
     _separatorLineColor = [UIColor lightGrayColor];
@@ -72,11 +72,17 @@
     }
 
     for (UIView<JXCategoryIndicatorProtocol> *component in self.indicators) {
-        [component jx_refreshState:selectedCellFrame];
-        if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
-            CGRect maskFrame = component.frame;
-            maskFrame.origin.x = maskFrame.origin.x - selectedCellFrame.origin.x;
-            selectedCellModel.backgroundViewMaskFrame = maskFrame;
+        if (self.dataSource.count <= 0) {
+            component.hidden = YES;
+        }else {
+            component.hidden = NO;
+            [component jx_refreshState:selectedCellFrame];
+
+            if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
+                CGRect maskFrame = component.frame;
+                maskFrame.origin.x = maskFrame.origin.x - selectedCellFrame.origin.x;
+                selectedCellModel.backgroundViewMaskFrame = maskFrame;
+            }
         }
     }
 }
@@ -126,10 +132,6 @@
         JXCategoryIndicatorCellModel *rightCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[baseIndex + 1];
         [self refreshLeftCellModel:leftCellModel rightCellModel:rightCellModel ratio:remainderRatio];
 
-        if ([self.delegate respondsToSelector:@selector(categoryView:scrollingFromLeftIndex:toRightIndex:ratio:)]) {
-            [self.delegate categoryView:self scrollingFromLeftIndex:baseIndex toRightIndex:baseIndex + 1 ratio:remainderRatio];
-        }
-
         for (UIView<JXCategoryIndicatorProtocol> *component in self.indicators) {
             [component jx_contentScrollViewDidScrollWithLeftCellFrame:leftCellFrame rightCellFrame:rightCellFrame selectedPosition:position percent:remainderRatio];
             if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
@@ -144,19 +146,19 @@
         }
 
         JXCategoryBaseCell *leftCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:baseIndex inSection:0]];
-        [leftCell reloadDatas:leftCellModel];
+        [leftCell reloadData:leftCellModel];
         JXCategoryBaseCell *rightCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:baseIndex + 1 inSection:0]];
-        [rightCell reloadDatas:rightCellModel];
+        [rightCell reloadData:rightCellModel];
     }
 }
 
-- (BOOL)selectCellWithIndex:(NSInteger)index {
+- (BOOL)selectCellAtIndex:(NSInteger)index {
     //是否点击了相对于选中cell左边的cell
     JXCategoryCellClickedPosition clickedPosition = JXCategoryCellClickedPosition_Left;
     if (index > self.selectedIndex) {
         clickedPosition = JXCategoryCellClickedPosition_Right;
     }
-    BOOL result = [super selectCellWithIndex:index];
+    BOOL result = [super selectCellAtIndex:index];
     if (!result) {
         return NO;
     }
@@ -174,7 +176,7 @@
     }
 
     JXCategoryIndicatorCell *selectedCell = (JXCategoryIndicatorCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-    [selectedCell reloadDatas:selectedCellModel];
+    [selectedCell reloadData:selectedCellModel];
 
     return YES;
 }

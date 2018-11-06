@@ -28,6 +28,7 @@
 
     JXCategoryTitleImageCellModel *myCellModel = (JXCategoryTitleImageCellModel *)self.cellModel;
     self.titleLabel.hidden = NO;
+    self.imageView.hidden = NO;
     CGSize imageSize = myCellModel.imageSize;
     self.imageView.bounds = CGRectMake(0, 0, imageSize.width, imageSize.height);
     switch (myCellModel.imageType) {
@@ -64,13 +65,27 @@
         }
             break;
 
+        case JXCategoryTitleImageType_OnlyImage:
+        {
+            self.titleLabel.hidden = YES;
+            self.imageView.center = self.contentView.center;
+        }
+            break;
+
+        case JXCategoryTitleImageType_OnlyTitle:
+        {
+            self.imageView.hidden = YES;
+            self.titleLabel.center = self.contentView.center;
+        }
+            break;
+
         default:
             break;
     }
 }
 
-- (void)reloadDatas:(JXCategoryBaseCellModel *)cellModel {
-    [super reloadDatas:cellModel];
+- (void)reloadData:(JXCategoryBaseCellModel *)cellModel {
+    [super reloadData:cellModel];
 
     JXCategoryTitleImageCellModel *myCellModel = (JXCategoryTitleImageCellModel *)cellModel;
     if (myCellModel.imageName != nil) {
