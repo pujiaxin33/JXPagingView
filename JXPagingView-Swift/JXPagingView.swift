@@ -166,7 +166,8 @@ open class JXPagingView: UIView {
     func configListViewDidScrollCallback() {
         let listViews = self.delegate.listViews(in: self)
         for listView in listViews {
-            listView.listViewDidScrollCallback {[weak self] (scrollView) in
+            listView.listViewDidScrollCallback {[weak self, weak listView] (scrollView) in
+                self?.currentListView = listView
                 self?.listViewDidScroll(scrollView: scrollView)
             }
         }

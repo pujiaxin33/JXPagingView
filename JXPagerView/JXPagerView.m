@@ -104,10 +104,11 @@
 
 - (void)configListViewDidScrollCallback {
     NSArray *listViews = [self.delegate listViewsInPagerView:self];
+    __weak typeof(self)weakSelf = self;
     for (id<JXPagerViewListViewDelegate> listView in listViews) {
-        __weak typeof(self)weakSelf = self;
+        __weak typeof(id<JXPagerViewListViewDelegate>) weakListView = listView;
         [listView listViewDidScrollCallback:^(UIScrollView *scrollView) {
-            weakSelf.currentListView = listView;
+            weakSelf.currentListView = weakListView;
             [weakSelf listViewDidScroll:scrollView];
         }];
     }
