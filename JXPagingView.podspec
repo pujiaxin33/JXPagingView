@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "JXPagingView"
-  s.version      = "0.1.5"
+  s.version      = "0.1.6"
   s.summary      = "类似微博主页、简书主页等效果。多页面嵌套，既可以上下滑动，也可以左右滑动切换页面。支持HeaderView悬浮、支持下拉刷新、上拉加载更多。"
   s.homepage     = "https://github.com/pujiaxin33/JXPagingView"
   s.author       = { "pujiaxin33" => "317437084@qq.com" }
