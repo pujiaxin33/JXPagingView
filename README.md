@@ -10,6 +10,7 @@
 - 封装性更好，不用关心内部实现，只需要实现对应delegate方法即可；
 - 支持像使用普通UITableView一样，添加首页下拉刷新功能；
 - 支持列表视图添加下拉刷新、上拉加载更多；
+- 下方列表视图支持UIView或UIViewController，只要遵从`JXPagingViewListViewDelegate`协议即可；
 
 ## 预览
 
