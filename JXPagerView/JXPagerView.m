@@ -58,6 +58,7 @@
     self.currentListView = nil;
     self.currentScrollingListView = nil;
     [self configListViewDidScrollCallback];
+    self.mainTableView.tableHeaderView = [self.delegate tableHeaderViewInPagerView:self];
     [self.mainTableView reloadData];
     [self.listContainerView reloadData];
 }

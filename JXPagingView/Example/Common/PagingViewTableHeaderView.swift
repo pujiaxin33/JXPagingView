@@ -17,8 +17,8 @@ class PagingViewTableHeaderView: UIView {
 
         imageView = UIImageView(image: UIImage(named: "lufei.jpg"))
         imageView.clipsToBounds = true
-        imageView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         imageView.contentMode = .scaleAspectFill
+        imageView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         self.addSubview(imageView)
 
         imageViewFrame = imageView.frame
@@ -27,6 +27,7 @@ class PagingViewTableHeaderView: UIView {
         label.font = UIFont.systemFont(ofSize: 20)
         label.text = "Monkey·D·路飞"
         label.textColor = UIColor.red
+        label.autoresizingMask = AutoresizingMask(rawValue: AutoresizingMask.flexibleRightMargin.rawValue | AutoresizingMask.flexibleTopMargin.rawValue)
         self.addSubview(label)
     }
 

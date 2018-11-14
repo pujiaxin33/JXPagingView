@@ -8,8 +8,6 @@
 
 import UIKit
 
-let JXTableHeaderViewHeight: Int = 200
-let JXheightForHeaderInSection: Int = 50
 
 class BaseViewController: UIViewController {
     var pagingView: JXPagingView!
@@ -19,6 +17,8 @@ class BaseViewController: UIViewController {
     var listViewArray: [JXPagingViewListViewDelegate]!
     var titles = ["能力", "爱好", "队友"]
     weak var nestContentScrollView: UIScrollView?    //嵌套demo使用
+    var JXTableHeaderViewHeight: Int = 200
+    var JXheightForHeaderInSection: Int = 50
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -16,6 +16,8 @@ class CollectionViewViewController: UIViewController {
     var categoryView: JXCategoryTitleView!
     var listViewArray: [TestListCollectionView]!
     var titles = ["能力", "爱好", "队友"]
+    var JXTableHeaderViewHeight: Int = 200
+    var JXheightForHeaderInSection: Int = 50
 
     override func viewDidLoad() {
         super.viewDidLoad()

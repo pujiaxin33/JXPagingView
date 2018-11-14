@@ -124,6 +124,7 @@ open class JXPagingView: UIView {
         self.currentListView = nil
         self.currentScrollingListView = nil
         configListViewDidScrollCallback()
+        self.mainTableView.tableHeaderView = self.delegate.tableHeaderView(in: self)
         self.mainTableView.reloadData()
         self.listContainerView.reloadData()
     }

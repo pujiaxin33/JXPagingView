@@ -167,6 +167,27 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="65" id="Q8n-QA-rF5">
+                                        <rect key="frame" x="0.0" y="455" width="375" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q8n-QA-rF5" id="CCP-9d-IgR">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="64.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HeaderView高度改变示例" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwo-XB-ixh">
+                                                    <rect key="frame" x="16" y="22" width="197" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hwo-XB-ixh" firstAttribute="centerY" secondItem="CCP-9d-IgR" secondAttribute="centerY" id="1pQ-Ba-bQd"/>
+                                                <constraint firstItem="hwo-XB-ixh" firstAttribute="leading" secondItem="CCP-9d-IgR" secondAttribute="leading" constant="16" id="hAj-F7-NOn"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hwo-XB-ixh" secondAttribute="trailing" constant="20" symbolic="YES" id="jQ7-Ey-XBW"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
