@@ -120,6 +120,10 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
         self.delegate.listContainerView(self, willDisplayCellAt: indexPath.item)
     }
 
+    public func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.mainTableView?.isScrollEnabled = true
     }

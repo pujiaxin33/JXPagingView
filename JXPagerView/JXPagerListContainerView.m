@@ -72,6 +72,10 @@
     [self.delegate listContainerView:self willDisplayCellAtRow:indexPath.item];
 }
 
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    return false;
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     self.mainTableView.scrollEnabled = YES;
 }
