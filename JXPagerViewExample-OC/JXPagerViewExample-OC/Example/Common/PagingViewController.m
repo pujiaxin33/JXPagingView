@@ -21,7 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"个人中心";
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = false;
     _titles = @[@"能力", @"爱好", @"队友"];

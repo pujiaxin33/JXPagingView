@@ -37,30 +37,35 @@
         case 0:
         {
             ZoomViewController *vc = [[ZoomViewController alloc] init];
+            vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 1:
         {
             RefreshViewController *vc = [[RefreshViewController alloc] init];
+            vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 2:
         {
             ListRefreshViewController *vc = [[ListRefreshViewController alloc] init];
+            vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 3:
         {
             NaviBarHiddenViewController *vc = [[NaviBarHiddenViewController alloc] init];
+            vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 4:
         {
             NestViewController *vc = [[NestViewController alloc] init];
+            vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
