@@ -16,5 +16,8 @@
 @property (nonatomic, strong) NSMutableArray <NSString *> *dataSource;
 @property (nonatomic, assign) BOOL isNeedFooter;
 @property (nonatomic, assign) BOOL isNeedHeader;
+@property (nonatomic, assign) BOOL isHeaderRefreshed;   //默认为YES
+
+- (void)beginFirstRefresh;
 
 @end

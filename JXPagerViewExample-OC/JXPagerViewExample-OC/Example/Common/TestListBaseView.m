@@ -26,6 +26,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _isHeaderRefreshed = YES;
+        
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height) style:UITableViewStylePlain];
         self.tableView.backgroundColor = [UIColor whiteColor];
         self.tableView.tableFooterView = [UIView new];
@@ -43,29 +45,55 @@
     self.tableView.frame = self.bounds;
 }
 
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-    [super willMoveToSuperview:newSuperview];
+- (void)setIsNeedHeader:(BOOL)isNeedHeader {
+    _isNeedHeader = isNeedHeader;
 
-    if (newSuperview != nil) {
-        __weak typeof(self)weakSelf = self;
-        if (self.isNeedHeader) {
-            self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [weakSelf.tableView.mj_header endRefreshing];
-                });
-            }];
-        }
-
-        if (self.isNeedFooter) {
-            self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [weakSelf.dataSource addObject:@"加载更多成功"];
-                    [weakSelf.tableView reloadData];
-                    [weakSelf.tableView.mj_footer endRefreshing];
-                });
-            }];
-        }
+    __weak typeof(self)weakSelf = self;
+    if (self.isNeedHeader) {
+        self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf.tableView.mj_header endRefreshing];
+            });
+        }];
+    }else {
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_header removeFromSuperview];
+        self.tableView.mj_header = nil;
     }
+}
+
+- (void)setIsNeedFooter:(BOOL)isNeedFooter {
+    _isNeedFooter = isNeedFooter;
+
+    __weak typeof(self)weakSelf = self;
+    if (self.isNeedFooter) {
+        self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf.dataSource addObject:@"加载更多成功"];
+                [weakSelf.tableView reloadData];
+                [weakSelf.tableView.mj_footer endRefreshing];
+            });
+        }];
+    }else {
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView.mj_footer removeFromSuperview];
+        self.tableView.mj_footer = nil;
+    }
+}
+
+- (void)beginFirstRefresh {
+    if (!self.isHeaderRefreshed) {
+        [self beginRefreshImmediately];
+    }
+}
+
+- (void)beginRefreshImmediately {
+    [self.tableView.mj_header beginRefreshing];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.isHeaderRefreshed = YES;
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+    });
 }
 
 - (void)selectCellAtIndexPath:(NSIndexPath *)indexPath {
@@ -84,6 +112,9 @@
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (!self.isHeaderRefreshed) {
+        return 0;
+    }
     return self.dataSource.count;
 }
 

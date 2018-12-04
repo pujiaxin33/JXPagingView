@@ -8,6 +8,7 @@
 
 #import "ListRefreshViewController.h"
 #import "JXPagerListRefreshView.h"
+#import "JXCategoryView.h"
 
 @interface ListRefreshViewController ()
 
@@ -20,12 +21,21 @@
 
     for (TestListBaseView *listView in self.listViewArray) {
         listView.isNeedHeader = YES;
+        listView.isHeaderRefreshed = NO;
     }
 
+    [self.listViewArray.firstObject beginFirstRefresh];
 }
 
 - (JXPagerView *)preferredPagingView {
     return [[JXPagerListRefreshView alloc] initWithDelegate:self];
+}
+
+#pragma mark - JXCategoryViewDelegate
+
+- (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index {
+    self.navigationController.interactivePopGestureRecognizer.enabled = (index == 0);
+    [self.listViewArray[index] beginFirstRefresh];
 }
 
 
