@@ -77,6 +77,11 @@ open class JXPagingView: UIView {
     public unowned let delegate: JXPagingViewDelegate
     open var mainTableView: JXPagingMainTableView!
     open var listContainerView: JXPagingListContainerView!
+    public var isListHorizontalScrollEnabled = true {
+        didSet {
+            refreshListHorizontalScrollEnabledState()
+        }
+    }
     var currentScrollingListView: UIScrollView?
     var currentListView: JXPagingViewListViewDelegate?
 
@@ -111,6 +116,7 @@ open class JXPagingView: UIView {
         listContainerView.mainTableView = mainTableView
 
         configListViewDidScrollCallback()
+        refreshListHorizontalScrollEnabledState()
     }
 
     override open func layoutSubviews() {
@@ -174,6 +180,10 @@ open class JXPagingView: UIView {
         }
     }
 
+    func refreshListHorizontalScrollEnabledState() {
+        listContainerView.collectionView.isScrollEnabled = isListHorizontalScrollEnabled;
+    }
+
     func getTableHeaderViewHeight() -> CGFloat {
         return CGFloat(self.delegate.tableHeaderViewHeight(in: self))
     }
@@ -234,7 +244,7 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.delegate.mainTableViewDidScroll?(scrollView)
         //用户正在上下滚动的时候，就不允许左右滚动
-        if scrollView.isTracking {
+        if scrollView.isTracking && isListHorizontalScrollEnabled {
             self.listContainerView.collectionView.isScrollEnabled = false
         }
 
@@ -242,15 +252,21 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     }
 
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        self.listContainerView.collectionView.isScrollEnabled = true
+        if isListHorizontalScrollEnabled {
+            self.listContainerView.collectionView.isScrollEnabled = true
+        }
     }
 
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        self.listContainerView.collectionView.isScrollEnabled = true
+        if isListHorizontalScrollEnabled {
+            self.listContainerView.collectionView.isScrollEnabled = true
+        }
     }
 
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        self.listContainerView.collectionView.isScrollEnabled = true
+        if isListHorizontalScrollEnabled {
+            self.listContainerView.collectionView.isScrollEnabled = true
+        }
     }
 }
 

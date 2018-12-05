@@ -46,12 +46,20 @@
     self.listContainerView.mainTableView = self.mainTableView;
 
     [self configListViewDidScrollCallback];
+
+    self.isListHorizontalScrollEnabled = YES;
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
 
     self.mainTableView.frame = self.bounds;
+}
+
+- (void)setisListHorizontalScrollEnabled:(BOOL)isListHorizontalScrollEnabled {
+    _isListHorizontalScrollEnabled = isListHorizontalScrollEnabled;
+
+    self.listContainerView.collectionView.scrollEnabled = isListHorizontalScrollEnabled;
 }
 
 - (void)reloadData {
@@ -164,7 +172,7 @@
         [self.delegate mainTableViewDidScroll:scrollView];
     }
 
-    if (scrollView.isTracking) {
+    if (scrollView.isTracking && self.isListHorizontalScrollEnabled) {
         self.listContainerView.collectionView.scrollEnabled = NO;
     }
 
@@ -172,15 +180,21 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    self.listContainerView.collectionView.scrollEnabled = YES;
+    if (self.isListHorizontalScrollEnabled) {
+        self.listContainerView.collectionView.scrollEnabled = YES;
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    self.listContainerView.collectionView.scrollEnabled = YES;
+    if (self.isListHorizontalScrollEnabled) {
+        self.listContainerView.collectionView.scrollEnabled = YES;
+    }
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    self.listContainerView.collectionView.scrollEnabled = YES;
+    if (self.isListHorizontalScrollEnabled) {
+        self.listContainerView.collectionView.scrollEnabled = YES;
+    }
 }
 
 #pragma mark - JXPagingListContainerViewDelegate

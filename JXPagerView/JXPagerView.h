@@ -120,6 +120,8 @@
 
 @property (nonatomic, strong, readonly) id<JXPagerViewListViewDelegate> currentListView;
 
+@property (nonatomic, assign) BOOL isListHorizontalScrollEnabled;     //是否允许列表左右滑动。默认：YES
+
 - (instancetype)init NS_UNAVAILABLE;
 
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;

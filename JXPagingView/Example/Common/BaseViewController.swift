@@ -56,7 +56,7 @@ class BaseViewController: UIViewController {
         pagingView.mainTableView.gestureDelegate = self
 
         self.view.addSubview(pagingView)
-
+        
         categoryView.contentScrollView = pagingView.listContainerView.collectionView
 
         //扣边返回处理，下面的代码要加上
