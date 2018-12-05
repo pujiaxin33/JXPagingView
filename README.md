@@ -11,6 +11,7 @@
 - 支持像使用普通UITableView一样，添加首页下拉刷新功能；
 - 支持列表视图添加下拉刷新、上拉加载更多；
 - 下方列表视图支持UIView或UIViewController，只要遵从`JXPagingViewListViewDelegate`协议即可；
+- isListHorizontalScrollEnabled属性控制列表是否可以左右滑动，默认YES；
 
 ## 预览
 
