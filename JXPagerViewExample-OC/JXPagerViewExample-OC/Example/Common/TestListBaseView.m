@@ -26,7 +26,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _isHeaderRefreshed = YES;
+        _isHeaderRefreshed = NO;
         
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height) style:UITableViewStylePlain];
         self.tableView.backgroundColor = [UIColor whiteColor];
@@ -88,12 +88,17 @@
 }
 
 - (void)beginRefreshImmediately {
-    [self.tableView.mj_header beginRefreshing];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    if (self.isNeedHeader) {
+        [self.tableView.mj_header beginRefreshing];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.isHeaderRefreshed = YES;
+            [self.tableView reloadData];
+            [self.tableView.mj_header endRefreshing];
+        });
+    }else {
         self.isHeaderRefreshed = YES;
         [self.tableView reloadData];
-        [self.tableView.mj_header endRefreshing];
-    });
+    }
 }
 
 - (void)selectCellAtIndexPath:(NSIndexPath *)indexPath {

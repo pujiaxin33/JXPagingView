@@ -23,18 +23,8 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = false;
+    _validListViewDict = [NSMutableDictionary dictionary];
     _titles = @[@"能力", @"爱好", @"队友"];
-    
-    TestListBaseView *powerListView = [[TestListBaseView alloc] init];
-    powerListView.dataSource = @[@"橡胶火箭", @"橡胶火箭炮", @"橡胶机关枪", @"橡胶子弹", @"橡胶攻城炮", @"橡胶象枪", @"橡胶象枪乱打", @"橡胶灰熊铳", @"橡胶雷神象枪", @"橡胶猿王枪", @"橡胶犀·榴弹炮", @"橡胶大蛇炮", @"橡胶火箭", @"橡胶火箭炮", @"橡胶机关枪", @"橡胶子弹", @"橡胶攻城炮", @"橡胶象枪", @"橡胶象枪乱打", @"橡胶灰熊铳", @"橡胶雷神象枪", @"橡胶猿王枪", @"橡胶犀·榴弹炮", @"橡胶大蛇炮"].mutableCopy;
-
-    TestListBaseView *hobbyListView = [[TestListBaseView alloc] init];
-    hobbyListView.dataSource = @[@"吃烤肉", @"吃鸡腿肉", @"吃牛肉", @"各种肉"].mutableCopy;
-
-    TestListBaseView *partnerListView = [[TestListBaseView alloc] init];
-    partnerListView.dataSource = @[@"【剑士】罗罗诺亚·索隆", @"【航海士】娜美", @"【狙击手】乌索普", @"【厨师】香吉士", @"【船医】托尼托尼·乔巴", @"【船匠】 弗兰奇", @"【音乐家】布鲁克", @"【考古学家】妮可·罗宾"].mutableCopy;
-    
-    _listViewArray = @[powerListView, hobbyListView, partnerListView];
 
     _userHeaderView = [[PagingViewTableHeaderView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, JXTableHeaderViewHeight)];
 
@@ -92,14 +82,39 @@
     return self.categoryView;
 }
 
-- (NSArray<id<JXPagerViewListViewDelegate>> *)listViewsInPagerView:(JXPagerView *)pagerView {
-    return self.listViewArray;
+- (NSInteger)numberOfListsInPagerView:(JXPagerView *)pagerView {
+    return self.titles.count;
+}
+
+- (id<JXPagerViewListViewDelegate>)pagerView:(JXPagerView *)pagerView initListAtIndex:(NSInteger)index {
+    TestListBaseView *listView = [[TestListBaseView alloc] init];
+    listView.isNeedHeader = self.isNeedHeader;
+    listView.isNeedFooter = self.isNeedFooter;
+    if (index == 0) {
+        listView.dataSource = @[@"橡胶火箭", @"橡胶火箭炮", @"橡胶机关枪", @"橡胶子弹", @"橡胶攻城炮", @"橡胶象枪", @"橡胶象枪乱打", @"橡胶灰熊铳", @"橡胶雷神象枪", @"橡胶猿王枪", @"橡胶犀·榴弹炮", @"橡胶大蛇炮", @"橡胶火箭", @"橡胶火箭炮", @"橡胶机关枪", @"橡胶子弹", @"橡胶攻城炮", @"橡胶象枪", @"橡胶象枪乱打", @"橡胶灰熊铳", @"橡胶雷神象枪", @"橡胶猿王枪", @"橡胶犀·榴弹炮", @"橡胶大蛇炮"].mutableCopy;
+    }else if (index == 1) {
+        listView.dataSource = @[@"吃烤肉", @"吃鸡腿肉", @"吃牛肉", @"各种肉"].mutableCopy;
+    }else {
+        listView.dataSource = @[@"【剑士】罗罗诺亚·索隆", @"【航海士】娜美", @"【狙击手】乌索普", @"【厨师】香吉士", @"【船医】托尼托尼·乔巴", @"【船匠】 弗兰奇", @"【音乐家】布鲁克", @"【考古学家】妮可·罗宾"].mutableCopy;
+    }
+    [listView beginFirstRefresh];
+    self.validListViewDict[@(index)] = listView;
+    return listView;
 }
 
 #pragma mark - JXCategoryViewDelegate
 
 - (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index {
     self.navigationController.interactivePopGestureRecognizer.enabled = (index == 0);
+}
+
+- (void)categoryView:(JXCategoryBaseView *)categoryView contentScrollViewTransitionToIndex:(NSInteger)index {
+    //请务必实现该方法
+    //因为底层触发列表加载是在代理方法：`- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath`回调里面
+    //所以，如果当前有5个item，当前在第1个，用于点击了第5个。categoryView默认是通过设置contentOffset.x滚动到指定的位置，这个时候有个问题，就会触发中间2、3、4的cellForItemAtIndexPath方法。
+    //如此一来就丧失了延迟加载的功能
+    //所以，如果你先规避这样的情况发生，那么务必按照这里的方法处理滚动。
+    [self.pagerView.listContainerView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
 }
 
 @end

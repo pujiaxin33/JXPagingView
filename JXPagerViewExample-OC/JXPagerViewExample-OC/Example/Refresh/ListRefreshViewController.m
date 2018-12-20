@@ -19,12 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    for (TestListBaseView *listView in self.listViewArray) {
-        listView.isNeedHeader = YES;
-        listView.isHeaderRefreshed = NO;
-    }
-
-    [self.listViewArray.firstObject beginFirstRefresh];
+    self.isNeedHeader = YES;
+    self.isNeedFooter = NO;
 }
 
 - (JXPagerView *)preferredPagingView {
@@ -35,7 +31,6 @@
 
 - (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index {
     self.navigationController.interactivePopGestureRecognizer.enabled = (index == 0);
-    [self.listViewArray[index] beginFirstRefresh];
 }
 
 
