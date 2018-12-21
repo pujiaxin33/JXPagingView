@@ -4,37 +4,37 @@
 
 ## 功能特点
 
-- 支持OC与Swift，OC版本细节查看`JXPagerViewExample-OC`工程；
-- 手势交互更自然；
-- 悬浮的categoryView支持更多效果，而且支持自定义扩展；
-- 封装性更好，不用关心内部实现，只需要实现对应delegate方法即可；
+- 支持OC与Swift;
+- 悬浮的categoryView效果丰富、高度自定义、可灵活扩展；
+- 封装性更好，不用关心内部实现，只需要实现相关delegate方法即可；
 - 支持像使用普通UITableView一样，添加首页下拉刷新功能；
 - 支持列表视图添加下拉刷新、上拉加载更多；
 - 下方列表视图支持UIView或UIViewController，只要遵从`JXPagingViewListViewDelegate`协议即可；
+- 支持列表懒加载，等到列表真正显示的时候才加载；
 - isListHorizontalScrollEnabled属性控制列表是否可以左右滑动，默认YES；
 
 ## 预览
 
 | 效果  | 预览图 |
 |-------|-------|
-| **头图缩放** | ![Zoom](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/Zoom.gif) | 
-| **主页下拉刷新&列表上拉加载更多** | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/Refresh.gif) |
-| **列表下拉刷新** | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/ListRefresh.gif) |
-| **导航栏隐藏** | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/NaviHidden.gif) |
-| **CollectionView列表示例**<br/> 只有swift的demo工程有该示例 | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/CollectionViewList.gif) |
-| **HeaderView高度改动示例**<br/>只有swift demo工程才有该示例 | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/HeaderViewHeightChange.gif) |
-| **PagingView嵌套CategoryView** <br/>只有 **OC!OC!OC!** 的demo工程才有该示例 <br/> 操作比较特殊，如果需要此效果，<br/> 请认真参考源码，有问题多试试 <br/> 参考NestViewController.h类 | ![Nest](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/Nest.gif) |
-| **CategoryView嵌套PagingView** <br/>只有 **Swift!Swift!Swift!** 的demo工程才有该示例 <br/> 操作比较特殊，如果需要此效果，<br/> 请认真参考源码，有问题多试试 <br/> 参考NestViewController.swift类 | ![Nest](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/CategoryNestPaging.gif) |
-
-## 头图缩放说明
-头图缩放原理，有不明白的可以参考我写的：[JXTableViewZoomHeaderImageView](https://github.com/pujiaxin33/JXTableViewZoomHeaderImageView)  一看就懂了。
+| **头图缩放** <br/>参考[ZoomViewController](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagerViewExample-OC/JXPagerViewExample-OC/Example/Zoom/ZoomViewController.m)类 | ![Zoom](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/Zoom.gif) | 
+| **主页下拉刷新&列表上拉加载更多** <br/>参考[RefreshViewController](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagerViewExample-OC/JXPagerViewExample-OC/Example/Refresh/RefreshViewController.m)类 | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/Refresh.gif) |
+| **列表下拉刷新** <br/>参考[ListRefreshViewController](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagerViewExample-OC/JXPagerViewExample-OC/Example/Refresh/ListRefreshViewController.m)类 | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/ListRefresh.gif) |
+| **导航栏隐藏** <br/> 参考[NaviBarHiddenViewController](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagerViewExample-OC/JXPagerViewExample-OC/Example/NavigationBarHidden/NaviBarHiddenViewController.m)类 | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/NaviHidden.gif) |
+| **CollectionView列表示例**<br/>参考[CollectionViewViewController.swift](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Example/CollectionView/CollectionViewViewController.swift)类 <br/> 只有swift的demo工程有该示例 | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/CollectionViewList.gif) |
+| **HeaderView高度改动示例**<br/> 参考[HeightChangeViewController.swift](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Example/HeightChange/HeightChangeViewController.swift)类 <br/> 只有swift demo工程才有该示例 | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/HeaderViewHeightChange.gif) |
+| **PagingView嵌套CategoryView** <br/> 参考[NestViewController](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagerViewExample-OC/JXPagerViewExample-OC/Example/Nest/NestViewController.m)类 <br/> 只有 **OC!OC!OC!** 的demo工程才有该示例 <br/> 操作比较特殊，如果需要此效果，<br/> 请认真参考源码，有问题多试试 <br/> 参考NestViewController.h类 | ![Nest](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/Nest.gif) |
+| **CategoryView嵌套PagingView** <br/> 参考[NestViewController.swift](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Example/CategoryNestPaging/NestViewController.swift)类 <br/> 只有 **Swift!Swift!Swift!** 的demo工程才有该示例 <br/> 操作比较特殊，如果需要此效果，<br/> 请认真参考源码，有问题多试试 <br/> 参考NestViewController.swift类 | ![Nest](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/CategoryNestPaging.gif) |
 
 ## 悬浮HeaderView说明
 悬浮的HeaderView，用的是我写的：[JXCategoryView](https://github.com/pujiaxin33/JXCategoryView) 几乎实现了所有主流效果，而且非常容易自定义扩展，强烈推荐阅读。
 
+## 头图缩放说明
+头图缩放原理，参考这个库：[JXTableViewZoomHeaderImageView](https://github.com/pujiaxin33/JXTableViewZoomHeaderImageView)
+
 ## 列表下拉刷新说明
 
-需要使用`JXPagingListRefreshView`类（是`JXPagingView`的子类）
+需要使用`JXPagerListRefreshView`类（是`JXPagerView`的子类）
 
 ## 安装
 
@@ -62,99 +62,127 @@ end
 
 Swift与OC的仓库地址不一样，请注意选择！
 
-`pod install`之前最好`pod repo udpate`一下！
+先`pod repo udpate`然后再`pod install`
 
 
 ## 使用
 
+### 初始化`JXCategoryTitleView`和`JXPagerView`
+
+```
+self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:frame];
+//配置categoryView，细节参考源码
+
+self.pagerView = [[JXPagerView alloc] initWithDelegate:self];
+[self.view addSubview:self.pagerView];
+
+//关联contentScrollView，这样列表就可以和categoryView联动了。
+self.categoryView.contentScrollView = self.pagerView.listContainerView.collectionView;
+```
+
+### 实现`JXPagerViewDelegate`协议
+
+
 主要遵从`JXPagingViewDelegate`和`JXPagingViewListViewDelegate`协议就可以实现了，逻辑非常简单明了。具体实现细节请查阅源码。
+```Object-c
+/**
+ 返回tableHeaderView的高度，因为内部需要比对判断，只能是整型数
+ */
+- (NSUInteger)tableHeaderViewHeightInPagerView:(JXPagerView *)pagerView {
+    return JXTableHeaderViewHeight;
+}
 
-1.实例化`JXPagingView`
-```swift
-    let pagingView = JXPagingView(delegate: self)
-    self.view.addSubview(pagingView)
-```
-
-2.实现`JXPagingViewDelegate`
-```swift
-@objc public protocol JXPagingViewDelegate: NSObjectProtocol {
-    /// tableHeaderView的高度，不能有小数位。
-    ///
-    /// - Parameter pagingView: JXPagingViewView
-    /// - Returns: height
-    func tableHeaderViewHeight(in pagingView: JXPagingView) -> CGFloat
-
-
-    /// 返回tableHeaderView
-    ///
-    /// - Parameter pagingView: JXPagingViewView
-    /// - Returns: view
-    func tableHeaderView(in pagingView: JXPagingView) -> UIView
+/**
+ 返回tableHeaderView
+ */
+- (UIView *)tableHeaderViewInPagerView:(JXPagerView *)pagerView {
+    return self.userHeaderView;
+}
 
 
-    /// 返回悬浮HeaderView的高度，不能有小数位。
-    ///
-    /// - Parameter pagingView: JXPagingViewView
-    /// - Returns: height
-    func heightForPinSectionHeader(in pagingView: JXPagingView) -> CGFloat
+/**
+ 返回悬浮HeaderView的高度，因为内部需要比对判断，只能是整型数
+ */
+- (NSUInteger)heightForPinSectionHeaderInPagerView:(JXPagerView *)pagerView {
+    return JXheightForHeaderInSection;
+}
 
 
-    /// 返回悬浮HeaderView。我用的是自己封装的JXCategoryView（Github:https://github.com/pujiaxin33/JXCategoryView），你也可以选择其他的三方库或者自己写
-    ///
-    /// - Parameter pagingView: JXPagingViewView
-    /// - Returns: view
-    func viewForPinSectionHeader(in pagingView: JXPagingView) -> UIView
+/**
+ 返回悬浮HeaderView。我用的是自己封装的JXCategoryView（Github:https://github.com/pujiaxin33/JXCategoryView），你也可以选择其他的三方库或者自己写
+ */
+- (UIView *)viewForPinSectionHeaderInPagerView:(JXPagerView *)pagerView {
+    return self.categoryView;
+}
 
-    /// 返回listViews，只要遵循JXPagingViewListViewDelegate即可，无论你返回的是UIView还是UIViewController都可以。
-    ///
-    /// - Parameter pagingView: JXPagingViewView
-    /// - Returns: listViews
-    func listViews(in pagingView: JXPagingView) -> [JXPagingViewListViewDelegate]
+/**
+ 返回列表的数量
+ */
+- (NSInteger)numberOfListsInPagerView:(JXPagerView *)pagerView {
+    //和categoryView的item数量一致
+    return self.titles.count;
+}
 
-    /// mainTableView的滚动回调，用于实现头图跟随缩放
-    ///
-    /// - Parameter scrollView: JXPagingViewMainTableView
-    @objc optional func mainTableViewDidScroll(_ scrollView: UIScrollView)
+/**
+ 根据index初始化一个对应列表实例。注意：一定要是新生成的实例！！！
+ 只要遵循JXPagerViewListViewDelegate即可，无论你返回的是UIView还是UIViewController都可以。
+ */
+- (id<JXPagerViewListViewDelegate>)pagerView:(JXPagerView *)pagerView initListAtIndex:(NSInteger)index {
+    TestListBaseView *listView = [[TestListBaseView alloc] init];
+    if (index == 0) {
+        listView.dataSource = @[@"橡胶火箭", @"橡胶火箭炮", @"橡胶机关枪"...].mutableCopy;
+    }else if (index == 1) {
+        listView.dataSource = @[@"吃烤肉", @"吃鸡腿肉", @"吃牛肉", @"各种肉"].mutableCopy;
+    }else {
+        listView.dataSource = @[@"【剑士】罗罗诺亚·索隆", @"【航海士】娜美", @"【狙击手】乌索普"...].mutableCopy;
+    }
+    [listView beginFirstRefresh];
+    return listView;
 }
 ```
 
-3.让底部listView（无论是UIView还是UIViewController都可以，swift版本demo工程有VC列表使用示例）遵从`JXPagingViewListViewDelegate`协议
-```swift
-//协议说明
-@objc public protocol JXPagingViewListViewDelegate: NSObjectProtocol {
+### 实现`JXPagerViewListViewDelegate`协议
 
-    /// 返回listView
-    ///
-    /// - Returns: UIView
-    func listView() -> UIView
+列表可以是任意类，UIView、UIViewController等等都可以，只要实现了`JXPagerViewListViewDelegate`协议就行。
+下面的使用代码参考的是`TestListBaseView`类
 
-    /// 返回listView内部持有的UIScrollView或UITableView或UICollectionView
-    /// 主要用于mainTableView已经显示了header，listView的contentOffset需要重置时，内部需要访问到外部传入进来的listView内的scrollView
-    ///
-    /// - Returns: listView内部持有的UIScrollView或UITableView或UICollectionView
-    func listScrollView() -> UIScrollView
-
-
-    /// 当listView内部持有的UIScrollView或UITableView或UICollectionView的代理方法`scrollViewDidScroll`回调时，需要调用该代理方法传入的callback
-    ///
-    /// - Parameter callback: `scrollViewDidScroll`回调时调用的callback
-    func listViewDidScrollCallback(callback: @escaping (UIScrollView)->())
+```Object-c
+/**
+ 返回listView。如果是vc包裹的就是vc.view；如果是自定义view包裹的，就是自定义view自己。
+ */
+- (UIView *)listView {
+    return self;
 }
 
-///当listView内部持有的UIScrollView或UITableView或UICollectionView的代理方法`scrollViewDidScroll`回调时，需要调用该代理方法传入的callback
-func listViewDidScrollCallback(callback: @escaping (UIScrollView) -> ()) {
-    self.listViewDidScrollCallback = callback
+/**
+ 返回listView内部持有的UIScrollView或UITableView或UICollectionView
+ 主要用于mainTableView已经显示了header，listView的contentOffset需要重置时，内部需要访问到外部传入进来的listView内的scrollView
+ */
+- (UIScrollView *)listScrollView {
+    return self.tableView;
 }
 
-//self.listViewDidScrollCallback在listView的scrollViewDidScroll代理方法里面回调
-func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    self.listViewDidScrollCallback?(scrollView)
+
+/**
+ 当listView内部持有的UIScrollView或UITableView或UICollectionView的代理方法`scrollViewDidScroll`回调时，需要调用该代理方法传入的callback
+ */
+- (void)listViewDidScrollCallback:(void (^)(UIScrollView *))callback {
+    self.scrollCallback = callback;
 }
 ```
 
-OC版本使用类似，只是类名及相关API更改为`JXPagerView`，具体细节请查看`JXPagerViewExample-OC`工程。
+#### 列表回调处理
 
-## 关于下方列表视图的代理方法`func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)`有时候需要点击两次才回调
+`TestListBaseView`在其`tableView`的滚动回调中，通过调用上面持有的scrollCallback，把列表的滚动事件回调给JXPagerView内部。
+```Object-c
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    !self.scrollCallback ?: self.scrollCallback(scrollView);
+}
+```
+
+swift版本使用类似，只是类名及相关API更改为`JXPagingView`，具体细节请查看Swfit工程。
+
+## 关于下方列表视图的代理方法`- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath`有时候需要点击两次才回调
 
 出现步骤：当手指放在下方列表视图往下拉，直到TableHeaderView完全显示。
 
@@ -170,12 +198,12 @@ OC版本使用类似，只是类名及相关API更改为`JXPagerView`，具体�
 
 以上两种情况，都需要创建一个ContainerView，把ContainerView赋值给TableHeaderView，然后add真正的ViewController.view或xib视图到ContainerView上面。不这么做布局会有异常。
 
-参考：demo工程`BaseViewController`文件里`userHeaderContainerView`的使用方式。
+参考：swift工程`userHeaderContainerView`类的`userHeaderContainerView`属性的使用方式。
 
 ## 迁移指南
-- 0.0.9版本将下面两个API的返回值修改为了Int(OC版本为NSUInteger)，之前版本是CGFloat，升级为0.0.9及以上的时候，记得修改一下使用地方的返回值类型，不然会引起crash。OC版本同理修改。
-    - `func heightForPinSectionHeader(in pagingView: JXPagingView) -> Int`
-    - `func tableHeaderViewHeight(in pagingView: JXPagingView) -> Int`
+- 0.0.9版本将下面两个API的返回值修改为了NSUInteger(swift版本为Int)，之前版本是CGFloat，升级为0.0.9及以上的时候，记得修改一下使用地方的返回值类型，不然会引起crash。
+    - `- (NSUInteger)heightForPinSectionHeaderInPagerView:(JXPagerView *)pagerView`
+    - `- (NSUInteger)tableHeaderViewHeightInPagerView:(JXPagerView *)pagerView`
 
 ## 补充
 
