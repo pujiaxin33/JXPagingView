@@ -48,7 +48,7 @@
 
     self.categoryView.contentScrollView = self.pagerView.listContainerView.collectionView;
 
-    //扣边返回处理，下面的代码要加上
+    //扣边返回处理，下面的代码要加上。项目对于扣边的处理方式不一样，对于扣边处理也不一样。比如我这个demo，尝试了N多方案，就这个代码个可以。但是对于我自己线上项目，又是另外的解决方案。所以，灵活解决吧。不要完全照搬这里的代码
     [self.pagerView.listContainerView.collectionView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
     [self.pagerView.mainTableView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
     self.navigationController.interactivePopGestureRecognizer.enabled = (self.categoryView.selectedIndex == 0);
@@ -83,6 +83,7 @@
 }
 
 - (NSInteger)numberOfListsInPagerView:(JXPagerView *)pagerView {
+    //和categoryView的item数量一致
     return self.titles.count;
 }
 
