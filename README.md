@@ -5,13 +5,11 @@
 ## 功能特点
 
 - 支持OC与Swift;
-- 悬浮的categoryView效果丰富、高度自定义、可灵活扩展；
-- 封装性更好，不用关心内部实现，只需要实现相关delegate方法即可；
-- 支持像使用普通UITableView一样，添加首页下拉刷新功能；
-- 支持列表视图添加下拉刷新、上拉加载更多；
-- 下方列表视图支持UIView或UIViewController，只要遵从`JXPagingViewListViewDelegate`协议即可；
-- 支持列表懒加载，等到列表真正显示的时候才加载；
+- 支持列表懒加载，等到列表真正显示的时候才加载，而不是一次性加载所有列表；
+- 支持首页下拉刷新、列表视图下拉刷新、列表视图上拉加载更多；
+- 列表封装简洁，只要遵从`JXPagingViewListViewDelegate`协议即可。UIView、UIViewController等都可以；
 - isListHorizontalScrollEnabled属性控制列表是否可以左右滑动，默认YES；
+- 使用JXCategoryView分类控制器，几乎支持所有主流效果、高度自定义、可灵活扩展；
 
 ## 预览
 
@@ -25,16 +23,6 @@
 | **HeaderView高度改动示例**<br/> 参考[HeightChangeViewController.swift](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Example/HeightChange/HeightChangeViewController.swift)类 <br/> 只有swift demo工程才有该示例 | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/HeaderViewHeightChange.gif) |
 | **PagingView嵌套CategoryView** <br/> 参考[NestViewController](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagerViewExample-OC/JXPagerViewExample-OC/Example/Nest/NestViewController.m)类 <br/> 只有 **OC!OC!OC!** 的demo工程才有该示例 <br/> 操作比较特殊，如果需要此效果，<br/> 请认真参考源码，有问题多试试 <br/> 参考NestViewController.h类 | ![Nest](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/Nest.gif) |
 | **CategoryView嵌套PagingView** <br/> 参考[NestViewController.swift](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Example/CategoryNestPaging/NestViewController.swift)类 <br/> 只有 **Swift!Swift!Swift!** 的demo工程才有该示例 <br/> 操作比较特殊，如果需要此效果，<br/> 请认真参考源码，有问题多试试 <br/> 参考NestViewController.swift类 | ![Nest](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/CategoryNestPaging.gif) |
-
-## 悬浮HeaderView说明
-悬浮的HeaderView，用的是我写的：[JXCategoryView](https://github.com/pujiaxin33/JXCategoryView) 几乎实现了所有主流效果，而且非常容易自定义扩展，强烈推荐阅读。
-
-## 头图缩放说明
-头图缩放原理，参考这个库：[JXTableViewZoomHeaderImageView](https://github.com/pujiaxin33/JXTableViewZoomHeaderImageView)
-
-## 列表下拉刷新说明
-
-需要使用`JXPagerListRefreshView`类（是`JXPagerView`的子类）
 
 ## 安装
 
@@ -67,9 +55,11 @@ Swift与OC的仓库地址不一样，请注意选择！
 
 ## 使用
 
-### 初始化`JXCategoryTitleView`和`JXPagerView`
+swift版本使用类似，只是类名及相关API更改为`JXPagingView`，具体细节请查看Swfit工程。
 
-```
+### 1、初始化`JXCategoryTitleView`和`JXPagerView`
+
+```Objective-C
 self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:frame];
 //配置categoryView，细节参考源码
 
@@ -80,11 +70,9 @@ self.pagerView = [[JXPagerView alloc] initWithDelegate:self];
 self.categoryView.contentScrollView = self.pagerView.listContainerView.collectionView;
 ```
 
-### 实现`JXPagerViewDelegate`协议
+### 2、实现`JXPagerViewDelegate`协议
 
-
-主要遵从`JXPagingViewDelegate`和`JXPagingViewListViewDelegate`协议就可以实现了，逻辑非常简单明了。具体实现细节请查阅源码。
-```Object-c
+```Objective-C
 /**
  返回tableHeaderView的高度，因为内部需要比对判断，只能是整型数
  */
@@ -141,12 +129,12 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
 }
 ```
 
-### 实现`JXPagerViewListViewDelegate`协议
+### 3、实现`JXPagerViewListViewDelegate`协议
 
 列表可以是任意类，UIView、UIViewController等等都可以，只要实现了`JXPagerViewListViewDelegate`协议就行。
 下面的使用代码参考的是`TestListBaseView`类
 
-```Object-c
+```Objective-C
 /**
  返回listView。如果是vc包裹的就是vc.view；如果是自定义view包裹的，就是自定义view自己。
  */
@@ -171,18 +159,28 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
 }
 ```
 
-#### 列表回调处理
+### 4、列表回调处理
 
 `TestListBaseView`在其`tableView`的滚动回调中，通过调用上面持有的scrollCallback，把列表的滚动事件回调给JXPagerView内部。
-```Object-c
+```Objective-C
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     !self.scrollCallback ?: self.scrollCallback(scrollView);
 }
 ```
 
-swift版本使用类似，只是类名及相关API更改为`JXPagingView`，具体细节请查看Swfit工程。
+## 特殊说明
 
-## 关于下方列表视图的代理方法`- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath`有时候需要点击两次才回调
+### JXCategoryView
+悬浮的HeaderView，用的是我写的：[JXCategoryView](https://github.com/pujiaxin33/JXCategoryView) 几乎实现了所有主流效果，而且非常容易自定义扩展，强烈推荐阅读。
+
+### 头图缩放说明
+头图缩放原理，参考这个库：[JXTableViewZoomHeaderImageView](https://github.com/pujiaxin33/JXTableViewZoomHeaderImageView)
+
+### 列表下拉刷新说明
+
+需要使用`JXPagerListRefreshView`类（是`JXPagerView`的子类）
+
+### 关于下方列表视图的代理方法`- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath`有时候需要点击两次才回调
 
 出现步骤：当手指放在下方列表视图往下拉，直到TableHeaderView完全显示。
 
@@ -192,13 +190,38 @@ swift版本使用类似，只是类名及相关API更改为`JXPagingView`，具�
 
 代码：请参考`TestTableViewCell`类的配置。
 
-## TableHeaderView使用tips
+### TableHeaderView使用tips
 
 如果TableHeaderView逻辑较多，一般都会用ViewController来包裹，然后使用ViewController.view当做TableHeaderView。又或者视图较多，使用xib来布局。
 
 以上两种情况，都需要创建一个ContainerView，把ContainerView赋值给TableHeaderView，然后add真正的ViewController.view或xib视图到ContainerView上面。不这么做布局会有异常。
 
 参考：swift工程`userHeaderContainerView`类的`userHeaderContainerView`属性的使用方式。
+
+### 关于JXCategoryView点击item之后的切换处理
+
+如果要完美配合列表的懒加载机制，务必参考demo添加下面的代码：
+```Objective-C
+- (void)categoryView:(JXCategoryBaseView *)categoryView didClickedItemContentScrollViewTransitionToIndex:(NSInteger)index {
+    //请务必实现该方法
+    //因为底层触发列表加载是在代理方法：`- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath`回调里面
+    //所以，如果当前有5个item，当前在第1个，用于点击了第5个。categoryView默认是通过设置contentOffset.x滚动到指定的位置，这个时候有个问题，就会触发中间2、3、4的cellForItemAtIndexPath方法。
+    //如此一来就丧失了延迟加载的功能
+    //所以，如果你想规避这样的情况发生，那么务必按照这里的方法处理滚动。
+    [self.pagerView.listContainerView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+
+    //如果你想相邻的两个item切换时，通过有动画滚动实现。未相邻的两个item直接切换，可以用下面这段代码
+    /*
+    NSInteger diffIndex = labs(categoryView.selectedIndex - index);
+     if (diffIndex > 1) {
+         [self.pagerView.listContainerView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+     }else {
+         [self.pagerView.listContainerView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+     }
+     */
+}
+```
+
 
 ## 迁移指南
 - 0.0.9版本将下面两个API的返回值修改为了NSUInteger(swift版本为Int)，之前版本是CGFloat，升级为0.0.9及以上的时候，记得修改一下使用地方的返回值类型，不然会引起crash。
