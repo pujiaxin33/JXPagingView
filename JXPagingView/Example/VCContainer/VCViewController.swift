@@ -12,21 +12,17 @@ class VCViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
     }
 
-    override func preferredListViewsArray() -> [JXPagingViewListViewDelegate] {
-        let vc1 = VCListViewController()
-        vc1.contentView.dataSource = ["橡胶火箭", "橡胶火箭炮", "橡胶机关枪", "橡胶子弹", "橡胶攻城炮", "橡胶象枪", "橡胶象枪乱打", "橡胶灰熊铳", "橡胶雷神象枪", "橡胶猿王枪", "橡胶犀·榴弹炮", "橡胶大蛇炮", "橡胶火箭", "橡胶火箭炮", "橡胶机关枪", "橡胶子弹", "橡胶攻城炮", "橡胶象枪", "橡胶象枪乱打", "橡胶灰熊铳", "橡胶雷神象枪", "橡胶猿王枪", "橡胶犀·榴弹炮", "橡胶大蛇炮"]
-
-
-        let vc2 = VCListViewController()
-        vc2.contentView.dataSource = ["吃烤肉", "吃鸡腿肉", "吃牛肉", "各种肉"]
-
-        let vc3 = VCListViewController()
-        vc3.contentView.dataSource =  ["【剑士】罗罗诺亚·索隆", "【航海士】娜美", "【狙击手】乌索普", "【厨师】香吉士", "【船医】托尼托尼·乔巴", "【船匠】 弗兰奇", "【音乐家】布鲁克", "【考古学家】妮可·罗宾"]
-
-        return [vc1, vc2, vc3]
+    override func pagingView(_ pagingView: JXPagingView, initListAtIndex index: Int) -> JXPagingViewListViewDelegate {
+        let list = VCListViewController()
+        if index == 0 {
+            list.contentView.dataSource = ["橡胶火箭", "橡胶火箭炮", "橡胶机关枪", "橡胶子弹", "橡胶攻城炮", "橡胶象枪", "橡胶象枪乱打", "橡胶灰熊铳", "橡胶雷神象枪", "橡胶猿王枪", "橡胶犀·榴弹炮", "橡胶大蛇炮", "橡胶火箭", "橡胶火箭炮", "橡胶机关枪", "橡胶子弹", "橡胶攻城炮", "橡胶象枪", "橡胶象枪乱打", "橡胶灰熊铳", "橡胶雷神象枪", "橡胶猿王枪", "橡胶犀·榴弹炮", "橡胶大蛇炮"]
+        }else if index == 1 {
+            list.contentView.dataSource = ["吃烤肉", "吃鸡腿肉", "吃牛肉", "各种肉"]
+        }else {
+            list.contentView.dataSource = ["【剑士】罗罗诺亚·索隆", "【航海士】娜美", "【狙击手】乌索普", "【厨师】香吉士", "【船医】托尼托尼·乔巴", "【船匠】 弗兰奇", "【音乐家】布鲁克", "【考古学家】妮可·罗宾"]
+        }
+        return list
     }
 }

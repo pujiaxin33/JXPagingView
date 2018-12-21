@@ -14,7 +14,6 @@ class CollectionViewViewController: UIViewController {
     var userHeaderView: PagingViewTableHeaderView!
     var userHeaderContainerView: UIView!
     var categoryView: JXCategoryTitleView!
-    var listViewArray: [TestListCollectionView]!
     var titles = ["能力", "爱好", "队友"]
     var JXTableHeaderViewHeight: Int = 200
     var JXheightForHeaderInSection: Int = 50
@@ -24,14 +23,6 @@ class CollectionViewViewController: UIViewController {
 
         self.title = "CollectionView列表示例"
         self.navigationController?.navigationBar.isTranslucent = false
-
-        let powerListView = TestListCollectionView()
-
-        let hobbyListView = TestListCollectionView()
-
-        let partnerListView = TestListCollectionView()
-
-        listViewArray = [powerListView, hobbyListView, partnerListView]
 
         userHeaderContainerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(JXTableHeaderViewHeight)))
         userHeaderView = PagingViewTableHeaderView(frame: userHeaderContainerView.bounds)
@@ -98,8 +89,12 @@ extension CollectionViewViewController: JXPagingViewDelegate {
         return categoryView
     }
 
-    func listViews(in pagingView: JXPagingView) -> [ JXPagingViewListViewDelegate] {
-        return listViewArray
+    func numberOfLists(in pagingView: JXPagingView) -> Int {
+        return titles.count
+    }
+
+    func pagingView(_ pagingView: JXPagingView, initListAtIndex index: Int) -> JXPagingViewListViewDelegate {
+        return TestListCollectionView()
     }
 }
 

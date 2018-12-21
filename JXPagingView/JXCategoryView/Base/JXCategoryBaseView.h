@@ -44,12 +44,13 @@
 
 
 /**
+  只有点击的切换才会调用！！！
   因为用户点击，contentScrollView即将过渡到目标index的配置。内部默认实现`[self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:YES];`。如果实现该代理方法，以自定义实现为准。比如将animated设置为NO，点击切换时无需滚动效果。类似于今日头条APP。
 
  @param categoryView categoryView description
  @param index index description
  */
-- (void)categoryView:(JXCategoryBaseView *)categoryView contentScrollViewTransitionToIndex:(NSInteger)index;
+- (void)categoryView:(JXCategoryBaseView *)categoryView didClickedItemContentScrollViewTransitionToIndex:(NSInteger)index;
 
 /**
  正在滚动中的回调
@@ -90,7 +91,7 @@
 @property (nonatomic, assign) BOOL averageCellSpacingEnabled;     //当item内容总宽度小于JXCategoryBaseView的宽度，是否将cellSpacing均分。默认为YES。
 
 //----------------------cellWidthZoomEnabled-----------------------//
-//cell宽度的缩放主要是为了腾讯视频效果打造的，一般情况下慎用，不太好控制。
+//cell宽度的缩放主要是为了腾讯视频、汽车之家效果打造的，一般情况下慎用，不太好控制。
 @property (nonatomic, assign) BOOL cellWidthZoomEnabled;     //默认为NO
 
 @property (nonatomic, assign) BOOL cellWidthZoomScrollGradientEnabled;     //手势滚动中，是否需要更新状态。默认为YES
@@ -157,9 +158,10 @@
  点击某一个item，或者contentScrollView滚动到某一个item的时候调用。根据selectIndex刷新选中状态。
 
  @param index 选中的index
+ @param isClicked YES：点击选中；NO：滚动选中。
  @return 返回值为NO，表示触发内部某些判断（点击了同一个cell），子类无需后续操作。
  */
-- (BOOL)selectCellAtIndex:(NSInteger)index NS_REQUIRES_SUPER;
+- (BOOL)selectCellAtIndex:(NSInteger)index isClicked:(BOOL)isClicked NS_REQUIRES_SUPER;
 
 /**
  reloadData时，返回每个cell的宽度

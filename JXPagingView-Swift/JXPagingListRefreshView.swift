@@ -25,10 +25,10 @@ open class JXPagingListRefreshView: JXPagingView {
 
         if (mainTableView.contentOffset.y < getTableHeaderViewHeight()) {
             //mainTableView已经显示了header，listView的contentOffset需要重置
-            for listView in self.delegate.listViews(in: self) {
+            for list in self.validListDict.values {
                 //正在下拉刷新时，不需要重置
-                if listView.listScrollView().contentOffset.y > 0 {
-                    listView.listScrollView().contentOffset = CGPoint.zero
+                if list.listScrollView().contentOffset.y > 0 {
+                    list.listScrollView().contentOffset = CGPoint.zero
                 }
             }
         }

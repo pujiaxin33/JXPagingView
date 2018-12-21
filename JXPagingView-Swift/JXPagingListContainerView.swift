@@ -85,6 +85,9 @@ open class JXPagingListContainerView: UIView {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "cell")
+        if #available(iOS 10.0, *) {
+            collectionView.isPrefetchingEnabled = false
+        }
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .never
         }

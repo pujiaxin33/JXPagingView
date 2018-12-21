@@ -11,10 +11,31 @@ import UIKit
 @objc public class TestListBaseView: UIView {
     @objc public var tableView: UITableView!
     @objc public var dataSource: [String]?
-    @objc public var isNeedHeader = false
-    @objc public var isNeedFooter = false
+    @objc public var isNeedHeader = false {
+        didSet {
+            if isNeedHeader {
+                self.tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(headerRefresh))
+            }else if self.tableView.mj_header != nil {
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_header.removeFromSuperview()
+                self.tableView.mj_header = nil
+            }
+        }
+    }
+    @objc public var isNeedFooter = false {
+        didSet {
+            if isNeedFooter {
+                tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
+            }else if self.tableView.mj_footer != nil {
+                self.tableView.mj_footer.endRefreshing()
+                self.tableView.mj_footer.removeFromSuperview()
+                self.tableView.mj_footer = nil
+            }
+        }
+    }
     var listViewDidScrollCallback: ((UIScrollView) -> ())?
     var lastSelectedIndexPath: IndexPath?
+    var isHeaderRefreshed = false
 
     deinit {
         listViewDidScrollCallback = nil
@@ -32,22 +53,23 @@ import UIKit
         addSubview(tableView)
     }
 
-    @objc func headerRefresh() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(2)) {
-            self.tableView.mj_header.endRefreshing()
+    func beginFirstRefresh() {
+        if !isHeaderRefreshed {
+            if (self.isNeedHeader) {
+                self.tableView.mj_header.beginRefreshing()
+                headerRefresh()
+            }else {
+                self.isHeaderRefreshed = true
+                self.tableView.reloadData()
+            }
         }
     }
 
-    override public func willMove(toSuperview newSuperview: UIView?) {
-        super.willMove(toSuperview: newSuperview)
-
-        if newSuperview != nil {
-            if isNeedHeader {
-                self.tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(headerRefresh))
-            }
-            if isNeedFooter {
-                tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
-            }
+    @objc func headerRefresh() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(2)) {
+            self.tableView.mj_header.endRefreshing()
+            self.isHeaderRefreshed = true
+            self.tableView.reloadData()
         }
     }
 
@@ -86,7 +108,10 @@ import UIKit
 
 extension TestListBaseView: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.count ?? 0
+        if isHeaderRefreshed {
+            return dataSource?.count ?? 0
+        }
+        return 0
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

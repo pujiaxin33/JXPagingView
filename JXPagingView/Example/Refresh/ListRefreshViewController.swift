@@ -13,9 +13,7 @@ class ListRefreshViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        for listView in listViewArray {
-            (listView as! TestListBaseView).isNeedHeader = true
-        }
+        self.isNeedHeader = true
     }
 
     override func preferredPagingView() -> JXPagingView {

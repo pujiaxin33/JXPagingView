@@ -13,7 +13,7 @@ struct DelegateFlags {
     unsigned int didSelectedItemAtIndexFlag : 1;
     unsigned int didClickSelectedItemAtIndexFlag : 1;
     unsigned int didScrollSelectedItemAtIndexFlag : 1;
-    unsigned int contentScrollViewTransitionToIndexFlag : 1;
+    unsigned int didClickedItemContentScrollViewTransitionToIndexFlag : 1;
     unsigned int scrollingFromLeftIndexToRightIndexFlag : 1;
 };
 
@@ -61,7 +61,7 @@ struct DelegateFlags {
     _delegateFlags.didSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didSelectedItemAtIndex:)];
     _delegateFlags.didClickSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didClickSelectedItemAtIndex:)];
     _delegateFlags.didScrollSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didScrollSelectedItemAtIndex:)];
-    _delegateFlags.contentScrollViewTransitionToIndexFlag = [delegate respondsToSelector:@selector(categoryView:contentScrollViewTransitionToIndex:)];
+    _delegateFlags.didClickedItemContentScrollViewTransitionToIndexFlag = [delegate respondsToSelector:@selector(categoryView:didClickedItemContentScrollViewTransitionToIndex:)];
     _delegateFlags.scrollingFromLeftIndexToRightIndexFlag = [delegate respondsToSelector:@selector(categoryView:scrollingFromLeftIndex:toRightIndex:ratio:)];
 }
 
@@ -90,6 +90,7 @@ struct DelegateFlags {
         collectionView.backgroundColor = [UIColor clearColor];
         collectionView.showsHorizontalScrollIndicator = NO;
         collectionView.showsVerticalScrollIndicator = NO;
+        collectionView.scrollsToTop = NO;
         collectionView.dataSource = self;
         collectionView.delegate = self;
         [collectionView registerClass:[self preferredCellClass] forCellWithReuseIdentifier:NSStringFromClass([self preferredCellClass])];
@@ -112,6 +113,7 @@ struct DelegateFlags {
         [_contentScrollView removeObserver:self forKeyPath:@"contentOffset"];
     }
     _contentScrollView = contentScrollView;
+    _contentScrollView.scrollsToTop = NO;
 
     [contentScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
 }
@@ -134,7 +136,7 @@ struct DelegateFlags {
 }
 
 - (void)selectItemAtIndex:(NSInteger)index {
-    [self selectCellAtIndex:index];
+    [self selectCellAtIndex:index isClicked:YES];
 }
 
 
@@ -233,16 +235,25 @@ struct DelegateFlags {
     [self.contentScrollView setContentOffset:CGPointMake(self.selectedIndex*self.contentScrollView.bounds.size.width, 0) animated:NO];
 }
 
-- (BOOL)selectCellAtIndex:(NSInteger)targetIndex {
-    return [self _selectCellAtIndex:targetIndex handleContentScrollView:YES];
+- (BOOL)selectCellAtIndex:(NSInteger)targetIndex isClicked:(BOOL)isClicked {
+    return [self _selectCellAtIndex:targetIndex isClicked:isClicked];
 }
 
-- (BOOL)_selectCellAtIndex:(NSInteger)targetIndex handleContentScrollView:(BOOL)handleContentScrollView{
+- (BOOL)_selectCellAtIndex:(NSInteger)targetIndex isClicked:(BOOL)isClicked{
     if (targetIndex >= self.dataSource.count) {
         return NO;
     }
 
     if (self.selectedIndex == targetIndex) {
+        if (isClicked) {
+            if (self.delegateFlags.didClickSelectedItemAtIndexFlag) {
+                [self.delegate categoryView:self didClickSelectedItemAtIndex:targetIndex];
+            }
+        }else {
+            if (self.delegateFlags.didScrollSelectedItemAtIndexFlag) {
+                [self.delegate categoryView:self didScrollSelectedItemAtIndex:targetIndex];
+            }
+        }
         if (self.delegateFlags.didSelectedItemAtIndexFlag) {
             [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
         }
@@ -270,15 +281,24 @@ struct DelegateFlags {
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }
 
-    if (handleContentScrollView) {
-        if (self.delegateFlags.contentScrollViewTransitionToIndexFlag) {
-            [self.delegate categoryView:self contentScrollViewTransitionToIndex:targetIndex];
+    if (isClicked) {
+        if (self.delegateFlags.didClickedItemContentScrollViewTransitionToIndexFlag) {
+            [self.delegate categoryView:self didClickedItemContentScrollViewTransitionToIndex:targetIndex];
         }else {
             [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:YES];
         }
     }
 
     self.selectedIndex = targetIndex;
+    if (isClicked) {
+        if (self.delegateFlags.didClickSelectedItemAtIndexFlag) {
+            [self.delegate categoryView:self didClickSelectedItemAtIndex:targetIndex];
+        }
+    }else {
+        if (self.delegateFlags.didScrollSelectedItemAtIndexFlag) {
+            [self.delegate categoryView:self didScrollSelectedItemAtIndex:targetIndex];
+        }
+    }
     if (self.delegateFlags.didSelectedItemAtIndexFlag) {
         [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
     }
@@ -326,10 +346,7 @@ struct DelegateFlags {
             if (ratio < self.selectedIndex) {
                 targetIndex = baseIndex + 1;
             }
-            if (self.delegateFlags.didScrollSelectedItemAtIndexFlag) {
-                [self.delegate categoryView:self didScrollSelectedItemAtIndex:targetIndex];
-            }
-            [self _selectCellAtIndex:targetIndex handleContentScrollView:NO];
+            [self _selectCellAtIndex:targetIndex isClicked:NO];
         }
         if (self.cellWidthZoomEnabled && self.cellWidthZoomScrollGradientEnabled) {
             JXCategoryBaseCellModel *leftCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex];
@@ -343,7 +360,6 @@ struct DelegateFlags {
             [self.delegate categoryView:self scrollingFromLeftIndex:baseIndex toRightIndex:baseIndex + 1 ratio:remainderRatio];
         }
     }
-    self.lastContentViewContentOffset = contentOffset;
 }
 
 - (CGFloat)preferredCellWidthAtIndex:(NSInteger)index {
@@ -405,10 +421,13 @@ struct DelegateFlags {
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
-    if ([keyPath isEqualToString:@"contentOffset"] && (self.contentScrollView.isTracking || self.contentScrollView.isDecelerating)) {
-        //用户滚动引起的contentOffset变化，才处理。
+    if ([keyPath isEqualToString:@"contentOffset"]) {
         CGPoint contentOffset = [change[NSKeyValueChangeNewKey] CGPointValue];
-        [self contentOffsetOfContentScrollViewDidChanged:contentOffset];
+        if ((self.contentScrollView.isTracking || self.contentScrollView.isDecelerating)) {
+            //用户滚动引起的contentOffset变化，才处理。
+            [self contentOffsetOfContentScrollViewDidChanged:contentOffset];
+        }
+        self.lastContentViewContentOffset = contentOffset;
     }
 }
 
@@ -442,19 +461,11 @@ struct DelegateFlags {
 }
 
 - (void)clickselectItemAtIndex:(NSInteger)index {
-    if (self.delegateFlags.didClickSelectedItemAtIndexFlag) {
-        [self.delegate categoryView:self didClickSelectedItemAtIndex:index];
-    }
-
-    [self selectCellAtIndex:index];
+    [self selectCellAtIndex:index isClicked:YES];
 }
 
 - (void)scrollselectItemAtIndex:(NSInteger)index {
-    if (self.delegateFlags.didScrollSelectedItemAtIndexFlag) {
-        [self.delegate categoryView:self didScrollSelectedItemAtIndex:index];
-    }
-
-    [self selectCellAtIndex:index];
+    [self selectCellAtIndex:index isClicked:NO];
 }
 
 @end

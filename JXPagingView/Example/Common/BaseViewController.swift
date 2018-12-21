@@ -14,19 +14,18 @@ class BaseViewController: UIViewController {
     var userHeaderView: PagingViewTableHeaderView!
     var userHeaderContainerView: UIView!
     var categoryView: JXCategoryTitleView!
-    var listViewArray: [JXPagingViewListViewDelegate]!
     var titles = ["能力", "爱好", "队友"]
     weak var nestContentScrollView: UIScrollView?    //嵌套demo使用
     var JXTableHeaderViewHeight: Int = 200
     var JXheightForHeaderInSection: Int = 50
+    var isNeedHeader = false
+    var isNeedFooter = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "个人中心"
         self.navigationController?.navigationBar.isTranslucent = false
-
-        listViewArray = preferredListViewsArray()
 
         userHeaderContainerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(JXTableHeaderViewHeight)))
         userHeaderView = PagingViewTableHeaderView(frame: userHeaderContainerView.bounds)
@@ -75,19 +74,6 @@ class BaseViewController: UIViewController {
         return JXPagingView(delegate: self)
     }
 
-    func preferredListViewsArray() -> [JXPagingViewListViewDelegate] {
-        let powerListView = TestListBaseView()
-        powerListView.dataSource = ["橡胶火箭", "橡胶火箭炮", "橡胶机关枪", "橡胶子弹", "橡胶攻城炮", "橡胶象枪", "橡胶象枪乱打", "橡胶灰熊铳", "橡胶雷神象枪", "橡胶猿王枪", "橡胶犀·榴弹炮", "橡胶大蛇炮", "橡胶火箭", "橡胶火箭炮", "橡胶机关枪", "橡胶子弹", "橡胶攻城炮", "橡胶象枪", "橡胶象枪乱打", "橡胶灰熊铳", "橡胶雷神象枪", "橡胶猿王枪", "橡胶犀·榴弹炮", "橡胶大蛇炮"]
-
-        let hobbyListView = TestListBaseView()
-        hobbyListView.dataSource = ["吃烤肉", "吃鸡腿肉", "吃牛肉", "各种肉"]
-
-        let partnerListView = TestListBaseView()
-        partnerListView.dataSource = ["【剑士】罗罗诺亚·索隆", "【航海士】娜美", "【狙击手】乌索普", "【厨师】香吉士", "【船医】托尼托尼·乔巴", "【船匠】 弗兰奇", "【音乐家】布鲁克", "【考古学家】妮可·罗宾"]
-
-        return [powerListView, hobbyListView, partnerListView]
-    }
-
 }
 
 extension BaseViewController: JXPagingViewDelegate {
@@ -108,14 +94,49 @@ extension BaseViewController: JXPagingViewDelegate {
         return categoryView
     }
 
-    func listViews(in pagingView: JXPagingView) -> [ JXPagingViewListViewDelegate] {
-        return listViewArray
+    func numberOfLists(in pagingView: JXPagingView) -> Int {
+        return titles.count
+    }
+
+    func pagingView(_ pagingView: JXPagingView, initListAtIndex index: Int) -> JXPagingViewListViewDelegate {
+        let list = TestListBaseView()
+        list.isNeedHeader = isNeedHeader
+        list.isNeedFooter = isNeedFooter
+        if index == 0 {
+            list.dataSource = ["橡胶火箭", "橡胶火箭炮", "橡胶机关枪", "橡胶子弹", "橡胶攻城炮", "橡胶象枪", "橡胶象枪乱打", "橡胶灰熊铳", "橡胶雷神象枪", "橡胶猿王枪", "橡胶犀·榴弹炮", "橡胶大蛇炮", "橡胶火箭", "橡胶火箭炮", "橡胶机关枪", "橡胶子弹", "橡胶攻城炮", "橡胶象枪", "橡胶象枪乱打", "橡胶灰熊铳", "橡胶雷神象枪", "橡胶猿王枪", "橡胶犀·榴弹炮", "橡胶大蛇炮"]
+        }else if index == 1 {
+            list.dataSource = ["吃烤肉", "吃鸡腿肉", "吃牛肉", "各种肉"]
+        }else {
+            list.dataSource = ["【剑士】罗罗诺亚·索隆", "【航海士】娜美", "【狙击手】乌索普", "【厨师】香吉士", "【船医】托尼托尼·乔巴", "【船匠】 弗兰奇", "【音乐家】布鲁克", "【考古学家】妮可·罗宾"]
+        }
+        list.beginFirstRefresh()
+        return list
     }
 }
 
 extension BaseViewController: JXCategoryViewDelegate {
     func categoryView(_ categoryView: JXCategoryBaseView!, didSelectedItemAt index: Int) {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = (index == 0)
+    }
+
+    func categoryView(_ categoryView: JXCategoryBaseView!, didClickedItemContentScrollViewTransitionTo index: Int){
+        //请务必实现该方法
+        //因为底层触发列表加载是在代理方法：`- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath`回调里面
+        //所以，如果当前有5个item，当前在第1个，用于点击了第5个。categoryView默认是通过设置contentOffset.x滚动到指定的位置，这个时候有个问题，就会触发中间2、3、4的cellForItemAtIndexPath方法。
+        //如此一来就丧失了延迟加载的功能
+        //所以，如果你想规避这样的情况发生，那么务必按照这里的方法处理滚动。
+        self.pagingView.listContainerView.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: false)
+
+
+        //如果你想相邻的两个item切换时，通过有动画滚动实现。未相邻的两个item直接切换，可以用下面这段代码
+        /*
+        let diffIndex = abs(categoryView.selectedIndex - index)
+        if diffIndex > 1 {
+            self.pagingView.listContainerView.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: false)
+        }else {
+            self.pagingView.listContainerView.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: true)
+        }
+        */
     }
 }
 

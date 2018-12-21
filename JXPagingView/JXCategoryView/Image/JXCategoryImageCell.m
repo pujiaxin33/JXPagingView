@@ -16,6 +16,7 @@
 
     _imageView = [[UIImageView alloc] init];
     _imageView.contentMode = UIViewContentModeScaleAspectFit;
+    _imageView.layer.masksToBounds = YES;
     [self.contentView addSubview:_imageView];
 }
 
@@ -25,6 +26,7 @@
     JXCategoryImageCellModel *myCellModel = (JXCategoryImageCellModel *)self.cellModel;
     self.imageView.bounds = CGRectMake(0, 0, myCellModel.imageSize.width, myCellModel.imageSize.height);
     self.imageView.center = self.contentView.center;
+    self.imageView.layer.cornerRadius = myCellModel.imageCornerRadius;
 }
 
 - (void)reloadData:(JXCategoryBaseCellModel *)cellModel {
@@ -35,7 +37,7 @@
         self.imageView.image = [UIImage imageNamed:myCellModel.imageName];
     }else if (myCellModel.imageURL != nil) {
         if (myCellModel.loadImageCallback != nil) {
-            myCellModel.loadImageCallback(self.imageView);
+            myCellModel.loadImageCallback(self.imageView, myCellModel.imageURL);
         }
     }
     if (myCellModel.selected) {
@@ -43,7 +45,7 @@
             self.imageView.image = [UIImage imageNamed:myCellModel.selectedImageName];
         }else if (myCellModel.selectedImageURL != nil) {
             if (myCellModel.loadImageCallback != nil) {
-                myCellModel.loadImageCallback(self.imageView);
+                myCellModel.loadImageCallback(self.imageView, myCellModel.selectedImageURL);
             }
         }
     }

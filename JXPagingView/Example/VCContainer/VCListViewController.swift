@@ -15,6 +15,7 @@ class VCListViewController: UIViewController {
         super.viewDidLoad()
 
         view.addSubview(contentView)
+        contentView.beginFirstRefresh()
     }
 
     override func viewDidLayoutSubviews() {
