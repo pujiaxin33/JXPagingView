@@ -20,7 +20,6 @@ static const CGFloat JXheightForHeaderInSection = 50;
 @property (nonatomic, strong) JXPagerView *pagerView;
 @property (nonatomic, strong) PagingViewTableHeaderView *userHeaderView;
 @property (nonatomic, strong, readonly) JXCategoryTitleView *categoryView;
-@property (nonatomic, strong, readonly) NSMutableDictionary <NSNumber *, TestListBaseView *> *validListViewDict;
 @property (nonatomic, assign) BOOL isNeedFooter;
 @property (nonatomic, assign) BOOL isNeedHeader;
 - (JXPagerView *)preferredPagingView;

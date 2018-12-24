@@ -20,7 +20,6 @@ static const CGFloat JXheightForHeaderInSection = 50;
 
 @property (nonatomic, strong) JXPagerListRefreshView *pagerView;
 @property (nonatomic, strong) PagingViewTableHeaderView *userHeaderView;
-@property (nonatomic, strong) NSMutableDictionary <NSNumber *, TestNestlistView *> *validListViewDict;
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) NSArray <NSString *> *titles;
 
@@ -35,8 +34,6 @@ static const CGFloat JXheightForHeaderInSection = 50;
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = false;
     _titles = @[@"主题一", @"主题二", @"主题三"];
-
-    _validListViewDict = [NSMutableDictionary dictionary];
 
     _userHeaderView = [[PagingViewTableHeaderView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, JXTableHeaderViewHeight)];
 
@@ -97,7 +94,6 @@ static const CGFloat JXheightForHeaderInSection = 50;
 
 - (id<JXPagerViewListViewDelegate>)pagerView:(JXPagerView *)pagerView initListAtIndex:(NSInteger)index {
     TestNestlistView *listView = [[TestNestlistView alloc] init];
-    self.validListViewDict[@(index)] = listView;
     return listView;
 }
 
@@ -126,7 +122,7 @@ static const CGFloat JXheightForHeaderInSection = 50;
 }
 
 - (BOOL)checkIsNestContentScrollView:(UIScrollView *)scrollView {
-    for (TestNestlistView *listView in self.validListViewDict.allValues) {
+    for (TestNestlistView *listView in self.pagerView.validListDict.allValues) {
         if (listView.contentScrollView == scrollView) {
             return YES;
         }

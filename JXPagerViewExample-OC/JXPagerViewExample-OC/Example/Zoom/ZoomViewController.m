@@ -19,7 +19,7 @@
 - (void)scrollToTargetItem {
     //1、必须让self.pagerView.mainTableView滚动到headerView刚好消失不见，才能触发列表的滚动
     [self.pagerView.mainTableView setContentOffset:CGPointMake(0, JXTableHeaderViewHeight) animated:NO];
-    UITableView *listView = (UITableView *)self.validListViewDict.allValues.firstObject.listScrollView;
+    UITableView *listView = (UITableView *)self.pagerView.validListDict.allValues.firstObject.listScrollView;
     [listView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:10 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 

@@ -23,7 +23,6 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = false;
-    _validListViewDict = [NSMutableDictionary dictionary];
     _titles = @[@"能力", @"爱好", @"队友"];
 
     _userHeaderView = [[PagingViewTableHeaderView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, JXTableHeaderViewHeight)];
@@ -99,7 +98,6 @@
         listView.dataSource = @[@"【剑士】罗罗诺亚·索隆", @"【航海士】娜美", @"【狙击手】乌索普", @"【厨师】香吉士", @"【船医】托尼托尼·乔巴", @"【船匠】 弗兰奇", @"【音乐家】布鲁克", @"【考古学家】妮可·罗宾"].mutableCopy;
     }
     [listView beginFirstRefresh];
-    self.validListViewDict[@(index)] = listView;
     return listView;
 }
 

@@ -144,7 +144,7 @@
 
 @property (nonatomic, strong, readonly) id<JXPagerViewListViewDelegate> currentList;    //暴露给子类使用，请勿直接使用该属性！
 
-@property (nonatomic, strong, readonly) NSDictionary <NSNumber *, id<JXPagerViewListViewDelegate>> *validListDict;   //暴露给子类使用，请勿直接使用该属性！当前已经加载过可用的列表字典，key就是index值，value是对应的列表。
+@property (nonatomic, strong, readonly) NSDictionary <NSNumber *, id<JXPagerViewListViewDelegate>> *validListDict;   //当前已经加载过可用的列表字典，key就是index值，value是对应的列表。
 
 - (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView;
 
