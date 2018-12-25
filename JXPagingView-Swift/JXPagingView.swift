@@ -285,6 +285,7 @@ extension JXPagingView: JXPagingListContainerViewDelegate {
                 self?.currentList = list
                 self?.listViewDidScroll(scrollView: scrollView)
             }
+            validListDict[row] = list!
         }
 
         return list!.listView()
