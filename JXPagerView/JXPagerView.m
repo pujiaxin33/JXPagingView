@@ -56,7 +56,7 @@
     self.mainTableView.frame = self.bounds;
 }
 
-- (void)setisListHorizontalScrollEnabled:(BOOL)isListHorizontalScrollEnabled {
+- (void)setIsListHorizontalScrollEnabled:(BOOL)isListHorizontalScrollEnabled {
     _isListHorizontalScrollEnabled = isListHorizontalScrollEnabled;
 
     self.listContainerView.collectionView.scrollEnabled = isListHorizontalScrollEnabled;
