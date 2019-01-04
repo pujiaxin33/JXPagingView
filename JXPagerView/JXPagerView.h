@@ -96,8 +96,10 @@
 - (NSInteger)numberOfListsInPagerView:(JXPagerView *)pagerView;
 
 /**
- 根据index初始化一个对应列表实例。注意：一定要是新生成的实例！！！
- 只要遵循JXPagerViewListViewDelegate即可，无论你返回的是UIView还是UIViewController都可以。
+ 根据index初始化一个对应列表实例，需要是遵从`JXPagerViewListViewDelegate`协议的对象。
+ 如果列表是用自定义UIView封装的，就让自定义UIView遵从`JXPagerViewListViewDelegate`协议，该方法返回自定义UIView即可。
+ 如果列表是用自定义UIViewController封装的，就让自定义UIViewController遵从`JXPagerViewListViewDelegate`协议，该方法返回自定义UIViewController即可。
+ 注意：一定要是新生成的实例！！！
 
  @param pagerView pagerView description
  @param index index description
