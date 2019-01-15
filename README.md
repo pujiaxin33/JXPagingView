@@ -225,8 +225,13 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
 
 ## 迁移指南
 - 0.0.9版本将下面两个API的返回值修改为了NSUInteger(swift版本为Int)，之前版本是CGFloat，升级为0.0.9及以上的时候，记得修改一下使用地方的返回值类型，不然会引起crash。
-    - `- (NSUInteger)heightForPinSectionHeaderInPagerView:(JXPagerView *)pagerView`
-    - `- (NSUInteger)tableHeaderViewHeightInPagerView:(JXPagerView *)pagerView`
+  - `- (NSUInteger)heightForPinSectionHeaderInPagerView:(JXPagerView *)pagerView`
+  - `- (NSUInteger)tableHeaderViewHeightInPagerView:(JXPagerView *)pagerView`
+- 1.0.0版本：
+  删除代理方法`- (NSArray <id<JXPagerViewListViewDelegate>> *)listViewsInPagerView:(JXPagerView *)pagerView;`，请参考示例使用下面两个代理方法:
+  - `- (NSInteger)numberOfListsInPagerView:(JXPagerView *)pagerView;`
+  - `- (id<JXPagerViewListViewDelegate>)pagerView:(JXPagerView *)pagerView initListAtIndex:(NSInteger)index;`
+    
 
 ## 补充
 
