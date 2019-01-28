@@ -46,6 +46,8 @@
     self.pagerView.mainTableView.clipsToBounds = false;
     //让头图的布局往上移动naviHeight高度，填充导航栏下面的内容
     self.userHeaderView.imageView.frame = CGRectMake(0, -naviHeight, self.view.bounds.size.width, naviHeight + JXTableHeaderViewHeight);
+    self.userHeaderView.imageView.autoresizingMask = UIViewAutoresizingNone;
+    //示例里面的PagingViewTableHeaderView，为了适应示例里面所有的情况。在导航栏隐藏示例关于横竖屏切换的情况，实在有点改不动了。不过不影响真实使用场景。可以根据自己真实的使用场景自己适配。这里的示例就不处理了。
 }
 
 - (void)backButtonClicked:(UIButton *)btn {

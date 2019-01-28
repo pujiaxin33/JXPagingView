@@ -24,8 +24,7 @@
         self.imageView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
         self.imageView.contentMode = UIViewContentModeScaleAspectFill;
         [self addSubview:self.imageView];
-
-        self.imageViewFrame = self.imageView.frame;
+        self.imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, frame.size.height - 30, 200, 30)];
         label.font = [UIFont systemFontOfSize:20];
@@ -34,6 +33,12 @@
         [self addSubview:label];
     }
     return self;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+
+    self.imageViewFrame = self.bounds;
 }
 
 - (void)scrollViewDidScroll:(CGFloat)contentOffsetY {

@@ -71,6 +71,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
+    self.categoryView.frame = CGRectMake(0, 0, self.bounds.size.width, 50);
     self.contentScrollView.frame = CGRectMake(0, 50, self.bounds.size.width, self.bounds.size.height - 50);
     self.contentScrollView.contentSize = CGSizeMake(self.contentScrollView.bounds.size.width*3, self.contentScrollView.bounds.size.height);
     self.powerListView.frame = CGRectMake(0, 0, self.bounds.size.width, self.contentScrollView.bounds.size.height);

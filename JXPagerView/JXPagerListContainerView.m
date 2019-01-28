@@ -11,6 +11,7 @@
 
 @interface JXPagerListContainerView() <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) JXPagerListContainerCollectionView *collectionView;
+@property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 @end
 
 @implementation JXPagerListContainerView
@@ -52,10 +53,17 @@
     [super layoutSubviews];
 
     self.collectionView.frame = self.bounds;
+    if (self.selectedIndexPath != nil) {
+        [self.collectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    }
 }
 
 - (void)reloadData {
     [self.collectionView reloadData];
+}
+
+- (void)deviceOrientationDidChanged {
+    self.selectedIndexPath = [NSIndexPath indexPathForItem:self.collectionView.contentOffset.x/self.bounds.size.width inSection:0];
 }
 
 #pragma mark - UICollectionViewDataSource, UICollectionViewDelegate
@@ -70,7 +78,7 @@
         [view removeFromSuperview];
     }
     UIView *listView = [self.delegate listContainerView:self listViewInRow:indexPath.item];
-    listView.frame = cell.contentView.bounds;
+    listView.frame = cell.bounds;
     [cell.contentView addSubview:listView];
     return cell;
 }

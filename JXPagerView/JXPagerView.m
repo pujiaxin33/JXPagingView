@@ -19,6 +19,11 @@
 
 @implementation JXPagerView
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate {
     self = [super initWithFrame:CGRectZero];
     if (self) {
@@ -48,6 +53,8 @@
     self.listContainerView.mainTableView = self.mainTableView;
 
     self.isListHorizontalScrollEnabled = YES;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChangeNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 - (void)layoutSubviews {
@@ -119,6 +126,12 @@
     self.currentScrollingListView = scrollView;
 
     [self preferredProcessListViewDidScroll:scrollView];
+}
+
+- (void)deviceOrientationDidChangeNotification:(NSNotification *)notification {
+    [self.mainTableView reloadData];
+    [self.listContainerView deviceOrientationDidChanged];
+    [self.listContainerView reloadData];
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
