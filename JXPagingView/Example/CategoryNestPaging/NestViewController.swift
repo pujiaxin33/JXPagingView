@@ -55,6 +55,7 @@ class NestViewController: UIViewController {
 
         contentScrollView.frame = view.bounds
         contentScrollView.contentSize = CGSize(width: contentScrollView.bounds.size.width*CGFloat(naviCategoryView.titles.count), height: contentScrollView.bounds.size.height)
+        contentScrollView.contentOffset.x = CGFloat(naviCategoryView.selectedIndex)*contentScrollView.bounds.size.width
         for (index, vc) in pagingVCArray.enumerated() {
             vc.view.frame = CGRect(x: contentScrollView.bounds.size.width*CGFloat(index), y: 0, width: contentScrollView.bounds.size.width, height: contentScrollView.bounds.size.height)
             vc.pagingView.listContainerView.collectionView.isNestEnabled = true

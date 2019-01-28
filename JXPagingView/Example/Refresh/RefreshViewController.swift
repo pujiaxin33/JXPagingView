@@ -48,6 +48,7 @@ class RefreshViewController: BaseViewController {
         }else {
             list.dataSource = ["高级-【剑士】罗罗诺亚·索隆", "高级-【航海士】娜美", "高级-【狙击手】乌索普", "高级-【厨师】香吉士", "高级-【船医】托尼托尼·乔巴", "高级-【船匠】 弗兰奇", "高级-【音乐家】布鲁克", "高级-【考古学家】妮可·罗宾"]
         }
+        list.beginFirstRefresh()
         return list
     }
 }

@@ -96,6 +96,10 @@ open class JXPagingView: UIView {
     var currentScrollingListView: UIScrollView?
     var currentList: JXPagingViewListViewDelegate?
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     public init(delegate: JXPagingViewDelegate) {
         self.delegate = delegate
         super.init(frame: CGRect.zero)
@@ -115,6 +119,7 @@ open class JXPagingView: UIView {
         mainTableView.separatorStyle = .none
         mainTableView.dataSource = self
         mainTableView.delegate = self
+        mainTableView.scrollsToTop = false
         mainTableView.tableHeaderView = self.delegate.tableHeaderView(in: self)
         mainTableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
         addSubview(mainTableView)
@@ -127,6 +132,8 @@ open class JXPagingView: UIView {
         listContainerView.mainTableView = mainTableView
 
         refreshListHorizontalScrollEnabledState()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationDidChange(notification:)), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 
     override open func layoutSubviews() {
@@ -134,7 +141,6 @@ open class JXPagingView: UIView {
 
         mainTableView.frame = self.bounds
     }
-
 
     open func reloadData() {
         self.currentList = nil
@@ -203,6 +209,12 @@ open class JXPagingView: UIView {
 
         preferredProcessListViewDidScroll(scrollView: scrollView)
     }
+
+    @objc func deviceOrientationDidChange(notification: Notification) {
+        mainTableView.reloadData()
+        listContainerView.deviceOrientationDidChanged()
+        listContainerView.reloadData()
+    }
 }
 
 //MARK: - UITableViewDataSource, UITableViewDelegate
@@ -222,8 +234,6 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
         }
         listContainerView.frame = cell.contentView.bounds
         cell.contentView.addSubview(listContainerView)
-        listContainerView.setNeedsLayout()
-        listContainerView.layoutIfNeeded()
         return cell
     }
 
@@ -290,7 +300,7 @@ extension JXPagingView: JXPagingListContainerViewDelegate {
             validListDict[row] = list!
         }
         for listItem in validListDict.values {
-            if listItem == list {
+            if listItem === list {
                 listItem.listScrollView().scrollsToTop = true
             }else {
                 listItem.listScrollView().scrollsToTop = false

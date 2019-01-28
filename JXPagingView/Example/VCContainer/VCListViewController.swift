@@ -11,6 +11,11 @@ import UIKit
 class VCListViewController: UIViewController {
     var contentView = TestListBaseView()
 
+    //如果使用UIViewController来封装逻辑，且要支持横竖屏切换，一定要加上下面这个方法。不加会有bug的。
+    override func loadView() {
+        self.view = UIView()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

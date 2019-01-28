@@ -12,7 +12,6 @@ import UIKit
 class CollectionViewViewController: UIViewController {
     var pagingView: JXPagingView!
     var userHeaderView: PagingViewTableHeaderView!
-    var userHeaderContainerView: UIView!
     var categoryView: JXCategoryTitleView!
     var titles = ["能力", "爱好", "队友"]
     var JXTableHeaderViewHeight: Int = 200
@@ -24,9 +23,7 @@ class CollectionViewViewController: UIViewController {
         self.title = "CollectionView列表示例"
         self.navigationController?.navigationBar.isTranslucent = false
 
-        userHeaderContainerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(JXTableHeaderViewHeight)))
-        userHeaderView = PagingViewTableHeaderView(frame: userHeaderContainerView.bounds)
-        userHeaderContainerView.addSubview(userHeaderView)
+        userHeaderView = PagingViewTableHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(JXTableHeaderViewHeight)))
 
         categoryView = JXCategoryTitleView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(JXheightForHeaderInSection)))
         categoryView.titles = titles
@@ -43,10 +40,11 @@ class CollectionViewViewController: UIViewController {
         categoryView.indicators = [lineView]
 
         let lineWidth = 1/UIScreen.main.scale
-        let lineLayer = CALayer()
-        lineLayer.backgroundColor = UIColor.lightGray.cgColor
-        lineLayer.frame = CGRect(x: 0, y: categoryView.bounds.height - lineWidth, width: categoryView.bounds.width, height: lineWidth)
-        categoryView.layer.addSublayer(lineLayer)
+        let bottomLineView = UIView()
+        bottomLineView.backgroundColor = UIColor.lightGray
+        bottomLineView.frame = CGRect(x: 0, y: categoryView.bounds.height - lineWidth, width: categoryView.bounds.width, height: lineWidth)
+        bottomLineView.autoresizingMask = .flexibleWidth
+        categoryView.addSubview(bottomLineView)
 
         pagingView = preferredPagingView()
         self.view.addSubview(pagingView)
@@ -78,7 +76,7 @@ extension CollectionViewViewController: JXPagingViewDelegate {
     }
 
     func tableHeaderView(in pagingView: JXPagingView) -> UIView {
-        return userHeaderContainerView
+        return userHeaderView
     }
 
     func heightForPinSectionHeader(in pagingView: JXPagingView) -> Int {

@@ -58,6 +58,8 @@ open class JXPagingListContainerView: UIView {
     unowned var delegate: JXPagingListContainerViewDelegate
     weak var mainTableView: JXPagingMainTableView?
 
+    private var selectedIndexPath: IndexPath?
+
     public init(delegate: JXPagingListContainerViewDelegate) {
         self.delegate = delegate
 
@@ -84,6 +86,7 @@ open class JXPagingListContainerView: UIView {
         collectionView.bounces = false
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.scrollsToTop = false
         collectionView.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "cell")
         if #available(iOS 10.0, *) {
             collectionView.isPrefetchingEnabled = false
@@ -98,10 +101,17 @@ open class JXPagingListContainerView: UIView {
         super.layoutSubviews()
 
         collectionView.frame = self.bounds
+        if selectedIndexPath != nil {
+            collectionView.scrollToItem(at: selectedIndexPath!, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: false)
+        }
     }
 
     open func reloadData() {
         self.collectionView.reloadData()
+    }
+
+    open func deviceOrientationDidChanged() {
+        selectedIndexPath = IndexPath(item: Int(collectionView.contentOffset.x/bounds.size.width), section: 0)
     }
 }
 
@@ -117,7 +127,7 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
             view.removeFromSuperview()
         }
         let listView = self.delegate.listContainerView(self, viewForListInRow: indexPath.item)
-        listView.frame = cell.contentView.bounds
+        listView.frame = cell.bounds
         cell.contentView.addSubview(listView)
         return cell
     }
