@@ -289,7 +289,13 @@ extension JXPagingView: JXPagingListContainerViewDelegate {
             }
             validListDict[row] = list!
         }
-
+        for listItem in validListDict.values {
+            if listItem == list {
+                listItem.listScrollView().scrollsToTop = true
+            }else {
+                listItem.listScrollView().scrollsToTop = false
+            }
+        }
         return list!.listView()
     }
 
