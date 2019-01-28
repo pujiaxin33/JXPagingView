@@ -207,6 +207,14 @@
         }];
         _validListDict[@(row)] = list;
     }
+    for (id<JXPagerViewListViewDelegate> listItem in self.validListDict.allValues) {
+        if (listItem == list) {
+            [listItem listScrollView].scrollsToTop = YES;
+        }else {
+            [listItem listScrollView].scrollsToTop = NO;
+        }
+    }
+
     return [list listView];
 }
 
