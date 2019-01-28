@@ -9,6 +9,7 @@
 #import "TestListBaseView.h"
 #import "MJRefresh.h"
 #import "TestTableViewCell.h"
+#import "DetailViewController.h"
 
 @interface TestListBaseView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, copy) void(^scrollCallback)(UIScrollView *scrollView);
@@ -102,6 +103,10 @@
 }
 
 - (void)selectCellAtIndexPath:(NSIndexPath *)indexPath {
+    DetailViewController *detailVC = [[DetailViewController alloc] init];
+    detailVC.infoString = self.dataSource[indexPath.row];
+    [self.naviController pushViewController:detailVC animated:YES];
+
     if (self.lastSelectedIndexPath == indexPath) {
         return;
     }
@@ -138,7 +143,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

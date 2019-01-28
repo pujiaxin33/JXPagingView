@@ -80,6 +80,7 @@
 		196428F32148ECB1009C1D31 /* ListRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428F22148ECB1009C1D31 /* ListRefreshViewController.m */; };
 		196428F62148EF19009C1D31 /* NaviBarHiddenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428F52148EF19009C1D31 /* NaviBarHiddenViewController.m */; };
 		196428F92148F419009C1D31 /* TestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428F82148F419009C1D31 /* TestTableViewCell.m */; };
+		1979C1EE21FEDFCD00DA40E7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1979C1ED21FEDFCD00DA40E7 /* DetailViewController.m */; };
 		197B3A382182B13E00561F08 /* NestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197B3A372182B13E00561F08 /* NestViewController.m */; };
 		197B3A3B2182B17F00561F08 /* TestNestlistView.m in Sources */ = {isa = PBXBuildFile; fileRef = 197B3A3A2182B17F00561F08 /* TestNestlistView.m */; };
 		197B3A3E2182B22900561F08 /* TestNestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 197B3A3D2182B22900561F08 /* TestNestListBaseView.m */; };
@@ -233,6 +234,8 @@
 		196428F52148EF19009C1D31 /* NaviBarHiddenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NaviBarHiddenViewController.m; sourceTree = "<group>"; };
 		196428F72148F419009C1D31 /* TestTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTableViewCell.h; sourceTree = "<group>"; };
 		196428F82148F419009C1D31 /* TestTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTableViewCell.m; sourceTree = "<group>"; };
+		1979C1EC21FEDFCD00DA40E7 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		1979C1ED21FEDFCD00DA40E7 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		197B3A362182B13E00561F08 /* NestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NestViewController.h; sourceTree = "<group>"; };
 		197B3A372182B13E00561F08 /* NestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NestViewController.m; sourceTree = "<group>"; };
 		197B3A392182B17F00561F08 /* TestNestlistView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNestlistView.h; sourceTree = "<group>"; };
@@ -480,6 +483,8 @@
 				196428F82148F419009C1D31 /* TestTableViewCell.m */,
 				196428222148E58C009C1D31 /* PagingViewTableHeaderView.h */,
 				1964281C2148E58C009C1D31 /* PagingViewTableHeaderView.m */,
+				1979C1EC21FEDFCD00DA40E7 /* DetailViewController.h */,
+				1979C1ED21FEDFCD00DA40E7 /* DetailViewController.m */,
 				19C417CB215F1B630090E518 /* UIWindow+JXSafeArea.h */,
 				19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */,
 			);
@@ -710,6 +715,7 @@
 				196428E42148E9D0009C1D31 /* MJRefreshAutoGifFooter.m in Sources */,
 				197B3A3B2182B17F00561F08 /* TestNestlistView.m in Sources */,
 				19C417CD215F1B630090E518 /* UIWindow+JXSafeArea.m in Sources */,
+				1979C1EE21FEDFCD00DA40E7 /* DetailViewController.m in Sources */,
 				1964283A2148E5EC009C1D31 /* JXPagerListRefreshView.m in Sources */,
 				196428EB2148E9D0009C1D31 /* MJRefreshBackFooter.m in Sources */,
 				1904A91D21CCC55800316F97 /* JXCategoryTitleImageCell.m in Sources */,

@@ -88,6 +88,7 @@
 
 - (id<JXPagerViewListViewDelegate>)pagerView:(JXPagerView *)pagerView initListAtIndex:(NSInteger)index {
     TestListBaseView *listView = [[TestListBaseView alloc] init];
+    listView.naviController = self.navigationController;
     listView.isNeedHeader = self.isNeedHeader;
     listView.isNeedFooter = self.isNeedFooter;
     if (index == 0) {
