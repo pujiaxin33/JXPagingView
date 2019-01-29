@@ -41,7 +41,7 @@ class NestViewController: UIViewController {
         for _ in 0..<titles.count {
             let pagingVC = BaseViewController()
             pagingVC.nestContentScrollView = contentScrollView
-            addChildViewController(pagingVC)
+            addChild(pagingVC)
             contentScrollView.addSubview(pagingVC.view)
             pagingVCArray.append(pagingVC)
         }
