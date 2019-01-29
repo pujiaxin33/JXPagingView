@@ -133,7 +133,7 @@ open class JXPagingView: UIView {
 
         refreshListHorizontalScrollEnabledState()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationDidChange(notification:)), name: UIDevice.orientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationDidChange(notification:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
 
     override open func layoutSubviews() {
