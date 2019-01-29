@@ -25,6 +25,8 @@
 | **HeaderView高度改动示例**<br/> 参考[HeightChangeViewController.swift](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Example/HeightChange/HeightChangeViewController.swift)类 <br/> 只有swift demo工程才有该示例 | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/HeaderViewHeightChange.gif) |
 | **PagingView嵌套CategoryView** <br/> 参考[NestViewController](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagerViewExample-OC/JXPagerViewExample-OC/Example/Nest/NestViewController.m)类 <br/> 只有 **OC!OC!OC!** 的demo工程才有该示例 <br/> 操作比较特殊，如果需要此效果，<br/> 请认真参考源码，有问题多试试 <br/> 参考NestViewController.h类 | ![Nest](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/Nest.gif) |
 | **CategoryView嵌套PagingView** <br/> 参考[NestViewController.swift](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Example/CategoryNestPaging/NestViewController.swift)类 <br/> 只有 **Swift!Swift!Swift!** 的demo工程才有该示例 <br/> 操作比较特殊，如果需要此效果，<br/> 请认真参考源码，有问题多试试 <br/> 参考NestViewController.swift类 | ![Nest](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/CategoryNestPaging.gif) |
+| **点击状态栏**  | ![Zoom](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/StatusBarClicked.gif) | 
+| **横竖屏旋转**  | ![Zoom](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/ScreenRotate.gif) | 
 
 ## 安装
 
