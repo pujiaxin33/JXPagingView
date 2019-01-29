@@ -11,6 +11,7 @@
 - isListHorizontalScrollEnabled属性控制列表是否可以左右滑动，默认YES；
 - 使用JXCategoryView分类控制器，几乎支持所有主流效果、高度自定义、可灵活扩展；
 - 支持横竖屏切换；
+- 支持点击状态栏滚动当前列表到顶部；
 
 ## 预览
 
@@ -220,6 +221,15 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
          [self.pagerView.listContainerView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
      }
      */
+}
+```
+
+### 关于列表用UIViewController封装且要支持横竖屏的tips
+
+在列表UIViewController类里面一定要加上下面这段代码：(不要问我为什么，我也不知道，谁知道系统内部是怎么操作的，反正加上就没毛病了)
+```
+- (void)loadView {
+    self.view = [[UIView alloc] init];
 }
 ```
 
