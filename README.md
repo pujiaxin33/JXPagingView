@@ -39,6 +39,9 @@
 ### CocoaPods
 
 - **Swift版本**
+
+支持swift最新版本：4.2
+
 ```ruby
 target '<Your Target Name>' do
     pod 'JXPagingView/Paging'
