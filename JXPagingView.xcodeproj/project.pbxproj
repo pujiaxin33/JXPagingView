@@ -82,6 +82,8 @@
 		194DCDF421352689000E89EF /* NaviHiddenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDF321352689000E89EF /* NaviHiddenViewController.swift */; };
 		194DCDF621352CE6000E89EF /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDF521352CE6000E89EF /* BaseNavigationController.swift */; };
 		1968DA692135486F00A51C83 /* NaviHidden.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1968DA682135486F00A51C83 /* NaviHidden.gif */; };
+		1979C1F021FFED3000DA40E7 /* StatusBarClicked.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1979C1EF21FFED3000DA40E7 /* StatusBarClicked.gif */; };
+		1979C1F221FFED4E00DA40E7 /* ScreenRotate.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1979C1F121FFED4E00DA40E7 /* ScreenRotate.gif */; };
 		197D66AE2182FC7600B20483 /* Nest.gif in Resources */ = {isa = PBXBuildFile; fileRef = 197D66AD2182FC7600B20483 /* Nest.gif */; };
 		19870C27211D852400C23CAA /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19870C26211D852400C23CAA /* lufei.jpg */; };
 		19870C7F2121604F00C23CAA /* Refresh.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C7D2121604F00C23CAA /* Refresh.gif */; };
@@ -233,6 +235,8 @@
 		194DCDF321352689000E89EF /* NaviHiddenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviHiddenViewController.swift; sourceTree = "<group>"; };
 		194DCDF521352CE6000E89EF /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		1968DA682135486F00A51C83 /* NaviHidden.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = NaviHidden.gif; sourceTree = "<group>"; };
+		1979C1EF21FFED3000DA40E7 /* StatusBarClicked.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = StatusBarClicked.gif; sourceTree = "<group>"; };
+		1979C1F121FFED4E00DA40E7 /* ScreenRotate.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ScreenRotate.gif; sourceTree = "<group>"; };
 		197D66AD2182FC7600B20483 /* Nest.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Nest.gif; sourceTree = "<group>"; };
 		19870C26211D852400C23CAA /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lufei.jpg; sourceTree = "<group>"; };
 		19870C7D2121604F00C23CAA /* Refresh.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Refresh.gif; sourceTree = "<group>"; };
@@ -616,6 +620,8 @@
 		19870C7C2121601700C23CAA /* Gif */ = {
 			isa = PBXGroup;
 			children = (
+				1979C1F121FFED4E00DA40E7 /* ScreenRotate.gif */,
+				1979C1EF21FFED3000DA40E7 /* StatusBarClicked.gif */,
 				19BA2EEA219C297400170A41 /* HeaderViewHeightChange.gif */,
 				190639AF21918BAD00153BE9 /* CategoryNestPaging.gif */,
 				197D66AD2182FC7600B20483 /* Nest.gif */,
@@ -720,8 +726,10 @@
 				190639B021918BAD00153BE9 /* CategoryNestPaging.gif in Resources */,
 				19870C802121605000C23CAA /* Zoom.gif in Resources */,
 				1968DA692135486F00A51C83 /* NaviHidden.gif in Resources */,
+				1979C1F221FFED4E00DA40E7 /* ScreenRotate.gif in Resources */,
 				1912A5AD211D2F1500A80826 /* MJRefresh.bundle in Resources */,
 				194DCDF121352285000E89EF /* ListRefresh.gif in Resources */,
+				1979C1F021FFED3000DA40E7 /* StatusBarClicked.gif in Resources */,
 				197D66AE2182FC7600B20483 /* Nest.gif in Resources */,
 				1912A546211D2AB700A80826 /* Main.storyboard in Resources */,
 				19CF1848216C993D0093C775 /* CollectionViewList.gif in Resources */,
