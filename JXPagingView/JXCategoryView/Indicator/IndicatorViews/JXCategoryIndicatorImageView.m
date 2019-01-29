@@ -74,11 +74,11 @@
     CGRect toFrame = self.frame;
     toFrame.origin.x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - self.indicatorImageViewSize.width)/2;
     if (self.scrollEnabled) {
-        [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        [UIView animateWithDuration:self.scrollAnimationDuration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
             self.frame = toFrame;
         } completion:^(BOOL finished) {
         }];
-        if (self.indicatorImageViewRollEnabled && model.isClicked) {
+        if (self.indicatorImageViewRollEnabled && (model.selectedType == JXCategoryCellSelectedTypeCode || model.selectedType == JXCategoryCellSelectedTypeClick)) {
             [self.indicatorImageView.layer removeAnimationForKey:@"rotate"];
             CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
             if (model.selectedIndex > model.lastSelectedIndex) {

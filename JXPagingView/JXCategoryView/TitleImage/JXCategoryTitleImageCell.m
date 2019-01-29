@@ -10,10 +10,18 @@
 #import "JXCategoryTitleImageCellModel.h"
 
 @interface JXCategoryTitleImageCell()
-
+@property (nonatomic, strong) NSString *currentImageName;
+@property (nonatomic, strong) NSURL *currentImageURL;
 @end
 
 @implementation JXCategoryTitleImageCell
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+
+    self.currentImageName = nil;
+    self.currentImageURL = nil;
+}
 
 - (void)initializeViews {
     [super initializeViews];
@@ -88,20 +96,29 @@
     [super reloadData:cellModel];
 
     JXCategoryTitleImageCellModel *myCellModel = (JXCategoryTitleImageCellModel *)cellModel;
+
+    //因为`- (void)reloadData:(JXCategoryBaseCellModel *)cellModel`方法会回调多次，尤其是左右滚动的时候会调用无数次，如果每次都触发图片加载，会非常消耗性能。所以只会在图片发生了变化的时候，才进行图片加载。
+    NSString *currentImageName = nil;
+    NSURL *currentImageURL = nil;
     if (myCellModel.imageName != nil) {
-        self.imageView.image = [UIImage imageNamed:myCellModel.imageName];
+        currentImageName = myCellModel.imageName;
     }else if (myCellModel.imageURL != nil) {
-        if (myCellModel.loadImageCallback != nil) {
-            myCellModel.loadImageCallback(self.imageView, myCellModel.imageURL);
-        }
+        currentImageURL = myCellModel.imageURL;
     }
     if (myCellModel.selected) {
         if (myCellModel.selectedImageName != nil) {
-            self.imageView.image = [UIImage imageNamed:myCellModel.selectedImageName];
+            currentImageName = myCellModel.selectedImageName;
         }else if (myCellModel.selectedImageURL != nil) {
-            if (myCellModel.loadImageCallback != nil) {
-                myCellModel.loadImageCallback(self.imageView, myCellModel.selectedImageURL);
-            }
+            currentImageURL = myCellModel.selectedImageURL;
+        }
+    }
+    if (currentImageName != nil && ![currentImageName isEqualToString:self.currentImageName]) {
+        self.currentImageName = currentImageName;
+        self.imageView.image = [UIImage imageNamed:currentImageName];
+    }else if (currentImageURL != nil && ![currentImageURL.absoluteString isEqualToString:self.currentImageURL.absoluteString]) {
+        self.currentImageURL = currentImageURL;
+        if (myCellModel.loadImageCallback != nil) {
+            myCellModel.loadImageCallback(self.imageView, currentImageURL);
         }
     }
 
@@ -112,7 +129,6 @@
     }
 
     [self setNeedsLayout];
-    [self layoutIfNeeded];
 }
 
 
