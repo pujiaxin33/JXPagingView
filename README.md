@@ -224,6 +224,15 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
 }
 ```
 
+### 关于列表用UIViewController封装且要支持横竖屏的tips
+
+在列表UIViewController类里面一定要加上下面这段代码：(不要问我为什么，我也不知道，谁知道系统内部是怎么操作的，反正加上就没毛病了)
+```
+- (void)loadView {
+    self.view = [[UIView alloc] init];
+}
+```
+
 
 ## 迁移指南
 - 0.0.9版本将下面两个API的返回值修改为了NSUInteger(swift版本为Int)，之前版本是CGFloat，升级为0.0.9及以上的时候，记得修改一下使用地方的返回值类型，不然会引起crash。
