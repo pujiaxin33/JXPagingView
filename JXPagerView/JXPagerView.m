@@ -149,7 +149,7 @@
     for (UIView *view in cell.contentView.subviews) {
         [view removeFromSuperview];
     }
-    self.listContainerView.frame = cell.contentView.bounds;
+    self.listContainerView.frame = cell.bounds;
     [cell.contentView addSubview:self.listContainerView];
     return cell;
 }
