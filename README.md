@@ -10,6 +10,7 @@
 - 列表封装简洁，只要遵从`JXPagingViewListViewDelegate`协议即可。UIView、UIViewController等都可以；
 - isListHorizontalScrollEnabled属性控制列表是否可以左右滑动，默认YES；
 - 使用JXCategoryView分类控制器，几乎支持所有主流效果、高度自定义、可灵活扩展；
+- 支持横竖屏切换；
 
 ## 预览
 
