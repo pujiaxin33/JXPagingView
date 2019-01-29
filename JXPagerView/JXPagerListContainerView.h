@@ -13,7 +13,9 @@
 @class JXPagerListContainerCollectionView;
 
 @protocol JXPagerListContainerCollectionViewGestureDelegate <NSObject>
+@optional
 - (BOOL)pagerListContainerCollectionViewGestureRecognizerShouldBegin:(JXPagerListContainerCollectionView *)collectionView gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer;
+- (BOOL)pagerListContainerCollectionViewGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer;
 @end
 
 @interface JXPagerListContainerCollectionView: UICollectionView<UIGestureRecognizerDelegate>

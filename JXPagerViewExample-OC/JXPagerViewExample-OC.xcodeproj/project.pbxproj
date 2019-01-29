@@ -33,7 +33,6 @@
 		1904A92621CCC55800316F97 /* JXCategoryNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A8F521CCC55800316F97 /* JXCategoryNumberCell.m */; };
 		1904A92721CCC55800316F97 /* JXCategoryNumberCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A8F621CCC55800316F97 /* JXCategoryNumberCellModel.m */; };
 		1904A92821CCC55800316F97 /* JXCategoryListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A8FA21CCC55800316F97 /* JXCategoryListContainerView.m */; };
-		1904A92921CCC55800316F97 /* JXCategoryListVCContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A8FD21CCC55800316F97 /* JXCategoryListVCContainerView.m */; };
 		1904A92A21CCC55800316F97 /* JXCategoryFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A90021CCC55800316F97 /* JXCategoryFactory.m */; };
 		1904A92B21CCC55800316F97 /* JXCategoryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A90221CCC55800316F97 /* JXCategoryCollectionView.m */; };
 		1904A92C21CCC55800316F97 /* JXCategoryIndicatorParamsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A90321CCC55800316F97 /* JXCategoryIndicatorParamsModel.m */; };
@@ -41,6 +40,7 @@
 		1904A92E21CCC55800316F97 /* JXCategoryBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A90C21CCC55800316F97 /* JXCategoryBaseView.m */; };
 		1904A92F21CCC55800316F97 /* JXCategoryBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A90D21CCC55800316F97 /* JXCategoryBaseCell.m */; };
 		1904A93021CCC55800316F97 /* JXCategoryBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A90E21CCC55800316F97 /* JXCategoryBaseCellModel.m */; };
+		1921393922004A2C00A057C8 /* JXCategoryViewAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1921393822004A2C00A057C8 /* JXCategoryViewAnimator.m */; };
 		196428052148E47F009C1D31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428042148E47F009C1D31 /* AppDelegate.m */; };
 		196428082148E47F009C1D31 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428072148E47F009C1D31 /* ViewController.m */; };
 		1964280B2148E47F009C1D31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196428092148E47F009C1D31 /* Main.storyboard */; };
@@ -142,7 +142,6 @@
 		1904A8FA21CCC55800316F97 /* JXCategoryListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryListContainerView.m; sourceTree = "<group>"; };
 		1904A8FB21CCC55800316F97 /* JXCategoryIndicatorParamsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorParamsModel.h; sourceTree = "<group>"; };
 		1904A8FC21CCC55800316F97 /* JXCategoryCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryCollectionView.h; sourceTree = "<group>"; };
-		1904A8FD21CCC55800316F97 /* JXCategoryListVCContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryListVCContainerView.m; sourceTree = "<group>"; };
 		1904A8FE21CCC55800316F97 /* JXCategoryIndicatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorProtocol.h; sourceTree = "<group>"; };
 		1904A8FF21CCC55800316F97 /* JXCategoryViewDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryViewDefines.h; sourceTree = "<group>"; };
 		1904A90021CCC55800316F97 /* JXCategoryFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryFactory.m; sourceTree = "<group>"; };
@@ -150,7 +149,6 @@
 		1904A90221CCC55800316F97 /* JXCategoryCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryCollectionView.m; sourceTree = "<group>"; };
 		1904A90321CCC55800316F97 /* JXCategoryIndicatorParamsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorParamsModel.m; sourceTree = "<group>"; };
 		1904A90421CCC55800316F97 /* JXCategoryListContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryListContainerView.h; sourceTree = "<group>"; };
-		1904A90521CCC55800316F97 /* JXCategoryListVCContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryListVCContainerView.h; sourceTree = "<group>"; };
 		1904A90621CCC55800316F97 /* UIColor+JXAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JXAdd.m"; sourceTree = "<group>"; };
 		1904A90721CCC55800316F97 /* JXCategoryFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryFactory.h; sourceTree = "<group>"; };
 		1904A90921CCC55800316F97 /* JXCategoryBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryBaseView.h; sourceTree = "<group>"; };
@@ -159,6 +157,8 @@
 		1904A90C21CCC55800316F97 /* JXCategoryBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseView.m; sourceTree = "<group>"; };
 		1904A90D21CCC55800316F97 /* JXCategoryBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCell.m; sourceTree = "<group>"; };
 		1904A90E21CCC55800316F97 /* JXCategoryBaseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCellModel.m; sourceTree = "<group>"; };
+		1921393722004A2C00A057C8 /* JXCategoryViewAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryViewAnimator.h; sourceTree = "<group>"; };
+		1921393822004A2C00A057C8 /* JXCategoryViewAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryViewAnimator.m; sourceTree = "<group>"; };
 		196428002148E47F009C1D31 /* JXPagerViewExample-OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JXPagerViewExample-OC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		196428032148E47F009C1D31 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		196428042148E47F009C1D31 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -377,10 +377,11 @@
 		1904A8F921CCC55800316F97 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1921393722004A2C00A057C8 /* JXCategoryViewAnimator.h */,
+				1921393822004A2C00A057C8 /* JXCategoryViewAnimator.m */,
 				1904A8FA21CCC55800316F97 /* JXCategoryListContainerView.m */,
 				1904A8FB21CCC55800316F97 /* JXCategoryIndicatorParamsModel.h */,
 				1904A8FC21CCC55800316F97 /* JXCategoryCollectionView.h */,
-				1904A8FD21CCC55800316F97 /* JXCategoryListVCContainerView.m */,
 				1904A8FE21CCC55800316F97 /* JXCategoryIndicatorProtocol.h */,
 				1904A8FF21CCC55800316F97 /* JXCategoryViewDefines.h */,
 				1904A90021CCC55800316F97 /* JXCategoryFactory.m */,
@@ -388,7 +389,6 @@
 				1904A90221CCC55800316F97 /* JXCategoryCollectionView.m */,
 				1904A90321CCC55800316F97 /* JXCategoryIndicatorParamsModel.m */,
 				1904A90421CCC55800316F97 /* JXCategoryListContainerView.h */,
-				1904A90521CCC55800316F97 /* JXCategoryListVCContainerView.h */,
 				1904A90621CCC55800316F97 /* UIColor+JXAdd.m */,
 				1904A90721CCC55800316F97 /* JXCategoryFactory.h */,
 			);
@@ -742,7 +742,6 @@
 				1904A91C21CCC55800316F97 /* JXCategoryTitleImageView.m in Sources */,
 				196428392148E5EC009C1D31 /* JXPagerView.m in Sources */,
 				196428292148E58C009C1D31 /* PagingViewController.m in Sources */,
-				1904A92921CCC55800316F97 /* JXCategoryListVCContainerView.m in Sources */,
 				1904A91B21CCC55800316F97 /* JXCategoryDotCellModel.m in Sources */,
 				196428E12148E9D0009C1D31 /* MJRefreshBackStateFooter.m in Sources */,
 				1904A91F21CCC55800316F97 /* JXCategoryTitleCellModel.m in Sources */,
@@ -756,6 +755,7 @@
 				196428DA2148E9D0009C1D31 /* UIScrollView+MJRefresh.m in Sources */,
 				197B3A382182B13E00561F08 /* NestViewController.m in Sources */,
 				196428E32148E9D0009C1D31 /* MJRefreshAutoStateFooter.m in Sources */,
+				1921393922004A2C00A057C8 /* JXCategoryViewAnimator.m in Sources */,
 				1904A92E21CCC55800316F97 /* JXCategoryBaseView.m in Sources */,
 				196428DB2148E9D0009C1D31 /* MJRefreshConst.m in Sources */,
 				1904A92F21CCC55800316F97 /* JXCategoryBaseCell.m in Sources */,

@@ -125,7 +125,7 @@
 @implementation JXPagerListContainerCollectionView
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    if (self.gestureDelegate) {
+    if (self.gestureDelegate && [self.gestureDelegate respondsToSelector:@selector(pagerListContainerCollectionViewGestureRecognizerShouldBegin:gestureRecognizer:)]) {
         return [self.gestureDelegate pagerListContainerCollectionViewGestureRecognizerShouldBegin:self gestureRecognizer:gestureRecognizer];
     }else {
         if (self.isNestEnabled) {
@@ -147,4 +147,12 @@
     }
     return YES;
 }
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    if (self.gestureDelegate && [self.gestureDelegate respondsToSelector:@selector(pagerListContainerCollectionViewGestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:)]) {
+        return [self.gestureDelegate pagerListContainerCollectionViewGestureRecognizer:gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:otherGestureRecognizer];
+    }
+    return  NO;
+}
+
 @end
