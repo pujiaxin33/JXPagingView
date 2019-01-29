@@ -11,6 +11,7 @@
 - isListHorizontalScrollEnabled属性控制列表是否可以左右滑动，默认YES；
 - 使用JXCategoryView分类控制器，几乎支持所有主流效果、高度自定义、可灵活扩展；
 - 支持横竖屏切换；
+- 支持点击状态栏滚动当前列表到顶部；
 
 ## 预览
 
