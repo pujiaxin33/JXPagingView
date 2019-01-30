@@ -63,6 +63,17 @@ class BaseViewController: UIViewController {
         //扣边返回处理，下面的代码要加上
         pagingView.listContainerView.collectionView.panGestureRecognizer.require(toFail: self.navigationController!.interactivePopGestureRecognizer!)
         pagingView.mainTableView.panGestureRecognizer.require(toFail: self.navigationController!.interactivePopGestureRecognizer!)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = (categoryView.selectedIndex == 0)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
 
@@ -75,7 +86,6 @@ class BaseViewController: UIViewController {
     func preferredPagingView() -> JXPagingView {
         return JXPagingView(delegate: self)
     }
-
 }
 
 extension BaseViewController: JXPagingViewDelegate {
@@ -146,6 +156,10 @@ extension BaseViewController: JXPagingMainTableViewGestureDelegate {
     func mainTableViewGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         //禁止Nest嵌套效果的时候，上下和左右都可以滚动
         if otherGestureRecognizer.view == nestContentScrollView {
+            return false
+        }
+        //禁止categoryView左右滑动的时候，上下和左右都可以滚动
+        if otherGestureRecognizer == categoryView?.collectionView.panGestureRecognizer {
             return false
         }
         return gestureRecognizer.isKind(of: UIPanGestureRecognizer.classForCoder()) && otherGestureRecognizer.isKind(of: UIPanGestureRecognizer.classForCoder())

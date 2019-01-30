@@ -9,7 +9,7 @@
 #import "PagingViewController.h"
 #import "JXCategoryView.h"
 
-@interface PagingViewController () <JXCategoryViewDelegate>
+@interface PagingViewController () <JXCategoryViewDelegate, JXPagerMainTableViewGestureDelegate>
 
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) NSArray <NSString *> *titles;
@@ -43,14 +43,22 @@
     self.categoryView.indicators = @[lineView];
 
     _pagerView = [self preferredPagingView];
+    self.pagerView.mainTableView.gestureDelegate = self;
     [self.view addSubview:self.pagerView];
 
     self.categoryView.contentScrollView = self.pagerView.listContainerView.collectionView;
+}
 
-    //扣边返回处理，下面的代码要加上。项目对于扣边的处理方式不一样，对于扣边处理也不一样。比如我这个demo，尝试了N多方案，就这个代码个可以。但是对于我自己线上项目，又是另外的解决方案。所以，灵活解决吧。不要完全照搬这里的代码
-    [self.pagerView.listContainerView.collectionView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
-    [self.pagerView.mainTableView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
     self.navigationController.interactivePopGestureRecognizer.enabled = (self.categoryView.selectedIndex == 0);
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 
 - (JXPagerView *)preferredPagingView {
@@ -125,6 +133,16 @@
          [self.pagerView.listContainerView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
      }
      */
+}
+
+#pragma mark - JXPagerMainTableViewGestureDelegate
+
+- (BOOL)mainTableViewGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    //禁止categoryView左右滑动的时候，上下和左右都可以滚动
+    if (otherGestureRecognizer == self.categoryView.collectionView.panGestureRecognizer) {
+        return NO;
+    }
+    return [gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]];
 }
 
 @end
