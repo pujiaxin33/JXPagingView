@@ -8,6 +8,7 @@
 
 #import "NaviBarHiddenViewController.h"
 #import "UIWindow+JXSafeArea.h"
+#import "MJRefresh.h"
 
 @interface NaviBarHiddenViewController ()
 @property (nonatomic, strong) UIView *naviBGView;
@@ -48,6 +49,18 @@
     self.userHeaderView.imageView.frame = CGRectMake(0, -naviHeight, self.view.bounds.size.width, naviHeight + JXTableHeaderViewHeight);
     self.userHeaderView.imageView.autoresizingMask = UIViewAutoresizingNone;
     //示例里面的PagingViewTableHeaderView，为了适应示例里面所有的情况。在导航栏隐藏示例关于横竖屏切换的情况，实在有点改不动了。不过不影响真实使用场景。可以根据自己真实的使用场景自己适配。这里的示例就不处理了。
+
+    //因为导航栏隐藏用了上面比较取巧的方式，如果要在导航栏隐藏的同时添加mainTableView的下拉刷新，就用下面这段代码即可实现。
+    /*
+    __weak typeof(self)weakSelf = self;
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakSelf.pagerView.mainTableView.mj_header endRefreshing];
+        });
+    }];
+    header.ignoredScrollViewContentInsetTop = naviHeight;
+    self.pagerView.mainTableView.mj_header = header;
+     */
 }
 
 - (void)backButtonClicked:(UIButton *)btn {
