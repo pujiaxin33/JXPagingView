@@ -53,7 +53,7 @@
     [super layoutSubviews];
 
     self.collectionView.frame = self.bounds;
-    if (self.selectedIndexPath != nil) {
+    if (self.selectedIndexPath != nil && [self.delegate numberOfRowsInListContainerView:self] >= self.selectedIndexPath.item + 1) {
         [self.collectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     }
 }

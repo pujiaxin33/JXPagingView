@@ -110,7 +110,7 @@ open class JXPagingListContainerView: UIView {
         super.layoutSubviews()
 
         collectionView.frame = self.bounds
-        if selectedIndexPath != nil {
+        if selectedIndexPath != nil && self.delegate.numberOfRows(in: self) >= 1 + selectedIndexPath!.item {
             collectionView.scrollToItem(at: selectedIndexPath!, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: false)
         }
     }

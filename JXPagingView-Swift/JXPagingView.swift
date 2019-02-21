@@ -95,6 +95,7 @@ open class JXPagingView: UIView {
     }
     var currentScrollingListView: UIScrollView?
     var currentList: JXPagingViewListViewDelegate?
+    private var currentDeviceOrientation: UIDeviceOrientation?
 
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -133,6 +134,7 @@ open class JXPagingView: UIView {
 
         refreshListHorizontalScrollEnabledState()
 
+        self.currentDeviceOrientation = UIDevice.current.orientation
         NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationDidChange(notification:)), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 
@@ -211,9 +213,13 @@ open class JXPagingView: UIView {
     }
 
     @objc func deviceOrientationDidChange(notification: Notification) {
-        mainTableView.reloadData()
-        listContainerView.deviceOrientationDidChanged()
-        listContainerView.reloadData()
+        if self.currentDeviceOrientation != UIDevice.current.orientation {
+            self.currentDeviceOrientation = UIDevice.current.orientation
+            //前后台切换也会触发该通知，所以不相同的时候才处理
+            mainTableView.reloadData()
+            listContainerView.deviceOrientationDidChanged()
+            listContainerView.reloadData()
+        }
     }
 }
 
