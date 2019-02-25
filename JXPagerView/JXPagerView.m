@@ -271,11 +271,12 @@
 }
 
 - (void)listContainerView:(JXPagerListContainerView *)listContainerView willDisplayCellAtRow:(NSInteger)row {
-    if (row != self.currentIndex) {
-        [self listDidDisappear:self.currentIndex];
-    }
     [self listDidAppear:row];
     self.currentScrollingListView = [self.validListDict[@(row)] listScrollView];
+}
+
+- (void)listContainerView:(JXPagerListContainerView *)listContainerView didEndDisplayingCellAtRow:(NSInteger)row {
+    [self listDidDisappear:row];
 }
 
 @end

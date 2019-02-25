@@ -15,6 +15,8 @@ import UIKit
     func listContainerView(_ listContainerView: JXPagingListContainerView, viewForListInRow row: Int) -> UIView
 
     func listContainerView(_ listContainerView: JXPagingListContainerView, willDisplayCellAt row: Int)
+
+    func listContainerView(_ listContainerView: JXPagingListContainerView, didEndDisplayingCellAt row: Int)
 }
 
 @objc public protocol JXPagingListContainerCollectionViewGestureDelegate {
@@ -143,6 +145,10 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
 
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         self.delegate.listContainerView(self, willDisplayCellAt: indexPath.item)
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        self.delegate.listContainerView(self, didEndDisplayingCellAt: indexPath.item)
     }
 
     public func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {

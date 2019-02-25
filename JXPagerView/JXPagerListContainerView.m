@@ -87,6 +87,10 @@
     [self.delegate listContainerView:self willDisplayCellAtRow:indexPath.item];
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self.delegate listContainerView:self didEndDisplayingCellAtRow:indexPath.item];
+}
+
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
     return false;
 }

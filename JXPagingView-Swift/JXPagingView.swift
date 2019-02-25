@@ -29,6 +29,12 @@ import UIKit
 
     /// 将要重置listScrollView的contentOffset
     @objc optional func listScrollViewWillResetContentOffset()
+
+    /// 列表显示的时候调用
+    @objc optional func listDidAppear()
+
+    /// 列表消失的时候调用
+    @objc optional func listDidDisappear()
 }
 
 @objc public protocol JXPagingViewDelegate: NSObjectProtocol {
@@ -96,6 +102,7 @@ open class JXPagingView: UIView {
     var currentScrollingListView: UIScrollView?
     var currentList: JXPagingViewListViewDelegate?
     private var currentDeviceOrientation: UIDeviceOrientation?
+    private var currentIndex: Int = 0
 
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -156,6 +163,16 @@ open class JXPagingView: UIView {
         self.mainTableView.tableHeaderView = self.delegate.tableHeaderView(in: self)
         self.mainTableView.reloadData()
         self.listContainerView.reloadData()
+    }
+
+    /// 可选调用：如果你的子列表在整个页面消失的时候(比如push到新的页面)，做一些暂停操作。比如列表有视频正在播放，离开的时候要暂停，就必须要调用该方法。使用示例在`BaseViewController`类。
+    open func currentListDidDisappear() {
+        self.listDidDisappear(index: self.currentIndex)
+    }
+
+    /// 可选调用：如果你的子列表在整个页面重新出现的时候(比如pop回来)，做一些恢复操作。比如继续播放之前的视频。就必须要调用该方法。使用示例在`BaseViewController`类。
+    open func currentListDidAppear() {
+        self.listDidAppear(index: self.currentIndex)
     }
 
     open func preferredProcessListViewDidScroll(scrollView: UIScrollView) {
@@ -220,6 +237,26 @@ open class JXPagingView: UIView {
             listContainerView.deviceOrientationDidChanged()
             listContainerView.reloadData()
         }
+    }
+
+    func listDidAppear(index: Int) {
+        let count = self.delegate.numberOfLists(in: self)
+        if count <= 0 || index >= count {
+            return
+        }
+        self.currentIndex = index
+        let list = self.validListDict[index]
+        list?.listDidAppear?()
+    }
+
+    func listDidDisappear(index: Int) {
+        let count = self.delegate.numberOfLists(in: self)
+        if count <= 0 || index >= count {
+            return
+        }
+        self.currentIndex = index
+        let list = self.validListDict[index]
+        list?.listDidDisappear?()
     }
 }
 
@@ -316,7 +353,12 @@ extension JXPagingView: JXPagingListContainerViewDelegate {
     }
 
     public func listContainerView(_ listContainerView: JXPagingListContainerView, willDisplayCellAt row: Int) {
+        self.listDidAppear(index: row)
         self.currentScrollingListView = validListDict[row]?.listScrollView()
+    }
+
+    public func listContainerView(_ listContainerView: JXPagingListContainerView, didEndDisplayingCellAt row: Int) {
+        self.listDidDisappear(index: row)
     }
 }
 

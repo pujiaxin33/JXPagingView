@@ -150,9 +150,9 @@
 
 - (void)reloadData;
 
-//可选调用：如果你的子列表在整个页面消失的时候，做一些暂停操作。比如列表有视频正在播放，离开的时候要暂停，就必须要调用该方法。使用示例在`LoadDataListContainerViewController`类。
+//可选调用：如果你的子列表在整个页面消失的时候(比如push到新的页面)，做一些暂停操作。比如列表有视频正在播放，离开的时候要暂停，就必须要调用该方法。使用示例在`PagingViewController`类。
 - (void)currentListDidDisappear;
-//可选调用：如果你的子列表在整个页面重新出现的时候，做一些恢复操作。比如继续播放之前的视频。就必须要调用该方法。使用示例在`LoadDataListContainerViewController`类。
+//可选调用：如果你的子列表在整个页面重新出现的时候(比如pop回来)，做一些恢复操作。比如继续播放之前的视频。就必须要调用该方法。使用示例在`PagingViewController`类。
 - (void)currentListDidAppear;
 
 #pragma mark - Subclass

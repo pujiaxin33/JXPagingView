@@ -145,4 +145,12 @@ extension TestListBaseView: JXPagingViewListViewDelegate {
     public func listScrollView() -> UIScrollView {
         return self.tableView
     }
+
+    public func listDidDisappear() {
+        print("listDidDisappear")
+    }
+
+    public func listDidAppear() {
+        print("listDidAppear")
+    }
 }
