@@ -12,6 +12,7 @@
 #import "ListRefreshViewController.h"
 #import "NaviBarHiddenViewController.h"
 #import "NestViewController.h"
+#import "BannerViewController.h"
 
 @interface ViewController ()
 
@@ -65,6 +66,13 @@
         case 4:
         {
             NestViewController *vc = [[NestViewController alloc] init];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 5:
+        {
+            BannerViewController *vc = [[BannerViewController alloc] init];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }

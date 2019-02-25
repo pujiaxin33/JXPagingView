@@ -9,7 +9,7 @@
 #import "PagingViewController.h"
 #import "JXCategoryView.h"
 
-@interface PagingViewController () <JXCategoryViewDelegate, JXPagerMainTableViewGestureDelegate>
+@interface PagingViewController () <JXCategoryViewDelegate>
 
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) NSArray <NSString *> *titles;

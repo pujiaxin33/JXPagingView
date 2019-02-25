@@ -15,7 +15,7 @@
 static const CGFloat JXTableHeaderViewHeight = 200;
 static const CGFloat JXheightForHeaderInSection = 50;
 
-@interface PagingViewController : UIViewController <JXPagerViewDelegate>
+@interface PagingViewController : UIViewController <JXPagerViewDelegate, JXPagerMainTableViewGestureDelegate>
 
 @property (nonatomic, strong) JXPagerView *pagerView;
 @property (nonatomic, strong) PagingViewTableHeaderView *userHeaderView;

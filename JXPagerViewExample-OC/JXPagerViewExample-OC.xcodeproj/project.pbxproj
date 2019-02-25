@@ -41,6 +41,8 @@
 		1904A92F21CCC55800316F97 /* JXCategoryBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A90D21CCC55800316F97 /* JXCategoryBaseCell.m */; };
 		1904A93021CCC55800316F97 /* JXCategoryBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A90E21CCC55800316F97 /* JXCategoryBaseCellModel.m */; };
 		1921393922004A2C00A057C8 /* JXCategoryViewAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1921393822004A2C00A057C8 /* JXCategoryViewAnimator.m */; };
+		19278E6B2223D0F10041C293 /* PagingViewBannerTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19278E6A2223D0F10041C293 /* PagingViewBannerTableHeaderView.m */; };
+		19278E6F2223D3520041C293 /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19278E6E2223D3520041C293 /* BannerViewController.m */; };
 		196428052148E47F009C1D31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428042148E47F009C1D31 /* AppDelegate.m */; };
 		196428082148E47F009C1D31 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428072148E47F009C1D31 /* ViewController.m */; };
 		1964280B2148E47F009C1D31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196428092148E47F009C1D31 /* Main.storyboard */; };
@@ -159,6 +161,10 @@
 		1904A90E21CCC55800316F97 /* JXCategoryBaseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCellModel.m; sourceTree = "<group>"; };
 		1921393722004A2C00A057C8 /* JXCategoryViewAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryViewAnimator.h; sourceTree = "<group>"; };
 		1921393822004A2C00A057C8 /* JXCategoryViewAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryViewAnimator.m; sourceTree = "<group>"; };
+		19278E692223D0F10041C293 /* PagingViewBannerTableHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagingViewBannerTableHeaderView.h; sourceTree = "<group>"; };
+		19278E6A2223D0F10041C293 /* PagingViewBannerTableHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagingViewBannerTableHeaderView.m; sourceTree = "<group>"; };
+		19278E6D2223D3520041C293 /* BannerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerViewController.h; sourceTree = "<group>"; };
+		19278E6E2223D3520041C293 /* BannerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerViewController.m; sourceTree = "<group>"; };
 		196428002148E47F009C1D31 /* JXPagerViewExample-OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JXPagerViewExample-OC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		196428032148E47F009C1D31 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		196428042148E47F009C1D31 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -408,6 +414,15 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		19278E6C2223D33A0041C293 /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				19278E6D2223D3520041C293 /* BannerViewController.h */,
+				19278E6E2223D3520041C293 /* BannerViewController.m */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
 		196427F72148E47F009C1D31 = {
 			isa = PBXGroup;
 			children = (
@@ -447,6 +462,7 @@
 		196428192148E58C009C1D31 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				19278E6C2223D33A0041C293 /* Banner */,
 				197B3A352182B11400561F08 /* Nest */,
 				196428A72148E8E2009C1D31 /* NavigationBarHidden */,
 				196428A62148E8D6009C1D31 /* Refresh */,
@@ -483,6 +499,8 @@
 				196428F82148F419009C1D31 /* TestTableViewCell.m */,
 				196428222148E58C009C1D31 /* PagingViewTableHeaderView.h */,
 				1964281C2148E58C009C1D31 /* PagingViewTableHeaderView.m */,
+				19278E692223D0F10041C293 /* PagingViewBannerTableHeaderView.h */,
+				19278E6A2223D0F10041C293 /* PagingViewBannerTableHeaderView.m */,
 				1979C1EC21FEDFCD00DA40E7 /* DetailViewController.h */,
 				1979C1ED21FEDFCD00DA40E7 /* DetailViewController.m */,
 				19C417CB215F1B630090E518 /* UIWindow+JXSafeArea.h */,
@@ -716,6 +734,7 @@
 				197B3A3B2182B17F00561F08 /* TestNestlistView.m in Sources */,
 				19C417CD215F1B630090E518 /* UIWindow+JXSafeArea.m in Sources */,
 				1979C1EE21FEDFCD00DA40E7 /* DetailViewController.m in Sources */,
+				19278E6F2223D3520041C293 /* BannerViewController.m in Sources */,
 				1964283A2148E5EC009C1D31 /* JXPagerListRefreshView.m in Sources */,
 				196428EB2148E9D0009C1D31 /* MJRefreshBackFooter.m in Sources */,
 				1904A91D21CCC55800316F97 /* JXCategoryTitleImageCell.m in Sources */,
@@ -737,6 +756,7 @@
 				197B3A3E2182B22900561F08 /* TestNestListBaseView.m in Sources */,
 				1904A92621CCC55800316F97 /* JXCategoryNumberCell.m in Sources */,
 				1904A92B21CCC55800316F97 /* JXCategoryCollectionView.m in Sources */,
+				19278E6B2223D0F10041C293 /* PagingViewBannerTableHeaderView.m in Sources */,
 				1904A92A21CCC55800316F97 /* JXCategoryFactory.m in Sources */,
 				196428272148E58C009C1D31 /* PagingViewTableHeaderView.m in Sources */,
 				1904A91C21CCC55800316F97 /* JXCategoryTitleImageView.m in Sources */,

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lYe-1H-aBb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lYe-1H-aBb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -122,6 +122,27 @@
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oxg-TL-Blq" secondAttribute="trailing" constant="20" symbolic="YES" id="40X-QU-5Em"/>
                                                 <constraint firstItem="oxg-TL-Blq" firstAttribute="centerY" secondItem="pbl-g3-fHH" secondAttribute="centerY" id="qh2-hQ-7Kb"/>
                                                 <constraint firstItem="oxg-TL-Blq" firstAttribute="leading" secondItem="pbl-g3-fHH" secondAttribute="leading" constant="16" id="xkB-Xw-5v2"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="65" id="IUS-oq-1BI">
+                                        <rect key="frame" x="0.0" y="325" width="375" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IUS-oq-1BI" id="7Cs-fw-mqw">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="64.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="顶部轮播视图手势处理" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pm7-jc-YhO">
+                                                    <rect key="frame" x="16" y="22" width="174" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Pm7-jc-YhO" secondAttribute="trailing" constant="20" symbolic="YES" id="dcV-IQ-Zl2"/>
+                                                <constraint firstItem="Pm7-jc-YhO" firstAttribute="leading" secondItem="7Cs-fw-mqw" secondAttribute="leading" constant="16" id="xMa-UH-fOB"/>
+                                                <constraint firstItem="Pm7-jc-YhO" firstAttribute="centerY" secondItem="7Cs-fw-mqw" secondAttribute="centerY" id="xiL-x4-UiT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
