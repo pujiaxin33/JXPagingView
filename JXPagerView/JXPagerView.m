@@ -16,6 +16,7 @@
 @property (nonatomic, strong) id<JXPagerViewListViewDelegate> currentList;
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXPagerViewListViewDelegate>> *validListDict;
 @property (nonatomic, assign) UIDeviceOrientation currentDeviceOrientation;
+@property (nonatomic, assign) NSInteger currentIndex;
 @end
 
 @implementation JXPagerView
@@ -85,6 +86,14 @@
     [self.listContainerView reloadData];
 }
 
+- (void)currentListDidAppear {
+    [self listDidAppear:self.currentIndex];
+}
+
+- (void)currentListDidDisappear {
+    [self listDidDisappear:self.currentIndex];
+}
+
 - (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView {
     if (self.mainTableView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagerView:self]) {
         //mainTableView的header还没有消失，让listScrollView一直为0
@@ -137,6 +146,30 @@
         [self.mainTableView reloadData];
         [self.listContainerView deviceOrientationDidChanged];
         [self.listContainerView reloadData];
+    }
+}
+
+- (void)listDidAppear:(NSInteger)index {
+    NSUInteger count = [self.delegate numberOfListsInPagerView:self];
+    if (count <= 0 || index >= count) {
+        return;
+    }
+    self.currentIndex = index;
+
+    id<JXPagerViewListViewDelegate> list = _validListDict[@(index)];
+    if (list && [list respondsToSelector:@selector(listDidAppear)]) {
+        [list listDidAppear];
+    }
+}
+
+- (void)listDidDisappear:(NSInteger)index {
+    NSUInteger count = [self.delegate numberOfListsInPagerView:self];
+    if (count <= 0 || index >= count) {
+        return;
+    }
+    id<JXPagerViewListViewDelegate> list = _validListDict[@(index)];
+    if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
+        [list listDidDisappear];
     }
 }
 
@@ -238,6 +271,10 @@
 }
 
 - (void)listContainerView:(JXPagerListContainerView *)listContainerView willDisplayCellAtRow:(NSInteger)row {
+    if (row != self.currentIndex) {
+        [self listDidDisappear:self.currentIndex];
+    }
+    [self listDidAppear:row];
     self.currentScrollingListView = [self.validListDict[@(row)] listScrollView];
 }
 

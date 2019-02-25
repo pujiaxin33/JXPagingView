@@ -164,5 +164,12 @@
     self.scrollCallback = callback;
 }
 
+- (void)listDidAppear {
+    NSLog(@"listDidAppear");
+}
+
+- (void)listDidDisappear {
+    NSLog(@"listDidDisappear");
+}
 
 @end
