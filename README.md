@@ -224,6 +224,10 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
 
 参考：swift工程`userHeaderContainerView`类的`userHeaderContainerView`属性的使用方式。
 
+### 顶部轮播图手势处理
+
+如果TableHeaderView添加了轮播图，获取其他可以横向滚动的UIScrollView。如果不处理，就会出现左右滚动轮播图的时候又可以触发整个页面的上下滚动。为了规避该问题，请参考示例仓库中`BannerViewController`类的处理方法。即可同一时间只允许左右滚动或者上下滚动。
+
 ### 关于JXCategoryView点击item之后的切换处理
 
 如果要完美配合列表的懒加载机制，务必参考demo添加下面的代码：
