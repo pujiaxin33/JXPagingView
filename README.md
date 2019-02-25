@@ -12,6 +12,7 @@
 - 使用JXCategoryView分类控制器，几乎支持所有主流效果、高度自定义、可灵活扩展；
 - 支持横竖屏切换；
 - 支持点击状态栏滚动当前列表到顶部；
+- 支持列表显示和消失的生命周期方法；
 
 ## 预览
 
@@ -196,6 +197,24 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
 解决方案：经过N种尝试之后，还是没有回避掉系统的`isDragging`异常为true的bug。大家可以在自定义cell最下方放置一个与cell同大小的button，把button的touchUpInside事件当做`didSelectRow`的回调。因为UIButton在响应链中的优先级要高于UIGestureRecognizer。
 
 代码：请参考`TestTableViewCell`类的配置。
+
+### 列表显示和消失的生命周期方法
+
+让遵从协议`JXPagerViewListViewDelegate`的列表，实现`- (void)listDidAppear`和`- (void)listDidDisappear`即可收到列表显示和消失的事件通知。
+如果你还需要额外知道整个页面的消失或显示时（Push到新的页面和Pop回来），需要参考`PagingViewController`类，添加如下代码：
+```Objective-C
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    //可选实现：如果你的子列表在整个页面重新出现的时候，做一些恢复操作。比如继续播放之前的视频。就必须要调用`[self.pagerView currentListDidAppear];`方法
+    [self.pagerView currentListDidAppear];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    //可选实现：如果你的子列表在整个页面消失的时候，做一些暂停操作。比如列表有视频正在播放，离开的时候要暂停，就必须要调用`[self.pagerView currentListDidDisappear];`方法
+    [self.pagerView currentListDidDisappear];
+}
+```
 
 ### TableHeaderView使用tips
 
