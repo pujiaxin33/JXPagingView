@@ -17,6 +17,9 @@
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXPagerViewListViewDelegate>> *validListDict;
 @property (nonatomic, assign) UIDeviceOrientation currentDeviceOrientation;
 @property (nonatomic, assign) NSInteger currentIndex;
+@property (nonatomic, assign) BOOL willRemoveFromWindow;
+@property (nonatomic, assign) BOOL isFirstMoveToWindow;
+@property (nonatomic, strong) JXPagerView *retainedSelf;
 @end
 
 @implementation JXPagerView
@@ -60,6 +63,30 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChangeNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
+- (void)willMoveToWindow:(UIWindow *)newWindow {
+    if (self.isFirstMoveToWindow) {
+        //第一次调用过滤，因为第一次列表显示通知会从willDisplayCell方法通知
+        self.isFirstMoveToWindow = NO;
+        return;
+    }
+    //当前页面push到一个新的页面时，willMoveToWindow会调用三次。第一次调用的newWindow为nil，第二次调用间隔1ms左右newWindow有值，第三次调用间隔400ms左右newWindow为nil。
+    //根据上述事实，第一次和第二次为无效调用，可以根据其间隔1ms左右过滤掉
+    if (newWindow == nil) {
+        self.willRemoveFromWindow = YES;
+        //当前页面被pop的时候，willMoveToWindow只会调用一次，而且整个页面会被销毁掉，所以需要循环引用自己，确保能延迟执行currentListDidDisappear方法，触发列表消失事件。由此可见，循环引用也不一定是个坏事。是天使还是魔鬼，就看你如何对待它了。
+        self.retainedSelf = self;
+        [self performSelector:@selector(currentListDidDisappear) withObject:nil afterDelay:0.02];
+    }else {
+        if (self.willRemoveFromWindow) {
+            self.willRemoveFromWindow = NO;
+            self.retainedSelf = nil;
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(currentListDidDisappear) object:nil];
+        }else {
+            [self currentListDidAppear];
+        }
+    }
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
 
@@ -84,14 +111,6 @@
     self.mainTableView.tableHeaderView = [self.delegate tableHeaderViewInPagerView:self];
     [self.mainTableView reloadData];
     [self.listContainerView reloadData];
-}
-
-- (void)currentListDidAppear {
-    [self listDidAppear:self.currentIndex];
-}
-
-- (void)currentListDidDisappear {
-    [self listDidDisappear:self.currentIndex];
 }
 
 - (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView {
@@ -147,6 +166,19 @@
         [self.listContainerView deviceOrientationDidChanged];
         [self.listContainerView reloadData];
     }
+}
+
+- (void)currentListDidAppear {
+    [self listDidAppear:self.currentIndex];
+}
+
+- (void)currentListDidDisappear {
+    id<JXPagerViewListViewDelegate> list = _validListDict[@(self.currentIndex)];
+    if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
+        [list listDidDisappear];
+    }
+    self.willRemoveFromWindow = NO;
+    self.retainedSelf = nil;
 }
 
 - (void)listDidAppear:(NSInteger)index {

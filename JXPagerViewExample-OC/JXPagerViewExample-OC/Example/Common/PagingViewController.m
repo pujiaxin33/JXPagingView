@@ -53,15 +53,6 @@
     [super viewDidAppear:animated];
 
     self.navigationController.interactivePopGestureRecognizer.enabled = (self.categoryView.selectedIndex == 0);
-    //可选实现：如果你的子列表在整个页面重新出现的时候，做一些恢复操作。比如继续播放之前的视频。就必须要调用`[self.pagerView currentListDidAppear];`方法
-    [self.pagerView currentListDidAppear];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-
-    //可选实现：如果你的子列表在整个页面消失的时候，做一些暂停操作。比如列表有视频正在播放，离开的时候要暂停，就必须要调用`[self.pagerView currentListDidDisappear];`方法
-    [self.pagerView currentListDidDisappear];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
