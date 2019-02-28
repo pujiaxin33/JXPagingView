@@ -103,6 +103,9 @@ open class JXPagingView: UIView {
     var currentList: JXPagingViewListViewDelegate?
     private var currentDeviceOrientation: UIDeviceOrientation?
     private var currentIndex: Int = 0
+    private var retainedSelf: JXPagingView?
+    private var isWillRemoveFromWindow: Bool = false
+    private var isFirstMoveToWindow: Bool = true
 
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -145,6 +148,29 @@ open class JXPagingView: UIView {
         NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationDidChange(notification:)), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 
+    open override func willMove(toWindow newWindow: UIWindow?) {
+        if self.isFirstMoveToWindow {
+            //第一次调用过滤，因为第一次列表显示通知会从willDisplayCell方法通知
+            self.isFirstMoveToWindow = false
+            return
+        }
+        //当前页面push到一个新的页面时，willMoveToWindow会调用三次。第一次调用的newWindow为nil，第二次调用间隔1ms左右newWindow有值，第三次调用间隔400ms左右newWindow为nil。
+        //根据上述事实，第一次和第二次为无效调用，可以根据其间隔1ms左右过滤掉
+        if newWindow == nil {
+            self.isWillRemoveFromWindow = true
+            //当前页面被pop的时候，willMoveToWindow只会调用一次，而且整个页面会被销毁掉，所以需要循环引用自己，确保能延迟执行currentListDidDisappear方法，触发列表消失事件。由此可见，循环引用也不一定是个坏事。是天使还是魔鬼，就看你如何对待它了。
+            self.retainedSelf = self
+            self.perform(#selector(currentListDidDisappear), with: nil, afterDelay: 0.02)
+        }else {
+            if self.isWillRemoveFromWindow {
+                self.isWillRemoveFromWindow = false
+                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(currentListDidDisappear), object: nil)
+            }else {
+                self.currentListDidAppear()
+            }
+        }
+    }
+
     override open func layoutSubviews() {
         super.layoutSubviews()
 
@@ -163,16 +189,6 @@ open class JXPagingView: UIView {
         self.mainTableView.tableHeaderView = self.delegate.tableHeaderView(in: self)
         self.mainTableView.reloadData()
         self.listContainerView.reloadData()
-    }
-
-    /// 可选调用：如果你的子列表在整个页面消失的时候(比如push到新的页面)，做一些暂停操作。比如列表有视频正在播放，离开的时候要暂停，就必须要调用该方法。使用示例在`BaseViewController`类。
-    open func currentListDidDisappear() {
-        self.listDidDisappear(index: self.currentIndex)
-    }
-
-    /// 可选调用：如果你的子列表在整个页面重新出现的时候(比如pop回来)，做一些恢复操作。比如继续播放之前的视频。就必须要调用该方法。使用示例在`BaseViewController`类。
-    open func currentListDidAppear() {
-        self.listDidAppear(index: self.currentIndex)
     }
 
     open func preferredProcessListViewDidScroll(scrollView: UIScrollView) {
@@ -237,6 +253,17 @@ open class JXPagingView: UIView {
             listContainerView.deviceOrientationDidChanged()
             listContainerView.reloadData()
         }
+    }
+
+    @objc func currentListDidDisappear() {
+        let list = self.validListDict[self.currentIndex]
+        list?.listDidDisappear?()
+        self.isWillRemoveFromWindow = false
+        self.retainedSelf = nil
+    }
+
+    func currentListDidAppear() {
+        self.listDidAppear(index: self.currentIndex)
     }
 
     func listDidAppear(index: Int) {
