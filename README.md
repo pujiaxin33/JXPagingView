@@ -198,24 +198,6 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
 
 代码：请参考`TestTableViewCell`类的配置。
 
-### 列表显示和消失的生命周期方法
-
-让遵从协议`JXPagerViewListViewDelegate`的列表，实现`- (void)listDidAppear`和`- (void)listDidDisappear`即可收到列表显示和消失的事件通知。
-如果你还需要额外知道整个页面的消失或显示时（Push到新的页面和Pop回来），需要参考`PagingViewController`类，添加如下代码：
-```Objective-C
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    //可选实现：如果你的子列表在整个页面重新出现的时候，做一些恢复操作。比如继续播放之前的视频。就必须要调用`[self.pagerView currentListDidAppear];`方法
-    [self.pagerView currentListDidAppear];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    //可选实现：如果你的子列表在整个页面消失的时候，做一些暂停操作。比如列表有视频正在播放，离开的时候要暂停，就必须要调用`[self.pagerView currentListDidDisappear];`方法
-    [self.pagerView currentListDidDisappear];
-}
-```
-
 ### TableHeaderView使用tips
 
 如果TableHeaderView逻辑较多，一般都会用ViewController来包裹，然后使用ViewController.view当做TableHeaderView。又或者视图较多，使用xib来布局。
