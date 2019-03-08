@@ -34,6 +34,7 @@
     if (self) {
         _delegate = delegate;
         _validListDict = [NSMutableDictionary dictionary];
+        _automaticallyDisplayListVerticalScrollIndicator = YES;
         [self initializeViews];
     }
     return self;
@@ -120,11 +121,15 @@
             [self.currentList listScrollViewWillResetContentOffset];
         }
         scrollView.contentOffset = CGPointZero;
-        scrollView.showsVerticalScrollIndicator = NO;
+        if (self.automaticallyDisplayListVerticalScrollIndicator) {
+            scrollView.showsVerticalScrollIndicator = NO;
+        }
     }else {
         //mainTableView的header刚好消失，固定mainTableView的位置，显示listScrollView的滚动条
         self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagerView:self]);
-        scrollView.showsVerticalScrollIndicator = YES;
+        if (self.automaticallyDisplayListVerticalScrollIndicator) {
+            scrollView.showsVerticalScrollIndicator = YES;
+        }
     }
 }
 

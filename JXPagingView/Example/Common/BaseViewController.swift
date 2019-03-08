@@ -26,7 +26,7 @@ class BaseViewController: UIViewController {
 
         self.title = "个人中心"
         self.navigationController?.navigationBar.isTranslucent = false
-
+        
         userHeaderContainerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(JXTableHeaderViewHeight)))
         userHeaderView = PagingViewTableHeaderView(frame: userHeaderContainerView.bounds)
         userHeaderView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

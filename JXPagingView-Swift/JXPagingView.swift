@@ -99,8 +99,9 @@ open class JXPagingView: UIView {
             refreshListHorizontalScrollEnabledState()
         }
     }
-    var currentScrollingListView: UIScrollView?
-    var currentList: JXPagingViewListViewDelegate?
+    open var automaticallyDisplayListVerticalScrollIndicator = true //是否允许当前列表自动显示或隐藏列表是垂直滚动指示器。true：悬浮的headerView滚动到顶部开始滚动列表时，就会显示，反之隐藏。false：内部不会处理列表的垂直滚动指示器。默认为：true。
+    public var currentScrollingListView: UIScrollView?
+    public var currentList: JXPagingViewListViewDelegate?
     private var currentDeviceOrientation: UIDeviceOrientation?
     private var currentIndex: Int = 0
     private var retainedSelf: JXPagingView?
@@ -195,12 +196,16 @@ open class JXPagingView: UIView {
         if (self.mainTableView.contentOffset.y < getTableHeaderViewHeight()) {
             //mainTableView的header还没有消失，让listScrollView一直为0
             self.currentList?.listScrollViewWillResetContentOffset?()
-            currentScrollingListView!.contentOffset = CGPoint.zero;
-            currentScrollingListView!.showsVerticalScrollIndicator = false;
+            currentScrollingListView!.contentOffset = CGPoint.zero
+            if automaticallyDisplayListVerticalScrollIndicator {
+                currentScrollingListView!.showsVerticalScrollIndicator = false
+            }
         } else {
             //mainTableView的header刚好消失，固定mainTableView的位置，显示listScrollView的滚动条
-            self.mainTableView.contentOffset = CGPoint(x: 0, y: self.delegate.tableHeaderViewHeight(in: self));
-            currentScrollingListView!.showsVerticalScrollIndicator = true;
+            self.mainTableView.contentOffset = CGPoint(x: 0, y: self.delegate.tableHeaderViewHeight(in: self))
+            if automaticallyDisplayListVerticalScrollIndicator {
+                currentScrollingListView!.showsVerticalScrollIndicator = true
+            }
         }
     }
 
@@ -227,7 +232,7 @@ open class JXPagingView: UIView {
     //MARK: - Private
 
     func refreshListHorizontalScrollEnabledState() {
-        listContainerView.collectionView.isScrollEnabled = isListHorizontalScrollEnabled;
+        listContainerView.collectionView.isScrollEnabled = isListHorizontalScrollEnabled
     }
 
     func getTableHeaderViewHeight() -> CGFloat {
