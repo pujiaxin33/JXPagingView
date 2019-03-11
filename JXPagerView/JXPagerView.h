@@ -154,11 +154,13 @@
 
 @end
 
-@interface JXPagerView (UISubclassingHooks)
-
+@interface JXPagerView (UISubclassingGet)
 @property (nonatomic, strong, readonly) UIScrollView *currentScrollingListView; //暴露给子类使用，请勿直接使用该属性！
 
 @property (nonatomic, strong, readonly) id<JXPagerViewListViewDelegate> currentList;    //暴露给子类使用，请勿直接使用该属性！
+@end
+
+@interface JXPagerView (UISubclassingHooks)
 
 - (void)initializeViews NS_REQUIRES_SUPER;
 

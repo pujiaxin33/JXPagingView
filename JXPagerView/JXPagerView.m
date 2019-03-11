@@ -253,6 +253,9 @@
 
 @end
 
+@implementation JXPagerView (UISubclassingGet)
+@end
+
 @implementation JXPagerView (UISubclassingHooks)
 
 - (void)initializeViews {
