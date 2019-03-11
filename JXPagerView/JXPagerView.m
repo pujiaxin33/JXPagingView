@@ -40,30 +40,6 @@
     return self;
 }
 
-- (void)initializeViews {
-    _mainTableView = [[JXPagerMainTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    self.mainTableView.showsVerticalScrollIndicator = NO;
-    self.mainTableView.showsHorizontalScrollIndicator = NO;
-    self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.mainTableView.scrollsToTop = NO;
-    self.mainTableView.dataSource = self;
-    self.mainTableView.delegate = self;
-    self.mainTableView.tableHeaderView = [self.delegate tableHeaderViewInPagerView:self];
-    [self.mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    if (@available(iOS 11.0, *)) {
-        self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
-    [self addSubview:self.mainTableView];
-
-    _listContainerView = [[JXPagerListContainerView alloc] initWithDelegate:self];
-    self.listContainerView.mainTableView = self.mainTableView;
-
-    self.isListHorizontalScrollEnabled = YES;
-
-    self.currentDeviceOrientation = [UIDevice currentDevice].orientation;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChangeNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
-}
-
 - (void)willMoveToWindow:(UIWindow *)newWindow {
     if (self.isFirstMoveToWindow) {
         //第一次调用过滤，因为第一次列表显示通知会从willDisplayCell方法通知
@@ -112,47 +88,6 @@
     self.mainTableView.tableHeaderView = [self.delegate tableHeaderViewInPagerView:self];
     [self.mainTableView reloadData];
     [self.listContainerView reloadData];
-}
-
-- (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView {
-    if (self.mainTableView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagerView:self]) {
-        //mainTableView的header还没有消失，让listScrollView一直为0
-        if (self.currentList && [self.currentList respondsToSelector:@selector(listScrollViewWillResetContentOffset)]) {
-            [self.currentList listScrollViewWillResetContentOffset];
-        }
-        scrollView.contentOffset = CGPointZero;
-        if (self.automaticallyDisplayListVerticalScrollIndicator) {
-            scrollView.showsVerticalScrollIndicator = NO;
-        }
-    }else {
-        //mainTableView的header刚好消失，固定mainTableView的位置，显示listScrollView的滚动条
-        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagerView:self]);
-        if (self.automaticallyDisplayListVerticalScrollIndicator) {
-            scrollView.showsVerticalScrollIndicator = YES;
-        }
-    }
-}
-
-- (void)preferredProcessMainTableViewDidScroll:(UIScrollView *)scrollView {
-    if (self.currentScrollingListView != nil && self.currentScrollingListView.contentOffset.y > 0) {
-        //mainTableView的header已经滚动不见，开始滚动某一个listView，那么固定mainTableView的contentOffset，让其不动
-        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagerView:self]);
-    }
-
-    if (scrollView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagerView:self]) {
-        //mainTableView已经显示了header，listView的contentOffset需要重置
-        for (id<JXPagerViewListViewDelegate> list in self.validListDict.allValues) {
-            if ([list respondsToSelector:@selector(listScrollViewWillResetContentOffset)]) {
-                [list listScrollViewWillResetContentOffset];
-            }
-            [list listScrollView].contentOffset = CGPointZero;
-        }
-    }
-
-    if (scrollView.contentOffset.y > [self.delegate tableHeaderViewHeightInPagerView:self] && self.currentScrollingListView.contentOffset.y == 0) {
-        //当往上滚动mainTableView的headerView时，滚动到底时，修复listView往上小幅度滚动
-        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagerView:self]);
-    }
 }
 
 #pragma mark - Private
@@ -315,5 +250,75 @@
 - (void)listContainerView:(JXPagerListContainerView *)listContainerView didEndDisplayingCellAtRow:(NSInteger)row {
     [self listDidDisappear:row];
 }
+
+@end
+
+@implementation JXPagerView (UISubclassingHooks)
+
+- (void)initializeViews {
+    _mainTableView = [[JXPagerMainTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    self.mainTableView.showsVerticalScrollIndicator = NO;
+    self.mainTableView.showsHorizontalScrollIndicator = NO;
+    self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.mainTableView.scrollsToTop = NO;
+    self.mainTableView.dataSource = self;
+    self.mainTableView.delegate = self;
+    self.mainTableView.tableHeaderView = [self.delegate tableHeaderViewInPagerView:self];
+    [self.mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    if (@available(iOS 11.0, *)) {
+        self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    [self addSubview:self.mainTableView];
+
+    _listContainerView = [[JXPagerListContainerView alloc] initWithDelegate:self];
+    self.listContainerView.mainTableView = self.mainTableView;
+
+    self.isListHorizontalScrollEnabled = YES;
+
+    self.currentDeviceOrientation = [UIDevice currentDevice].orientation;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChangeNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+- (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView {
+    if (self.mainTableView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagerView:self]) {
+        //mainTableView的header还没有消失，让listScrollView一直为0
+        if (self.currentList && [self.currentList respondsToSelector:@selector(listScrollViewWillResetContentOffset)]) {
+            [self.currentList listScrollViewWillResetContentOffset];
+        }
+        scrollView.contentOffset = CGPointZero;
+        if (self.automaticallyDisplayListVerticalScrollIndicator) {
+            scrollView.showsVerticalScrollIndicator = NO;
+        }
+    }else {
+        //mainTableView的header刚好消失，固定mainTableView的位置，显示listScrollView的滚动条
+        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagerView:self]);
+        if (self.automaticallyDisplayListVerticalScrollIndicator) {
+            scrollView.showsVerticalScrollIndicator = YES;
+        }
+    }
+}
+
+- (void)preferredProcessMainTableViewDidScroll:(UIScrollView *)scrollView {
+    if (self.currentScrollingListView != nil && self.currentScrollingListView.contentOffset.y > 0) {
+        //mainTableView的header已经滚动不见，开始滚动某一个listView，那么固定mainTableView的contentOffset，让其不动
+        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagerView:self]);
+    }
+
+    if (scrollView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagerView:self]) {
+        //mainTableView已经显示了header，listView的contentOffset需要重置
+        for (id<JXPagerViewListViewDelegate> list in self.validListDict.allValues) {
+            if ([list respondsToSelector:@selector(listScrollViewWillResetContentOffset)]) {
+                [list listScrollViewWillResetContentOffset];
+            }
+            [list listScrollView].contentOffset = CGPointZero;
+        }
+    }
+
+    if (scrollView.contentOffset.y > [self.delegate tableHeaderViewHeightInPagerView:self] && self.currentScrollingListView.contentOffset.y == 0) {
+        //当往上滚动mainTableView的headerView时，滚动到底时，修复listView往上小幅度滚动
+        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagerView:self]);
+    }
+}
+
 
 @end
