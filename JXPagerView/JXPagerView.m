@@ -184,15 +184,15 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if ([self.delegate respondsToSelector:@selector(mainTableViewDidScroll:)]) {
-        [self.delegate mainTableViewDidScroll:scrollView];
-    }
-
     if (scrollView.isTracking && self.isListHorizontalScrollEnabled) {
         self.listContainerView.collectionView.scrollEnabled = NO;
     }
 
     [self preferredProcessMainTableViewDidScroll:scrollView];
+
+    if ([self.delegate respondsToSelector:@selector(mainTableViewDidScroll:)]) {
+        [self.delegate mainTableViewDidScroll:scrollView];
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
