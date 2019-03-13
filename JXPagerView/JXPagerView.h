@@ -138,6 +138,8 @@
 
 @property (nonatomic, strong, readonly) NSDictionary <NSNumber *, id<JXPagerViewListViewDelegate>> *validListDict;   //当前已经加载过可用的列表字典，key就是index值，value是对应的列表。
 
+@property (nonatomic, assign) CGFloat pinSectionHeaderVerticalOffset; //顶部固定sectionHeader的垂直偏移量。数值越大越往下沉。
+
 @property (nonatomic, assign) BOOL isListHorizontalScrollEnabled;     //是否允许列表左右滑动。默认：YES
 
 @property (nonatomic, assign) BOOL automaticallyDisplayListVerticalScrollIndicator;     //是否允许当前列表自动显示或隐藏列表是垂直滚动指示器。YES：悬浮的headerView滚动到顶部开始滚动列表时，就会显示，反之隐藏。NO：内部不会处理列表的垂直滚动指示器。默认为：YES。
@@ -158,6 +160,8 @@
 @property (nonatomic, strong, readonly) UIScrollView *currentScrollingListView; //暴露给子类使用，请勿直接使用该属性！
 
 @property (nonatomic, strong, readonly) id<JXPagerViewListViewDelegate> currentList;    //暴露给子类使用，请勿直接使用该属性！
+
+@property (nonatomic, assign, readonly) CGFloat mainTableViewMaxContentOffsetY;
 @end
 
 @interface JXPagerView (UISubclassingHooks)

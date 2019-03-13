@@ -41,6 +41,7 @@
 		1904A92F21CCC55800316F97 /* JXCategoryBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A90D21CCC55800316F97 /* JXCategoryBaseCell.m */; };
 		1904A93021CCC55800316F97 /* JXCategoryBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A90E21CCC55800316F97 /* JXCategoryBaseCellModel.m */; };
 		1921393922004A2C00A057C8 /* JXCategoryViewAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1921393822004A2C00A057C8 /* JXCategoryViewAnimator.m */; };
+		192226DE2238E5C100637AA2 /* HeaderPositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 192226DD2238E5C100637AA2 /* HeaderPositionViewController.m */; };
 		19278E6B2223D0F10041C293 /* PagingViewBannerTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19278E6A2223D0F10041C293 /* PagingViewBannerTableHeaderView.m */; };
 		19278E6F2223D3520041C293 /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19278E6E2223D3520041C293 /* BannerViewController.m */; };
 		196428052148E47F009C1D31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428042148E47F009C1D31 /* AppDelegate.m */; };
@@ -161,6 +162,8 @@
 		1904A90E21CCC55800316F97 /* JXCategoryBaseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCellModel.m; sourceTree = "<group>"; };
 		1921393722004A2C00A057C8 /* JXCategoryViewAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryViewAnimator.h; sourceTree = "<group>"; };
 		1921393822004A2C00A057C8 /* JXCategoryViewAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryViewAnimator.m; sourceTree = "<group>"; };
+		192226DC2238E5C100637AA2 /* HeaderPositionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderPositionViewController.h; sourceTree = "<group>"; };
+		192226DD2238E5C100637AA2 /* HeaderPositionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderPositionViewController.m; sourceTree = "<group>"; };
 		19278E692223D0F10041C293 /* PagingViewBannerTableHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagingViewBannerTableHeaderView.h; sourceTree = "<group>"; };
 		19278E6A2223D0F10041C293 /* PagingViewBannerTableHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagingViewBannerTableHeaderView.m; sourceTree = "<group>"; };
 		19278E6D2223D3520041C293 /* BannerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerViewController.h; sourceTree = "<group>"; };
@@ -414,6 +417,15 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		192226DB2238E59100637AA2 /* HeaderPosition */ = {
+			isa = PBXGroup;
+			children = (
+				192226DC2238E5C100637AA2 /* HeaderPositionViewController.h */,
+				192226DD2238E5C100637AA2 /* HeaderPositionViewController.m */,
+			);
+			path = HeaderPosition;
+			sourceTree = "<group>";
+		};
 		19278E6C2223D33A0041C293 /* Banner */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,6 +474,7 @@
 		196428192148E58C009C1D31 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				192226DB2238E59100637AA2 /* HeaderPosition */,
 				19278E6C2223D33A0041C293 /* Banner */,
 				197B3A352182B11400561F08 /* Nest */,
 				196428A72148E8E2009C1D31 /* NavigationBarHidden */,
@@ -754,6 +767,7 @@
 				196428E52148E9D0009C1D31 /* MJRefreshAutoNormalFooter.m in Sources */,
 				1904A90F21CCC55800316F97 /* JXCategoryIndicatorLineView.m in Sources */,
 				197B3A3E2182B22900561F08 /* TestNestListBaseView.m in Sources */,
+				192226DE2238E5C100637AA2 /* HeaderPositionViewController.m in Sources */,
 				1904A92621CCC55800316F97 /* JXCategoryNumberCell.m in Sources */,
 				1904A92B21CCC55800316F97 /* JXCategoryCollectionView.m in Sources */,
 				19278E6B2223D0F10041C293 /* PagingViewBannerTableHeaderView.m in Sources */,

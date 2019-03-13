@@ -13,6 +13,7 @@
 #import "NaviBarHiddenViewController.h"
 #import "NestViewController.h"
 #import "BannerViewController.h"
+#import "HeaderPositionViewController.h"
 
 @interface ViewController ()
 
@@ -73,6 +74,13 @@
         case 5:
         {
             BannerViewController *vc = [[BannerViewController alloc] init];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 6:
+        {
+            HeaderPositionViewController *vc = [[HeaderPositionViewController alloc] init];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }

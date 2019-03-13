@@ -12,7 +12,6 @@
 
 @interface NaviBarHiddenViewController ()
 @property (nonatomic, strong) UIView *naviBGView;
-@property (nonatomic, assign) CGFloat pinHeaderViewInsetTop;
 @end
 
 @implementation NaviBarHiddenViewController
@@ -23,7 +22,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     CGFloat topSafeMargin = [UIApplication.sharedApplication.keyWindow jx_layoutInsets].top;
     CGFloat naviHeight = [UIApplication.sharedApplication.keyWindow jx_navigationHeight];
-    self.pinHeaderViewInsetTop = naviHeight;
+    self.pagerView.pinSectionHeaderVerticalOffset = naviHeight;
 
     self.naviBGView = [[UIView alloc] init];
     self.naviBGView.alpha = 0;
@@ -42,25 +41,6 @@
     back.frame = CGRectMake(12, topSafeMargin, 44, 44);
     [back addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.naviBGView addSubview:back];
-
-    //让mainTableView可以显示范围外
-    self.pagerView.mainTableView.clipsToBounds = false;
-    //让头图的布局往上移动naviHeight高度，填充导航栏下面的内容
-    self.userHeaderView.imageView.frame = CGRectMake(0, -naviHeight, self.view.bounds.size.width, naviHeight + JXTableHeaderViewHeight);
-    self.userHeaderView.imageView.autoresizingMask = UIViewAutoresizingNone;
-    //示例里面的PagingViewTableHeaderView，为了适应示例里面所有的情况。在导航栏隐藏示例关于横竖屏切换的情况，实在有点改不动了。不过不影响真实使用场景。可以根据自己真实的使用场景自己适配。这里的示例就不处理了。
-
-    //因为导航栏隐藏用了上面比较取巧的方式，如果要在导航栏隐藏的同时添加mainTableView的下拉刷新，就用下面这段代码即可实现。
-    /*
-    __weak typeof(self)weakSelf = self;
-    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [weakSelf.pagerView.mainTableView.mj_header endRefreshing];
-        });
-    }];
-    header.ignoredScrollViewContentInsetTop = naviHeight;
-    self.pagerView.mainTableView.mj_header = header;
-     */
 }
 
 - (void)backButtonClicked:(UIButton *)btn {
@@ -77,13 +57,6 @@
     [super viewWillDisappear:animated];
 
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-}
-
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-
-    //pagingView依然是从导航栏下面开始布局的
-    self.pagerView.frame = CGRectMake(0, self.pinHeaderViewInsetTop, self.view.bounds.size.width, self.view.bounds.size.height - self.pinHeaderViewInsetTop);
 }
 
 - (void)mainTableViewDidScroll:(UIScrollView *)scrollView {

@@ -39,6 +39,11 @@ open class JXPagingListRefreshView: JXPagingView {
                 }
             }
         }
+
+        if scrollView.contentOffset.y > getMainTableViewMaxContentOffsetY() && self.currentScrollingListView?.contentOffset.y == 0 {
+            //当往上滚动mainTableView的headerView时，滚动到底时，修复listView往上小幅度滚动
+            self.mainTableView.contentOffset = CGPoint(x: 0, y: getMainTableViewMaxContentOffsetY())
+        }
     }
     
     override open func preferredProcessListViewDidScroll(scrollView: UIScrollView) {

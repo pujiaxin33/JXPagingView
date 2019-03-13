@@ -152,7 +152,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.bounds.size.height - [self.delegate heightForPinSectionHeaderInPagerView:self];
+    return self.bounds.size.height - [self.delegate heightForPinSectionHeaderInPagerView:self] - self.pinSectionHeaderVerticalOffset;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -186,6 +186,14 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView.isTracking && self.isListHorizontalScrollEnabled) {
         self.listContainerView.collectionView.scrollEnabled = NO;
+    }
+
+    if (scrollView.contentOffset.y < self.pinSectionHeaderVerticalOffset && scrollView.contentOffset.y >= 0) {
+        //因为设置了contentInset.top，所以顶部会有对应高度的空白区间，所以需要设置负数抵消掉
+        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+    }else if (scrollView.contentOffset.y > self.pinSectionHeaderVerticalOffset){
+        //固定的位置就是contentInset.top
+        scrollView.contentInset = UIEdgeInsetsMake(self.pinSectionHeaderVerticalOffset, 0, 0, 0);
     }
 
     [self preferredProcessMainTableViewDidScroll:scrollView];
@@ -254,6 +262,11 @@
 @end
 
 @implementation JXPagerView (UISubclassingGet)
+
+- (CGFloat)mainTableViewMaxContentOffsetY {
+    return [self.delegate tableHeaderViewHeightInPagerView:self] - self.pinSectionHeaderVerticalOffset;
+}
+
 @end
 
 @implementation JXPagerView (UISubclassingHooks)
@@ -283,7 +296,7 @@
 }
 
 - (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView {
-    if (self.mainTableView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagerView:self]) {
+    if (self.mainTableView.contentOffset.y < self.mainTableViewMaxContentOffsetY) {
         //mainTableView的header还没有消失，让listScrollView一直为0
         if (self.currentList && [self.currentList respondsToSelector:@selector(listScrollViewWillResetContentOffset)]) {
             [self.currentList listScrollViewWillResetContentOffset];
@@ -294,7 +307,7 @@
         }
     }else {
         //mainTableView的header刚好消失，固定mainTableView的位置，显示listScrollView的滚动条
-        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagerView:self]);
+        self.mainTableView.contentOffset = CGPointMake(0, self.mainTableViewMaxContentOffsetY);
         if (self.automaticallyDisplayListVerticalScrollIndicator) {
             scrollView.showsVerticalScrollIndicator = YES;
         }
@@ -304,10 +317,10 @@
 - (void)preferredProcessMainTableViewDidScroll:(UIScrollView *)scrollView {
     if (self.currentScrollingListView != nil && self.currentScrollingListView.contentOffset.y > 0) {
         //mainTableView的header已经滚动不见，开始滚动某一个listView，那么固定mainTableView的contentOffset，让其不动
-        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagerView:self]);
+        self.mainTableView.contentOffset = CGPointMake(0, self.mainTableViewMaxContentOffsetY);
     }
 
-    if (scrollView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagerView:self]) {
+    if (scrollView.contentOffset.y < self.mainTableViewMaxContentOffsetY) {
         //mainTableView已经显示了header，listView的contentOffset需要重置
         for (id<JXPagerViewListViewDelegate> list in self.validListDict.allValues) {
             if ([list respondsToSelector:@selector(listScrollViewWillResetContentOffset)]) {
@@ -317,9 +330,9 @@
         }
     }
 
-    if (scrollView.contentOffset.y > [self.delegate tableHeaderViewHeightInPagerView:self] && self.currentScrollingListView.contentOffset.y == 0) {
+    if (scrollView.contentOffset.y > self.mainTableViewMaxContentOffsetY && self.currentScrollingListView.contentOffset.y == 0) {
         //当往上滚动mainTableView的headerView时，滚动到底时，修复listView往上小幅度滚动
-        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagerView:self]);
+        self.mainTableView.contentOffset = CGPointMake(0, self.mainTableViewMaxContentOffsetY);
     }
 }
 
