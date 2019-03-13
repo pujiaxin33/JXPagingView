@@ -7,12 +7,13 @@
 - 支持OC与Swift;
 - 支持列表懒加载，等到列表真正显示的时候才加载，而不是一次性加载所有列表；
 - 支持首页下拉刷新、列表视图下拉刷新、列表视图上拉加载更多；
+- 支持悬浮SectionHeader的垂直位置调整；
 - 列表封装简洁，只要遵从`JXPagingViewListViewDelegate`协议即可。UIView、UIViewController等都可以；
-- isListHorizontalScrollEnabled属性控制列表是否可以左右滑动，默认YES；
 - 使用JXCategoryView分类控制器，几乎支持所有主流效果、高度自定义、可灵活扩展；
 - 支持横竖屏切换；
 - 支持点击状态栏滚动当前列表到顶部；
 - 支持列表显示和消失的生命周期方法；
+- - isListHorizontalScrollEnabled属性控制列表是否可以左右滑动，默认YES；
 
 ## 预览
 
@@ -21,6 +22,7 @@
 | **头图缩放** <br/>参考[ZoomViewController](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagerViewExample-OC/JXPagerViewExample-OC/Example/Zoom/ZoomViewController.m)类 | ![Zoom](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/Zoom.gif) | 
 | **主页下拉刷新&列表上拉加载更多** <br/>参考[RefreshViewController](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagerViewExample-OC/JXPagerViewExample-OC/Example/Refresh/RefreshViewController.m)类 | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/Refresh.gif) |
 | **列表下拉刷新** <br/>参考[ListRefreshViewController](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagerViewExample-OC/JXPagerViewExample-OC/Example/Refresh/ListRefreshViewController.m)类 | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/ListRefresh.gif) |
+| **悬浮sectionHeader位置调整**  | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/PinSectionHeaderPosition.gif) |
 | **导航栏隐藏** <br/> 参考[NaviBarHiddenViewController](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagerViewExample-OC/JXPagerViewExample-OC/Example/NavigationBarHidden/NaviBarHiddenViewController.m)类 | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/NaviHidden.gif) |
 | **CollectionView列表示例**<br/>参考[CollectionViewViewController.swift](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Example/CollectionView/CollectionViewViewController.swift)类 <br/> 只有swift的demo工程有该示例 | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/CollectionViewList.gif) |
 | **HeaderView高度改动示例**<br/> 参考[HeightChangeViewController.swift](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Example/HeightChange/HeightChangeViewController.swift)类 <br/> 只有swift demo工程才有该示例 | ![Refresh](https://github.com/pujiaxin33/JXPagingView/blob/master/JXPagingView/Gif/HeaderViewHeightChange.gif) |

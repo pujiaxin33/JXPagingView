@@ -42,6 +42,7 @@
 		1912A5C1211D2F1500A80826 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A589211D2F1500A80826 /* ZoomViewController.swift */; };
 		1912A5C3211D2F1500A80826 /* TestListBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A58B211D2F1500A80826 /* TestListBaseView.swift */; };
 		1912A671211D3E8600A80826 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A670211D3E8600A80826 /* BaseViewController.swift */; };
+		192226E02238EB6400637AA2 /* PinSectionHeaderPosition.gif in Resources */ = {isa = PBXBuildFile; fileRef = 192226DF2238EB6400637AA2 /* PinSectionHeaderPosition.gif */; };
 		1939226D218C56B100C7B564 /* NestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1939226C218C56B100C7B564 /* NestViewController.swift */; };
 		194DCDD92134F81F000E89EF /* ListRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDD82134F81F000E89EF /* ListRefreshViewController.swift */; };
 		194DCDF121352285000E89EF /* ListRefresh.gif in Resources */ = {isa = PBXBuildFile; fileRef = 194DCDF021352285000E89EF /* ListRefresh.gif */; };
@@ -160,6 +161,7 @@
 		1912A58B211D2F1500A80826 /* TestListBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestListBaseView.swift; sourceTree = "<group>"; };
 		1912A5D3211D2FDC00A80826 /* Swift-Bridge-Objective-C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift-Bridge-Objective-C.h"; sourceTree = "<group>"; };
 		1912A670211D3E8600A80826 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		192226DF2238EB6400637AA2 /* PinSectionHeaderPosition.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PinSectionHeaderPosition.gif; sourceTree = "<group>"; };
 		1939226C218C56B100C7B564 /* NestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestViewController.swift; sourceTree = "<group>"; };
 		194DCDD82134F81F000E89EF /* ListRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRefreshViewController.swift; sourceTree = "<group>"; };
 		194DCDF021352285000E89EF /* ListRefresh.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ListRefresh.gif; sourceTree = "<group>"; };
@@ -636,6 +638,7 @@
 		19870C7C2121601700C23CAA /* Gif */ = {
 			isa = PBXGroup;
 			children = (
+				192226DF2238EB6400637AA2 /* PinSectionHeaderPosition.gif */,
 				1979C1F121FFED4E00DA40E7 /* ScreenRotate.gif */,
 				1979C1EF21FFED3000DA40E7 /* StatusBarClicked.gif */,
 				19BA2EEA219C297400170A41 /* HeaderViewHeightChange.gif */,
@@ -744,6 +747,7 @@
 				1968DA692135486F00A51C83 /* NaviHidden.gif in Resources */,
 				1979C1F221FFED4E00DA40E7 /* ScreenRotate.gif in Resources */,
 				1912A5AD211D2F1500A80826 /* MJRefresh.bundle in Resources */,
+				192226E02238EB6400637AA2 /* PinSectionHeaderPosition.gif in Resources */,
 				194DCDF121352285000E89EF /* ListRefresh.gif in Resources */,
 				1979C1F021FFED3000DA40E7 /* StatusBarClicked.gif in Resources */,
 				197D66AE2182FC7600B20483 /* Nest.gif in Resources */,
