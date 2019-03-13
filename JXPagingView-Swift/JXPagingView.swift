@@ -94,6 +94,7 @@ open class JXPagingView: UIView {
     open var mainTableView: JXPagingMainTableView!
     open var listContainerView: JXPagingListContainerView!
     public var validListDict = [Int:JXPagingViewListViewDelegate]() //当前已经加载过可用的列表字典，key就是index值，value是对应的列表。
+    open var pinSectionHeaderVerticalOffset: CGFloat = 0  //顶部固定sectionHeader的垂直偏移量。数值越大越往下沉。
     public var isListHorizontalScrollEnabled = true {
         didSet {
             refreshListHorizontalScrollEnabledState()
@@ -193,7 +194,7 @@ open class JXPagingView: UIView {
     }
 
     open func preferredProcessListViewDidScroll(scrollView: UIScrollView) {
-        if (self.mainTableView.contentOffset.y < getTableHeaderViewHeight()) {
+        if (self.mainTableView.contentOffset.y < getMainTableViewMaxContentOffsetY()) {
             //mainTableView的header还没有消失，让listScrollView一直为0
             self.currentList?.listScrollViewWillResetContentOffset?()
             currentScrollingListView!.contentOffset = CGPoint.zero
@@ -202,7 +203,7 @@ open class JXPagingView: UIView {
             }
         } else {
             //mainTableView的header刚好消失，固定mainTableView的位置，显示listScrollView的滚动条
-            self.mainTableView.contentOffset = CGPoint(x: 0, y: self.delegate.tableHeaderViewHeight(in: self))
+            self.mainTableView.contentOffset = CGPoint(x: 0, y: getMainTableViewMaxContentOffsetY())
             if automaticallyDisplayListVerticalScrollIndicator {
                 currentScrollingListView!.showsVerticalScrollIndicator = true
             }
@@ -212,10 +213,10 @@ open class JXPagingView: UIView {
     open func preferredProcessMainTableViewDidScroll(_ scrollView: UIScrollView) {
         if (self.currentScrollingListView != nil && self.currentScrollingListView!.contentOffset.y > 0) {
             //mainTableView的header已经滚动不见，开始滚动某一个listView，那么固定mainTableView的contentOffset，让其不动
-            self.mainTableView.contentOffset = CGPoint(x: 0, y: self.delegate.tableHeaderViewHeight(in: self))
+            self.mainTableView.contentOffset = CGPoint(x: 0, y: getMainTableViewMaxContentOffsetY())
         }
 
-        if (mainTableView.contentOffset.y < getTableHeaderViewHeight()) {
+        if (self.mainTableView.contentOffset.y < getMainTableViewMaxContentOffsetY()) {
             //mainTableView已经显示了header，listView的contentOffset需要重置
             for list in self.validListDict.values {
                 list.listScrollViewWillResetContentOffset?()
@@ -223,9 +224,9 @@ open class JXPagingView: UIView {
             }
         }
 
-        if scrollView.contentOffset.y > getTableHeaderViewHeight() && self.currentScrollingListView?.contentOffset.y == 0 {
+        if scrollView.contentOffset.y > getMainTableViewMaxContentOffsetY() && self.currentScrollingListView?.contentOffset.y == 0 {
             //当往上滚动mainTableView的headerView时，滚动到底时，修复listView往上小幅度滚动
-            self.mainTableView.contentOffset = CGPoint(x: 0, y: self.delegate.tableHeaderViewHeight(in: self))
+            self.mainTableView.contentOffset = CGPoint(x: 0, y: getMainTableViewMaxContentOffsetY())
         }
     }
 
@@ -235,8 +236,8 @@ open class JXPagingView: UIView {
         listContainerView.collectionView.isScrollEnabled = isListHorizontalScrollEnabled
     }
 
-    func getTableHeaderViewHeight() -> CGFloat {
-        return CGFloat(self.delegate.tableHeaderViewHeight(in: self))
+    func getMainTableViewMaxContentOffsetY() -> CGFloat {
+        return CGFloat(self.delegate.tableHeaderViewHeight(in: self)) - pinSectionHeaderVerticalOffset
     }
 
     func getPinSectionHeaderHeight() -> CGFloat {
@@ -299,7 +300,7 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.bounds.height - getPinSectionHeaderHeight()
+        return self.bounds.height - getPinSectionHeaderHeight() - pinSectionHeaderVerticalOffset
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -335,6 +336,14 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
         //用户正在上下滚动的时候，就不允许左右滚动
         if scrollView.isTracking && isListHorizontalScrollEnabled {
             self.listContainerView.collectionView.isScrollEnabled = false
+        }
+
+        if scrollView.contentOffset.y < pinSectionHeaderVerticalOffset && scrollView.contentOffset.y >= 0 {
+            //因为设置了contentInset.top，所以顶部会有对应高度的空白区间，所以需要设置负数抵消掉
+            scrollView.contentInset = UIEdgeInsets(top: -scrollView.contentOffset.y, left: 0, bottom: 0, right: 0)
+        }else if scrollView.contentOffset.y > pinSectionHeaderVerticalOffset {
+            //固定的位置就是contentInset.top
+            scrollView.contentInset = UIEdgeInsets(top: pinSectionHeaderVerticalOffset, left: 0, bottom: 0, right: 0)
         }
 
         preferredProcessMainTableViewDidScroll(scrollView)

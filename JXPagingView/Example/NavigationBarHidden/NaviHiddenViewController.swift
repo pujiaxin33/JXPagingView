@@ -10,7 +10,6 @@ import UIKit
 
 class NaviHiddenViewController: BaseViewController {
     var naviBGView: UIView?
-    var pinHeaderViewInsetTop: CGFloat = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +20,8 @@ class NaviHiddenViewController: BaseViewController {
 
         let topSafeMargin = UIApplication.shared.keyWindow!.jx_layoutInsets().top
         let naviHeight = UIApplication.shared.keyWindow!.jx_navigationHeight()
-        pinHeaderViewInsetTop = naviHeight
+        //导航栏隐藏就是设置pinSectionHeaderVerticalOffset属性即可，数值越大越往下沉
+        pagingView.pinSectionHeaderVerticalOffset = naviHeight
 
         //自定义导航栏
         naviBGView = UIView()
@@ -41,21 +41,6 @@ class NaviHiddenViewController: BaseViewController {
         back.frame = CGRect(x: 12, y: topSafeMargin, width: 44, height: 44)
         back.addTarget(self, action: #selector(naviBack), for: .touchUpInside)
         naviBGView?.addSubview(back)
-
-        //让mainTableView可以显示范围外
-        self.pagingView.mainTableView.clipsToBounds = false
-        //让头图的布局往上移动naviHeight高度，填充导航栏下面的内容
-        self.userHeaderView.imageView.frame = CGRect(x: 0, y: -naviHeight, width: self.view.bounds.size.width, height: naviHeight + CGFloat(JXTableHeaderViewHeight))
-        self.userHeaderView.imageView.autoresizingMask = UIView.AutoresizingMask(rawValue: 0)
-        //示例里面的PagingViewTableHeaderView，为了适应示例里面所有的情况。在导航栏隐藏示例关于横竖屏切换的情况，实在有点改不动了。不过不影响真实使用场景。可以根据自己真实的使用场景自己适配。这里的示例就不处理了。
-
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        //pagingView依然是从导航栏下面开始布局的
-        self.pagingView.frame = CGRect(x: 0, y: pinHeaderViewInsetTop, width: self.view.bounds.size.width, height: self.view.bounds.size.height - pinHeaderViewInsetTop)
     }
 
     override func viewWillDisappear(_ animated: Bool) {

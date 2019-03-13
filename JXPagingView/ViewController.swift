@@ -10,6 +10,12 @@ import UIKit
 
 class ViewController: UITableViewController {
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.isTranslucent = false
+    }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         var title: String?
@@ -46,6 +52,9 @@ class ViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         case 7:
             let vc = HeightChangeViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 8:
+            let vc = HeaderPositionViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
