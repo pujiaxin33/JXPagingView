@@ -87,6 +87,7 @@
 		197B3A382182B13E00561F08 /* NestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197B3A372182B13E00561F08 /* NestViewController.m */; };
 		197B3A3B2182B17F00561F08 /* TestNestlistView.m in Sources */ = {isa = PBXBuildFile; fileRef = 197B3A3A2182B17F00561F08 /* TestNestlistView.m */; };
 		197B3A3E2182B22900561F08 /* TestNestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 197B3A3D2182B22900561F08 /* TestNestListBaseView.m */; };
+		19A735B7223BA91C008BB403 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A735B6223BA91C008BB403 /* BaseNavigationController.m */; };
 		19C417CD215F1B630090E518 /* UIWindow+JXSafeArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */; };
 /* End PBXBuildFile section */
 
@@ -251,6 +252,8 @@
 		197B3A3A2182B17F00561F08 /* TestNestlistView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNestlistView.m; sourceTree = "<group>"; };
 		197B3A3C2182B22900561F08 /* TestNestListBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestNestListBaseView.h; sourceTree = "<group>"; };
 		197B3A3D2182B22900561F08 /* TestNestListBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestNestListBaseView.m; sourceTree = "<group>"; };
+		19A735B5223BA91C008BB403 /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		19A735B6223BA91C008BB403 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		19C417CB215F1B630090E518 /* UIWindow+JXSafeArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+JXSafeArea.h"; sourceTree = "<group>"; };
 		19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+JXSafeArea.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -506,6 +509,8 @@
 			children = (
 				196428242148E58C009C1D31 /* PagingViewController.h */,
 				1964281F2148E58C009C1D31 /* PagingViewController.m */,
+				19A735B5223BA91C008BB403 /* BaseNavigationController.h */,
+				19A735B6223BA91C008BB403 /* BaseNavigationController.m */,
 				1964281B2148E58C009C1D31 /* TestListBaseView.h */,
 				196428232148E58C009C1D31 /* TestListBaseView.m */,
 				196428F72148F419009C1D31 /* TestTableViewCell.h */,
@@ -734,6 +739,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1904A91421CCC55800316F97 /* JXCategoryIndicatorComponentView.m in Sources */,
+				19A735B7223BA91C008BB403 /* BaseNavigationController.m in Sources */,
 				196428F02148E9E8009C1D31 /* RefreshViewController.m in Sources */,
 				196428DD2148E9D0009C1D31 /* UIScrollView+MJExtension.m in Sources */,
 				1904A91921CCC55800316F97 /* JXCategoryDotCell.m in Sources */,
