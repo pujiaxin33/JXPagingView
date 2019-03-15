@@ -39,7 +39,6 @@
 @interface JXPagerListContainerView : UIView
 
 @property (nonatomic, strong, readonly) JXPagerListContainerCollectionView *collectionView;
-@property (nonatomic, weak) id<JXPagerListContainerViewDelegate> delegate;
 @property (nonatomic, weak) JXPagerMainTableView *mainTableView;
 
 - (instancetype)initWithDelegate:(id<JXPagerListContainerViewDelegate>)delegate NS_DESIGNATED_INITIALIZER;

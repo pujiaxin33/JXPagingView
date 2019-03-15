@@ -10,6 +10,7 @@
 #import "JXPagerMainTableView.h"
 
 @interface JXPagerListContainerView() <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@property (nonatomic, weak) id<JXPagerListContainerViewDelegate> delegate;
 @property (nonatomic, strong) JXPagerListContainerCollectionView *collectionView;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 @end
