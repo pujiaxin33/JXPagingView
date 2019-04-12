@@ -65,11 +65,14 @@ public class JXPagingListContainerCollectionView: UICollectionView, UIGestureRec
 }
 
 open class JXPagingListContainerView: UIView {
+    /// 需要和self.categoryView.defaultSelectedIndex保持一致
+    open var defaultSelectedIndex: Int = 0
     open var collectionView: JXPagingListContainerCollectionView!
     unowned var delegate: JXPagingListContainerViewDelegate
     weak var mainTableView: JXPagingMainTableView?
 
     private var selectedIndexPath: IndexPath?
+    private var isFirstLayoutSubviews: Bool = true
 
     public init(delegate: JXPagingListContainerViewDelegate) {
         self.delegate = delegate
@@ -114,6 +117,10 @@ open class JXPagingListContainerView: UIView {
         collectionView.frame = self.bounds
         if selectedIndexPath != nil && self.delegate.numberOfRows(in: self) >= 1 + selectedIndexPath!.item {
             collectionView.scrollToItem(at: selectedIndexPath!, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: false)
+        }
+        if isFirstLayoutSubviews {
+            isFirstLayoutSubviews = false
+            collectionView.setContentOffset(CGPoint(x: self.collectionView.bounds.size.width*CGFloat(self.defaultSelectedIndex), y: 0), animated: false)
         }
     }
 

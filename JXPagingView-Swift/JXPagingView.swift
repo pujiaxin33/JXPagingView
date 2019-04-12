@@ -90,6 +90,12 @@ import UIKit
 }
 
 open class JXPagingView: UIView {
+    /// 需要和self.categoryView.defaultSelectedIndex保持一致
+    open var defaultSelectedIndex: Int = 0 {
+        didSet {
+            listContainerView.defaultSelectedIndex = defaultSelectedIndex
+        }
+    }
     public unowned let delegate: JXPagingViewDelegate
     open var mainTableView: JXPagingMainTableView!
     open var listContainerView: JXPagingListContainerView!

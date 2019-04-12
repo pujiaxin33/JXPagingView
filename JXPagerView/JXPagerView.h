@@ -130,6 +130,11 @@
 
 @interface JXPagerView : UIView
 
+/**
+ 需要和self.categoryView.defaultSelectedIndex保持一致
+ */
+@property (nonatomic, assign) NSInteger defaultSelectedIndex;
+
 @property (nonatomic, weak) id<JXPagerViewDelegate> delegate;
 
 @property (nonatomic, strong, readonly) JXPagerMainTableView *mainTableView;

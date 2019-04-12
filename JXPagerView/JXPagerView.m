@@ -70,6 +70,12 @@
     self.mainTableView.frame = self.bounds;
 }
 
+- (void)setDefaultSelectedIndex:(NSInteger)defaultSelectedIndex {
+    _defaultSelectedIndex = defaultSelectedIndex;
+
+    self.listContainerView.defaultSelectedIndex = defaultSelectedIndex;
+}
+
 - (void)setIsListHorizontalScrollEnabled:(BOOL)isListHorizontalScrollEnabled {
     _isListHorizontalScrollEnabled = isListHorizontalScrollEnabled;
 
