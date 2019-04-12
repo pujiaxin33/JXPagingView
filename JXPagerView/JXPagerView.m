@@ -33,6 +33,7 @@
     self = [super initWithFrame:CGRectZero];
     if (self) {
         _delegate = delegate;
+        self.pinSectionHeaderVerticalOffset = 30;
         _validListDict = [NSMutableDictionary dictionary];
         _automaticallyDisplayListVerticalScrollIndicator = YES;
         [self initializeViews];
@@ -193,10 +194,13 @@
     if (scrollView.isTracking && self.isListHorizontalScrollEnabled) {
         self.listContainerView.collectionView.scrollEnabled = NO;
     }
-
-    if (scrollView.contentOffset.y < self.pinSectionHeaderVerticalOffset && scrollView.contentOffset.y >= 0) {
+    if (scrollView.contentOffset.y < self.pinSectionHeaderVerticalOffset) {
         //因为设置了contentInset.top，所以顶部会有对应高度的空白区间，所以需要设置负数抵消掉
-        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+        if (scrollView.contentOffset.y >= 0) {
+            scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+        }else {
+            scrollView.contentInset = UIEdgeInsetsZero;
+        }
     }else if (scrollView.contentOffset.y > self.pinSectionHeaderVerticalOffset){
         //固定的位置就是contentInset.top
         scrollView.contentInset = UIEdgeInsetsMake(self.pinSectionHeaderVerticalOffset, 0, 0, 0);
