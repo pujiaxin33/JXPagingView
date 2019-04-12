@@ -33,7 +33,6 @@
     self = [super initWithFrame:CGRectZero];
     if (self) {
         _delegate = delegate;
-        self.pinSectionHeaderVerticalOffset = 30;
         _validListDict = [NSMutableDictionary dictionary];
         _automaticallyDisplayListVerticalScrollIndicator = YES;
         [self initializeViews];
