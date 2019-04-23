@@ -355,8 +355,6 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
                 //因为设置了contentInset.top，所以顶部会有对应高度的空白区间，所以需要设置负数抵消掉
                 if scrollView.contentOffset.y >= 0 {
                     adjustMainScrollViewToTargetContentInsetIfNeeded(inset: UIEdgeInsets(top: -scrollView.contentOffset.y, left: 0, bottom: 0, right: 0))
-                }else {
-                    adjustMainScrollViewToTargetContentInsetIfNeeded(inset: UIEdgeInsets.zero)
                 }
             }else if scrollView.contentOffset.y > pinSectionHeaderVerticalOffset {
                 //固定的位置就是contentInset.top
@@ -372,6 +370,9 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if isListHorizontalScrollEnabled {
             self.listContainerView.collectionView.isScrollEnabled = true
+        }
+        if mainTableView.contentInset.top != 0 {
+            adjustMainScrollViewToTargetContentInsetIfNeeded(inset: UIEdgeInsets.zero)
         }
     }
 
