@@ -139,7 +139,7 @@ open class JXPagingView: UIView {
         mainTableView.dataSource = self
         mainTableView.delegate = self
         mainTableView.scrollsToTop = false
-        mainTableView.tableHeaderView = self.delegate.tableHeaderView(in: self)
+        refreshTableHeaderView()
         mainTableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
         addSubview(mainTableView)
 
@@ -194,7 +194,7 @@ open class JXPagingView: UIView {
         }
         validListDict.removeAll()
 
-        self.mainTableView.tableHeaderView = self.delegate.tableHeaderView(in: self)
+        refreshTableHeaderView()
         self.mainTableView.reloadData()
         self.listContainerView.reloadData()
     }
@@ -237,6 +237,13 @@ open class JXPagingView: UIView {
     }
 
     //MARK: - Private
+
+    func refreshTableHeaderView() {
+        let tableHeaderView = self.delegate.tableHeaderView(in: self)
+        let containerView = UIView(frame: tableHeaderView.bounds)
+        containerView.addSubview(tableHeaderView)
+        mainTableView.tableHeaderView = containerView
+    }
 
     func adjustMainScrollViewToTargetContentInsetIfNeeded(inset: UIEdgeInsets) {
         if mainTableView.contentInset != inset {

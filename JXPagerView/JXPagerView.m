@@ -91,12 +91,19 @@
     }
     [_validListDict removeAllObjects];
 
-    self.mainTableView.tableHeaderView = [self.delegate tableHeaderViewInPagerView:self];
+    [self refreshTableHeaderView];
     [self.mainTableView reloadData];
     [self.listContainerView reloadData];
 }
 
 #pragma mark - Private
+
+- (void)refreshTableHeaderView {
+    UIView *tableHeaderView = [self.delegate tableHeaderViewInPagerView:self];
+    UIView *containerView = [[UIView alloc] initWithFrame:tableHeaderView.bounds];
+    [containerView addSubview:tableHeaderView];
+    self.mainTableView.tableHeaderView = containerView;
+}
 
 - (void)adjustMainScrollViewToTargetContentInsetIfNeeded:(UIEdgeInsets)insets {
     if (UIEdgeInsetsEqualToEdgeInsets(insets, self.mainTableView.contentInset) == NO) {
@@ -297,7 +304,7 @@
     self.mainTableView.scrollsToTop = NO;
     self.mainTableView.dataSource = self;
     self.mainTableView.delegate = self;
-    self.mainTableView.tableHeaderView = [self.delegate tableHeaderViewInPagerView:self];
+    [self refreshTableHeaderView];
     [self.mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     if (@available(iOS 11.0, *)) {
         self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
