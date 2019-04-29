@@ -9,6 +9,7 @@
 import UIKit
 
 @objc public class TestListBaseView: UIView {
+    weak var naviController: UINavigationController?
     @objc public var tableView: UITableView!
     @objc public var dataSource: [String]?
     @objc public var isNeedHeader = false {
@@ -102,6 +103,8 @@ import UIKit
         let cell = tableView.cellForRow(at: indexPath)
         cell?.setSelected(true, animated: false)
         lastSelectedIndexPath = indexPath
+        let vc = DetailViewController()
+        self.naviController?.pushViewController(vc, animated: true)
     }
 
 }

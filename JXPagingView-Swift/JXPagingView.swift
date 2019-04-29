@@ -306,7 +306,6 @@ open class JXPagingView: UIView {
         if count <= 0 || index >= count {
             return
         }
-        self.currentIndex = index
         let list = self.validListDict[index]
         list?.listDidDisappear?()
     }

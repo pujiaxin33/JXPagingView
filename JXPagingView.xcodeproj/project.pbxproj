@@ -100,6 +100,7 @@
 		19CF1848216C993D0093C775 /* CollectionViewList.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19CF1847216C993D0093C775 /* CollectionViewList.gif */; };
 		19CF1857216DF27A0093C775 /* VCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CF1856216DF27A0093C775 /* VCViewController.swift */; };
 		19CF1859216DF3230093C775 /* VCListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CF1858216DF3230093C775 /* VCListViewController.swift */; };
+		19F65BB422768F7000332364 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F65BB322768F7000332364 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -257,6 +258,7 @@
 		19CF1847216C993D0093C775 /* CollectionViewList.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = CollectionViewList.gif; sourceTree = "<group>"; };
 		19CF1856216DF27A0093C775 /* VCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCViewController.swift; sourceTree = "<group>"; };
 		19CF1858216DF3230093C775 /* VCListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCListViewController.swift; sourceTree = "<group>"; };
+		19F65BB322768F7000332364 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -462,6 +464,7 @@
 				1912A58B211D2F1500A80826 /* TestListBaseView.swift */,
 				19CF1843216C93C40093C775 /* TestListCollectionView.swift */,
 				19B614C721463D8B00FF4B8E /* TestTableViewCell.swift */,
+				19F65BB322768F7000332364 /* DetailViewController.swift */,
 				19C417C9215F18FC0090E518 /* UIWindow+JXSafeArea.swift */,
 			);
 			path = Common;
@@ -802,6 +805,7 @@
 				1979C27D2200324500DA40E7 /* JXCategoryIndicatorParamsModel.m in Sources */,
 				1912A5AC211D2F1500A80826 /* MJRefreshConst.m in Sources */,
 				1912A5B4211D2F1500A80826 /* MJRefreshAutoStateFooter.m in Sources */,
+				19F65BB422768F7000332364 /* DetailViewController.swift in Sources */,
 				19B614C821463D8B00FF4B8E /* TestTableViewCell.swift in Sources */,
 				19C417CA215F18FC0090E518 /* UIWindow+JXSafeArea.swift in Sources */,
 				19731D9D222AB06500483A54 /* HeaderPositionViewController.swift in Sources */,

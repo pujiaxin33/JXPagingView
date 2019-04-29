@@ -112,6 +112,7 @@ extension BaseViewController: JXPagingViewDelegate {
 
     func pagingView(_ pagingView: JXPagingView, initListAtIndex index: Int) -> JXPagingViewListViewDelegate {
         let list = TestListBaseView()
+        list.naviController = self.navigationController
         list.isNeedHeader = isNeedHeader
         list.isNeedFooter = isNeedFooter
         if index == 0 {
