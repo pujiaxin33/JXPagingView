@@ -323,6 +323,7 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.selectionStyle = .none
         for subview in cell.contentView.subviews {
             subview.removeFromSuperview()
         }
