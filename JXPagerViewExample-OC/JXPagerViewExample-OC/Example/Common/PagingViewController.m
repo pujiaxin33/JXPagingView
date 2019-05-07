@@ -47,7 +47,7 @@
     [self.view addSubview:self.pagerView];
 
     self.categoryView.contentScrollView = self.pagerView.listContainerView.collectionView;
-
+    
     //导航栏隐藏的情况，处理扣边返回，下面的代码要加上
     [self.pagerView.listContainerView.collectionView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
     [self.pagerView.mainTableView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
