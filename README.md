@@ -62,7 +62,7 @@ end
 
 Swift与OC的仓库地址不一样，请注意选择！
 
-先`pod repo udpate`然后再`pod install`
+先`pod repo update`然后再`pod install`
 
 
 ## 使用
