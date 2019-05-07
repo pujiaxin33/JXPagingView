@@ -23,16 +23,32 @@ typedef NS_ENUM(NSUInteger, JXCategoryIndicatorLineStyle) {
 
 /**
  line滚动时x的偏移量，默认为10；
- lineStyle为JXCategoryLineStyle_IQIYI有用；
+ lineStyle为JXCategoryIndicatorLineStyle_LengthenOffset有用；
  */
 @property (nonatomic, assign) CGFloat lineScrollOffsetX;
 
-@property (nonatomic, assign) CGFloat indicatorLineViewHeight;  //默认：3
+@end
 
-@property (nonatomic, assign) CGFloat indicatorLineWidth;    //默认JXCategoryViewAutomaticDimension（与cellWidth相等）
 
-@property (nonatomic, assign) CGFloat indicatorLineViewCornerRadius;    //默认JXCategoryViewAutomaticDimension （等于self.indicatorLineViewHeight/2）
-
-@property (nonatomic, strong) UIColor *indicatorLineViewColor;   //默认为[UIColor redColor]
+/**
+ 指示器的宽度、高度、圆角、颜色属性设置都收拢到JXCategoryIndicatorComponentView基类里面了！
+ */
+@interface JXCategoryIndicatorLineView (JXDeprecated)
+/**
+ 请使用indicatorHeight
+ */
+@property (nonatomic, assign) CGFloat indicatorLineViewHeight;
+/**
+ 请使用indicatorWidth
+ */
+@property (nonatomic, assign) CGFloat indicatorLineWidth;
+/**
+ 请使用indicatorCornerRadius
+ */
+@property (nonatomic, assign) CGFloat indicatorLineViewCornerRadius;
+/**
+ 请使用indicatorColor
+ */
+@property (nonatomic, strong) UIColor *indicatorLineViewColor;
 
 @end

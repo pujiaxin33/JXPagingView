@@ -24,7 +24,7 @@ class NestViewController: UIViewController {
         naviCategoryView.cellWidth = 80
         naviCategoryView.titleColor = .black
         naviCategoryView.titleSelectedColor = .white
-        naviCategoryView.titleLabelMaskEnabled = true
+        naviCategoryView.isTitleLabelMaskEnabled = true
 
         let indicatoryView = JXCategoryIndicatorBackgroundView()
         indicatoryView.backgroundViewColor = .red

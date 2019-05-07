@@ -17,11 +17,12 @@
 @protocol JXCategoryViewDelegate <NSObject>
 
 @optional
+
 //为什么会把选中代理分为三个，因为有时候只关心点击选中的，有时候只关心滚动选中的，有时候只关心选中。所以具体情况，使用对应方法。
 /**
  点击选中或者滚动选中都会调用该方法。适用于只关心选中事件，不关心具体是点击还是滚动选中的。
 
- @param categoryView categoryView description
+ @param categoryView categoryView对象
  @param index 选中的index
  */
 - (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index;
@@ -29,7 +30,7 @@
 /**
  点击选中的情况才会调用该方法
 
- @param categoryView categoryView description
+ @param categoryView categoryView对象
  @param index 选中的index
  */
 - (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index;
@@ -37,25 +38,35 @@
 /**
  滚动选中的情况才会调用该方法
 
- @param categoryView categoryView description
+ @param categoryView categoryView对象
  @param index 选中的index
  */
 - (void)categoryView:(JXCategoryBaseView *)categoryView didScrollSelectedItemAtIndex:(NSInteger)index;
 
 
 /**
+  因为通过该代理方法控制点击的时候，contentScrollView是否需要动画过于繁琐。所以提供了contentScrollViewClickTransitionAnimationEnabled属性，可以便捷设置。该协议方法未来也会被弃用！！！
   只有点击的选中才会调用！！！
   因为用户点击，contentScrollView即将过渡到目标index的位置。内部默认实现`[self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:YES];`。如果实现该代理方法，以自定义实现为准。比如将animated设置为NO，点击切换时无需滚动效果。类似于今日头条APP。
 
- @param categoryView categoryView description
- @param index index description
+ @param categoryView categoryView对象
+ @param index 点击的index
  */
 - (void)categoryView:(JXCategoryBaseView *)categoryView didClickedItemContentScrollViewTransitionToIndex:(NSInteger)index;
 
 /**
+ 控制能否点击Item
+
+ @param categoryView categoryView对象
+ @param index 准备点击的index
+ @return 能否点击
+ */
+- (BOOL)categoryView:(JXCategoryBaseView *)categoryView canClickItemAtIndex:(NSInteger)index;
+
+/**
  正在滚动中的回调
 
- @param categoryView categoryView description
+ @param categoryView categoryView对象
  @param leftIndex 正在滚动中，相对位置处于左边的index
  @param rightIndex 正在滚动中，相对位置处于右边的index
  @param ratio 从左往右计算的百分比
@@ -78,6 +89,8 @@
 
 @property (nonatomic, assign, readonly) NSInteger selectedIndex;
 
+@property (nonatomic, assign, getter=isContentScrollViewClickTransitionAnimationEnabled) BOOL contentScrollViewClickTransitionAnimationEnabled;    //默认为YES，只有当delegate未实现`- (void)categoryView:(JXCategoryBaseView *)categoryView didClickedItemContentScrollViewTransitionToIndex:(NSInteger)index`代理方法时才有效
+
 @property (nonatomic, assign) CGFloat contentEdgeInsetLeft;     //整体内容的左边距，默认JXCategoryViewAutomaticDimension（等于cellSpacing）
 
 @property (nonatomic, assign) CGFloat contentEdgeInsetRight;    //整体内容的右边距，默认JXCategoryViewAutomaticDimension（等于cellSpacing）
@@ -88,17 +101,16 @@
 
 @property (nonatomic, assign) CGFloat cellSpacing;    //cell之间的间距，默认20
 
-@property (nonatomic, assign) BOOL averageCellSpacingEnabled;     //当collectionView.contentSize.width小于JXCategoryBaseView的宽度，是否将cellSpacing均分。默认为YES。
+@property (nonatomic, assign, getter=isAverageCellSpacingEnabled) BOOL averageCellSpacingEnabled;     //当collectionView.contentSize.width小于JXCategoryBaseView的宽度，是否将cellSpacing均分。默认为YES。
 
-//----------------------cellWidthZoomEnabled-----------------------//
-//cell宽度的缩放主要是为了腾讯视频、汽车之家效果打造的，一般情况下慎用，不太好控制。
-@property (nonatomic, assign) BOOL cellWidthZoomEnabled;     //默认为NO
+//cell宽度是否缩放
+@property (nonatomic, assign, getter=isCellWidthZoomEnabled) BOOL cellWidthZoomEnabled;     //默认为NO
 
-@property (nonatomic, assign) BOOL cellWidthZoomScrollGradientEnabled;     //手势滚动过程中，是否需要更新cell的宽度。默认为YES
+@property (nonatomic, assign, getter=isCellWidthZoomScrollGradientEnabled) BOOL cellWidthZoomScrollGradientEnabled;     //手势滚动过程中，是否需要更新cell的宽度。默认为YES
 
 @property (nonatomic, assign) CGFloat cellWidthZoomScale;    //默认1.2，cellWidthZoomEnabled为YES才生效
 
-@property (nonatomic, assign) BOOL selectedAnimationEnabled;    //是否开启选中动画。默认为NO。自定义的cell选中动画需要自己实现。
+@property (nonatomic, assign, getter=isSelectedAnimationEnabled) BOOL selectedAnimationEnabled;    //是否开启选中动画。默认为NO。自定义的cell选中动画需要自己实现。
 
 @property (nonatomic, assign) NSTimeInterval selectedAnimationDuration;     //cell选中动画的时间。默认0.25
 
@@ -122,11 +134,21 @@
  */
 - (void)reloadCellAtIndex:(NSInteger)index;
 
-#pragma mark - Subclass use
+@end
 
+@interface JXCategoryBaseView (UISubclassingBaseHooks)
+
+
+/**
+ 获取目标cell当前的frame，反应当前真实的frame受到cellWidthSelectedZoomScale的影响。
+ */
 - (CGRect)getTargetCellFrame:(NSInteger)targetIndex;
 
-#pragma mark - Subclass Override
+
+/**
+ 获取目标cell的选中时的frame，其他cell的状态都当做普通状态处理。
+ */
+- (CGRect)getTargetSelectedCellFrame:(NSInteger)targetIndex;
 
 - (void)initializeData NS_REQUIRES_SUPER;
 
@@ -188,6 +210,6 @@
  @param cellModel 待重置的cellModel
  @param index cellModel在数组中的index
  */
-- (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index;
+- (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index NS_REQUIRES_SUPER;
 
 @end
