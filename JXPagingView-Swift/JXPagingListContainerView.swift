@@ -20,8 +20,8 @@ import UIKit
 }
 
 @objc public protocol JXPagingListContainerCollectionViewGestureDelegate {
-    @objc optional func pagingListContainerCollectionViewGestureRecognizerShouldBegin(collectionView: JXPagingListContainerCollectionView, gestureRecognizer: UIGestureRecognizer) -> Bool
-    @objc optional func pagingListContainerCollectionViewGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool
+    @objc optional func pagingListContainerCollectionView(_ collectionView: JXPagingListContainerCollectionView, gestureRecognizerShouldBegin gestureRecognizer: UIGestureRecognizer) -> Bool
+    @objc optional func pagingListContainerCollectionView(_ collectionView: JXPagingListContainerCollectionView, gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool
 }
 
 public class JXPagingListContainerCollectionView: UICollectionView, UIGestureRecognizerDelegate {
@@ -30,7 +30,7 @@ public class JXPagingListContainerCollectionView: UICollectionView, UIGestureRec
 
     public override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         //如果有代理，就以代理的处理为准
-        if let result = self.gestureDelegate?.pagingListContainerCollectionViewGestureRecognizerShouldBegin?(collectionView: self, gestureRecognizer: gestureRecognizer) {
+        if let result = self.gestureDelegate?.pagingListContainerCollectionView?(self, gestureRecognizerShouldBegin: gestureRecognizer) {
             return result
         }else {
             if isNestEnabled {
@@ -57,7 +57,7 @@ public class JXPagingListContainerCollectionView: UICollectionView, UIGestureRec
     }
 
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        if let result = gestureDelegate?.pagingListContainerCollectionViewGestureRecognizer?(gestureRecognizer, shouldRecognizeSimultaneouslyWith: otherGestureRecognizer) {
+        if let result = gestureDelegate?.pagingListContainerCollectionView?(self, gestureRecognizer: gestureRecognizer, shouldRecognizeSimultaneouslyWith: otherGestureRecognizer) {
             return result
         }
         return false;
