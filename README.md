@@ -13,7 +13,8 @@
 - 支持横竖屏切换；
 - 支持点击状态栏滚动当前列表到顶部；
 - 支持列表显示和消失的生命周期方法；
-- - isListHorizontalScrollEnabled属性控制列表是否可以左右滑动，默认YES；
+- isListHorizontalScrollEnabled属性控制列表是否可以左右滑动，默认YES；
+- 支持`FDFullscreenPopGesture`等全屏手势兼容处理；
 
 ## 预览
 
@@ -245,6 +246,10 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
     self.view = [[UIView alloc] init];
 }
 ```
+
+### `FDFullscreenPopGesture`等全屏手势兼容处理
+
+[全屏手势兼容处理文档，点击查看 ❗️❗️❗️](https://github.com/pujiaxin33/JXPagingView/blob/master/Document/%E5%85%A8%E5%B1%8F%E6%89%8B%E5%8A%BF%E5%A4%84%E7%90%86.md)
 
 
 ## 迁移指南
