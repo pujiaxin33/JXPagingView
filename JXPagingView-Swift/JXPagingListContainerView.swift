@@ -129,7 +129,9 @@ open class JXPagingListContainerView: UIView {
     }
 
     open func deviceOrientationDidChanged() {
-        selectedIndexPath = IndexPath(item: Int(collectionView.contentOffset.x/bounds.size.width), section: 0)
+        if bounds.size.width > 0 {
+            selectedIndexPath = IndexPath(item: Int(collectionView.contentOffset.x/bounds.size.width), section: 0)
+        }
     }
 }
 

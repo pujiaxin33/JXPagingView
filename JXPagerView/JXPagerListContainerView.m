@@ -70,7 +70,9 @@
 }
 
 - (void)deviceOrientationDidChanged {
-    self.selectedIndexPath = [NSIndexPath indexPathForItem:self.collectionView.contentOffset.x/self.bounds.size.width inSection:0];
+    if (self.bounds.size.width > 0) {
+        self.selectedIndexPath = [NSIndexPath indexPathForItem:self.collectionView.contentOffset.x/self.bounds.size.width inSection:0];
+    }
 }
 
 #pragma mark - UICollectionViewDataSource, UICollectionViewDelegate
