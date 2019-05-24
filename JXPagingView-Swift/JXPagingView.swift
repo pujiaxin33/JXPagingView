@@ -116,7 +116,7 @@ open class JXPagingView: UIView {
     private var isFirstMoveToWindow: Bool = true
 
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 
     public init(delegate: JXPagingViewDelegate) {
