@@ -202,13 +202,13 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
 
 代码：请参考`TestTableViewCell`类的配置。
 
-### TableHeaderView使用tips
+### 指定默认选中index
 
-如果TableHeaderView逻辑较多，一般都会用ViewController来包裹，然后使用ViewController.view当做TableHeaderView。又或者视图较多，使用xib来布局。
-
-以上两种情况，都需要创建一个ContainerView，把ContainerView赋值给TableHeaderView，然后add真正的ViewController.view或xib视图到ContainerView上面。不这么做布局会有异常。
-
-参考：swift工程`userHeaderContainerView`类的`userHeaderContainerView`属性的使用方式。
+默认显示index=2的列表，代码如下：
+```
+self.pagerView.defaultSelectedIndex = 2;
+self.categoryView.defaultSelectedIndex = 2;
+```
 
 ### 顶部轮播图手势处理
 
