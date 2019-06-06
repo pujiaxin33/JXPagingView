@@ -164,22 +164,22 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
         return false
     }
 
-    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        self.mainTableView?.isScrollEnabled = true
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.mainTableView?.isScrollEnabled = false
     }
 
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            self.mainTableView?.isScrollEnabled = true
+        }
+    }
+
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.mainTableView?.isScrollEnabled = true
     }
 
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         self.mainTableView?.isScrollEnabled = true
-    }
-
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.isTracking || scrollView.isDecelerating {
-            self.mainTableView?.isScrollEnabled = false
-        }
     }
 }
 

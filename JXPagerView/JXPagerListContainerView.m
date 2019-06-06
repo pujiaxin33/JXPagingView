@@ -104,22 +104,22 @@
     return false;
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    self.mainTableView.scrollEnabled = NO;
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     self.mainTableView.scrollEnabled = YES;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    self.mainTableView.scrollEnabled = YES;
+    if !decelerate {
+        self.mainTableView.scrollEnabled = YES;
+    }
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     self.mainTableView.scrollEnabled = YES;
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView.isTracking || scrollView.isDecelerating) {
-        self.mainTableView.scrollEnabled = NO;
-    }
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout

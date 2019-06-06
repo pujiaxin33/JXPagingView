@@ -352,11 +352,6 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //用户正在上下滚动的时候，就不允许左右滚动
-        if scrollView.isTracking && isListHorizontalScrollEnabled {
-            self.listContainerView.collectionView.isScrollEnabled = false
-        }
-
         if pinSectionHeaderVerticalOffset != 0 {
             if scrollView.contentOffset.y < pinSectionHeaderVerticalOffset {
                 //因为设置了contentInset.top，所以顶部会有对应高度的空白区间，所以需要设置负数抵消掉
@@ -374,18 +369,25 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
         self.delegate.mainTableViewDidScroll?(scrollView)
     }
 
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if isListHorizontalScrollEnabled {
+            //用户正在上下滚动的时候，就不允许左右滚动
+            self.listContainerView.collectionView.isScrollEnabled = false
+        }
+    }
+
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if isListHorizontalScrollEnabled && !decelerate {
+            self.listContainerView.collectionView.isScrollEnabled = true
+        }
+    }
+
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if isListHorizontalScrollEnabled {
             self.listContainerView.collectionView.isScrollEnabled = true
         }
         if mainTableView.contentInset.top != 0 {
             adjustMainScrollViewToTargetContentInsetIfNeeded(inset: UIEdgeInsets.zero)
-        }
-    }
-
-    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if isListHorizontalScrollEnabled {
-            self.listContainerView.collectionView.isScrollEnabled = true
         }
     }
 
