@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		190639B021918BAD00153BE9 /* CategoryNestPaging.gif in Resources */ = {isa = PBXBuildFile; fileRef = 190639AF21918BAD00153BE9 /* CategoryNestPaging.gif */; };
 		190A731D228131E8004B5B50 /* JXCategoryTitleVerticalZoomCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 190A72C6228131E7004B5B50 /* JXCategoryTitleVerticalZoomCellModel.m */; };
 		190A731E228131E8004B5B50 /* JXCategoryTitleVerticalZoomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 190A72C7228131E7004B5B50 /* JXCategoryTitleVerticalZoomCell.m */; };
 		190A731F228131E8004B5B50 /* JXCategoryTitleVerticalZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 190A72C8228131E7004B5B50 /* JXCategoryTitleVerticalZoomView.m */; };
@@ -81,34 +80,23 @@
 		1912A5C1211D2F1500A80826 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A589211D2F1500A80826 /* ZoomViewController.swift */; };
 		1912A5C3211D2F1500A80826 /* TestListBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A58B211D2F1500A80826 /* TestListBaseView.swift */; };
 		1912A671211D3E8600A80826 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1912A670211D3E8600A80826 /* BaseViewController.swift */; };
-		192226E02238EB6400637AA2 /* PinSectionHeaderPosition.gif in Resources */ = {isa = PBXBuildFile; fileRef = 192226DF2238EB6400637AA2 /* PinSectionHeaderPosition.gif */; };
 		1939226D218C56B100C7B564 /* NestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1939226C218C56B100C7B564 /* NestViewController.swift */; };
 		194DCDD92134F81F000E89EF /* ListRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDD82134F81F000E89EF /* ListRefreshViewController.swift */; };
-		194DCDF121352285000E89EF /* ListRefresh.gif in Resources */ = {isa = PBXBuildFile; fileRef = 194DCDF021352285000E89EF /* ListRefresh.gif */; };
 		194DCDF421352689000E89EF /* NaviHiddenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDF321352689000E89EF /* NaviHiddenViewController.swift */; };
 		194DCDF621352CE6000E89EF /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDF521352CE6000E89EF /* BaseNavigationController.swift */; };
-		1968DA692135486F00A51C83 /* NaviHidden.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1968DA682135486F00A51C83 /* NaviHidden.gif */; };
 		19731D9D222AB06500483A54 /* HeaderPositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19731D9C222AB06500483A54 /* HeaderPositionViewController.swift */; };
-		1979C1F021FFED3000DA40E7 /* StatusBarClicked.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1979C1EF21FFED3000DA40E7 /* StatusBarClicked.gif */; };
-		1979C1F221FFED4E00DA40E7 /* ScreenRotate.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1979C1F121FFED4E00DA40E7 /* ScreenRotate.gif */; };
-		197D66AE2182FC7600B20483 /* Nest.gif in Resources */ = {isa = PBXBuildFile; fileRef = 197D66AD2182FC7600B20483 /* Nest.gif */; };
 		19870C27211D852400C23CAA /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19870C26211D852400C23CAA /* lufei.jpg */; };
-		19870C7F2121604F00C23CAA /* Refresh.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C7D2121604F00C23CAA /* Refresh.gif */; };
-		19870C802121605000C23CAA /* Zoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C7E2121604F00C23CAA /* Zoom.gif */; };
 		19B614C821463D8B00FF4B8E /* TestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B614C721463D8B00FF4B8E /* TestTableViewCell.swift */; };
 		19BA2EE9219C245100170A41 /* HeightChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA2EE8219C245100170A41 /* HeightChangeViewController.swift */; };
-		19BA2EEB219C297400170A41 /* HeaderViewHeightChange.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19BA2EEA219C297400170A41 /* HeaderViewHeightChange.gif */; };
 		19C417CA215F18FC0090E518 /* UIWindow+JXSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C417C9215F18FC0090E518 /* UIWindow+JXSafeArea.swift */; };
 		19CF1844216C93C40093C775 /* TestListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CF1843216C93C40093C775 /* TestListCollectionView.swift */; };
 		19CF1846216C94D90093C775 /* CollectionViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CF1845216C94D90093C775 /* CollectionViewViewController.swift */; };
-		19CF1848216C993D0093C775 /* CollectionViewList.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19CF1847216C993D0093C775 /* CollectionViewList.gif */; };
 		19CF1857216DF27A0093C775 /* VCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CF1856216DF27A0093C775 /* VCViewController.swift */; };
 		19CF1859216DF3230093C775 /* VCListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CF1858216DF3230093C775 /* VCListViewController.swift */; };
 		19F65BB422768F7000332364 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F65BB322768F7000332364 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		190639AF21918BAD00153BE9 /* CategoryNestPaging.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = CategoryNestPaging.gif; sourceTree = "<group>"; };
 		190A72C3228131E7004B5B50 /* JXCategoryTitleVerticalZoomCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleVerticalZoomCellModel.h; sourceTree = "<group>"; };
 		190A72C4228131E7004B5B50 /* JXCategoryTitleVerticalZoomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleVerticalZoomCell.h; sourceTree = "<group>"; };
 		190A72C5228131E7004B5B50 /* JXCategoryTitleVerticalZoomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleVerticalZoomView.h; sourceTree = "<group>"; };
@@ -247,27 +235,17 @@
 		1912A58B211D2F1500A80826 /* TestListBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestListBaseView.swift; sourceTree = "<group>"; };
 		1912A5D3211D2FDC00A80826 /* Swift-Bridge-Objective-C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift-Bridge-Objective-C.h"; sourceTree = "<group>"; };
 		1912A670211D3E8600A80826 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		192226DF2238EB6400637AA2 /* PinSectionHeaderPosition.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PinSectionHeaderPosition.gif; sourceTree = "<group>"; };
 		1939226C218C56B100C7B564 /* NestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestViewController.swift; sourceTree = "<group>"; };
 		194DCDD82134F81F000E89EF /* ListRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRefreshViewController.swift; sourceTree = "<group>"; };
-		194DCDF021352285000E89EF /* ListRefresh.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ListRefresh.gif; sourceTree = "<group>"; };
 		194DCDF321352689000E89EF /* NaviHiddenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviHiddenViewController.swift; sourceTree = "<group>"; };
 		194DCDF521352CE6000E89EF /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
-		1968DA682135486F00A51C83 /* NaviHidden.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = NaviHidden.gif; sourceTree = "<group>"; };
 		19731D9C222AB06500483A54 /* HeaderPositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderPositionViewController.swift; sourceTree = "<group>"; };
-		1979C1EF21FFED3000DA40E7 /* StatusBarClicked.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = StatusBarClicked.gif; sourceTree = "<group>"; };
-		1979C1F121FFED4E00DA40E7 /* ScreenRotate.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ScreenRotate.gif; sourceTree = "<group>"; };
-		197D66AD2182FC7600B20483 /* Nest.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Nest.gif; sourceTree = "<group>"; };
 		19870C26211D852400C23CAA /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lufei.jpg; sourceTree = "<group>"; };
-		19870C7D2121604F00C23CAA /* Refresh.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Refresh.gif; sourceTree = "<group>"; };
-		19870C7E2121604F00C23CAA /* Zoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Zoom.gif; sourceTree = "<group>"; };
 		19B614C721463D8B00FF4B8E /* TestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewCell.swift; sourceTree = "<group>"; };
 		19BA2EE8219C245100170A41 /* HeightChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightChangeViewController.swift; sourceTree = "<group>"; };
-		19BA2EEA219C297400170A41 /* HeaderViewHeightChange.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = HeaderViewHeightChange.gif; sourceTree = "<group>"; };
 		19C417C9215F18FC0090E518 /* UIWindow+JXSafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+JXSafeArea.swift"; sourceTree = "<group>"; };
 		19CF1843216C93C40093C775 /* TestListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestListCollectionView.swift; sourceTree = "<group>"; };
 		19CF1845216C94D90093C775 /* CollectionViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewViewController.swift; sourceTree = "<group>"; };
-		19CF1847216C993D0093C775 /* CollectionViewList.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = CollectionViewList.gif; sourceTree = "<group>"; };
 		19CF1856216DF27A0093C775 /* VCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCViewController.swift; sourceTree = "<group>"; };
 		19CF1858216DF3230093C775 /* VCListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCListViewController.swift; sourceTree = "<group>"; };
 		19F65BB322768F7000332364 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -484,7 +462,6 @@
 			children = (
 				190A72C1228131E7004B5B50 /* JXCategoryView */,
 				190F6A6F213FB89300870498 /* JXPagingView-Swift */,
-				19870C7C2121601700C23CAA /* Gif */,
 				1912A552211D2F1500A80826 /* Example */,
 				1912A540211D2AB700A80826 /* AppDelegate.swift */,
 				1912A542211D2AB700A80826 /* ViewController.swift */,
@@ -666,24 +643,6 @@
 			path = HeaderPosition;
 			sourceTree = "<group>";
 		};
-		19870C7C2121601700C23CAA /* Gif */ = {
-			isa = PBXGroup;
-			children = (
-				192226DF2238EB6400637AA2 /* PinSectionHeaderPosition.gif */,
-				1979C1F121FFED4E00DA40E7 /* ScreenRotate.gif */,
-				1979C1EF21FFED3000DA40E7 /* StatusBarClicked.gif */,
-				19BA2EEA219C297400170A41 /* HeaderViewHeightChange.gif */,
-				190639AF21918BAD00153BE9 /* CategoryNestPaging.gif */,
-				197D66AD2182FC7600B20483 /* Nest.gif */,
-				19CF1847216C993D0093C775 /* CollectionViewList.gif */,
-				1968DA682135486F00A51C83 /* NaviHidden.gif */,
-				194DCDF021352285000E89EF /* ListRefresh.gif */,
-				19870C7D2121604F00C23CAA /* Refresh.gif */,
-				19870C7E2121604F00C23CAA /* Zoom.gif */,
-			);
-			path = Gif;
-			sourceTree = "<group>";
-		};
 		19BA2EE7219C242F00170A41 /* HeightChange */ = {
 			isa = PBXGroup;
 			children = (
@@ -768,22 +727,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19BA2EEB219C297400170A41 /* HeaderViewHeightChange.gif in Resources */,
-				19870C7F2121604F00C23CAA /* Refresh.gif in Resources */,
 				1912A54B211D2ABA00A80826 /* LaunchScreen.storyboard in Resources */,
 				19870C27211D852400C23CAA /* lufei.jpg in Resources */,
 				1912A548211D2ABA00A80826 /* Assets.xcassets in Resources */,
-				190639B021918BAD00153BE9 /* CategoryNestPaging.gif in Resources */,
-				19870C802121605000C23CAA /* Zoom.gif in Resources */,
-				1968DA692135486F00A51C83 /* NaviHidden.gif in Resources */,
-				1979C1F221FFED4E00DA40E7 /* ScreenRotate.gif in Resources */,
 				1912A5AD211D2F1500A80826 /* MJRefresh.bundle in Resources */,
-				192226E02238EB6400637AA2 /* PinSectionHeaderPosition.gif in Resources */,
-				194DCDF121352285000E89EF /* ListRefresh.gif in Resources */,
-				1979C1F021FFED3000DA40E7 /* StatusBarClicked.gif in Resources */,
-				197D66AE2182FC7600B20483 /* Nest.gif in Resources */,
 				1912A546211D2AB700A80826 /* Main.storyboard in Resources */,
-				19CF1848216C993D0093C775 /* CollectionViewList.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
