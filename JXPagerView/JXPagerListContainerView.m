@@ -113,7 +113,7 @@
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if !decelerate {
+    if (!decelerate) {
         self.mainTableView.scrollEnabled = YES;
     }
 }
