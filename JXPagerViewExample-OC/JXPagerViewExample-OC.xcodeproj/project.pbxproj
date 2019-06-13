@@ -40,6 +40,7 @@
 		1904A92E21CCC55800316F97 /* JXCategoryBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A90C21CCC55800316F97 /* JXCategoryBaseView.m */; };
 		1904A92F21CCC55800316F97 /* JXCategoryBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A90D21CCC55800316F97 /* JXCategoryBaseCell.m */; };
 		1904A93021CCC55800316F97 /* JXCategoryBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A90E21CCC55800316F97 /* JXCategoryBaseCellModel.m */; };
+		190921DA22B1F8990045D18F /* ReloadWithoutInitListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 190921D922B1F8990045D18F /* ReloadWithoutInitListViewController.m */; };
 		1921393922004A2C00A057C8 /* JXCategoryViewAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1921393822004A2C00A057C8 /* JXCategoryViewAnimator.m */; };
 		192226DE2238E5C100637AA2 /* HeaderPositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 192226DD2238E5C100637AA2 /* HeaderPositionViewController.m */; };
 		19278E6B2223D0F10041C293 /* PagingViewBannerTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19278E6A2223D0F10041C293 /* PagingViewBannerTableHeaderView.m */; };
@@ -161,6 +162,8 @@
 		1904A90C21CCC55800316F97 /* JXCategoryBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseView.m; sourceTree = "<group>"; };
 		1904A90D21CCC55800316F97 /* JXCategoryBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCell.m; sourceTree = "<group>"; };
 		1904A90E21CCC55800316F97 /* JXCategoryBaseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCellModel.m; sourceTree = "<group>"; };
+		190921D822B1F8990045D18F /* ReloadWithoutInitListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReloadWithoutInitListViewController.h; sourceTree = "<group>"; };
+		190921D922B1F8990045D18F /* ReloadWithoutInitListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReloadWithoutInitListViewController.m; sourceTree = "<group>"; };
 		1921393722004A2C00A057C8 /* JXCategoryViewAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryViewAnimator.h; sourceTree = "<group>"; };
 		1921393822004A2C00A057C8 /* JXCategoryViewAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryViewAnimator.m; sourceTree = "<group>"; };
 		192226DC2238E5C100637AA2 /* HeaderPositionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderPositionViewController.h; sourceTree = "<group>"; };
@@ -420,6 +423,15 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		190921D722B1F8640045D18F /* ReloadWithoutInitList */ = {
+			isa = PBXGroup;
+			children = (
+				190921D822B1F8990045D18F /* ReloadWithoutInitListViewController.h */,
+				190921D922B1F8990045D18F /* ReloadWithoutInitListViewController.m */,
+			);
+			path = ReloadWithoutInitList;
+			sourceTree = "<group>";
+		};
 		192226DB2238E59100637AA2 /* HeaderPosition */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +489,7 @@
 		196428192148E58C009C1D31 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				190921D722B1F8640045D18F /* ReloadWithoutInitList */,
 				192226DB2238E59100637AA2 /* HeaderPosition */,
 				19278E6C2223D33A0041C293 /* Banner */,
 				197B3A352182B11400561F08 /* Nest */,
@@ -796,6 +809,7 @@
 				197B3A382182B13E00561F08 /* NestViewController.m in Sources */,
 				196428E32148E9D0009C1D31 /* MJRefreshAutoStateFooter.m in Sources */,
 				1921393922004A2C00A057C8 /* JXCategoryViewAnimator.m in Sources */,
+				190921DA22B1F8990045D18F /* ReloadWithoutInitListViewController.m in Sources */,
 				1904A92E21CCC55800316F97 /* JXCategoryBaseView.m in Sources */,
 				196428DB2148E9D0009C1D31 /* MJRefreshConst.m in Sources */,
 				1904A92F21CCC55800316F97 /* JXCategoryBaseCell.m in Sources */,

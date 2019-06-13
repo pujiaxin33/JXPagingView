@@ -14,6 +14,7 @@
 #import "NestViewController.h"
 #import "BannerViewController.h"
 #import "HeaderPositionViewController.h"
+#import "ReloadWithoutInitListViewController.h"
 
 @interface ViewController ()
 
@@ -81,6 +82,13 @@
         case 6:
         {
             HeaderPositionViewController *vc = [[HeaderPositionViewController alloc] init];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 7:
+        {
+            ReloadWithoutInitListViewController *vc = [[ReloadWithoutInitListViewController alloc] init];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }

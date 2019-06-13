@@ -95,7 +95,7 @@
 
 - (NSInteger)numberOfListsInPagerView:(JXPagerView *)pagerView {
     //和categoryView的item数量一致
-    return self.titles.count;
+    return self.categoryView.titles.count;
 }
 
 - (id<JXPagerViewListViewDelegate>)pagerView:(JXPagerView *)pagerView initListAtIndex:(NSInteger)index {
