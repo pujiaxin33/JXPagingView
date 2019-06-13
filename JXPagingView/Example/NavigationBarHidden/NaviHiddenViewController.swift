@@ -21,7 +21,7 @@ class NaviHiddenViewController: BaseViewController {
         let topSafeMargin = UIApplication.shared.keyWindow!.jx_layoutInsets().top
         let naviHeight = UIApplication.shared.keyWindow!.jx_navigationHeight()
         //导航栏隐藏就是设置pinSectionHeaderVerticalOffset属性即可，数值越大越往下沉
-        pagingView.pinSectionHeaderVerticalOffset = naviHeight
+        pagingView.pinSectionHeaderVerticalOffset = Int(naviHeight)
 
         //自定义导航栏
         naviBGView = UIView()

@@ -100,7 +100,7 @@ open class JXPagingView: UIView {
     open var mainTableView: JXPagingMainTableView!
     open var listContainerView: JXPagingListContainerView!
     public var validListDict = [Int:JXPagingViewListViewDelegate]() //当前已经加载过可用的列表字典，key就是index值，value是对应的列表。
-    open var pinSectionHeaderVerticalOffset: CGFloat = 0  //顶部固定sectionHeader的垂直偏移量。数值越大越往下沉。
+    open var pinSectionHeaderVerticalOffset: Int = 0  //顶部固定sectionHeader的垂直偏移量。数值越大越往下沉。
     public var isListHorizontalScrollEnabled = true {
         didSet {
             refreshListHorizontalScrollEnabledState()
@@ -256,7 +256,7 @@ open class JXPagingView: UIView {
     }
 
     func getMainTableViewMaxContentOffsetY() -> CGFloat {
-        return CGFloat(self.delegate.tableHeaderViewHeight(in: self)) - pinSectionHeaderVerticalOffset
+        return CGFloat(self.delegate.tableHeaderViewHeight(in: self)) - CGFloat(pinSectionHeaderVerticalOffset)
     }
 
     func getPinSectionHeaderHeight() -> CGFloat {
@@ -318,7 +318,7 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.bounds.height - getPinSectionHeaderHeight() - pinSectionHeaderVerticalOffset
+        return self.bounds.height - getPinSectionHeaderHeight() - CGFloat(pinSectionHeaderVerticalOffset)
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -352,15 +352,15 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if pinSectionHeaderVerticalOffset != 0 {
-            if scrollView.contentOffset.y < pinSectionHeaderVerticalOffset {
+        if CGFloat(pinSectionHeaderVerticalOffset) != 0 {
+            if scrollView.contentOffset.y < CGFloat(pinSectionHeaderVerticalOffset) {
                 //因为设置了contentInset.top，所以顶部会有对应高度的空白区间，所以需要设置负数抵消掉
                 if scrollView.contentOffset.y >= 0 {
                     adjustMainScrollViewToTargetContentInsetIfNeeded(inset: UIEdgeInsets(top: -scrollView.contentOffset.y, left: 0, bottom: 0, right: 0))
                 }
-            }else if scrollView.contentOffset.y > pinSectionHeaderVerticalOffset {
+            }else if scrollView.contentOffset.y > CGFloat(pinSectionHeaderVerticalOffset) {
                 //固定的位置就是contentInset.top
-                adjustMainScrollViewToTargetContentInsetIfNeeded(inset: UIEdgeInsets(top: pinSectionHeaderVerticalOffset, left: 0, bottom: 0, right: 0))
+                adjustMainScrollViewToTargetContentInsetIfNeeded(inset: UIEdgeInsets(top: CGFloat(pinSectionHeaderVerticalOffset), left: 0, bottom: 0, right: 0))
             }
         }
 
