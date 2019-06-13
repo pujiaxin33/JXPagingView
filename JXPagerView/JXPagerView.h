@@ -143,7 +143,7 @@
 
 @property (nonatomic, strong, readonly) NSDictionary <NSNumber *, id<JXPagerViewListViewDelegate>> *validListDict;   //当前已经加载过可用的列表字典，key就是index值，value是对应的列表。
 
-@property (nonatomic, assign) CGFloat pinSectionHeaderVerticalOffset; //顶部固定sectionHeader的垂直偏移量。数值越大越往下沉。
+@property (nonatomic, assign) NSInteger pinSectionHeaderVerticalOffset; //顶部固定sectionHeader的垂直偏移量。数值越大越往下沉。
 
 @property (nonatomic, assign) BOOL isListHorizontalScrollEnabled;     //是否允许列表左右滑动。默认：YES
 
