@@ -29,9 +29,11 @@
     [self.listCache removeObjectForKey:@"能力"];
     [self.categoryView reloadData];
     [self.pagerView reloadData];
+    /*
     //第二种：pinSectionHeaderVerticalOffset更新之后的reload
     self.pagerView.pinSectionHeaderVerticalOffset = 50;
     [self.pagerView reloadData];
+     */
     //其他情况以此类推
 }
 
