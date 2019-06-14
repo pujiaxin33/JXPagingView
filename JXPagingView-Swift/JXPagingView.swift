@@ -361,7 +361,7 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard self.delegate != nil else {
-            return nil
+            return UIView()
         }
         return self.delegate!.viewForPinSectionHeader(in: self)
     }
