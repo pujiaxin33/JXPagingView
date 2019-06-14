@@ -61,7 +61,6 @@
 
 @protocol JXPagerViewDelegate <NSObject>
 
-
 /**
  返回tableHeaderView的高度，因为内部需要比对判断，只能是整型数
 
@@ -69,7 +68,6 @@
  @return return tableHeaderView的高度
  */
 - (NSUInteger)tableHeaderViewHeightInPagerView:(JXPagerView *)pagerView;
-
 
 /**
  返回tableHeaderView
@@ -79,7 +77,6 @@
  */
 - (UIView *)tableHeaderViewInPagerView:(JXPagerView *)pagerView;
 
-
 /**
  返回悬浮HeaderView的高度，因为内部需要比对判断，只能是整型数
 
@@ -87,7 +84,6 @@
  @return 悬浮HeaderView的高度
  */
 - (NSUInteger)heightForPinSectionHeaderInPagerView:(JXPagerView *)pagerView;
-
 
 /**
  返回悬浮HeaderView。我用的是自己封装的JXCategoryView（Github:https://github.com/pujiaxin33/JXCategoryView），你也可以选择其他的三方库或者自己写
@@ -129,53 +125,56 @@
 @end
 
 @interface JXPagerView : UIView
-
 /**
  需要和self.categoryView.defaultSelectedIndex保持一致
  */
 @property (nonatomic, assign) NSInteger defaultSelectedIndex;
-
-@property (nonatomic, weak) id<JXPagerViewDelegate> delegate;
-
 @property (nonatomic, strong, readonly) JXPagerMainTableView *mainTableView;
-
 @property (nonatomic, strong, readonly) JXPagerListContainerView *listContainerView;
-
-@property (nonatomic, strong, readonly) NSDictionary <NSNumber *, id<JXPagerViewListViewDelegate>> *validListDict;   //当前已经加载过可用的列表字典，key就是index值，value是对应的列表。
-
-@property (nonatomic, assign) NSInteger pinSectionHeaderVerticalOffset; //顶部固定sectionHeader的垂直偏移量。数值越大越往下沉。
-
-@property (nonatomic, assign) BOOL isListHorizontalScrollEnabled;     //是否允许列表左右滑动。默认：YES
-
-@property (nonatomic, assign) BOOL automaticallyDisplayListVerticalScrollIndicator;     //是否允许当前列表自动显示或隐藏列表是垂直滚动指示器。YES：悬浮的headerView滚动到顶部开始滚动列表时，就会显示，反之隐藏。NO：内部不会处理列表的垂直滚动指示器。默认为：YES。
+/**
+ 当前已经加载过可用的列表字典，key就是index值，value是对应的列表。
+ */
+@property (nonatomic, strong, readonly) NSDictionary <NSNumber *, id<JXPagerViewListViewDelegate>> *validListDict;
+/**
+ 顶部固定sectionHeader的垂直偏移量。数值越大越往下沉。
+ */
+@property (nonatomic, assign) NSInteger pinSectionHeaderVerticalOffset;
+/**
+ 是否支持设备旋转，默认为NO
+ */
+@property (nonatomic, assign, getter=isDeviceOrientationChangeEnabled) BOOL deviceOrientationChangeEnabled;
+/**
+ 是否允许列表左右滑动。默认：YES
+ */
+@property (nonatomic, assign) BOOL isListHorizontalScrollEnabled;
+/**
+ 是否允许当前列表自动显示或隐藏列表是垂直滚动指示器。YES：悬浮的headerView滚动到顶部开始滚动列表时，就会显示，反之隐藏。NO：内部不会处理列表的垂直滚动指示器。默认为：YES。
+ */
+@property (nonatomic, assign) BOOL automaticallyDisplayListVerticalScrollIndicator;
 
 - (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate NS_DESIGNATED_INITIALIZER;
-
 - (instancetype)init NS_UNAVAILABLE;
-
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
-
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
-
 - (void)reloadData;
 
 @end
 
 @interface JXPagerView (UISubclassingGet)
-@property (nonatomic, strong, readonly) UIScrollView *currentScrollingListView; //暴露给子类使用，请勿直接使用该属性！
-
-@property (nonatomic, strong, readonly) id<JXPagerViewListViewDelegate> currentList;    //暴露给子类使用，请勿直接使用该属性！
-
+/**
+ 暴露给子类使用，请勿直接使用该属性！
+ */
+@property (nonatomic, strong, readonly) UIScrollView *currentScrollingListView;
+/**
+ 暴露给子类使用，请勿直接使用该属性！
+ */
+@property (nonatomic, strong, readonly) id<JXPagerViewListViewDelegate> currentList;
 @property (nonatomic, assign, readonly) CGFloat mainTableViewMaxContentOffsetY;
 @end
 
 @interface JXPagerView (UISubclassingHooks)
-
 - (void)initializeViews NS_REQUIRES_SUPER;
-
 - (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView;
-
 - (void)preferredProcessMainTableViewDidScroll:(UIScrollView *)scrollView;
-
 @end
 

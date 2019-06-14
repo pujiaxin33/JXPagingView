@@ -9,7 +9,7 @@
 #import "JXPagerView.h"
 
 @interface JXPagerView () <UITableViewDataSource, UITableViewDelegate, JXPagerListContainerViewDelegate>
-
+@property (nonatomic, weak) id<JXPagerViewDelegate> delegate;
 @property (nonatomic, strong) JXPagerMainTableView *mainTableView;
 @property (nonatomic, strong) JXPagerListContainerView *listContainerView;
 @property (nonatomic, strong) UIScrollView *currentScrollingListView;
@@ -35,6 +35,7 @@
         _delegate = delegate;
         _validListDict = [NSMutableDictionary dictionary];
         _automaticallyDisplayListVerticalScrollIndicator = YES;
+        _deviceOrientationChangeEnabled = NO;
         [self initializeViews];
     }
     return self;
@@ -99,6 +100,9 @@
 #pragma mark - Private
 
 - (void)refreshTableHeaderView {
+    if (self.delegate == nil) {
+        return;
+    }
     UIView *tableHeaderView = [self.delegate tableHeaderViewInPagerView:self];
     UIView *containerView = [[UIView alloc] initWithFrame:tableHeaderView.bounds];
     [containerView addSubview:tableHeaderView];
@@ -118,7 +122,7 @@
 }
 
 - (void)deviceOrientationDidChangeNotification:(NSNotification *)notification {
-    if (self.currentDeviceOrientation != [UIDevice currentDevice].orientation) {
+    if (self.isDeviceOrientationChangeEnabled && self.currentDeviceOrientation != [UIDevice currentDevice].orientation) {
         self.currentDeviceOrientation = [UIDevice currentDevice].orientation;
         //前后台切换也会触发该通知，所以不相同的时候才处理
         [self.mainTableView reloadData];
@@ -141,6 +145,9 @@
 }
 
 - (void)listDidAppear:(NSInteger)index {
+    if (self.delegate == nil) {
+        return;
+    }
     NSUInteger count = [self.delegate numberOfListsInPagerView:self];
     if (count <= 0 || index >= count) {
         return;
@@ -154,6 +161,9 @@
 }
 
 - (void)listDidDisappear:(NSInteger)index {
+    if (self.delegate == nil) {
+        return;
+    }
     NSUInteger count = [self.delegate numberOfListsInPagerView:self];
     if (count <= 0 || index >= count) {
         return;
@@ -171,6 +181,9 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.delegate == nil) {
+        return 0;
+    }
     return self.bounds.size.height - [self.delegate heightForPinSectionHeaderInPagerView:self] - self.pinSectionHeaderVerticalOffset;
 }
 
@@ -186,10 +199,16 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (self.delegate == nil) {
+        return 0;
+    }
     return [self.delegate heightForPinSectionHeaderInPagerView:self];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (self.delegate == nil) {
+        return [[UIView alloc] init];
+    }
     return [self.delegate viewForPinSectionHeaderInPagerView:self];
 }
 
@@ -218,7 +237,7 @@
 
     [self preferredProcessMainTableViewDidScroll:scrollView];
 
-    if ([self.delegate respondsToSelector:@selector(mainTableViewDidScroll:)]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(mainTableViewDidScroll:)]) {
         [self.delegate mainTableViewDidScroll:scrollView];
     }
 }
@@ -251,10 +270,16 @@
 #pragma mark - JXPagingListContainerViewDelegate
 
 - (NSInteger)numberOfRowsInListContainerView:(JXPagerListContainerView *)listContainerView {
+    if (self.delegate == nil) {
+        return 0;
+    }
     return [self.delegate numberOfListsInPagerView:self];
 }
 
 - (UIView *)listContainerView:(JXPagerListContainerView *)listContainerView listViewInRow:(NSInteger)row {
+    if (self.delegate == nil) {
+        return [[UIView alloc] init];
+    }
     id<JXPagerViewListViewDelegate> list = self.validListDict[@(row)];
     if (list == nil) {
         list = [self.delegate pagerView:self initListAtIndex:row];
@@ -291,6 +316,9 @@
 @implementation JXPagerView (UISubclassingGet)
 
 - (CGFloat)mainTableViewMaxContentOffsetY {
+    if (self.delegate == nil) {
+        return 0;
+    }
     return [self.delegate tableHeaderViewHeightInPagerView:self] - self.pinSectionHeaderVerticalOffset;
 }
 
