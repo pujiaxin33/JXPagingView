@@ -45,7 +45,7 @@
 
 - **Swift版本**
 
-支持swift最新版本：4.2
+支持swift版本：5.0+
 
 ```ruby
 target '<Your Target Name>' do
