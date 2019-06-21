@@ -15,6 +15,8 @@
 #import "BannerViewController.h"
 #import "HeaderPositionViewController.h"
 #import "ReloadWithoutInitListViewController.h"
+#import "ScrollToTopViewController.h"
+#import "ScrollToListCellViewController.h"
 
 @interface ViewController ()
 
@@ -89,6 +91,20 @@
         case 7:
         {
             ReloadWithoutInitListViewController *vc = [[ReloadWithoutInitListViewController alloc] init];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 8:
+        {
+            ScrollToTopViewController *vc = [[ScrollToTopViewController alloc] init];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 9:
+        {
+            ScrollToListCellViewController *vc = [[ScrollToListCellViewController alloc] init];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }
