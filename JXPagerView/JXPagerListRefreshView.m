@@ -36,7 +36,9 @@
                     [self.currentList listScrollViewWillResetContentOffset];
                 }
                 self.currentScrollingListView.contentOffset = CGPointZero;
-                self.currentScrollingListView.showsVerticalScrollIndicator = false;
+                if (self.automaticallyDisplayListVerticalScrollIndicator) {
+                    self.currentScrollingListView.showsVerticalScrollIndicator = NO;
+                }
             }
         }
     }
@@ -49,12 +51,16 @@
                     [self.currentList listScrollViewWillResetContentOffset];
                 }
                 self.currentScrollingListView.contentOffset = CGPointZero;
-                self.currentScrollingListView.showsVerticalScrollIndicator = false;
+                if (self.automaticallyDisplayListVerticalScrollIndicator) {
+                    self.currentScrollingListView.showsVerticalScrollIndicator = NO;
+                }
             }
         } else {
             //mainTableView的header刚好消失，固定mainTableView的位置，显示listScrollView的滚动条
             self.mainTableView.contentOffset = CGPointMake(0, self.mainTableViewMaxContentOffsetY);
-            self.currentScrollingListView.showsVerticalScrollIndicator = true;
+            if (self.automaticallyDisplayListVerticalScrollIndicator) {
+                self.currentScrollingListView.showsVerticalScrollIndicator = YES;
+            }
         }
     }
     self.lastScrollingListViewContentOffsetY = self.currentScrollingListView.contentOffset.y;
