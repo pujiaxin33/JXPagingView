@@ -35,7 +35,7 @@
                 if (self.currentList && [self.currentList respondsToSelector:@selector(listScrollViewWillResetContentOffset)]) {
                     [self.currentList listScrollViewWillResetContentOffset];
                 }
-                self.currentScrollingListView.contentOffset = CGPointZero;
+                [self setListScrollViewToMinContentOffsetY:self.currentScrollingListView];
                 if (self.automaticallyDisplayListVerticalScrollIndicator) {
                     self.currentScrollingListView.showsVerticalScrollIndicator = NO;
                 }
@@ -45,12 +45,12 @@
     if (shouldProcess) {
         if (self.mainTableView.contentOffset.y < self.mainTableViewMaxContentOffsetY) {
             //处于下拉刷新的状态，scrollView.contentOffset.y为负数，就重置为0
-            if (self.currentScrollingListView.contentOffset.y > 0) {
+            if (self.currentScrollingListView.contentOffset.y > [self minContentOffsetYInListScrollView:self.currentScrollingListView]) {
                 //mainTableView的header还没有消失，让listScrollView一直为0
                 if (self.currentList && [self.currentList respondsToSelector:@selector(listScrollViewWillResetContentOffset)]) {
                     [self.currentList listScrollViewWillResetContentOffset];
                 }
-                self.currentScrollingListView.contentOffset = CGPointZero;
+                [self setListScrollViewToMinContentOffsetY:self.currentScrollingListView];
                 if (self.automaticallyDisplayListVerticalScrollIndicator) {
                     self.currentScrollingListView.showsVerticalScrollIndicator = NO;
                 }
@@ -74,9 +74,9 @@
             self.mainTableView.bounces = YES;
         }
     }
-    if (self.currentScrollingListView != nil && self.currentScrollingListView.contentOffset.y > 0) {
+    if (self.currentScrollingListView != nil && self.currentScrollingListView.contentOffset.y > [self minContentOffsetYInListScrollView:self.currentScrollingListView]) {
         //mainTableView的header已经滚动不见，开始滚动某一个listView，那么固定mainTableView的contentOffset，让其不动
-        self.mainTableView.contentOffset = CGPointMake(0, self.mainTableViewMaxContentOffsetY);
+        [self setMainTableViewToMaxContentOffsetY];
     }
 
     if (scrollView.contentOffset.y < self.mainTableViewMaxContentOffsetY) {
@@ -88,14 +88,14 @@
                 if ([list respondsToSelector:@selector(listScrollViewWillResetContentOffset)]) {
                     [list listScrollViewWillResetContentOffset];
                 }
-                listScrollView.contentOffset = CGPointZero;
+                [self setListScrollViewToMinContentOffsetY:listScrollView];
             }
         }
     }
 
-    if (scrollView.contentOffset.y > self.mainTableViewMaxContentOffsetY && self.currentScrollingListView.contentOffset.y == 0) {
+    if (scrollView.contentOffset.y > self.mainTableViewMaxContentOffsetY && self.currentScrollingListView.contentOffset.y == [self minContentOffsetYInListScrollView:self.currentScrollingListView]) {
         //当往上滚动mainTableView的headerView时，滚动到底时，修复listView往上小幅度滚动
-        self.mainTableView.contentOffset = CGPointMake(0, self.mainTableViewMaxContentOffsetY);
+        [self setMainTableViewToMaxContentOffsetY];
     }
 }
 
