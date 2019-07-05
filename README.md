@@ -144,6 +144,9 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
 ### 3、实现`JXPagerViewListViewDelegate`协议
 
 列表可以是任意类，UIView、UIViewController等等都可以，只要实现了`JXPagerViewListViewDelegate`协议就行。
+
+⚠️⚠️⚠️一定要保证`scrollCallback`的正确回调，许多朋友都容易疏忽这一点，导致异常，务必重点注意！
+
 下面的使用代码参考的是`TestListBaseView`类
 
 ```Objective-C
