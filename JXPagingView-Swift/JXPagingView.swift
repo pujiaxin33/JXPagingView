@@ -119,6 +119,7 @@ open class JXPagingView: UIView {
     private var retainedSelf: JXPagingView?
     private var isWillRemoveFromWindow: Bool = false
     private var isFirstMoveToWindow: Bool = true
+    private var tableHeaderContainerView: UIView?
 
     deinit {
         NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
@@ -204,6 +205,15 @@ open class JXPagingView: UIView {
         self.listContainerView.reloadData()
     }
 
+    open func resizeTableHeaderViewWithAnimation(duration: TimeInterval = 0.25, curve: UIView.AnimationCurve = .linear, bounds: CGRect) {
+        UIView.beginAnimations(nil, context: nil)
+        UIView.setAnimationDuration(duration)
+        UIView.setAnimationCurve(curve)
+        tableHeaderContainerView?.frame = bounds
+        mainTableView.tableHeaderView = tableHeaderContainerView
+        UIView.commitAnimations()
+    }
+
     open func preferredProcessListViewDidScroll(scrollView: UIScrollView) {
         if (self.mainTableView.contentOffset.y < getMainTableViewMaxContentOffsetY()) {
             //mainTableView的header还没有消失，让listScrollView一直为0
@@ -250,6 +260,7 @@ open class JXPagingView: UIView {
         let tableHeaderView = self.delegate!.tableHeaderView(in: self)
         let containerView = UIView(frame: tableHeaderView.bounds)
         containerView.addSubview(tableHeaderView)
+        tableHeaderContainerView = containerView
         mainTableView.tableHeaderView = containerView
     }
 

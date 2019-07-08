@@ -54,6 +54,9 @@ class ViewController: UITableViewController {
             let vc = HeightChangeViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         case 8:
+            let vc = HeightChangeAnimationViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 9:
             let vc = HeaderPositionViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         default:

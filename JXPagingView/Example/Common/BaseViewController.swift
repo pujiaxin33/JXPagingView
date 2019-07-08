@@ -12,7 +12,6 @@ import UIKit
 class BaseViewController: UIViewController {
     var pagingView: JXPagingView!
     var userHeaderView: PagingViewTableHeaderView!
-    var userHeaderContainerView: UIView!
     var categoryView: JXCategoryTitleView!
     var titles = ["能力", "爱好", "队友"]
     weak var nestContentScrollView: UIScrollView?    //嵌套demo使用
@@ -26,11 +25,8 @@ class BaseViewController: UIViewController {
 
         self.title = "个人中心"
         self.navigationController?.navigationBar.isTranslucent = false
-        
-        userHeaderContainerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(JXTableHeaderViewHeight)))
-        userHeaderView = PagingViewTableHeaderView(frame: userHeaderContainerView.bounds)
-        userHeaderView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        userHeaderContainerView.addSubview(userHeaderView)
+
+        userHeaderView = preferredTableHeaderView()
 
         categoryView = JXCategoryTitleView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(JXheightForHeaderInSection)))
         categoryView.titles = titles
@@ -83,6 +79,10 @@ class BaseViewController: UIViewController {
         pagingView.frame = self.view.bounds
     }
 
+    func preferredTableHeaderView() -> PagingViewTableHeaderView {
+        return PagingViewTableHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(JXTableHeaderViewHeight)))
+    }
+
     func preferredPagingView() -> JXPagingView {
         return JXPagingView(delegate: self)
     }
@@ -95,7 +95,7 @@ extension BaseViewController: JXPagingViewDelegate {
     }
 
     func tableHeaderView(in pagingView: JXPagingView) -> UIView {
-        return userHeaderContainerView
+        return userHeaderView
     }
 
     func heightForPinSectionHeader(in pagingView: JXPagingView) -> Int {

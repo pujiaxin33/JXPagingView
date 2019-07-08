@@ -20,8 +20,7 @@ class HeightChangeViewController: BaseViewController {
         //改变JXTableHeaderViewHeight的值
         JXTableHeaderViewHeight = 100
         //改变headerView相关view的高度
-        userHeaderContainerView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: CGFloat(JXTableHeaderViewHeight))
-        userHeaderView.frame = userHeaderContainerView.bounds
+        userHeaderView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: CGFloat(JXTableHeaderViewHeight))
         //因为内部imageView需要支持下拉方法效果，所以这里用一种比较恶心的方式更新imageView.frame。你自己的headerView根据实际情况更新frame哈
         userHeaderView.imageView.frame = userHeaderView.bounds
         //调用reloadData方法

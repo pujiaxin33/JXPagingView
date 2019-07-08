@@ -93,6 +93,8 @@
 		19CF1846216C94D90093C775 /* CollectionViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CF1845216C94D90093C775 /* CollectionViewViewController.swift */; };
 		19CF1857216DF27A0093C775 /* VCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CF1856216DF27A0093C775 /* VCViewController.swift */; };
 		19CF1859216DF3230093C775 /* VCListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CF1858216DF3230093C775 /* VCListViewController.swift */; };
+		19D05F8A22D380630013A246 /* HeightChangeAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D05F8922D380630013A246 /* HeightChangeAnimationViewController.swift */; };
+		19D05F8C22D3815D0013A246 /* HeightChangeAnimationTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D05F8B22D3815D0013A246 /* HeightChangeAnimationTableHeaderView.swift */; };
 		19F65BB422768F7000332364 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F65BB322768F7000332364 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -248,6 +250,8 @@
 		19CF1845216C94D90093C775 /* CollectionViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewViewController.swift; sourceTree = "<group>"; };
 		19CF1856216DF27A0093C775 /* VCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCViewController.swift; sourceTree = "<group>"; };
 		19CF1858216DF3230093C775 /* VCListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCListViewController.swift; sourceTree = "<group>"; };
+		19D05F8922D380630013A246 /* HeightChangeAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightChangeAnimationViewController.swift; sourceTree = "<group>"; };
+		19D05F8B22D3815D0013A246 /* HeightChangeAnimationTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightChangeAnimationTableHeaderView.swift; sourceTree = "<group>"; };
 		19F65BB322768F7000332364 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -647,6 +651,8 @@
 			isa = PBXGroup;
 			children = (
 				19BA2EE8219C245100170A41 /* HeightChangeViewController.swift */,
+				19D05F8922D380630013A246 /* HeightChangeAnimationViewController.swift */,
+				19D05F8B22D3815D0013A246 /* HeightChangeAnimationTableHeaderView.swift */,
 			);
 			path = HeightChange;
 			sourceTree = "<group>";
@@ -742,6 +748,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19D05F8C22D3815D0013A246 /* HeightChangeAnimationTableHeaderView.swift in Sources */,
 				1912A5BC211D2F1500A80826 /* MJRefreshBackFooter.m in Sources */,
 				190A733C228131E8004B5B50 /* JXCategoryCollectionView.m in Sources */,
 				19BA2EE9219C245100170A41 /* HeightChangeViewController.swift in Sources */,
@@ -803,6 +810,7 @@
 				190A7324228131E8004B5B50 /* JXCategoryIndicatorBallView.m in Sources */,
 				190A7338228131E8004B5B50 /* JXCategoryNumberCell.m in Sources */,
 				1912A541211D2AB700A80826 /* AppDelegate.swift in Sources */,
+				19D05F8A22D380630013A246 /* HeightChangeAnimationViewController.swift in Sources */,
 				190A7340228131E8004B5B50 /* UIColor+JXAdd.m in Sources */,
 				190A7323228131E8004B5B50 /* JXCategoryIndicatorImageView.m in Sources */,
 				190F6A76213FB89300870498 /* JXPagingListRefreshView.swift in Sources */,
