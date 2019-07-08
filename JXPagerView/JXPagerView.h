@@ -176,5 +176,8 @@
 - (void)initializeViews NS_REQUIRES_SUPER;
 - (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView;
 - (void)preferredProcessMainTableViewDidScroll:(UIScrollView *)scrollView;
+- (void)setMainTableViewToMaxContentOffsetY;
+- (void)setListScrollViewToMinContentOffsetY:(UIScrollView *)scrollView;
+- (CGFloat)minContentOffsetYInListScrollView:(UIScrollView *)scrollView;
 @end
 
