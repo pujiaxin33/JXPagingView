@@ -205,11 +205,13 @@ open class JXPagingView: UIView {
         self.listContainerView.reloadData()
     }
 
-    open func resizeTableHeaderViewWithAnimation(duration: TimeInterval = 0.25, curve: UIView.AnimationCurve = .linear, bounds: CGRect) {
+    open func resizeTableHeaderViewHeightWithAnimation(duration: TimeInterval = 0.25, curve: UIView.AnimationCurve = .linear, height: CGFloat) {
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationDuration(duration)
         UIView.setAnimationCurve(curve)
-        tableHeaderContainerView?.frame = bounds
+        var bounds = tableHeaderContainerView?.bounds
+        bounds?.size.height = height
+        tableHeaderContainerView?.frame = bounds!
         mainTableView.tableHeaderView = tableHeaderContainerView
         UIView.commitAnimations()
     }

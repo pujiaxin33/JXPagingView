@@ -22,10 +22,17 @@ class HeightChangeAnimationViewController: BaseViewController {
 
     @objc func didNaviRightItemClicked() {
         //改变JXTableHeaderViewHeight的值
-        JXTableHeaderViewHeight = 200
+        if JXTableHeaderViewHeight == 350 {
+            JXTableHeaderViewHeight = 200
 
-        (userHeaderView as? HeightChangeAnimationTableHeaderView)?.resizeWithAnimation()
-        pagingView.resizeTableHeaderViewWithAnimation(bounds: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 200))
+            (userHeaderView as? HeightChangeAnimationTableHeaderView)?.resizeWithAnimation(false)
+            pagingView.resizeTableHeaderViewHeightWithAnimation(height: 200)
+        }else {
+            JXTableHeaderViewHeight = 350
+
+            (userHeaderView as? HeightChangeAnimationTableHeaderView)?.resizeWithAnimation(true)
+            pagingView.resizeTableHeaderViewHeightWithAnimation(height: 350)
+        }
     }
 
 }

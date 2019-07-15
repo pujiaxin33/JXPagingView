@@ -38,11 +38,19 @@ class HeightChangeAnimationTableHeaderView: PagingViewTableHeaderView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func resizeWithAnimation() {
-        var frame = bottomLabel.frame
-        frame.size.height = 25
-        UIView.animate(withDuration: 0.25) {
-            self.bottomLabel.frame = frame
+    func resizeWithAnimation(_ expand: Bool) {
+        if expand {
+            var frame = bottomLabel.frame
+            frame.size.height = 180
+            UIView.animate(withDuration: 0.25) {
+                self.bottomLabel.frame = frame
+            }
+        }else {
+            var frame = bottomLabel.frame
+            frame.size.height = 25
+            UIView.animate(withDuration: 0.25) {
+                self.bottomLabel.frame = frame
+            }
         }
     }
 }

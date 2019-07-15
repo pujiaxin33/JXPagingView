@@ -157,6 +157,7 @@
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
 - (void)reloadData;
+- (void)resizeTableHeaderViewHeightWithAnimation:(NSTimeInterval)duration curve:(UIViewAnimationCurve)curve height:(CGFloat)height;
 
 @end
 

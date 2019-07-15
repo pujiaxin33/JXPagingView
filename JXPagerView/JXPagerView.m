@@ -20,6 +20,7 @@
 @property (nonatomic, assign) BOOL willRemoveFromWindow;
 @property (nonatomic, assign) BOOL isFirstMoveToWindow;
 @property (nonatomic, strong) JXPagerView *retainedSelf;
+@property (nonatomic, strong) UIView *tableHeaderContainerView;
 @end
 
 @implementation JXPagerView
@@ -95,6 +96,17 @@
     [self refreshTableHeaderView];
     [self.mainTableView reloadData];
     [self.listContainerView reloadData];
+}
+
+- (void)resizeTableHeaderViewHeightWithAnimation:(NSTimeInterval)duration curve:(UIViewAnimationCurve)curve height:(CGFloat)height {
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:duration];
+    [UIView setAnimationCurve:curve];
+    CGRect frame = self.tableHeaderContainerView.bounds;
+    frame.size.height = height;
+    self.tableHeaderContainerView.frame = frame;
+    self.mainTableView.tableHeaderView = self.tableHeaderContainerView;
+    [UIView commitAnimations];
 }
 
 #pragma mark - Private
