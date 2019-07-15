@@ -26,12 +26,12 @@ class HeightChangeAnimationViewController: BaseViewController {
             JXTableHeaderViewHeight = 200
 
             (userHeaderView as? HeightChangeAnimationTableHeaderView)?.resizeWithAnimation(false)
-            pagingView.resizeTableHeaderViewHeightWithAnimation(height: 200)
+            pagingView.resizeTableHeaderViewHeight(200, animatable: true)
         }else {
             JXTableHeaderViewHeight = 350
 
             (userHeaderView as? HeightChangeAnimationTableHeaderView)?.resizeWithAnimation(true)
-            pagingView.resizeTableHeaderViewHeightWithAnimation(height: 350)
+            pagingView.resizeTableHeaderViewHeight(350, animatable: true)
         }
     }
 

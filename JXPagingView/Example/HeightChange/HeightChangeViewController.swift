@@ -24,6 +24,6 @@ class HeightChangeViewController: BaseViewController {
         //因为内部imageView需要支持下拉方法效果，所以这里用一种比较恶心的方式更新imageView.frame。你自己的headerView根据实际情况更新frame哈
         userHeaderView.imageView.frame = userHeaderView.bounds
         //调用reloadData方法
-        pagingView.reloadData()
+        pagingView.resizeTableHeaderViewHeight(CGFloat(JXTableHeaderViewHeight))
     }
 }

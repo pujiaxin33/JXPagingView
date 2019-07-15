@@ -205,15 +205,22 @@ open class JXPagingView: UIView {
         self.listContainerView.reloadData()
     }
 
-    open func resizeTableHeaderViewHeightWithAnimation(duration: TimeInterval = 0.25, curve: UIView.AnimationCurve = .linear, height: CGFloat) {
-        UIView.beginAnimations(nil, context: nil)
-        UIView.setAnimationDuration(duration)
-        UIView.setAnimationCurve(curve)
-        var bounds = tableHeaderContainerView?.bounds
-        bounds?.size.height = height
-        tableHeaderContainerView?.frame = bounds!
-        mainTableView.tableHeaderView = tableHeaderContainerView
-        UIView.commitAnimations()
+    open func resizeTableHeaderViewHeight(_ height: CGFloat, animatable: Bool = false, duration: TimeInterval = 0.25, curve: UIView.AnimationCurve = .linear) {
+        if animatable {
+            UIView.beginAnimations(nil, context: nil)
+            UIView.setAnimationDuration(duration)
+            UIView.setAnimationCurve(curve)
+            var bounds = tableHeaderContainerView?.bounds
+            bounds?.size.height = height
+            tableHeaderContainerView?.frame = bounds!
+            mainTableView.tableHeaderView = tableHeaderContainerView
+            UIView.commitAnimations()
+        }else {
+            var bounds = tableHeaderContainerView?.bounds
+            bounds?.size.height = height
+            tableHeaderContainerView?.frame = bounds!
+            mainTableView.tableHeaderView = tableHeaderContainerView
+        }
     }
 
     open func preferredProcessListViewDidScroll(scrollView: UIScrollView) {
