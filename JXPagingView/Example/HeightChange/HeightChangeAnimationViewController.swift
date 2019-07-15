@@ -12,26 +12,28 @@ class HeightChangeAnimationViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        JXTableHeaderViewHeight = 350
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "高度", style: .plain, target: self, action: #selector(didNaviRightItemClicked))
+
     }
 
     override func preferredTableHeaderView() -> PagingViewTableHeaderView {
-        return HeightChangeAnimationTableHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 350))
+        tableHeaderViewHeight = 80
+        let header = HeightChangeAnimationTableHeaderView()
+        header.toggleCallback = { (isSelected) in
+            self.changeTableHeaderViewHeight()
+        }
+        return header
     }
 
-    @objc func didNaviRightItemClicked() {
-        //改变JXTableHeaderViewHeight的值
-        if JXTableHeaderViewHeight == 350 {
-            JXTableHeaderViewHeight = 200
-
-            (userHeaderView as? HeightChangeAnimationTableHeaderView)?.resizeWithAnimation(false)
-            pagingView.resizeTableHeaderViewHeight(200, animatable: true)
+    @objc func changeTableHeaderViewHeight() {
+        //改变tableHeaderViewHeight的值
+        if tableHeaderViewHeight == 250 {
+            //先更新`func tableHeaderViewHeight(in pagingView: JXPagingView) -> Int`方法用到的变量
+            tableHeaderViewHeight = 80
+            //再调用resizeTableHeaderViewHeight方法
+            pagingView.resizeTableHeaderViewHeight(animatable: true)
         }else {
-            JXTableHeaderViewHeight = 350
-
-            (userHeaderView as? HeightChangeAnimationTableHeaderView)?.resizeWithAnimation(true)
-            pagingView.resizeTableHeaderViewHeight(350, animatable: true)
+            tableHeaderViewHeight = 250
+            pagingView.resizeTableHeaderViewHeight(animatable: true)
         }
     }
 

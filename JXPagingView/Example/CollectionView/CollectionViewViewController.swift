@@ -14,8 +14,8 @@ class CollectionViewViewController: UIViewController {
     var userHeaderView: PagingViewTableHeaderView!
     var categoryView: JXCategoryTitleView!
     var titles = ["能力", "爱好", "队友"]
-    var JXTableHeaderViewHeight: Int = 200
-    var JXheightForHeaderInSection: Int = 50
+    var tableHeaderViewHeight: Int = 200
+    var headerInSectionHeight: Int = 50
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +23,9 @@ class CollectionViewViewController: UIViewController {
         self.title = "CollectionView列表示例"
         self.navigationController?.navigationBar.isTranslucent = false
 
-        userHeaderView = PagingViewTableHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(JXTableHeaderViewHeight)))
+        userHeaderView = PagingViewTableHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(tableHeaderViewHeight)))
 
-        categoryView = JXCategoryTitleView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(JXheightForHeaderInSection)))
+        categoryView = JXCategoryTitleView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(headerInSectionHeight)))
         categoryView.titles = titles
         categoryView.backgroundColor = UIColor.white
         categoryView.titleSelectedColor = UIColor(red: 105/255, green: 144/255, blue: 239/255, alpha: 1)
@@ -72,7 +72,7 @@ class CollectionViewViewController: UIViewController {
 extension CollectionViewViewController: JXPagingViewDelegate {
 
     func tableHeaderViewHeight(in pagingView: JXPagingView) -> Int {
-        return JXTableHeaderViewHeight
+        return tableHeaderViewHeight
     }
 
     func tableHeaderView(in pagingView: JXPagingView) -> UIView {
@@ -80,7 +80,7 @@ extension CollectionViewViewController: JXPagingViewDelegate {
     }
 
     func heightForPinSectionHeader(in pagingView: JXPagingView) -> Int {
-        return JXheightForHeaderInSection
+        return headerInSectionHeight
     }
 
     func viewForPinSectionHeader(in pagingView: JXPagingView) -> UIView {

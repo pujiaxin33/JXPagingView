@@ -17,13 +17,14 @@ class HeightChangeViewController: BaseViewController {
     }
 
     @objc func didNaviRightItemClicked() {
-        //改变JXTableHeaderViewHeight的值
-        JXTableHeaderViewHeight = 100
-        //改变headerView相关view的高度
-        userHeaderView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: CGFloat(JXTableHeaderViewHeight))
-        //因为内部imageView需要支持下拉方法效果，所以这里用一种比较恶心的方式更新imageView.frame。你自己的headerView根据实际情况更新frame哈
-        userHeaderView.imageView.frame = userHeaderView.bounds
-        //调用reloadData方法
-        pagingView.resizeTableHeaderViewHeight(CGFloat(JXTableHeaderViewHeight))
+        if tableHeaderViewHeight == 200 {
+            //先更新`func tableHeaderViewHeight(in pagingView: JXPagingView) -> Int`方法用到的变量
+            tableHeaderViewHeight = 100
+            //再调用resizeTableHeaderViewHeight方法
+            pagingView.resizeTableHeaderViewHeight()
+        }else {
+            tableHeaderViewHeight = 200
+            pagingView.resizeTableHeaderViewHeight()
+        }
     }
 }
