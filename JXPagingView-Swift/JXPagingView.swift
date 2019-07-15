@@ -293,7 +293,7 @@ open class JXPagingView: UIView {
     }
 
     func setListScrollViewToMinContentOffsetY(_ scrollView: UIScrollView) {
-        scrollView.contentOffset = CGPoint(x: 0, y: minContentOffsetYInListScrollView(scrollView))
+        scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x, y: minContentOffsetYInListScrollView(scrollView))
     }
 
     func pinSectionHeaderHeight() -> CGFloat {

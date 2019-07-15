@@ -396,7 +396,7 @@
 }
 
 - (void)setListScrollViewToMinContentOffsetY:(UIScrollView *)scrollView {
-    scrollView.contentOffset = CGPointMake(0, [self minContentOffsetYInListScrollView:scrollView]);
+    scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, [self minContentOffsetYInListScrollView:scrollView]);
 }
 
 - (CGFloat)minContentOffsetYInListScrollView:(UIScrollView *)scrollView {
