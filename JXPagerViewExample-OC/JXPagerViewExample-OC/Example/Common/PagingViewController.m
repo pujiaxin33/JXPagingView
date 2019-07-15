@@ -25,7 +25,7 @@
     self.navigationController.navigationBar.translucent = false;
     _titles = @[@"能力", @"爱好", @"队友"];
 
-    _userHeaderView = [[PagingViewTableHeaderView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, JXTableHeaderViewHeight)];
+    _userHeaderView = [[PagingViewTableHeaderView alloc] init];
 
     _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, JXheightForHeaderInSection)];
     self.categoryView.titles = self.titles;

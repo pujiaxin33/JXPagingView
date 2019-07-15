@@ -9,8 +9,9 @@
 #import "PagingViewTableHeaderView.h"
 
 @interface PagingViewTableHeaderView()
-
+@property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, assign) CGRect imageViewFrame;
+@property (nonatomic, strong) UILabel *nickLabel;
 @end
 
 @implementation PagingViewTableHeaderView
@@ -26,11 +27,11 @@
         [self addSubview:self.imageView];
         self.imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, frame.size.height - 30, 200, 30)];
-        label.font = [UIFont systemFontOfSize:20];
-        label.text = @"Monkey·D·路飞";
-        label.textColor = [UIColor redColor];
-        [self addSubview:label];
+        _nickLabel = [[UILabel alloc] init];
+        self.nickLabel.font = [UIFont systemFontOfSize:20];
+        self.nickLabel.text = @"Monkey·D·路飞";
+        self.nickLabel.textColor = [UIColor redColor];
+        [self addSubview:self.nickLabel];
     }
     return self;
 }
@@ -39,6 +40,7 @@
     [super layoutSubviews];
 
     self.imageViewFrame = self.bounds;
+    self.nickLabel.frame = CGRectMake(10, self.bounds.size.height - 30, 200, 20);
 }
 
 - (void)scrollViewDidScroll:(CGFloat)contentOffsetY {

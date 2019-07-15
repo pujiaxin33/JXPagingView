@@ -98,15 +98,22 @@
     [self.listContainerView reloadData];
 }
 
-- (void)resizeTableHeaderViewHeightWithAnimation:(NSTimeInterval)duration curve:(UIViewAnimationCurve)curve height:(CGFloat)height {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:duration];
-    [UIView setAnimationCurve:curve];
-    CGRect frame = self.tableHeaderContainerView.bounds;
-    frame.size.height = height;
-    self.tableHeaderContainerView.frame = frame;
-    self.mainTableView.tableHeaderView = self.tableHeaderContainerView;
-    [UIView commitAnimations];
+- (void)resizeTableHeaderViewHeightWithAnimatable:(BOOL)animatable duration:(NSTimeInterval)duration curve:(UIViewAnimationCurve)curve {
+    if (animatable) {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:duration];
+        [UIView setAnimationCurve:curve];
+        CGRect frame = self.tableHeaderContainerView.bounds;
+        frame.size.height = [self.delegate tableHeaderViewHeightInPagerView:self];
+        self.tableHeaderContainerView.frame = frame;
+        self.mainTableView.tableHeaderView = self.tableHeaderContainerView;
+        [UIView commitAnimations];
+    }else {
+        CGRect frame = self.tableHeaderContainerView.bounds;
+        frame.size.height = [self.delegate tableHeaderViewHeightInPagerView:self];
+        self.tableHeaderContainerView.frame = frame;
+        self.mainTableView.tableHeaderView = self.tableHeaderContainerView;
+    }
 }
 
 #pragma mark - Private
@@ -116,8 +123,14 @@
         return;
     }
     UIView *tableHeaderView = [self.delegate tableHeaderViewInPagerView:self];
-    UIView *containerView = [[UIView alloc] initWithFrame:tableHeaderView.bounds];
+    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, [self.delegate tableHeaderViewHeightInPagerView:self])];
     [containerView addSubview:tableHeaderView];
+    tableHeaderView.translatesAutoresizingMaskIntoConstraints = NO;
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:tableHeaderView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:containerView attribute:NSLayoutAttributeTop multiplier:1 constant:0];
+    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:tableHeaderView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:containerView attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
+    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:tableHeaderView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:containerView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:tableHeaderView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:containerView attribute:NSLayoutAttributeTrailing multiplier:1 constant:0];
+    [containerView addConstraints:@[top, leading, bottom, trailing]];
     self.mainTableView.tableHeaderView = containerView;
 }
 
