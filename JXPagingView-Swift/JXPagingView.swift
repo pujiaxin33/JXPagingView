@@ -391,7 +391,7 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
         for subview in cell.contentView.subviews {
             subview.removeFromSuperview()
         }
-        listContainerView.frame = cell.contentView.bounds
+        listContainerView.frame = cell.bounds
         cell.contentView.addSubview(listContainerView)
         return cell
     }
