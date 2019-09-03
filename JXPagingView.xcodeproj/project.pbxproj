@@ -985,7 +985,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXPagingView.com.3333;
+				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXPagingView.com.333333;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "JXPagingView/Swift-Bridge-Objective-C.h";
@@ -1008,7 +1008,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXPagingView.com.3333;
+				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXPagingView.com.333333;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "JXPagingView/Swift-Bridge-Objective-C.h";
