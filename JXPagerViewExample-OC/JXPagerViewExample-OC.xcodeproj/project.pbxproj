@@ -530,13 +530,13 @@
 		1964282E2148E5EC009C1D31 /* JXPagerView */ = {
 			isa = PBXGroup;
 			children = (
-				1964282F2148E5EC009C1D31 /* JXPagerListContainerView.m */,
-				196428302148E5EC009C1D31 /* JXPagerMainTableView.m */,
-				196428312148E5EC009C1D31 /* JXPagerView.m */,
-				196428322148E5EC009C1D31 /* JXPagerListRefreshView.h */,
 				196428332148E5EC009C1D31 /* JXPagerView.h */,
-				196428342148E5EC009C1D31 /* JXPagerListContainerView.h */,
+				196428312148E5EC009C1D31 /* JXPagerView.m */,
 				196428352148E5EC009C1D31 /* JXPagerMainTableView.h */,
+				196428302148E5EC009C1D31 /* JXPagerMainTableView.m */,
+				196428342148E5EC009C1D31 /* JXPagerListContainerView.h */,
+				1964282F2148E5EC009C1D31 /* JXPagerListContainerView.m */,
+				196428322148E5EC009C1D31 /* JXPagerListRefreshView.h */,
 				196428362148E5EC009C1D31 /* JXPagerListRefreshView.m */,
 			);
 			name = JXPagerView;
@@ -1005,7 +1005,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "jiaxin.JXPagerViewExample-OC.jiaxin.3333";
+				PRODUCT_BUNDLE_IDENTIFIER = "jiaxin.JXPagerViewExample-OC.jiaxin.3333333";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1024,7 +1024,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "jiaxin.JXPagerViewExample-OC.jiaxin.3333";
+				PRODUCT_BUNDLE_IDENTIFIER = "jiaxin.JXPagerViewExample-OC.jiaxin.3333333";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
