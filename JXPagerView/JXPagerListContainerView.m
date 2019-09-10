@@ -55,7 +55,11 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    self.collectionView.frame = self.bounds;
+    if (!CGRectEqualToRect(self.collectionView.frame, self.bounds)) {
+        self.collectionView.frame = self.bounds;
+        [self.collectionView.collectionViewLayout invalidateLayout];
+        [self.collectionView reloadData];
+    }
     if (self.selectedIndexPath != nil && [self.delegate numberOfRowsInListContainerView:self] >= self.selectedIndexPath.item + 1) {
         [self.collectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     }

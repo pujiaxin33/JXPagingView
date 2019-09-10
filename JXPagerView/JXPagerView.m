@@ -69,7 +69,10 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    self.mainTableView.frame = self.bounds;
+    if (!CGRectEqualToRect(self.bounds, self.mainTableView.frame)) {
+        self.mainTableView.frame = self.bounds;
+        [self.mainTableView reloadData];
+    }
 }
 
 - (void)setDefaultSelectedIndex:(NSInteger)defaultSelectedIndex {
