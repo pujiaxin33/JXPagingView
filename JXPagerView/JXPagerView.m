@@ -213,7 +213,7 @@
     if (self.delegate == nil) {
         return 0;
     }
-    return self.bounds.size.height - [self.delegate heightForPinSectionHeaderInPagerView:self] - self.pinSectionHeaderVerticalOffset;
+    return MAX(self.bounds.size.height - [self.delegate heightForPinSectionHeaderInPagerView:self] - self.pinSectionHeaderVerticalOffset, 0);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

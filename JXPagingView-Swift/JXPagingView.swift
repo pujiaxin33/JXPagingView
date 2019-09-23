@@ -382,7 +382,7 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.bounds.height - pinSectionHeaderHeight() - CGFloat(pinSectionHeaderVerticalOffset)
+        return max(self.bounds.height - pinSectionHeaderHeight() - CGFloat(pinSectionHeaderVerticalOffset), 0)
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
