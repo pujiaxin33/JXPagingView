@@ -183,6 +183,10 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
 }
 ```
 
+## 实现原理
+
+[实现原理](https://github.com/pujiaxin33/JXPagingView/blob/master/Document/JXPagingView%E5%8E%9F%E7%90%86.md)
+
 ## 特殊说明
 
 ### JXCategoryView
