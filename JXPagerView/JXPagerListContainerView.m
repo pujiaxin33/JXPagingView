@@ -56,8 +56,8 @@
     [super layoutSubviews];
 
     if (!CGRectEqualToRect(self.collectionView.frame, self.bounds)) {
-        self.collectionView.frame = self.bounds;
         [self.collectionView.collectionViewLayout invalidateLayout];
+        self.collectionView.frame = self.bounds;
         [self.collectionView reloadData];
     }
     if (self.selectedIndexPath != nil && [self.delegate numberOfRowsInListContainerView:self] >= self.selectedIndexPath.item + 1) {
