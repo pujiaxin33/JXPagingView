@@ -258,6 +258,11 @@
             if (scrollView.contentOffset.y >= 0) {
                 [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0)];
             }
+            //处理mainTableViewMaxContentOffsetY比pinSectionHeaderVerticalOffset还小的情况
+            if (scrollView.contentOffset.y >= self.mainTableViewMaxContentOffsetY) {
+                //固定的位置就是contentInset.top
+                [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsMake(self.pinSectionHeaderVerticalOffset, 0, 0, 0)];
+            }
         }else if (scrollView.contentOffset.y > self.pinSectionHeaderVerticalOffset){
             //固定的位置就是contentInset.top
             [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsMake(self.pinSectionHeaderVerticalOffset, 0, 0, 0)];
