@@ -122,9 +122,6 @@
 #pragma mark - Private
 
 - (void)refreshTableHeaderView {
-    if (self.delegate == nil) {
-        return;
-    }
     UIView *tableHeaderView = [self.delegate tableHeaderViewInPagerView:self];
     UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, [self.delegate tableHeaderViewHeightInPagerView:self])];
     [containerView addSubview:tableHeaderView];
@@ -174,9 +171,6 @@
 }
 
 - (void)listDidAppear:(NSInteger)index {
-    if (self.delegate == nil) {
-        return;
-    }
     NSUInteger count = [self.delegate numberOfListsInPagerView:self];
     if (count <= 0 || index >= count) {
         return;
@@ -190,9 +184,6 @@
 }
 
 - (void)listDidDisappear:(NSInteger)index {
-    if (self.delegate == nil) {
-        return;
-    }
     NSUInteger count = [self.delegate numberOfListsInPagerView:self];
     if (count <= 0 || index >= count) {
         return;
@@ -210,9 +201,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.delegate == nil) {
-        return 0;
-    }
     return MAX(self.bounds.size.height - [self.delegate heightForPinSectionHeaderInPagerView:self] - self.pinSectionHeaderVerticalOffset, 0);
 }
 
@@ -228,16 +216,10 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (self.delegate == nil) {
-        return 0;
-    }
     return [self.delegate heightForPinSectionHeaderInPagerView:self];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (self.delegate == nil) {
-        return [[UIView alloc] init];
-    }
     return [self.delegate viewForPinSectionHeaderInPagerView:self];
 }
 
@@ -288,6 +270,10 @@
     }
 }
 
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    NSLog(@"%@", [NSValue valueWithCGPoint:velocity]);
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if (self.isListHorizontalScrollEnabled) {
         self.listContainerView.collectionView.scrollEnabled = YES;
@@ -306,16 +292,10 @@
 #pragma mark - JXPagingListContainerViewDelegate
 
 - (NSInteger)numberOfRowsInListContainerView:(JXPagerListContainerView *)listContainerView {
-    if (self.delegate == nil) {
-        return 0;
-    }
     return [self.delegate numberOfListsInPagerView:self];
 }
 
 - (UIView *)listContainerView:(JXPagerListContainerView *)listContainerView listViewInRow:(NSInteger)row {
-    if (self.delegate == nil) {
-        return [[UIView alloc] init];
-    }
     id<JXPagerViewListViewDelegate> list = self.validListDict[@(row)];
     if (list == nil) {
         list = [self.delegate pagerView:self initListAtIndex:row];
@@ -352,9 +332,6 @@
 @implementation JXPagerView (UISubclassingGet)
 
 - (CGFloat)mainTableViewMaxContentOffsetY {
-    if (self.delegate == nil) {
-        return 0;
-    }
     return [self.delegate tableHeaderViewHeightInPagerView:self] - self.pinSectionHeaderVerticalOffset;
 }
 
