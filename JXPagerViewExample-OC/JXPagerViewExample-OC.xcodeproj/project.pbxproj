@@ -45,6 +45,8 @@
 		192226DE2238E5C100637AA2 /* HeaderPositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 192226DD2238E5C100637AA2 /* HeaderPositionViewController.m */; };
 		19278E6B2223D0F10041C293 /* PagingViewBannerTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19278E6A2223D0F10041C293 /* PagingViewBannerTableHeaderView.m */; };
 		19278E6F2223D3520041C293 /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19278E6E2223D3520041C293 /* BannerViewController.m */; };
+		19502A75237E72AA00C10560 /* JXPagerSmoothView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19502A74237E72AA00C10560 /* JXPagerSmoothView.m */; };
+		19502A79237E742E00C10560 /* SmoothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19502A78237E742E00C10560 /* SmoothViewController.m */; };
 		195C3D7D22BCC4B000521461 /* ScrollToTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 195C3D7C22BCC4B000521461 /* ScrollToTopViewController.m */; };
 		195C3D8122BCC5C900521461 /* ScrollToListCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 195C3D8022BCC5C900521461 /* ScrollToListCellViewController.m */; };
 		196428052148E47F009C1D31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428042148E47F009C1D31 /* AppDelegate.m */; };
@@ -92,6 +94,10 @@
 		197B3A3E2182B22900561F08 /* TestNestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 197B3A3D2182B22900561F08 /* TestNestListBaseView.m */; };
 		19A735B7223BA91C008BB403 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A735B6223BA91C008BB403 /* BaseNavigationController.m */; };
 		19C417CD215F1B630090E518 /* UIWindow+JXSafeArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */; };
+		19FAC8F3238247820041E1C9 /* SmoothListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FAC8F2238247820041E1C9 /* SmoothListViewController.m */; };
+		19FAC94A23827F160041E1C9 /* SmoothListCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FAC94923827F160041E1C9 /* SmoothListCollectionViewController.m */; };
+		19FAC94D23828B350041E1C9 /* SmoothListScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FAC94C23828B350041E1C9 /* SmoothListScrollViewController.m */; };
+		19FAC95023828E0D0041E1C9 /* SmoothCustomPagerHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FAC94F23828E0D0041E1C9 /* SmoothCustomPagerHeaderViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -174,6 +180,10 @@
 		19278E6A2223D0F10041C293 /* PagingViewBannerTableHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagingViewBannerTableHeaderView.m; sourceTree = "<group>"; };
 		19278E6D2223D3520041C293 /* BannerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerViewController.h; sourceTree = "<group>"; };
 		19278E6E2223D3520041C293 /* BannerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerViewController.m; sourceTree = "<group>"; };
+		19502A73237E72AA00C10560 /* JXPagerSmoothView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXPagerSmoothView.h; sourceTree = "<group>"; };
+		19502A74237E72AA00C10560 /* JXPagerSmoothView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXPagerSmoothView.m; sourceTree = "<group>"; };
+		19502A77237E742E00C10560 /* SmoothViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmoothViewController.h; sourceTree = "<group>"; };
+		19502A78237E742E00C10560 /* SmoothViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmoothViewController.m; sourceTree = "<group>"; };
 		195C3D7B22BCC4B000521461 /* ScrollToTopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollToTopViewController.h; sourceTree = "<group>"; };
 		195C3D7C22BCC4B000521461 /* ScrollToTopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollToTopViewController.m; sourceTree = "<group>"; };
 		195C3D7F22BCC5C900521461 /* ScrollToListCellViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollToListCellViewController.h; sourceTree = "<group>"; };
@@ -265,6 +275,14 @@
 		19A735B6223BA91C008BB403 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		19C417CB215F1B630090E518 /* UIWindow+JXSafeArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+JXSafeArea.h"; sourceTree = "<group>"; };
 		19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+JXSafeArea.m"; sourceTree = "<group>"; };
+		19FAC8F1238247820041E1C9 /* SmoothListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmoothListViewController.h; sourceTree = "<group>"; };
+		19FAC8F2238247820041E1C9 /* SmoothListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmoothListViewController.m; sourceTree = "<group>"; };
+		19FAC94823827F160041E1C9 /* SmoothListCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmoothListCollectionViewController.h; sourceTree = "<group>"; };
+		19FAC94923827F160041E1C9 /* SmoothListCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmoothListCollectionViewController.m; sourceTree = "<group>"; };
+		19FAC94B23828B350041E1C9 /* SmoothListScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmoothListScrollViewController.h; sourceTree = "<group>"; };
+		19FAC94C23828B350041E1C9 /* SmoothListScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmoothListScrollViewController.m; sourceTree = "<group>"; };
+		19FAC94E23828E0D0041E1C9 /* SmoothCustomPagerHeaderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmoothCustomPagerHeaderViewController.h; sourceTree = "<group>"; };
+		19FAC94F23828E0D0041E1C9 /* SmoothCustomPagerHeaderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmoothCustomPagerHeaderViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -456,6 +474,23 @@
 			path = Banner;
 			sourceTree = "<group>";
 		};
+		19502A76237E741500C10560 /* Smooth */ = {
+			isa = PBXGroup;
+			children = (
+				19502A77237E742E00C10560 /* SmoothViewController.h */,
+				19502A78237E742E00C10560 /* SmoothViewController.m */,
+				19FAC94E23828E0D0041E1C9 /* SmoothCustomPagerHeaderViewController.h */,
+				19FAC94F23828E0D0041E1C9 /* SmoothCustomPagerHeaderViewController.m */,
+				19FAC8F1238247820041E1C9 /* SmoothListViewController.h */,
+				19FAC8F2238247820041E1C9 /* SmoothListViewController.m */,
+				19FAC94823827F160041E1C9 /* SmoothListCollectionViewController.h */,
+				19FAC94923827F160041E1C9 /* SmoothListCollectionViewController.m */,
+				19FAC94B23828B350041E1C9 /* SmoothListScrollViewController.h */,
+				19FAC94C23828B350041E1C9 /* SmoothListScrollViewController.m */,
+			);
+			path = Smooth;
+			sourceTree = "<group>";
+		};
 		195C3D7A22BCC46A00521461 /* ScrollToTop */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +548,7 @@
 		196428192148E58C009C1D31 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				19502A76237E741500C10560 /* Smooth */,
 				195C3D7E22BCC5AB00521461 /* ScrollToListCell */,
 				195C3D7A22BCC46A00521461 /* ScrollToTop */,
 				190921D722B1F8640045D18F /* ReloadWithoutInitList */,
@@ -538,6 +574,8 @@
 				1964282F2148E5EC009C1D31 /* JXPagerListContainerView.m */,
 				196428322148E5EC009C1D31 /* JXPagerListRefreshView.h */,
 				196428362148E5EC009C1D31 /* JXPagerListRefreshView.m */,
+				19502A73237E72AA00C10560 /* JXPagerSmoothView.h */,
+				19502A74237E72AA00C10560 /* JXPagerSmoothView.m */,
 			);
 			name = JXPagerView;
 			path = ../../JXPagerView;
@@ -787,14 +825,17 @@
 				1904A92421CCC55800316F97 /* JXCategoryImageCellModel.m in Sources */,
 				1904A91E21CCC55800316F97 /* JXCategoryTitleImageCellModel.m in Sources */,
 				196428F62148EF19009C1D31 /* NaviBarHiddenViewController.m in Sources */,
+				19FAC95023828E0D0041E1C9 /* SmoothCustomPagerHeaderViewController.m in Sources */,
 				196428E72148E9D0009C1D31 /* MJRefreshStateHeader.m in Sources */,
 				196428E42148E9D0009C1D31 /* MJRefreshAutoGifFooter.m in Sources */,
+				19FAC8F3238247820041E1C9 /* SmoothListViewController.m in Sources */,
 				197B3A3B2182B17F00561F08 /* TestNestlistView.m in Sources */,
 				19C417CD215F1B630090E518 /* UIWindow+JXSafeArea.m in Sources */,
 				1979C1EE21FEDFCD00DA40E7 /* DetailViewController.m in Sources */,
 				19278E6F2223D3520041C293 /* BannerViewController.m in Sources */,
 				1964283A2148E5EC009C1D31 /* JXPagerListRefreshView.m in Sources */,
 				196428EB2148E9D0009C1D31 /* MJRefreshBackFooter.m in Sources */,
+				19502A79237E742E00C10560 /* SmoothViewController.m in Sources */,
 				1904A91D21CCC55800316F97 /* JXCategoryTitleImageCell.m in Sources */,
 				1904A92521CCC55800316F97 /* JXCategoryNumberView.m in Sources */,
 				1904A91521CCC55800316F97 /* JXCategoryIndicatorBackgroundView.m in Sources */,
@@ -835,9 +876,12 @@
 				196428DA2148E9D0009C1D31 /* UIScrollView+MJRefresh.m in Sources */,
 				197B3A382182B13E00561F08 /* NestViewController.m in Sources */,
 				196428E32148E9D0009C1D31 /* MJRefreshAutoStateFooter.m in Sources */,
+				19FAC94A23827F160041E1C9 /* SmoothListCollectionViewController.m in Sources */,
 				1921393922004A2C00A057C8 /* JXCategoryViewAnimator.m in Sources */,
+				19502A75237E72AA00C10560 /* JXPagerSmoothView.m in Sources */,
 				190921DA22B1F8990045D18F /* ReloadWithoutInitListViewController.m in Sources */,
 				1904A92E21CCC55800316F97 /* JXCategoryBaseView.m in Sources */,
+				19FAC94D23828B350041E1C9 /* SmoothListScrollViewController.m in Sources */,
 				195C3D7D22BCC4B000521461 /* ScrollToTopViewController.m in Sources */,
 				196428DB2148E9D0009C1D31 /* MJRefreshConst.m in Sources */,
 				1904A92F21CCC55800316F97 /* JXCategoryBaseCell.m in Sources */,
@@ -1005,7 +1049,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "jiaxin.JXPagerViewExample-OC.jiaxin.333333333";
+				PRODUCT_BUNDLE_IDENTIFIER = "jiaxin.JXPagerViewExample-OC.jiaxin.3333333333";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -47,15 +47,11 @@
 @property (nonatomic, weak) JXPagerMainTableView *mainTableView;
 
 - (instancetype)initWithDelegate:(id<JXPagerListContainerViewDelegate>)delegate NS_DESIGNATED_INITIALIZER;
-
 - (instancetype)init NS_UNAVAILABLE;
-
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
-
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
 
 - (void)reloadData;
-
 - (void)deviceOrientationDidChanged;
 
 @end

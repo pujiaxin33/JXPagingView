@@ -17,6 +17,8 @@
 #import "ReloadWithoutInitListViewController.h"
 #import "ScrollToTopViewController.h"
 #import "ScrollToListCellViewController.h"
+#import "SmoothViewController.h"
+#import "SmoothCustomPagerHeaderViewController.h"
 
 @interface ViewController ()
 
@@ -106,6 +108,38 @@
         {
             ScrollToListCellViewController *vc = [[ScrollToListCellViewController alloc] init];
             vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 10:
+        {
+            SmoothViewController *vc = [[SmoothViewController alloc] init];
+            vc.title = title;
+            vc.type = SmoothListType_TableView;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 11:
+        {
+            SmoothViewController *vc = [[SmoothViewController alloc] init];
+            vc.title = title;
+            vc.type = SmoothListType_CollectionView;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 12:
+        {
+            SmoothViewController *vc = [[SmoothViewController alloc] init];
+            vc.title = title;
+            vc.type = SmoothListType_ScrollView;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 13:
+        {
+            SmoothCustomPagerHeaderViewController *vc = [[SmoothCustomPagerHeaderViewController alloc] init];
+            vc.title = title;
+            vc.type = SmoothListType_TableView;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
