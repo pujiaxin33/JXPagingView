@@ -15,7 +15,7 @@
 #import "SmoothListScrollViewController.h"
 
 @interface SmoothViewController () <JXPagerSmoothViewDataSource>
-@property (strong) JXPagerSmoothView *pager;
+@property (nonatomic, strong) JXPagerSmoothView *pager;
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) UIImageView *headerView;
 @end
@@ -45,7 +45,6 @@
     self.categoryView.titleSelectedColor = [UIColor colorWithRed:105/255.0 green:144/255.0 blue:239/255.0 alpha:1];
     self.categoryView.titleColor = [UIColor blackColor];
     self.categoryView.titleColorGradientEnabled = YES;
-    self.categoryView.titleLabelZoomEnabled = YES;
     self.categoryView.titleLabelZoomEnabled = YES;
     self.categoryView.contentScrollViewClickTransitionAnimationEnabled = NO;
 

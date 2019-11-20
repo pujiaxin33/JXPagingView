@@ -100,7 +100,7 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     [self.listHeaderDict removeAllObjects];
     for (id<JXPagerSmoothViewListViewDelegate> list in self.listDict.allValues) {
         [[list listScrollView] removeObserver:self forKeyPath:@"contentOffset"];
-        [list.listView removeFromSuperview];
+        [[list listView] removeFromSuperview];
     }
     [_listDict removeAllObjects];
 
@@ -146,14 +146,10 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
             [listHeader addSubview:self.pagerHeaderContainerView];
         }
         self.listHeaderDict[@(indexPath.item)] = listHeader;
-        [listScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:(__bridge void * _Nullable)([list listScrollView])];
+        [listScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
     }
     for (id<JXPagerSmoothViewListViewDelegate> listItem in self.listDict.allValues) {
-        if (listItem == list) {
-            [listItem listScrollView].scrollsToTop = YES;
-        }else {
-            [listItem listScrollView].scrollsToTop = NO;
-        }
+        [listItem listScrollView].scrollsToTop = (listItem == list);
     }
     UIView *listView = [list listView];
     if (listView != nil && listView.superview != cell.contentView) {
@@ -203,7 +199,7 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"contentOffset"]) {
-        UIScrollView *scrollView = (__bridge UIScrollView *)context;
+        UIScrollView *scrollView = (UIScrollView *)object;
         if (scrollView != nil) {
             [self listDidScroll:scrollView];
         }
@@ -303,6 +299,9 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     UIView *listHeader = self.listHeaderDict[@(index)];
     UIScrollView *listScrollView = [self.listDict[@(index)] listScrollView];
     if (listHeader != nil && listScrollView.contentOffset.y <= -self.heightForPinHeader) {
+        for (id<JXPagerSmoothViewListViewDelegate> listItem in self.listDict.allValues) {
+            [listItem listScrollView].scrollsToTop = ([listItem listScrollView] == listScrollView);
+        }
         self.pagerHeaderContainerView.frame = CGRectMake(0, 0, self.pagerHeaderContainerView.bounds.size.width, self.pagerHeaderContainerView.bounds.size.height);
         [listHeader addSubview:self.pagerHeaderContainerView];
     }

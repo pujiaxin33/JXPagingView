@@ -59,6 +59,9 @@ class ViewController: UITableViewController {
         case 9:
             let vc = HeaderPositionViewController()
             self.navigationController?.pushViewController(vc, animated: true)
+        case 10:
+            let vc = SmoothViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }
