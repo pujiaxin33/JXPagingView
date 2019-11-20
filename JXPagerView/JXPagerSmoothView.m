@@ -131,9 +131,6 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:JXPagerSmoothViewCollectionViewCellIdentifier forIndexPath:indexPath];
-    for (UIView *view in cell.contentView.subviews) {
-        [view removeFromSuperview];
-    }
     id<JXPagerSmoothViewListViewDelegate> list = self.listDict[@(indexPath.item)];
     if (list == nil) {
         list = [self.dataSource pagerView:self initListAtIndex:indexPath.item];
@@ -158,9 +155,11 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
             [listItem listScrollView].scrollsToTop = NO;
         }
     }
-
     UIView *listView = [list listView];
-    if (listView != nil) {
+    if (listView != nil && listView.superview != cell.contentView) {
+        for (UIView *view in cell.contentView.subviews) {
+            [view removeFromSuperview];
+        }
         listView.frame = cell.contentView.bounds;
         [cell.contentView addSubview:listView];
     }
