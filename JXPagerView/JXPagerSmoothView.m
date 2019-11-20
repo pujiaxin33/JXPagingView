@@ -14,7 +14,6 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
 @property (nonatomic, strong) UIView *pagerHeaderContainerView;
 @end
 @implementation JXPagerSmoothCollectionView
-
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     CGPoint point = [touch locationInView:self.pagerHeaderContainerView];
     if (CGRectContainsPoint(self.pagerHeaderContainerView.bounds, point)) {
@@ -22,7 +21,6 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     }
     return YES;
 }
-
 @end
 
 @interface JXPagerSmoothView () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -31,12 +29,14 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
 @property (nonatomic, strong) JXPagerSmoothCollectionView *listCollectionView;
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXPagerSmoothViewListViewDelegate>> *listDict;
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, UIView*> *listHeaderDict;
-@property (nonatomic, assign) BOOL shouldSyncOtherListScrollViewContentOffset;
+@property (nonatomic, assign, getter=isSyncListContentOffsetEnabled) BOOL syncListContentOffsetEnabled;
 @property (nonatomic, strong) UIView *pagerHeaderContainerView;
 @property (nonatomic, assign) CGFloat currentPagerHeaderContainerViewY;
 @property (nonatomic, assign) NSInteger currentIndex;
 @property (nonatomic, strong) UIScrollView *currentListScrollView;
-
+@property (nonatomic, assign) CGFloat heightForPagerHeader;
+@property (nonatomic, assign) CGFloat heightForPinHeader;
+@property (nonatomic, assign) CGFloat heightForPagerHeaderContainerView;
 @end
 
 @implementation JXPagerSmoothView
@@ -73,6 +73,7 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     self.listCollectionView.pagingEnabled = YES;
     self.listCollectionView.bounces = NO;
     self.listCollectionView.showsHorizontalScrollIndicator = NO;
+    self.listCollectionView.scrollsToTop = NO;
     [self.listCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:JXPagerSmoothViewCollectionViewCellIdentifier];
     if (@available(iOS 11.0, *)) {
         self.listCollectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -94,7 +95,7 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     self.currentListScrollView = nil;
     self.currentIndex = self.defaultSelectedIndex;
     self.currentPagerHeaderContainerViewY = 0;
-    self.shouldSyncOtherListScrollViewContentOffset = NO;
+    self.syncListContentOffsetEnabled = NO;
 
     [self.listHeaderDict removeAllObjects];
     for (id<JXPagerSmoothViewListViewDelegate> list in self.listDict.allValues) {
@@ -103,14 +104,18 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     }
     [_listDict removeAllObjects];
 
+    self.heightForPagerHeader = [self.dataSource heightForPagerHeaderInPagerView:self];
+    self.heightForPinHeader = [self.dataSource heightForPinHeaderInPagerView:self];
+    self.heightForPagerHeaderContainerView = self.heightForPagerHeader + self.heightForPinHeader;
+
     UIView *pagerHeader = [self.dataSource viewForPagerHeaderInPagerView:self];
     UIView *pinHeader = [self.dataSource ViewForPinHeaderInPagerView:self];
     [self.pagerHeaderContainerView addSubview:pagerHeader];
     [self.pagerHeaderContainerView addSubview:pinHeader];
 
-    self.pagerHeaderContainerView.frame = CGRectMake(0, 0, self.bounds.size.width, [self heightForPagerHeaderContainerView]);
-    pagerHeader.frame = CGRectMake(0, 0, self.bounds.size.width, [self.dataSource heightForPagerHeaderInPagerView:self]);
-    pinHeader.frame = CGRectMake(0, [self.dataSource heightForPagerHeaderInPagerView:self], self.bounds.size.width, [self.dataSource heightForPinHeaderInPagerView:self]);
+    self.pagerHeaderContainerView.frame = CGRectMake(0, 0, self.bounds.size.width, self.heightForPagerHeaderContainerView);
+    pagerHeader.frame = CGRectMake(0, 0, self.bounds.size.width, self.heightForPagerHeader);
+    pinHeader.frame = CGRectMake(0, self.heightForPagerHeader, self.bounds.size.width, self.heightForPinHeader);
     [self.listCollectionView setContentOffset:CGPointMake(self.listCollectionView.bounds.size.width*self.defaultSelectedIndex, 0) animated:NO];
 }
 
@@ -136,9 +141,9 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
         [[list listView] setNeedsLayout];
         [[list listView] layoutIfNeeded];
         UIScrollView *listScrollView = [list listScrollView];
-        listScrollView.contentInset = UIEdgeInsetsMake([self heightForPagerHeaderContainerView], 0, 0, 0);
-        listScrollView.contentOffset = CGPointMake(0, -listScrollView.contentInset.top + MIN(-self.currentPagerHeaderContainerViewY, [self.dataSource heightForPagerHeaderInPagerView:self]));
-        UIView *listHeader = [[UIView alloc] initWithFrame:CGRectMake(0, -[self heightForPagerHeaderContainerView], self.bounds.size.width, [self heightForPagerHeaderContainerView])];
+        listScrollView.contentInset = UIEdgeInsetsMake(self.heightForPagerHeaderContainerView, 0, 0, 0);
+        listScrollView.contentOffset = CGPointMake(0, -listScrollView.contentInset.top + MIN(-self.currentPagerHeaderContainerViewY, self.heightForPagerHeader));
+        UIView *listHeader = [[UIView alloc] initWithFrame:CGRectMake(0, -self.heightForPagerHeaderContainerView, self.bounds.size.width, self.heightForPagerHeaderContainerView)];
         [listScrollView addSubview:listHeader];
         if (self.pagerHeaderContainerView.superview == nil) {
             [listHeader addSubview:self.pagerHeaderContainerView];
@@ -178,14 +183,16 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     }
 }
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (!decelerate) {
+        NSInteger index = scrollView.contentOffset.x/scrollView.bounds.size.width;
+        [self horizontalScrollDidEndAtIndex:index];
+    }
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSInteger index = scrollView.contentOffset.x/scrollView.bounds.size.width;
-    UIView *listHeader = self.listHeaderDict[@(index)];
-    UIScrollView *listScrollView = [self.listDict[@(index)] listScrollView];
-    if (listHeader != nil && listScrollView.contentOffset.y <= -[self.dataSource heightForPinHeaderInPagerView:self]) {
-        self.pagerHeaderContainerView.frame = CGRectMake(0, 0, self.pagerHeaderContainerView.bounds.size.width, self.pagerHeaderContainerView.bounds.size.height);
-        [listHeader addSubview:self.pagerHeaderContainerView];
-    }
+    [self horizontalScrollDidEndAtIndex:index];
 }
 
 #pragma mark - KVO
@@ -204,21 +211,26 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
 #pragma mark - Event
 
 - (void)listDidScroll:(UIScrollView *)scrollView {
+//    for (id<JXPagerSmoothViewListViewDelegate> list in self.listDict.allValues) {
+//        UIScrollView *listScrollView = [list listScrollView];
+//        if (listScrollView != scrollView && (listScrollView.isDragging || listScrollView.isDecelerating)) {
+//            [listScrollView setContentOffset:listScrollView.contentOffset animated:NO];
+//        }
+//    }
     //用户引起的滚动才处理
     if (!(scrollView.isTracking || scrollView.isDecelerating)) {
         return;
     }
     self.currentListScrollView = scrollView;
-    CGFloat listHeaderViewHeight = [self.dataSource heightForPagerHeaderInPagerView:self];
-    CGFloat contentOffsetY = scrollView.contentOffset.y + [self heightForPagerHeaderContainerView];
-    if (contentOffsetY <= listHeaderViewHeight) {
-        self.shouldSyncOtherListScrollViewContentOffset = YES;
+    CGFloat contentOffsetY = scrollView.contentOffset.y + self.heightForPagerHeaderContainerView;
+    if (contentOffsetY <= self.heightForPagerHeader) {
+        self.syncListContentOffsetEnabled = YES;
+        self.currentPagerHeaderContainerViewY = -contentOffsetY;
         for (id<JXPagerSmoothViewListViewDelegate> list in self.listDict.allValues) {
             if ([list listScrollView] != self.currentListScrollView) {
                 [list listScrollView].contentOffset = scrollView.contentOffset;
             }
         }
-        self.currentPagerHeaderContainerViewY = -contentOffsetY;
         UIView *listHeader = [self listHeaderForListScrollView:scrollView];
         if (self.pagerHeaderContainerView.superview != listHeader) {
             self.pagerHeaderContainerView.frame = CGRectMake(0, 0, self.pagerHeaderContainerView.bounds.size.width, self.pagerHeaderContainerView.bounds.size.height);
@@ -226,15 +238,15 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
         }
     }else {
         if (self.pagerHeaderContainerView.superview != self) {
-            self.pagerHeaderContainerView.frame = CGRectMake(0, -listHeaderViewHeight, self.pagerHeaderContainerView.bounds.size.width, self.pagerHeaderContainerView.bounds.size.height);
+            self.pagerHeaderContainerView.frame = CGRectMake(0, -self.heightForPagerHeader, self.pagerHeaderContainerView.bounds.size.width, self.pagerHeaderContainerView.bounds.size.height);
             [self addSubview:self.pagerHeaderContainerView];
         }
-        if (self.shouldSyncOtherListScrollViewContentOffset) {
-            self.shouldSyncOtherListScrollViewContentOffset = NO;
-            self.currentPagerHeaderContainerViewY = -listHeaderViewHeight;
+        if (self.isSyncListContentOffsetEnabled) {
+            self.syncListContentOffsetEnabled = NO;
+            self.currentPagerHeaderContainerViewY = -self.heightForPagerHeader;
             for (id<JXPagerSmoothViewListViewDelegate> list in self.listDict.allValues) {
-                if ([list listScrollView] != self.currentListScrollView) {
-                    [list listScrollView].contentOffset = CGPointMake(0, listHeaderViewHeight);
+                if ([list listScrollView] != scrollView) {
+                    [list listScrollView].contentOffset = CGPointMake(0, -self.heightForPinHeader);
                 }
             }
         }
@@ -276,8 +288,15 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     }
 }
 
-- (CGFloat)heightForPagerHeaderContainerView {
-    return [self.dataSource heightForPagerHeaderInPagerView:self] + [self.dataSource heightForPinHeaderInPagerView:self];
+
+/// 列表左右切换滚动结束之后，需要把pagerHeaderContainerView添加到当前index的列表上面
+- (void)horizontalScrollDidEndAtIndex:(NSInteger)index {
+    UIView *listHeader = self.listHeaderDict[@(index)];
+    UIScrollView *listScrollView = [self.listDict[@(index)] listScrollView];
+    if (listHeader != nil && listScrollView.contentOffset.y <= -self.heightForPinHeader) {
+        self.pagerHeaderContainerView.frame = CGRectMake(0, 0, self.pagerHeaderContainerView.bounds.size.width, self.pagerHeaderContainerView.bounds.size.height);
+        [listHeader addSubview:self.pagerHeaderContainerView];
+    }
 }
 
 @end

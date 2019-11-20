@@ -11,24 +11,17 @@
 @class JXPagerSmoothView;
 
 @protocol JXPagerSmoothViewListViewDelegate <NSObject>
-
+/**
+返回listView。如果是vc包裹的就是vc.view；如果是自定义view包裹的，就是自定义view自己。
+*/
 - (UIView *)listView;
-
 /**
  返回JXPagerSmoothViewListViewDelegate内部持有的UIScrollView或UITableView或UICollectionView
  */
 - (UIScrollView *)listScrollView;
 
 @optional
-
-/**
- 可选实现，列表显示的时候调用
- */
 - (void)listDidAppear;
-
-/**
- 可选实现，列表消失的时候调用
- */
 - (void)listDidDisappear;
 
 @end
@@ -36,12 +29,12 @@
 @protocol JXPagerSmoothViewDataSource <NSObject>
 
 /**
- 返回listHeaderView的高度
+ 返回页面header的高度
  */
 - (CGFloat)heightForPagerHeaderInPagerView:(JXPagerSmoothView *)pagerView;
 
 /**
- 返回listHeaderView
+ 返回页面header视图
  */
 - (UIView *)viewForPagerHeaderInPagerView:(JXPagerSmoothView *)pagerView;
 
