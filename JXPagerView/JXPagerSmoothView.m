@@ -176,11 +176,14 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSInteger index = scrollView.contentOffset.x/scrollView.bounds.size.width;
-    self.currentIndex = index;
-    //左右滚动的时候，就把listHeaderContainerView添加到self，达到悬浮在顶部的效果
-    if (self.pagerHeaderContainerView.superview != self) {
-        self.pagerHeaderContainerView.frame = CGRectMake(0, self.currentPagerHeaderContainerViewY, self.pagerHeaderContainerView.bounds.size.width, self.pagerHeaderContainerView.bounds.size.height);
-        [self addSubview:self.pagerHeaderContainerView];
+    if (index != self.currentIndex && !(scrollView.isDragging || scrollView.isDecelerating)) {
+        [self horizontalScrollDidEndAtIndex:index];
+    }else {
+        //左右滚动的时候，就把listHeaderContainerView添加到self，达到悬浮在顶部的效果
+        if (self.pagerHeaderContainerView.superview != self) {
+            self.pagerHeaderContainerView.frame = CGRectMake(0, self.currentPagerHeaderContainerViewY, self.pagerHeaderContainerView.bounds.size.width, self.pagerHeaderContainerView.bounds.size.height);
+            [self addSubview:self.pagerHeaderContainerView];
+        }
     }
 }
 
@@ -212,6 +215,9 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
 #pragma mark - Event
 
 - (void)listDidScroll:(UIScrollView *)scrollView {
+    if (self.listCollectionView.isDragging || self.listCollectionView.isDecelerating) {
+        return;
+    }
     NSInteger listIndex = [self listIndexForListScrollView:scrollView];
     if (listIndex != self.currentIndex) {
         return;
@@ -291,9 +297,9 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     }
 }
 
-
 /// 列表左右切换滚动结束之后，需要把pagerHeaderContainerView添加到当前index的列表上面
 - (void)horizontalScrollDidEndAtIndex:(NSInteger)index {
+    self.currentIndex = index;
     UIView *listHeader = self.listHeaderDict[@(index)];
     UIScrollView *listScrollView = [self.listDict[@(index)] listScrollView];
     if (listHeader != nil && listScrollView.contentOffset.y <= -self.heightForPinHeader) {
