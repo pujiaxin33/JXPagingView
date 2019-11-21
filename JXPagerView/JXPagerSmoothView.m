@@ -173,7 +173,8 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSInteger index = scrollView.contentOffset.x/scrollView.bounds.size.width;
-    if (index != self.currentIndex && !(scrollView.isDragging || scrollView.isDecelerating)) {
+    UIScrollView *listScrollView = [self.listDict[@(index)] listScrollView];
+    if (index != self.currentIndex && !(scrollView.isDragging || scrollView.isDecelerating) && listScrollView.contentOffset.y <= -self.heightForPinHeader) {
         [self horizontalScrollDidEndAtIndex:index];
     }else {
         //左右滚动的时候，就把listHeaderContainerView添加到self，达到悬浮在顶部的效果
@@ -181,6 +182,9 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
             self.pagerHeaderContainerView.frame = CGRectMake(0, self.currentPagerHeaderContainerViewY, self.pagerHeaderContainerView.bounds.size.width, self.pagerHeaderContainerView.bounds.size.height);
             [self addSubview:self.pagerHeaderContainerView];
         }
+    }
+    if (index != self.currentIndex) {
+        self.currentIndex = index;
     }
 }
 
@@ -221,7 +225,7 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     }
     self.currentListScrollView = scrollView;
     CGFloat contentOffsetY = scrollView.contentOffset.y + self.heightForPagerHeaderContainerView;
-    if (contentOffsetY <= self.heightForPagerHeader) {
+    if (contentOffsetY < self.heightForPagerHeader) {
         self.syncListContentOffsetEnabled = YES;
         self.currentPagerHeaderContainerViewY = -contentOffsetY;
         for (id<JXPagerSmoothViewListViewDelegate> list in self.listDict.allValues) {
