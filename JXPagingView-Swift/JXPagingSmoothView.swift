@@ -109,6 +109,7 @@ open class JXPagingSmoothView: UIView {
         pagingHeader.frame = CGRect(x: 0, y: 0, width: bounds.size.width, height: heightForPagingHeader)
         pinHeader.frame = CGRect(x: 0, y: heightForPagingHeader, width: bounds.size.width, height: heightForPinHeader)
         listCollectionView.setContentOffset(CGPoint(x: listCollectionView.bounds.size.width*CGFloat(defaultSelectedIndex), y: 0), animated: false)
+        listCollectionView.reloadData()
     }
 
     open override func layoutSubviews() {

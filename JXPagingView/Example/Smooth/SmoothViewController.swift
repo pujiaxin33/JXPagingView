@@ -43,6 +43,16 @@ class SmoothViewController: UIViewController {
         headerView.contentMode = .scaleAspectFill
 
         categoryView.contentScrollView = paging.listCollectionView
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "reload", style: .plain, target: self, action: #selector(didNaviRightItemClick))
+    }
+
+    @objc func didNaviRightItemClick() {
+        categoryView.titles = ["第一", "第二", "第三"]
+        categoryView.defaultSelectedIndex = 1
+        paging.defaultSelectedIndex = 1
+        categoryView.reloadData()
+        paging.reloadData()
     }
 
     override func viewDidLayoutSubviews() {

@@ -117,6 +117,7 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     pagerHeader.frame = CGRectMake(0, 0, self.bounds.size.width, self.heightForPagerHeader);
     pinHeader.frame = CGRectMake(0, self.heightForPagerHeader, self.bounds.size.width, self.heightForPinHeader);
     [self.listCollectionView setContentOffset:CGPointMake(self.listCollectionView.bounds.size.width*self.defaultSelectedIndex, 0) animated:NO];
+    [self.listCollectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
