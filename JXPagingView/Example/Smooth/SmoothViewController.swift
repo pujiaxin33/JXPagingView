@@ -34,6 +34,7 @@ class SmoothViewController: UIViewController {
         categoryView.isTitleColorGradientEnabled = true
         categoryView.isTitleLabelZoomEnabled = true
         categoryView.isContentScrollViewClickTransitionAnimationEnabled = false
+        categoryView.delegate = self
 
         let line = JXCategoryIndicatorLineView()
         line.indicatorLineViewColor = UIColor(red: 105/255, green: 144/255, blue: 239/255, alpha: 1)
@@ -45,6 +46,7 @@ class SmoothViewController: UIViewController {
         categoryView.contentScrollView = paging.listCollectionView
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "reload", style: .plain, target: self, action: #selector(didNaviRightItemClick))
+        paging.listCollectionView.panGestureRecognizer.require(toFail: navigationController!.interactivePopGestureRecognizer!)
     }
 
     @objc func didNaviRightItemClick() {
@@ -59,6 +61,12 @@ class SmoothViewController: UIViewController {
         super.viewDidLayoutSubviews()
 
         paging.frame = view.bounds
+    }
+}
+
+extension SmoothViewController: JXCategoryViewDelegate {
+    func categoryView(_ categoryView: JXCategoryBaseView!, didSelectedItemAt index: Int) {
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = (index == 0)
     }
 }
 
