@@ -8,6 +8,7 @@
 - 支持列表懒加载，等到列表真正显示的时候才加载，而不是一次性加载所有列表；
 - 支持首页下拉刷新、列表视图下拉刷新、列表视图上拉加载更多；
 - 支持悬浮SectionHeader的垂直位置调整；
+- 支持从顶部用力往上滚动，下面的列表会跟着滚动，而不会突然卡主，需要使用`JXPagerSmoothView`类；
 - 列表封装简洁，只要遵从`JXPagingViewListViewDelegate`协议即可。UIView、UIViewController等都可以；
 - 使用JXCategoryView/JXSegmentedView分类控制器，几乎支持所有主流效果、高度自定义、可灵活扩展；
 - 支持横竖屏切换；
@@ -186,6 +187,13 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
 ## 实现原理
 
 [实现原理](https://github.com/pujiaxin33/JXPagingView/blob/master/Document/JXPagingView%E5%8E%9F%E7%90%86.md)
+
+## `JXPagerSmoothView`
+
+如果你需要类似于**淘宝**、**转转**首页从顶部header用力往上滚动之后，下面的列表会跟着滚动的效果。因为`JXPagerView`的实现原理限制，当用户从顶部header的位置用力往上滚动，`JXPagerView`会在`JXCategoryView`刚好在顶部的时候突然停住。这个时候就需要使用`JXPagerSmoothView`，swift版本叫`JXPagingSmoothView`。
+
+因为与`JXPagerView`的原理完全不同，所以各自会有一些特性的区别，但是从使用体验来说，是完全一致的。具体使用细节请参考demo示例。
+
 
 ## 特殊说明
 
