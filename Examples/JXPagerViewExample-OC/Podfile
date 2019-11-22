@@ -1,0 +1,7 @@
+platform :ios, '8.0'
+
+target 'JXPagerViewExample-OC' do
+pod 'JXPagingView/Pager', :path => '../../../JXPagingView'
+pod 'JXCategoryView'
+pod 'MJRefresh'
+end

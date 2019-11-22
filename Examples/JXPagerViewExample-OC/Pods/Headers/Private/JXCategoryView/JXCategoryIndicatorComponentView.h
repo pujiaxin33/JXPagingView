@@ -1,0 +1,1 @@
+../../../JXCategoryView/Sources/Indicator/IndicatorViews/JXCategoryIndicatorComponentView.h

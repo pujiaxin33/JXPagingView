@@ -8,14 +8,14 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
   s.swift_versions = ["4.2", "5.0"]
   s.source       = { :git => "https://github.com/pujiaxin33/JXPagingView.git", :tag => "#{s.version}" }
-  s.source_files  = "JXPagingView-Swift", "JXPagingView-Swift/**/*.swift"
+  s.source_files  = "JXPagingView", "Sources/JXPagingView/**/*.swift"
   s.license      = "MIT"
   s.subspec 'Pager' do |pager|
-    pager.source_files = 'JXPagerView', 'JXPagerView/**/*.{h,m}'
+    pager.source_files = 'JXPagerView', 'Sources/JXPagerView/**/*.{h,m}'
   end
 
   s.subspec 'Paging' do |paging|
-    paging.source_files = "JXPagingView-Swift", "JXPagingView-Swift/**/*.swift"
+    paging.source_files = "JXPagingView", "Sources/JXPagingView/**/*.swift"
   end
 
   s.requires_arc = true

@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-JXPagingViewExample/Pods-JXPagingViewExample-frameworks.sh
+${BUILT_PRODUCTS_DIR}/JXPagingView/JXPagingView.framework
+${BUILT_PRODUCTS_DIR}/JXSegmentedView/JXSegmentedView.framework
+${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework

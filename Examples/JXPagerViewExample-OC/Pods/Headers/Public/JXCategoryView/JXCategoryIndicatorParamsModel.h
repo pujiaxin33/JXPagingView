@@ -1,0 +1,1 @@
+../../../JXCategoryView/Sources/Common/JXCategoryIndicatorParamsModel.h

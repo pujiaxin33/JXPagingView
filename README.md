@@ -9,7 +9,7 @@
 - 支持首页下拉刷新、列表视图下拉刷新、列表视图上拉加载更多；
 - 支持悬浮SectionHeader的垂直位置调整；
 - 列表封装简洁，只要遵从`JXPagingViewListViewDelegate`协议即可。UIView、UIViewController等都可以；
-- 使用JXCategoryView分类控制器，几乎支持所有主流效果、高度自定义、可灵活扩展；
+- 使用JXCategoryView/JXSegmentedView分类控制器，几乎支持所有主流效果、高度自定义、可灵活扩展；
 - 支持横竖屏切换；
 - 支持点击状态栏滚动当前列表到顶部；
 - 支持列表显示和消失的生命周期方法；
@@ -109,7 +109,7 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
 
 
 /**
- 返回悬浮HeaderView。我用的是自己封装的JXCategoryView（Github:https://github.com/pujiaxin33/JXCategoryView），你也可以选择其他的三方库或者自己写
+ 返回悬浮HeaderView
  */
 - (UIView *)viewForPinSectionHeaderInPagerView:(JXPagerView *)pagerView {
     return self.categoryView;
@@ -189,8 +189,9 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
 
 ## 特殊说明
 
-### JXCategoryView
-悬浮的HeaderView，用的是我写的：[JXCategoryView](https://github.com/pujiaxin33/JXCategoryView) 几乎实现了所有主流效果，而且非常容易自定义扩展，强烈推荐阅读。
+### JXCategoryView、JXSegmentedView
+悬浮的HeaderView，用的是我写的：[OC版本-JXCategoryView](https://github.com/pujiaxin33/JXCategoryView) 、[Swift版本-JXSegmentedView](https://github.com/pujiaxin33/JXSegmentedView)。几乎实现了所有主流效果，而且非常容易自定义扩展，强烈推荐阅读。
+
 
 ### 头图缩放说明
 头图缩放原理，参考这个库：[JXTableViewZoomHeaderImageView](https://github.com/pujiaxin33/JXTableViewZoomHeaderImageView)
@@ -223,26 +224,13 @@ self.categoryView.defaultSelectedIndex = 2;
 
 ### 关于JXCategoryView点击item之后的切换处理
 
-如果要完美配合列表的懒加载机制，务必参考demo添加下面的代码：
-```Objective-C
-- (void)categoryView:(JXCategoryBaseView *)categoryView didClickedItemContentScrollViewTransitionToIndex:(NSInteger)index {
-    //请务必实现该方法
-    //因为底层触发列表加载是在代理方法：`- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath`回调里面
-    //所以，如果当前有5个item，当前在第1个，用于点击了第5个。categoryView默认是通过设置contentOffset.x滚动到指定的位置，这个时候有个问题，就会触发中间2、3、4的cellForItemAtIndexPath方法。
-    //如此一来就丧失了延迟加载的功能
-    //所以，如果你想规避这样的情况发生，那么务必按照这里的方法处理滚动。
-    [self.pagerView.listContainerView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
 
-    //如果你想相邻的两个item切换时，通过有动画滚动实现。未相邻的两个item直接切换，可以用下面这段代码
-    /*
-    NSInteger diffIndex = labs(categoryView.selectedIndex - index);
-     if (diffIndex > 1) {
-         [self.pagerView.listContainerView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
-     }else {
-         [self.pagerView.listContainerView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-     }
-     */
-}
+因为底层触发列表加载是在代理方法：`- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath`回调里面。
+所以，如果当前有5个item，当前在第1个，用户点击了第5个。categoryView默认是通过设置contentOffset.x滚动到指定的位置，这个时候有个问题，就会触发中间2、3、4的cellForItemAtIndexPath方法。也就会触发2、3、4的列表加载。
+
+为了避免这种情况，请加上下面这段代码：
+```Objective-C
+self.categoryView.contentScrollViewClickTransitionAnimationEnabled = NO;
 ```
 
 ### 关于列表用UIViewController封装且要支持横竖屏的tips
