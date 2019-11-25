@@ -109,7 +109,7 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     self.heightForPagerHeaderContainerView = self.heightForPagerHeader + self.heightForPinHeader;
 
     UIView *pagerHeader = [self.dataSource viewForPagerHeaderInPagerView:self];
-    UIView *pinHeader = [self.dataSource ViewForPinHeaderInPagerView:self];
+    UIView *pinHeader = [self.dataSource viewForPinHeaderInPagerView:self];
     [self.pagerHeaderContainerView addSubview:pagerHeader];
     [self.pagerHeaderContainerView addSubview:pinHeader];
 

@@ -79,7 +79,7 @@
     return 50;
 }
 
-- (UIView *)ViewForPinHeaderInPagerView:(JXPagerSmoothView *)pagerView {
+- (UIView *)viewForPinHeaderInPagerView:(JXPagerSmoothView *)pagerView {
     return self.categoryView;
 }
 

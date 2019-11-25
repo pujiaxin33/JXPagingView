@@ -46,7 +46,7 @@
 /**
  返回悬浮视图
  */
-- (UIView *)ViewForPinHeaderInPagerView:(JXPagerSmoothView *)pagerView;
+- (UIView *)viewForPinHeaderInPagerView:(JXPagerSmoothView *)pagerView;
 
 /**
  返回列表的数量

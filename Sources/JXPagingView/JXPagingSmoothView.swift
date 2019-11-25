@@ -25,7 +25,7 @@ import UIKit
     /// 返回悬浮视图的高度
     func heightForPinHeader(in pagingView: JXPagingSmoothView) -> CGFloat
     /// 返回悬浮视图
-    func ViewForPinHeader(in pagingView: JXPagingSmoothView) -> UIView
+    func viewForPinHeader(in pagingView: JXPagingSmoothView) -> UIView
     /// 返回列表的数量
     func numberOfLists(in pagingView: JXPagingSmoothView) -> Int
     /// 根据index初始化一个对应列表实例，需要是遵从`JXPagingSmoothViewListViewDelegate`协议的对象。
@@ -101,7 +101,7 @@ open class JXPagingSmoothView: UIView {
         heightForPagingHeaderContainerView = heightForPagingHeader + heightForPinHeader
 
         let pagingHeader = dataSource.viewForPagingHeader(in: self)
-        let pinHeader = dataSource.ViewForPinHeader(in: self)
+        let pinHeader = dataSource.viewForPinHeader(in: self)
         pagingHeaderContainerView.addSubview(pagingHeader)
         pagingHeaderContainerView.addSubview(pinHeader)
 

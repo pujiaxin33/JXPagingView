@@ -89,7 +89,7 @@ extension SmoothViewController: JXPagingSmoothViewDataSource {
         return 50
     }
 
-    func ViewForPinHeader(in pagingView: JXPagingSmoothView) -> UIView {
+    func viewForPinHeader(in pagingView: JXPagingSmoothView) -> UIView {
         return segmentedView
     }
 
