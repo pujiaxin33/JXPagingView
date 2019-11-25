@@ -33,6 +33,7 @@
 | **点击状态栏**  | ![Zoom](https://github.com/pujiaxin33/JXExampleImages/blob/master/JXPaingView/StatusBarClicked.gif) | 
 | **横竖屏旋转**  | ![Zoom](https://github.com/pujiaxin33/JXExampleImages/blob/master/JXPaingView/ScreenRotate.gif) | 
 | **JXPageListView**<br/> 顶部需要自定义cell的场景，类似于电商APP首页，滑动到列表最底部才是分类控制器 <br/> 该效果是另一个库，点击查看[JXPageListView](https://github.com/pujiaxin33/JXPageListView) <br/> 该效果是另一个库，点击查看[JXPageListView](https://github.com/pujiaxin33/JXPageListView) <br/> 该效果是另一个库，点击查看[JXPageListView](https://github.com/pujiaxin33/JXPageListView) | ![list](https://github.com/pujiaxin33/JXPageListView/blob/master/JXPageListView/Gif/headerLoading.gif) |
+| **JXPagerSmoothView**<br/> 类似淘宝、转转首页 <br/> 从顶部用力往上滚动，下面的列表会继续滚动  |  ![smooth](https://github.com/pujiaxin33/JXExampleImages/blob/master/JXPaingView/smooth.gif)  |
 
 ## 安装
 
