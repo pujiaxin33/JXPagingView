@@ -195,6 +195,8 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
 
 因为与`JXPagerView`的原理完全不同，所以各自会有一些特性的区别，但是从使用体验来说，是完全一致的。具体使用细节请参考demo示例。
 
+实现原理参考[JXPagerSmoothView文章解析](https://juejin.im/post/5ddb2fe4f265da7def5424c7)
+
 
 ## 特殊说明
 
