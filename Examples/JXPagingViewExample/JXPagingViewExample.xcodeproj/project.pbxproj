@@ -531,8 +531,9 @@
 			baseConfigurationReference = 5BA744871C0EA0BD9A6D025B /* Pods-JXPagingViewExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CUHY5967Q2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JXPagingViewExample/Swift-Bridge-Objective-C.h";
 				INFOPLIST_FILE = JXPagingViewExample/Info.plist;
@@ -541,7 +542,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXPagingViewExample;
+				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXPagingViewExample.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -554,8 +555,9 @@
 			baseConfigurationReference = 8D67C720C98DE57835BC77F5 /* Pods-JXPagingViewExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CUHY5967Q2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JXPagingViewExample/Swift-Bridge-Objective-C.h";
 				INFOPLIST_FILE = JXPagingViewExample/Info.plist;
@@ -564,7 +566,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXPagingViewExample;
+				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXPagingViewExample.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
