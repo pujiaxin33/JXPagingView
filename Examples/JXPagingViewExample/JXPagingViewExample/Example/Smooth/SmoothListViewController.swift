@@ -8,6 +8,7 @@
 
 import UIKit
 import JXPagingView
+import MJRefresh
 
 class SmoothListViewController: UIViewController, JXPagingSmoothViewListViewDelegate, UITableViewDataSource {
     lazy var tableView: UITableView = {
@@ -19,6 +20,16 @@ class SmoothListViewController: UIViewController, JXPagingSmoothViewListViewDele
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
         view.addSubview(tableView)
+
+        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(headerRefresh))
+        tableView.mj_header.ignoredScrollViewContentInsetTop = 350
+    }
+
+    @objc func headerRefresh() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(2)) {
+            self.tableView.mj_header.endRefreshing()
+            //TODO:每个列表的下拉刷新事件，需要同时交给SmoothViewController类进行顶部header的刷新
+        }
     }
 
     override func viewDidLayoutSubviews() {

@@ -46,6 +46,7 @@ class SmoothViewController: UIViewController {
         line.indicatorWidth = 30
         segmentedView.indicators = [line]
 
+        headerView.clipsToBounds = true
         headerView.contentMode = .scaleAspectFill
 
         segmentedView.contentScrollView = paging.listCollectionView
