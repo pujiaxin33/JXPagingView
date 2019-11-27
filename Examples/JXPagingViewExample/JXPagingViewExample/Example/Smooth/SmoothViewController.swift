@@ -9,6 +9,7 @@
 import UIKit
 import JXPagingView
 import JXSegmentedView
+import MJRefresh
 
 class SmoothViewController: UIViewController {
     lazy var paging: JXPagingSmoothView = {
@@ -100,7 +101,20 @@ extension SmoothViewController: JXPagingSmoothViewDataSource {
 
     func pagingView(_ pagingView: JXPagingSmoothView, initListAtIndex index: Int) -> JXPagingSmoothViewListViewDelegate {
         let vc = SmoothListViewController()
+        vc.delegate = self
         vc.title = dataSource.titles[index]
         return vc
+    }
+}
+
+extension SmoothViewController: SmoothListViewControllerDelegate {
+    func startRefresh() {
+        paging.listCollectionView.isScrollEnabled = false
+        segmentedView.isUserInteractionEnabled = false
+    }
+
+    func endRefresh() {
+        paging.listCollectionView.isScrollEnabled = true
+        segmentedView.isUserInteractionEnabled = true
     }
 }

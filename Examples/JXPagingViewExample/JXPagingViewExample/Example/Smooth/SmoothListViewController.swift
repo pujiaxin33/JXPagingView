@@ -10,7 +10,13 @@ import UIKit
 import JXPagingView
 import MJRefresh
 
+@objc protocol SmoothListViewControllerDelegate {
+    func startRefresh()
+    func endRefresh()
+}
+
 class SmoothListViewController: UIViewController, JXPagingSmoothViewListViewDelegate, UITableViewDataSource {
+    weak var delegate: SmoothListViewControllerDelegate?
     lazy var tableView: UITableView = {
         return UITableView(frame: CGRect.zero, style: .plain)
     }()
@@ -26,9 +32,10 @@ class SmoothListViewController: UIViewController, JXPagingSmoothViewListViewDele
     }
 
     @objc func headerRefresh() {
+        delegate?.startRefresh()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(2)) {
             self.tableView.mj_header.endRefreshing()
-            //TODO:每个列表的下拉刷新事件，需要同时交给SmoothViewController类进行顶部header的刷新
+            self.delegate?.endRefresh()
         }
     }
 
