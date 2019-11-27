@@ -7,6 +7,7 @@
 //
 
 #import "SmoothListViewController.h"
+#import <MJRefresh/MJRefresh.h>
 
 @interface SmoothListViewController () <UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -29,6 +30,18 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
+
+    if (self.isNeedHeaderRefresh) {
+        __weak typeof(self)weakSelf = self;
+        self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [weakSelf.delegate startHeaderRefresh];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf.tableView.mj_header endRefreshing];
+                [weakSelf.delegate endHeaderRefresh];
+            });
+        }];
+        self.tableView.mj_header.ignoredScrollViewContentInsetTop = [self.delegate pagerHeaderContainerHeight];//pageHeader+pinHeader的高度
+    }
 }
 
 - (void)viewDidLayoutSubviews {

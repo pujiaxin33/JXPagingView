@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JXPagerSmoothView.h"
+#import "JXCategoryTitleView.h"
 
 typedef NS_ENUM(NSUInteger, SmoothListType) {
     SmoothListType_TableView,
@@ -17,7 +19,11 @@ typedef NS_ENUM(NSUInteger, SmoothListType) {
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SmoothViewController : UIViewController
+
+@property (nonatomic, strong) JXPagerSmoothView *pager;
+@property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, assign) SmoothListType type;
+
 @end
 
 NS_ASSUME_NONNULL_END

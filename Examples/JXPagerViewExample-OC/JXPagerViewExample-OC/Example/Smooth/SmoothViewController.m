@@ -7,16 +7,12 @@
 //
 
 #import "SmoothViewController.h"
-#import "JXPagerSmoothView.h"
 #import "SmoothListViewController.h"
-#import "JXCategoryTitleView.h"
 #import "JXCategoryIndicatorLineView.h"
 #import "SmoothListCollectionViewController.h"
 #import "SmoothListScrollViewController.h"
 
 @interface SmoothViewController () <JXPagerSmoothViewDataSource>
-@property (nonatomic, strong) JXPagerSmoothView *pager;
-@property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) UIImageView *headerView;
 @end
 
@@ -35,7 +31,7 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = false;
-
+    
     self.pager = [[JXPagerSmoothView alloc] initWithDataSource:self];
     [self.view addSubview:self.pager];
 
@@ -109,8 +105,5 @@
         }
     }
 }
-
-
-
 
 @end

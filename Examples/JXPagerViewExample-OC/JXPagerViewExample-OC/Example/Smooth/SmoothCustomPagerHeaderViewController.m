@@ -8,8 +8,9 @@
 
 #import "SmoothCustomPagerHeaderViewController.h"
 #import "JXPagerSmoothView.h"
+#import "SmoothListViewController.h"
 
-@interface SmoothCustomPagerHeaderViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface SmoothCustomPagerHeaderViewController () <UITableViewDataSource, UITableViewDelegate, SmoothListViewControllerDelegate>
 @property (nonatomic, strong) UITableView *pagerHeader;
 @property (nonatomic, assign) NSInteger cellCount;
 @property (nonatomic, assign) CGFloat cellHeight;
@@ -54,6 +55,30 @@
 
 - (UIView *)viewForPagerHeaderInPagerView:(JXPagerSmoothView *)pagerView {
     return self.pagerHeader;
+}
+
+- (id<JXPagerSmoothViewListViewDelegate>)pagerView:(JXPagerSmoothView *)pagerView initListAtIndex:(NSInteger)index {
+    SmoothListViewController *listVC = [[SmoothListViewController alloc] init];
+    listVC.isNeedHeaderRefresh = YES;
+    listVC.delegate = self;
+    listVC.title = self.categoryView.titles[index];
+    return listVC;
+}
+
+#pragma mark - SmoothListViewControllerDelegate
+
+- (void)startHeaderRefresh {
+    self.pager.listCollectionView.scrollEnabled = NO;
+    self.categoryView.userInteractionEnabled = NO;
+}
+
+- (void)endHeaderRefresh {
+    self.pager.listCollectionView.scrollEnabled = YES;
+    self.categoryView.userInteractionEnabled = YES;
+}
+
+- (CGFloat)pagerHeaderContainerHeight {
+    return self.cellCount * self.cellHeight + 50;
 }
 
 @end
