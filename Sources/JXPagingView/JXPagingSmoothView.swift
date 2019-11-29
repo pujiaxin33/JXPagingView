@@ -72,6 +72,9 @@ open class JXPagingSmoothView: UIView {
         listCollectionView.showsHorizontalScrollIndicator = false
         listCollectionView.scrollsToTop = false
         listCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        if #available(iOS 10.0, *) {
+            listCollectionView.isPrefetchingEnabled = false
+        }
         if #available(iOS 11.0, *) {
             listCollectionView.contentInsetAdjustmentBehavior = .never
         }

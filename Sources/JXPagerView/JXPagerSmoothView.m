@@ -75,6 +75,9 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     self.listCollectionView.showsHorizontalScrollIndicator = NO;
     self.listCollectionView.scrollsToTop = NO;
     [self.listCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:JXPagerSmoothViewCollectionViewCellIdentifier];
+    if (@available(iOS 10.0, *)) {
+        self.listCollectionView.prefetchingEnabled = NO;
+    }
     if (@available(iOS 11.0, *)) {
         self.listCollectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
