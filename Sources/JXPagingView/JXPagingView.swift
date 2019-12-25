@@ -113,16 +113,11 @@ open class JXPagingView: UIView {
     public var currentScrollingListView: UIScrollView?
     public var currentList: JXPagingViewListViewDelegate?
     private weak var delegate: JXPagingViewDelegate?
-    private var currentDeviceOrientation: UIDeviceOrientation?
     private var currentIndex: Int = 0
     private var retainedSelf: JXPagingView?
     private var isWillRemoveFromWindow: Bool = false
     private var isFirstMoveToWindow: Bool = true
     private var tableHeaderContainerView: UIView?
-
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
-    }
 
     public init(delegate: JXPagingViewDelegate) {
         self.delegate = delegate
@@ -156,9 +151,6 @@ open class JXPagingView: UIView {
         listContainerView.mainTableView = mainTableView
 
         refreshListHorizontalScrollEnabledState()
-
-        self.currentDeviceOrientation = UIDevice.current.orientation
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationDidChange(notification:)), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 
     open override func willMove(toWindow newWindow: UIWindow?) {
@@ -187,7 +179,10 @@ open class JXPagingView: UIView {
     override open func layoutSubviews() {
         super.layoutSubviews()
 
-        mainTableView.frame = self.bounds
+        if mainTableView.frame != bounds {
+            mainTableView.frame = bounds
+            mainTableView.reloadData()
+        }
     }
 
     open func reloadData() {
@@ -322,19 +317,6 @@ open class JXPagingView: UIView {
         self.currentScrollingListView = scrollView
 
         preferredProcessListViewDidScroll(scrollView: scrollView)
-    }
-
-    @objc func deviceOrientationDidChange(notification: Notification) {
-        guard isDeviceOrientationChangeEnabled else {
-            return
-        }
-        if self.currentDeviceOrientation != UIDevice.current.orientation {
-            self.currentDeviceOrientation = UIDevice.current.orientation
-            //前后台切换也会触发该通知，所以不相同的时候才处理
-            mainTableView.reloadData()
-            listContainerView.deviceOrientationDidChanged()
-            listContainerView.reloadData()
-        }
     }
 
     @objc func currentListDidDisappear() {

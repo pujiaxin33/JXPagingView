@@ -65,14 +65,15 @@ public class JXPagingListContainerCollectionView: UICollectionView, UIGestureRec
 }
 
 open class JXPagingListContainerView: UIView {
-    /// 需要和self.categoryView.defaultSelectedIndex保持一致
-    open var defaultSelectedIndex: Int = 0
+    open var defaultSelectedIndex: Int = 0 {
+        didSet {
+            selectedIndex = defaultSelectedIndex
+        }
+    }
     open var collectionView: JXPagingListContainerCollectionView!
     unowned var delegate: JXPagingListContainerViewDelegate
     weak var mainTableView: JXPagingMainTableView?
-
-    private var selectedIndexPath: IndexPath?
-    private var isFirstLayoutSubviews: Bool = true
+    private var selectedIndex: Int = 0
 
     public init(delegate: JXPagingListContainerViewDelegate) {
         self.delegate = delegate
@@ -114,24 +115,18 @@ open class JXPagingListContainerView: UIView {
     override open func layoutSubviews() {
         super.layoutSubviews()
 
-        collectionView.frame = self.bounds
-        if selectedIndexPath != nil && self.delegate.numberOfRows(in: self) >= 1 + selectedIndexPath!.item {
-            collectionView.scrollToItem(at: selectedIndexPath!, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: false)
-        }
-        if isFirstLayoutSubviews {
-            isFirstLayoutSubviews = false
-            collectionView.setContentOffset(CGPoint(x: self.collectionView.bounds.size.width*CGFloat(self.defaultSelectedIndex), y: 0), animated: false)
+        if collectionView.frame != bounds {
+            //因为`collectionView.frame = bounds`会触发`scrollViewDidScroll`导致selectedIndex无效，所以用临时变量currentIndex记录。
+            let currentIndex = selectedIndex
+            collectionView.collectionViewLayout.invalidateLayout()
+            collectionView.frame = bounds
+            collectionView.reloadData()
+            collectionView.setContentOffset(CGPoint(x: self.collectionView.bounds.size.width*CGFloat(currentIndex), y: 0), animated: false)
         }
     }
 
     open func reloadData() {
         self.collectionView.reloadData()
-    }
-
-    open func deviceOrientationDidChanged() {
-        if bounds.size.width > 0 {
-            selectedIndexPath = IndexPath(item: Int(collectionView.contentOffset.x/bounds.size.width), section: 0)
-        }
     }
 }
 
@@ -162,6 +157,10 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
 
     public func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return false
+    }
+
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        selectedIndex = Int(scrollView.contentOffset.x/scrollView.bounds.size.width)
     }
 
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

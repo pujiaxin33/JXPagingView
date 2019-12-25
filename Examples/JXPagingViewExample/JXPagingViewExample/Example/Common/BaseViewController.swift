@@ -56,7 +56,6 @@ class BaseViewController: UIViewController {
 
         pagingView = preferredPagingView()
         pagingView.mainTableView.gestureDelegate = self
-
         self.view.addSubview(pagingView)
         
         segmentedView.contentScrollView = pagingView.listContainerView.collectionView
