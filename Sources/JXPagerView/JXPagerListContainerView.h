@@ -52,7 +52,6 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
 
 - (void)reloadData;
-- (void)deviceOrientationDidChanged;
 
 @end
 

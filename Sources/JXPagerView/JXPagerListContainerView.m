@@ -12,8 +12,7 @@
 @interface JXPagerListContainerView() <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, weak) id<JXPagerListContainerViewDelegate> delegate;
 @property (nonatomic, strong) JXPagerListContainerCollectionView *collectionView;
-@property (nonatomic, strong) NSIndexPath *selectedIndexPath;
-@property (nonatomic, assign) BOOL isFirstLayoutSubviews;
+@property (nonatomic, assign) NSInteger selectedIndex;
 @end
 
 @implementation JXPagerListContainerView
@@ -22,7 +21,6 @@
     self = [super initWithFrame:CGRectZero];
     if (self) {
         _delegate = delegate;
-        _isFirstLayoutSubviews = YES;
         [self initializeViews];
     }
     return self;
@@ -56,16 +54,12 @@
     [super layoutSubviews];
 
     if (!CGRectEqualToRect(self.collectionView.frame, self.bounds)) {
+        //因为`self.collectionView.frame = self.bounds`会触发`scrollViewDidScroll`导致selectedIndex无效，所以用临时变量currentIndex记录。
+        NSInteger currentIndex = self.selectedIndex;
         [self.collectionView.collectionViewLayout invalidateLayout];
         self.collectionView.frame = self.bounds;
         [self.collectionView reloadData];
-    }
-    if (self.selectedIndexPath != nil && [self.delegate numberOfRowsInListContainerView:self] >= self.selectedIndexPath.item + 1) {
-        [self.collectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
-    }
-    if (self.isFirstLayoutSubviews) {
-        self.isFirstLayoutSubviews = NO;
-        [self.collectionView setContentOffset:CGPointMake(self.collectionView.bounds.size.width*self.defaultSelectedIndex, 0) animated:NO];
+        [self.collectionView setContentOffset:CGPointMake(self.collectionView.bounds.size.width*currentIndex, 0) animated:NO];
     }
 }
 
@@ -73,10 +67,9 @@
     [self.collectionView reloadData];
 }
 
-- (void)deviceOrientationDidChanged {
-    if (self.bounds.size.width > 0) {
-        self.selectedIndexPath = [NSIndexPath indexPathForItem:self.collectionView.contentOffset.x/self.bounds.size.width inSection:0];
-    }
+- (void)setDefaultSelectedIndex:(NSInteger)defaultSelectedIndex {
+    _defaultSelectedIndex = defaultSelectedIndex;
+    self.selectedIndex = defaultSelectedIndex;
 }
 
 #pragma mark - UICollectionViewDataSource, UICollectionViewDelegate
@@ -106,6 +99,10 @@
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
     return false;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    self.selectedIndex = self.collectionView.contentOffset.x/self.bounds.size.width;
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {

@@ -140,10 +140,6 @@
  */
 @property (nonatomic, assign) NSInteger pinSectionHeaderVerticalOffset;
 /**
- 是否支持设备旋转，默认为NO
- */
-@property (nonatomic, assign, getter=isDeviceOrientationChangeEnabled) BOOL deviceOrientationChangeEnabled;
-/**
  是否允许列表左右滑动。默认：YES
  */
 @property (nonatomic, assign) BOOL isListHorizontalScrollEnabled;

@@ -15,7 +15,6 @@
 @property (nonatomic, strong) UIScrollView *currentScrollingListView;
 @property (nonatomic, strong) id<JXPagerViewListViewDelegate> currentList;
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXPagerViewListViewDelegate>> *validListDict;
-@property (nonatomic, assign) UIDeviceOrientation currentDeviceOrientation;
 @property (nonatomic, assign) NSInteger currentIndex;
 @property (nonatomic, assign) BOOL willRemoveFromWindow;
 @property (nonatomic, assign) BOOL isFirstMoveToWindow;
@@ -25,18 +24,12 @@
 
 @implementation JXPagerView
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
-}
-
 - (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate {
     self = [super initWithFrame:CGRectZero];
     if (self) {
         _delegate = delegate;
         _validListDict = [NSMutableDictionary dictionary];
         _automaticallyDisplayListVerticalScrollIndicator = YES;
-        _deviceOrientationChangeEnabled = NO;
         [self initializeViews];
     }
     return self;
@@ -145,16 +138,6 @@
     self.currentScrollingListView = scrollView;
 
     [self preferredProcessListViewDidScroll:scrollView];
-}
-
-- (void)deviceOrientationDidChangeNotification:(NSNotification *)notification {
-    if (self.isDeviceOrientationChangeEnabled && self.currentDeviceOrientation != [UIDevice currentDevice].orientation) {
-        self.currentDeviceOrientation = [UIDevice currentDevice].orientation;
-        //前后台切换也会触发该通知，所以不相同的时候才处理
-        [self.mainTableView reloadData];
-        [self.listContainerView deviceOrientationDidChanged];
-        [self.listContainerView reloadData];
-    }
 }
 
 - (void)currentListDidAppear {
@@ -358,9 +341,6 @@
     self.listContainerView.mainTableView = self.mainTableView;
 
     self.isListHorizontalScrollEnabled = YES;
-
-    self.currentDeviceOrientation = [UIDevice currentDevice].orientation;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChangeNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 - (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView {
