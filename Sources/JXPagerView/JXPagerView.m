@@ -94,16 +94,16 @@
     [self.listContainerView reloadData];
 }
 
-- (void)resizeTableHeaderViewHeightWithAnimatable:(BOOL)animatable duration:(NSTimeInterval)duration curve:(UIViewAnimationCurve)curve {
+- (void)resizeTableHeaderViewHeightWithAnimatable:(BOOL)animatable duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options {
     if (animatable) {
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:duration];
-        [UIView setAnimationCurve:curve];
-        CGRect frame = self.tableHeaderContainerView.bounds;
-        frame.size.height = [self.delegate tableHeaderViewHeightInPagerView:self];
-        self.tableHeaderContainerView.frame = frame;
-        self.mainTableView.tableHeaderView = self.tableHeaderContainerView;
-        [UIView commitAnimations];
+        [UIView animateWithDuration:duration delay:0 options:options animations:^{
+            CGRect frame = self.tableHeaderContainerView.bounds;
+            frame.size.height = [self.delegate tableHeaderViewHeightInPagerView:self];
+            self.tableHeaderContainerView.frame = frame;
+            self.mainTableView.tableHeaderView = self.tableHeaderContainerView;
+            [self.mainTableView setNeedsLayout];
+            [self.mainTableView layoutIfNeeded];
+        } completion:^(BOOL finished) { }];
     }else {
         CGRect frame = self.tableHeaderContainerView.bounds;
         frame.size.height = [self.delegate tableHeaderViewHeightInPagerView:self];

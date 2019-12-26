@@ -20,7 +20,7 @@ class ViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath)
         var title: String?
         for view in cell!.contentView.subviews {
-            if view.isKind(of: UILabel.classForCoder()) {
+            if view.isKind(of: UILabel.self) {
                 let label = view as! UILabel
                 title = label.text
                 break

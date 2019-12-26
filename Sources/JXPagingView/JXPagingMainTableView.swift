@@ -14,13 +14,13 @@ import UIKit
 }
 
 open class JXPagingMainTableView: UITableView, UIGestureRecognizerDelegate {
-    open weak var gestureDelegate: JXPagingMainTableViewGestureDelegate?
+    public weak var gestureDelegate: JXPagingMainTableViewGestureDelegate?
 
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureDelegate != nil {
             return gestureDelegate!.mainTableViewGestureRecognizer(gestureRecognizer, shouldRecognizeSimultaneouslyWith:otherGestureRecognizer)
         }else {
-            return gestureRecognizer.isKind(of: UIPanGestureRecognizer.classForCoder()) && otherGestureRecognizer.isKind(of: UIPanGestureRecognizer.classForCoder())
+            return gestureRecognizer.isKind(of: UIPanGestureRecognizer.self) && otherGestureRecognizer.isKind(of: UIPanGestureRecognizer.self)
         }
     }
 }

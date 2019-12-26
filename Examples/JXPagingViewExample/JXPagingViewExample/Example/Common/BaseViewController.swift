@@ -147,6 +147,6 @@ extension BaseViewController: JXPagingMainTableViewGestureDelegate {
         if otherGestureRecognizer == segmentedView?.collectionView.panGestureRecognizer {
             return false
         }
-        return gestureRecognizer.isKind(of: UIPanGestureRecognizer.classForCoder()) && otherGestureRecognizer.isKind(of: UIPanGestureRecognizer.classForCoder())
+        return gestureRecognizer.isKind(of: UIPanGestureRecognizer.self) && otherGestureRecognizer.isKind(of: UIPanGestureRecognizer.self)
     }
 }

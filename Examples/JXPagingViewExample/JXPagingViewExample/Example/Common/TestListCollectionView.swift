@@ -53,7 +53,7 @@ class TestListCollectionView: UIView {
         collectionView?.backgroundColor = .white
         collectionView?.dataSource = self
         collectionView?.delegate = self
-        collectionView?.register(TestListCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "cell")
+        collectionView?.register(TestListCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         addSubview(collectionView!)
     }
 

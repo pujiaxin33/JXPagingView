@@ -9,14 +9,12 @@
 import UIKit
 
 @objc public protocol JXPagingListContainerViewDelegate {
-
     func numberOfRows(in listContainerView: JXPagingListContainerView) -> Int
-
     func listContainerView(_ listContainerView: JXPagingListContainerView, viewForListInRow row: Int) -> UIView
-
     func listContainerView(_ listContainerView: JXPagingListContainerView, willDisplayCellAt row: Int)
-
     func listContainerView(_ listContainerView: JXPagingListContainerView, didEndDisplayingCellAt row: Int)
+    func listContainerViewWillBeginDragging(_ listContainerView: JXPagingListContainerView)
+    func listContainerViewDidEndScrolling(_ listContainerView: JXPagingListContainerView)
 }
 
 @objc public protocol JXPagingListContainerCollectionViewGestureDelegate {
@@ -30,7 +28,7 @@ public class JXPagingListContainerCollectionView: UICollectionView, UIGestureRec
 
     public override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         //如果有代理，就以代理的处理为准
-        if let result = self.gestureDelegate?.pagingListContainerCollectionView?(self, gestureRecognizerShouldBegin: gestureRecognizer) {
+        if let result = gestureDelegate?.pagingListContainerCollectionView?(self, gestureRecognizerShouldBegin: gestureRecognizer) {
             return result
         }else {
             if isNestEnabled {
@@ -40,12 +38,12 @@ public class JXPagingListContainerCollectionView: UICollectionView, UIGestureRec
                     let velocityX = panGesture.velocity(in: panGesture.view!).x
                     if velocityX > 0 {
                         //当前在第一个页面，且往左滑动，就放弃该手势响应，让外层接收，达到多个PagingView左右切换效果
-                        if self.contentOffset.x == 0 {
+                        if contentOffset.x == 0 {
                             return false
                         }
                     }else if velocityX < 0 {
                         //当前在最后一个页面，且往右滑动，就放弃该手势响应，让外层接收，达到多个PagingView左右切换效果
-                        if self.contentOffset.x + self.bounds.size.width == self.contentSize.width {
+                        if contentOffset.x + bounds.size.width == contentSize.width {
                             return false
                         }
                     }
@@ -65,22 +63,25 @@ public class JXPagingListContainerCollectionView: UICollectionView, UIGestureRec
 }
 
 open class JXPagingListContainerView: UIView {
-    open var defaultSelectedIndex: Int = 0 {
+    public var defaultSelectedIndex: Int = 0 {
         didSet {
             selectedIndex = defaultSelectedIndex
         }
     }
-    open var collectionView: JXPagingListContainerCollectionView!
+    public let collectionView: JXPagingListContainerCollectionView
     unowned var delegate: JXPagingListContainerViewDelegate
-    weak var mainTableView: JXPagingMainTableView?
     private var selectedIndex: Int = 0
 
     public init(delegate: JXPagingListContainerViewDelegate) {
         self.delegate = delegate
-
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        layout.scrollDirection = .horizontal
+        collectionView = JXPagingListContainerCollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         super.init(frame: CGRect.zero)
 
-        self.initializeViews()
+        initializeViews()
     }
 
     @available(*, unavailable)
@@ -88,12 +89,7 @@ open class JXPagingListContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open func initializeViews() {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.scrollDirection = .horizontal
-        collectionView = JXPagingListContainerCollectionView(frame: self.bounds, collectionViewLayout: layout)
+    func initializeViews() {
         collectionView.backgroundColor = .white
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
@@ -102,14 +98,14 @@ open class JXPagingListContainerView: UIView {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.scrollsToTop = false
-        collectionView.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "cell")
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         if #available(iOS 10.0, *) {
             collectionView.isPrefetchingEnabled = false
         }
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .never
         }
-        self.addSubview(collectionView)
+        addSubview(collectionView)
     }
 
     override open func layoutSubviews() {
@@ -121,19 +117,19 @@ open class JXPagingListContainerView: UIView {
             collectionView.collectionViewLayout.invalidateLayout()
             collectionView.frame = bounds
             collectionView.reloadData()
-            collectionView.setContentOffset(CGPoint(x: self.collectionView.bounds.size.width*CGFloat(currentIndex), y: 0), animated: false)
+            collectionView.setContentOffset(CGPoint(x: collectionView.bounds.size.width*CGFloat(currentIndex), y: 0), animated: false)
         }
     }
 
     open func reloadData() {
-        self.collectionView.reloadData()
+        collectionView.reloadData()
     }
 }
 
 extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionViewDelegate {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.delegate.numberOfRows(in: self)
+        return delegate.numberOfRows(in: self)
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -141,18 +137,18 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
         for view in cell.contentView.subviews {
             view.removeFromSuperview()
         }
-        let listView = self.delegate.listContainerView(self, viewForListInRow: indexPath.item)
+        let listView = delegate.listContainerView(self, viewForListInRow: indexPath.item)
         listView.frame = cell.bounds
         cell.contentView.addSubview(listView)
         return cell
     }
 
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        self.delegate.listContainerView(self, willDisplayCellAt: indexPath.item)
+        delegate.listContainerView(self, willDisplayCellAt: indexPath.item)
     }
 
     public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        self.delegate.listContainerView(self, didEndDisplayingCellAt: indexPath.item)
+        delegate.listContainerView(self, didEndDisplayingCellAt: indexPath.item)
     }
 
     public func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -164,26 +160,26 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
     }
 
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.mainTableView?.isScrollEnabled = false
+        delegate.listContainerViewWillBeginDragging(self)
     }
 
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
-            self.mainTableView?.isScrollEnabled = true
+            delegate.listContainerViewDidEndScrolling(self)
         }
     }
 
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        self.mainTableView?.isScrollEnabled = true
+        delegate.listContainerViewDidEndScrolling(self)
     }
 
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        self.mainTableView?.isScrollEnabled = true
+        delegate.listContainerViewDidEndScrolling(self)
     }
 }
 
 extension JXPagingListContainerView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return self.bounds.size
+        return bounds.size
     }
 }

@@ -52,7 +52,7 @@ import MJRefresh
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(TestTableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
+        tableView.register(TestTableViewCell.self, forCellReuseIdentifier: "cell")
         addSubview(tableView)
     }
 

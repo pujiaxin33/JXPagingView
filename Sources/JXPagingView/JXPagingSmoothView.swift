@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc public protocol JXPagingSmoothViewListViewDelegate: NSObjectProtocol {
+@objc public protocol JXPagingSmoothViewListViewDelegate {
     /// 返回listView。如果是vc包裹的就是vc.view；如果是自定义view包裹的，就是自定义view自己。
     func listView() -> UIView
     /// 返回JXPagerSmoothViewListViewDelegate内部持有的UIScrollView或UITableView或UICollectionView
@@ -17,7 +17,7 @@ import UIKit
     @objc optional func listDidDisappear()
 }
 
-@objc public protocol JXPagingSmoothViewDataSource: NSObjectProtocol {
+@objc public protocol JXPagingSmoothViewDataSource {
     /// 返回页面header的高度
     func heightForPagingHeader(in pagingView: JXPagingSmoothView) -> CGFloat
     /// 返回页面header视图
@@ -38,8 +38,8 @@ open class JXPagingSmoothView: UIView {
     public private(set) var listDict = [Int : JXPagingSmoothViewListViewDelegate]()
     public let listCollectionView: JXPagingSmoothCollectionView
     public var defaultSelectedIndex: Int = 0
-    public let dataSource: JXPagingSmoothViewDataSource
 
+    unowned var dataSource: JXPagingSmoothViewDataSource
     var listHeaderDict = [Int : UIView]()
     var isSyncListContentOffsetEnabled: Bool = false
     let pagingHeaderContainerView: UIView
@@ -180,7 +180,7 @@ open class JXPagingSmoothView: UIView {
     func listHeader(for listScrollView: UIScrollView) -> UIView? {
         for (index, list) in listDict {
             if list.listScrollView() == listScrollView {
-                return self.listHeaderDict[index]
+                return listHeaderDict[index]
             }
         }
         return nil
