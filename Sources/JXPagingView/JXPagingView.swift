@@ -183,8 +183,15 @@ open class JXPagingView: UIView {
         listContainerView.reloadData()
     }
 
-    open func resizeTableHeaderViewHeight(animatable: Bool = false, duration: TimeInterval = 0.25, options: UIView.AnimationOptions = [.curveLinear]) {
+    open func resizeTableHeaderViewHeight(animatable: Bool = false, duration: TimeInterval = 0.25, curve: UIView.AnimationCurve = .linear) {
         if animatable {
+            var options: UIView.AnimationOptions = .curveLinear
+            switch curve {
+            case .easeIn: options = .curveEaseIn
+            case .easeOut: options = .curveEaseOut
+            case .easeInOut: options = .curveEaseInOut
+            default: break
+            }
             var bounds = tableHeaderContainerView.bounds
             bounds.size.height = CGFloat(delegate.tableHeaderViewHeight(in: self))
             UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
