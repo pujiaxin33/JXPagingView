@@ -19,6 +19,7 @@
 #import "ScrollToListCellViewController.h"
 #import "SmoothViewController.h"
 #import "SmoothCustomPagerHeaderViewController.h"
+#import "MainTableViewOffsetViewController.h"
 
 @interface ViewController ()
 
@@ -140,6 +141,13 @@
             SmoothCustomPagerHeaderViewController *vc = [[SmoothCustomPagerHeaderViewController alloc] init];
             vc.title = title;
             vc.type = SmoothListType_TableView;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 14:
+        {
+            MainTableViewOffsetViewController *vc = [[MainTableViewOffsetViewController alloc] init];
+            vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;

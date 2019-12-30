@@ -34,6 +34,7 @@
 		19A735B7223BA91C008BB403 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A735B6223BA91C008BB403 /* BaseNavigationController.m */; };
 		19B9EA3423B9CD570099E656 /* TestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA3223B9CD560099E656 /* TestListBaseView.m */; };
 		19B9EA3723B9D0940099E656 /* PagingNestCategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA3623B9D0940099E656 /* PagingNestCategoryListViewController.m */; };
+		19B9EA4123B9F86A0099E656 /* MainTableViewOffsetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA4023B9F86A0099E656 /* MainTableViewOffsetViewController.m */; };
 		19C417CD215F1B630090E518 /* UIWindow+JXSafeArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */; };
 		19F152DC2387D49D0043A86E /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19F152DB2387D49C0043A86E /* lufei.jpg */; };
 		19FAC8F3238247820041E1C9 /* SmoothListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FAC8F2238247820041E1C9 /* SmoothListViewController.m */; };
@@ -96,6 +97,8 @@
 		19B9EA3323B9CD570099E656 /* TestListBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestListBaseView.h; sourceTree = "<group>"; };
 		19B9EA3523B9D0940099E656 /* PagingNestCategoryListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagingNestCategoryListViewController.h; sourceTree = "<group>"; };
 		19B9EA3623B9D0940099E656 /* PagingNestCategoryListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagingNestCategoryListViewController.m; sourceTree = "<group>"; };
+		19B9EA3F23B9F86A0099E656 /* MainTableViewOffsetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTableViewOffsetViewController.h; sourceTree = "<group>"; };
+		19B9EA4023B9F86A0099E656 /* MainTableViewOffsetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTableViewOffsetViewController.m; sourceTree = "<group>"; };
 		19C417CB215F1B630090E518 /* UIWindow+JXSafeArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+JXSafeArea.h"; sourceTree = "<group>"; };
 		19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+JXSafeArea.m"; sourceTree = "<group>"; };
 		19F152DA2387D18D0043A86E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -227,6 +230,7 @@
 		196428192148E58C009C1D31 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				19B9EA3E23B9F8490099E656 /* MainTableViewOffset */,
 				19502A76237E741500C10560 /* Smooth */,
 				195C3D7E22BCC5AB00521461 /* ScrollToListCell */,
 				195C3D7A22BCC46A00521461 /* ScrollToTop */,
@@ -307,6 +311,15 @@
 				197B3A3D2182B22900561F08 /* TestNestListBaseView.m */,
 			);
 			path = Nest;
+			sourceTree = "<group>";
+		};
+		19B9EA3E23B9F8490099E656 /* MainTableViewOffset */ = {
+			isa = PBXGroup;
+			children = (
+				19B9EA3F23B9F86A0099E656 /* MainTableViewOffsetViewController.h */,
+				19B9EA4023B9F86A0099E656 /* MainTableViewOffsetViewController.m */,
+			);
+			path = MainTableViewOffset;
 			sourceTree = "<group>";
 		};
 		7FC047E60E9F785952801AA5 /* Frameworks */ = {
@@ -465,6 +478,7 @@
 				196428082148E47F009C1D31 /* ViewController.m in Sources */,
 				197B3A382182B13E00561F08 /* PagingNestCategoryViewController.m in Sources */,
 				19FAC94A23827F160041E1C9 /* SmoothListCollectionViewController.m in Sources */,
+				19B9EA4123B9F86A0099E656 /* MainTableViewOffsetViewController.m in Sources */,
 				190921DA22B1F8990045D18F /* ReloadWithoutInitListViewController.m in Sources */,
 				19FAC94D23828B350041E1C9 /* SmoothListScrollViewController.m in Sources */,
 				195C3D7D22BCC4B000521461 /* ScrollToTopViewController.m in Sources */,
