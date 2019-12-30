@@ -144,7 +144,7 @@
             [[self.delegate scrollViewClassInlistContainerView:self] isKindOfClass:object_getClass([UIScrollView class])]) {
             _scrollView = (UICollectionView *)[[[self.delegate scrollViewClassInlistContainerView:self] alloc] init];
         }else {
-            _scrollView = [[UIScrollView alloc] init];
+            _scrollView = [[JXPagerListContainerScrollView alloc] init];
         }
         self.scrollView.delegate = self;
         self.scrollView.pagingEnabled = YES;
@@ -166,7 +166,7 @@
             [[self.delegate scrollViewClassInlistContainerView:self] isKindOfClass:object_getClass([UICollectionView class])]) {
             _collectionView = (UICollectionView *)[[[self.delegate scrollViewClassInlistContainerView:self] alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         }else {
-            _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+            _collectionView = [[JXPagerListContainerCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         }
         self.collectionView.pagingEnabled = YES;
         self.collectionView.showsHorizontalScrollIndicator = NO;

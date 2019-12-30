@@ -11,8 +11,8 @@ import UIKit
 open class JXPagingListRefreshView: JXPagingView {
     private var lastScrollingListViewContentOffsetY: CGFloat = 0
 
-    public override init(delegate: JXPagingViewDelegate) {
-        super.init(delegate: delegate)
+    public override init(delegate: JXPagingViewDelegate, listContainerType: JXPagingListContainerType = .collectionView) {
+        super.init(delegate: delegate, listContainerType: listContainerType)
 
         mainTableView.bounces = false
     }

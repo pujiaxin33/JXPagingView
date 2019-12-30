@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		194A933723B9BFF600C05DBA /* NestSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194A933623B9BFF600C05DBA /* NestSubjectViewController.swift */; };
+		19B9EA3B23B9EA550099E656 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA3A23B9EA550099E656 /* ListViewController.swift */; };
+		19B9EA3D23B9F0340099E656 /* ListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA3C23B9F0340099E656 /* ListCollectionViewController.swift */; };
 		19F152EC2387DBA60043A86E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F152EB2387DBA60043A86E /* AppDelegate.swift */; };
 		19F152F02387DBA60043A86E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F152EF2387DBA60043A86E /* ViewController.swift */; };
 		19F152F32387DBA60043A86E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F152F12387DBA60043A86E /* Main.storyboard */; };
@@ -26,8 +28,6 @@
 		19F1532B2387DCCC0043A86E /* PagingViewTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F153112387DCCC0043A86E /* PagingViewTableHeaderView.swift */; };
 		19F1532C2387DCCC0043A86E /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F153122387DCCC0043A86E /* BaseNavigationController.swift */; };
 		19F1532D2387DCCC0043A86E /* TestListBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F153132387DCCC0043A86E /* TestListBaseView.swift */; };
-		19F1532E2387DCCC0043A86E /* TestListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F153142387DCCC0043A86E /* TestListCollectionView.swift */; };
-		19F1532F2387DCCC0043A86E /* TestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F153152387DCCC0043A86E /* TestTableViewCell.swift */; };
 		19F153302387DCCC0043A86E /* HeaderPositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F153172387DCCC0043A86E /* HeaderPositionViewController.swift */; };
 		19F153312387DCCC0043A86E /* HeightChangeAnimationTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F153192387DCCC0043A86E /* HeightChangeAnimationTableHeaderView.swift */; };
 		19F153322387DCCC0043A86E /* HeightChangeAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F1531A2387DCCC0043A86E /* HeightChangeAnimationViewController.swift */; };
@@ -41,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		194A933623B9BFF600C05DBA /* NestSubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestSubjectViewController.swift; sourceTree = "<group>"; };
+		19B9EA3A23B9EA550099E656 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		19B9EA3C23B9F0340099E656 /* ListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewController.swift; sourceTree = "<group>"; };
 		19F152E82387DBA60043A86E /* JXPagingViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JXPagingViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F152EB2387DBA60043A86E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19F152EF2387DBA60043A86E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,8 +64,6 @@
 		19F153112387DCCC0043A86E /* PagingViewTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingViewTableHeaderView.swift; sourceTree = "<group>"; };
 		19F153122387DCCC0043A86E /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		19F153132387DCCC0043A86E /* TestListBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestListBaseView.swift; sourceTree = "<group>"; };
-		19F153142387DCCC0043A86E /* TestListCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestListCollectionView.swift; sourceTree = "<group>"; };
-		19F153152387DCCC0043A86E /* TestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewCell.swift; sourceTree = "<group>"; };
 		19F153172387DCCC0043A86E /* HeaderPositionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderPositionViewController.swift; sourceTree = "<group>"; };
 		19F153192387DCCC0043A86E /* HeightChangeAnimationTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightChangeAnimationTableHeaderView.swift; sourceTree = "<group>"; };
 		19F1531A2387DCCC0043A86E /* HeightChangeAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightChangeAnimationViewController.swift; sourceTree = "<group>"; };
@@ -191,9 +191,9 @@
 				19F153102387DCCC0043A86E /* DetailViewController.swift */,
 				19F153112387DCCC0043A86E /* PagingViewTableHeaderView.swift */,
 				19F153122387DCCC0043A86E /* BaseNavigationController.swift */,
+				19B9EA3A23B9EA550099E656 /* ListViewController.swift */,
+				19B9EA3C23B9F0340099E656 /* ListCollectionViewController.swift */,
 				19F153132387DCCC0043A86E /* TestListBaseView.swift */,
-				19F153142387DCCC0043A86E /* TestListCollectionView.swift */,
-				19F153152387DCCC0043A86E /* TestTableViewCell.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -367,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19F153352387DCCC0043A86E /* VCViewController.swift in Sources */,
+				19B9EA3D23B9F0340099E656 /* ListCollectionViewController.swift in Sources */,
 				194A933723B9BFF600C05DBA /* NestSubjectViewController.swift in Sources */,
 				19F153232387DCCC0043A86E /* NestViewController.swift in Sources */,
 				19F153212387DCCC0043A86E /* NaviHiddenViewController.swift in Sources */,
@@ -374,7 +375,6 @@
 				19F152F02387DBA60043A86E /* ViewController.swift in Sources */,
 				19F1532A2387DCCC0043A86E /* DetailViewController.swift in Sources */,
 				19F153342387DCCC0043A86E /* ZoomViewController.swift in Sources */,
-				19F1532F2387DCCC0043A86E /* TestTableViewCell.swift in Sources */,
 				19F153322387DCCC0043A86E /* HeightChangeAnimationViewController.swift in Sources */,
 				19F153362387DCCC0043A86E /* VCListViewController.swift in Sources */,
 				19F152EC2387DBA60043A86E /* AppDelegate.swift in Sources */,
@@ -383,13 +383,13 @@
 				19F153282387DCCC0043A86E /* BaseViewController.swift in Sources */,
 				19F1532C2387DCCC0043A86E /* BaseNavigationController.swift in Sources */,
 				19F153242387DCCC0043A86E /* RefreshViewController.swift in Sources */,
-				19F1532E2387DCCC0043A86E /* TestListCollectionView.swift in Sources */,
 				19F1532B2387DCCC0043A86E /* PagingViewTableHeaderView.swift in Sources */,
 				19F153262387DCCC0043A86E /* SmoothViewController.swift in Sources */,
 				19F153302387DCCC0043A86E /* HeaderPositionViewController.swift in Sources */,
 				19F1532D2387DCCC0043A86E /* TestListBaseView.swift in Sources */,
 				19F153222387DCCC0043A86E /* CollectionViewViewController.swift in Sources */,
 				19F153272387DCCC0043A86E /* SmoothListViewController.swift in Sources */,
+				19B9EA3B23B9EA550099E656 /* ListViewController.swift in Sources */,
 				19F153332387DCCC0043A86E /* HeightChangeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

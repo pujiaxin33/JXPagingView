@@ -8,71 +8,17 @@
 
 import UIKit
 
-@objc public protocol JXPagingViewListViewDelegate {
-
-    /// 返回listView
-    ///
-    /// - Returns: UIView
-    func listView() -> UIView
-
-    /// 返回listView内部持有的UIScrollView或UITableView或UICollectionView
-    /// 主要用于mainTableView已经显示了header，listView的contentOffset需要重置时，内部需要访问到外部传入进来的listView内的scrollView
-    ///
-    /// - Returns: listView内部持有的UIScrollView或UITableView或UICollectionView
-    func listScrollView() -> UIScrollView
-
-
-    /// 当listView内部持有的UIScrollView或UITableView或UICollectionView的代理方法`scrollViewDidScroll`回调时，需要调用该代理方法传入的callback
-    ///
-    /// - Parameter callback: `scrollViewDidScroll`回调时调用的callback
-    func listViewDidScrollCallback(callback: @escaping (UIScrollView)->())
-
-    /// 将要重置listScrollView的contentOffset
-    @objc optional func listScrollViewWillResetContentOffset()
-
-    /// 列表显示的时候调用
-    @objc optional func listDidAppear()
-
-    /// 列表消失的时候调用
-    @objc optional func listDidDisappear()
-}
-
 @objc public protocol JXPagingViewDelegate {
-
-
     /// tableHeaderView的高度，因为内部需要比对判断，只能是整型数
-    ///
-    /// - Parameter pagingView: JXPagingViewView
-    /// - Returns: height
     func tableHeaderViewHeight(in pagingView: JXPagingView) -> Int
-
-
     /// 返回tableHeaderView
-    ///
-    /// - Parameter pagingView: JXPagingViewView
-    /// - Returns: view
     func tableHeaderView(in pagingView: JXPagingView) -> UIView
-
-
     /// 返回悬浮HeaderView的高度，因为内部需要比对判断，只能是整型数
-    ///
-    /// - Parameter pagingView: JXPagingViewView
-    /// - Returns: height
     func heightForPinSectionHeader(in pagingView: JXPagingView) -> Int
-
-
     /// 返回悬浮HeaderView
-    ///
-    /// - Parameter pagingView: JXPagingViewView
-    /// - Returns: view
     func viewForPinSectionHeader(in pagingView: JXPagingView) -> UIView
-
     /// 返回列表的数量
-    ///
-    /// - Parameter pagingView: pagingView description
-    /// - Returns: 列表的数量
     func numberOfLists(in pagingView: JXPagingView) -> Int
-
     /// 根据index初始化一个对应列表实例，需要是遵从`JXPagerViewListViewDelegate`协议的对象。
     /// 如果列表是用自定义UIView封装的，就让自定义UIView遵从`JXPagerViewListViewDelegate`协议，该方法返回自定义UIView即可。
     /// 如果列表是用自定义UIViewController封装的，就让自定义UIViewController遵从`JXPagerViewListViewDelegate`协议，该方法返回自定义UIViewController即可。
@@ -81,10 +27,7 @@ import UIKit
     ///   - pagingView: pagingView description
     ///   - index: 新生成的列表实例
     func pagingView(_ pagingView: JXPagingView, initListAtIndex index: Int) -> JXPagingViewListViewDelegate
-
     /// mainTableView的滚动回调，用于实现头图跟随缩放
-    ///
-    /// - Parameter scrollView: JXPagingViewMainTableView
     @objc optional func mainTableViewDidScroll(_ scrollView: UIScrollView)
 }
 
@@ -96,14 +39,14 @@ open class JXPagingView: UIView {
         }
     }
     public private(set) lazy var mainTableView: JXPagingMainTableView = JXPagingMainTableView(frame: CGRect.zero, style: .plain)
-    public private(set) lazy var listContainerView: JXPagingListContainerView = JXPagingListContainerView(delegate: self)
+    public private(set) lazy var listContainerView: JXPagingListContainerView = JXPagingListContainerView(dataSource: self, type: listContainerType)
     /// 当前已经加载过可用的列表字典，key就是index值，value是对应的列表。
     public private(set) var validListDict = [Int:JXPagingViewListViewDelegate]()
     /// 顶部固定sectionHeader的垂直偏移量。数值越大越往下沉。
     public var pinSectionHeaderVerticalOffset: Int = 0
     public var isListHorizontalScrollEnabled = true {
         didSet {
-            listContainerView.collectionView.isScrollEnabled = isListHorizontalScrollEnabled
+            listContainerView.scrollView.isScrollEnabled = isListHorizontalScrollEnabled
         }
     }
     /// 是否允许当前列表自动显示或隐藏列表是垂直滚动指示器。true：悬浮的headerView滚动到顶部开始滚动列表时，就会显示，反之隐藏。false：内部不会处理列表的垂直滚动指示器。默认为：true。
@@ -112,15 +55,16 @@ open class JXPagingView: UIView {
     public var currentList: JXPagingViewListViewDelegate?
     private var currentIndex: Int = 0
     private unowned var delegate: JXPagingViewDelegate
-    private var retainedSelf: JXPagingView?
-    private var isWillRemoveFromWindow: Bool = false
-    private var isFirstMoveToWindow: Bool = true
     private var tableHeaderContainerView: UIView!
     private let cellIdentifier = "cell"
+    private let listContainerType: JXPagingListContainerType
 
-    public init(delegate: JXPagingViewDelegate) {
+    public init(delegate: JXPagingViewDelegate, listContainerType: JXPagingListContainerType = .collectionView) {
         self.delegate = delegate
+        self.listContainerType = listContainerType
         super.init(frame: CGRect.zero)
+
+        listContainerView.delegate = self
 
         mainTableView.showsVerticalScrollIndicator = false
         mainTableView.showsHorizontalScrollIndicator = false
@@ -139,29 +83,6 @@ open class JXPagingView: UIView {
     @available(*, unavailable)
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    open override func willMove(toWindow newWindow: UIWindow?) {
-        if isFirstMoveToWindow {
-            //第一次调用过滤，因为第一次列表显示通知会从willDisplayCell方法通知
-            isFirstMoveToWindow = false
-            return
-        }
-        //当前页面push到一个新的页面时，willMoveToWindow会调用三次。第一次调用的newWindow为nil，第二次调用间隔1ms左右newWindow有值，第三次调用间隔400ms左右newWindow为nil。
-        //根据上述事实，第一次和第二次为无效调用，可以根据其间隔1ms左右过滤掉
-        if newWindow == nil {
-            isWillRemoveFromWindow = true
-            //当前页面被pop的时候，willMoveToWindow只会调用一次，而且整个页面会被销毁掉，所以需要循环引用自己，确保能延迟执行currentListDidDisappear方法，触发列表消失事件。由此可见，循环引用也不一定是个坏事。是天使还是魔鬼，就看你如何对待它了。
-            retainedSelf = self
-            perform(#selector(currentListDidDisappear), with: nil, afterDelay: 0.02)
-        }else {
-            if isWillRemoveFromWindow {
-                isWillRemoveFromWindow = false
-                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(currentListDidDisappear), object: nil)
-            }else {
-                currentListDidAppear()
-            }
-        }
     }
 
     override open func layoutSubviews() {
@@ -298,36 +219,6 @@ open class JXPagingView: UIView {
 
         preferredProcessListViewDidScroll(scrollView: scrollView)
     }
-
-    @objc func currentListDidDisappear() {
-        let list = validListDict[currentIndex]
-        list?.listDidDisappear?()
-        isWillRemoveFromWindow = false
-        retainedSelf = nil
-    }
-
-    func currentListDidAppear() {
-        listDidAppear(index: currentIndex)
-    }
-
-    func listDidAppear(index: Int) {
-        let count = delegate.numberOfLists(in: self)
-        if count <= 0 || index >= count {
-            return
-        }
-        currentIndex = index
-        let list = validListDict[index]
-        list?.listDidAppear?()
-    }
-
-    func listDidDisappear(index: Int) {
-        let count = delegate.numberOfLists(in: self)
-        if count <= 0 || index >= count {
-            return
-        }
-        let list = validListDict[index]
-        list?.listDidDisappear?()
-    }
 }
 
 //MARK: - UITableViewDataSource, UITableViewDelegate
@@ -391,21 +282,19 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     }
 
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if isListHorizontalScrollEnabled {
-            //用户正在上下滚动的时候，就不允许左右滚动
-            listContainerView.collectionView.isScrollEnabled = false
-        }
+        //用户正在上下滚动的时候，就不允许左右滚动
+        listContainerView.scrollView.isScrollEnabled = false
     }
 
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if isListHorizontalScrollEnabled && !decelerate {
-            listContainerView.collectionView.isScrollEnabled = true
+            listContainerView.scrollView.isScrollEnabled = true
         }
     }
 
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if isListHorizontalScrollEnabled {
-            listContainerView.collectionView.isScrollEnabled = true
+            listContainerView.scrollView.isScrollEnabled = true
         }
         if mainTableView.contentInset.top != 0 && pinSectionHeaderVerticalOffset != 0 {
             adjustMainScrollViewToTargetContentInsetIfNeeded(inset: UIEdgeInsets.zero)
@@ -414,45 +303,31 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
 
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         if isListHorizontalScrollEnabled {
-            listContainerView.collectionView.isScrollEnabled = true
+            listContainerView.scrollView.isScrollEnabled = true
         }
     }
 }
 
-extension JXPagingView: JXPagingListContainerViewDelegate {
-    public func numberOfRows(in listContainerView: JXPagingListContainerView) -> Int {
+extension JXPagingView: JXPagingListContainerViewDataSource {
+    public func numberOfLists(in listContainerView: JXPagingListContainerView) -> Int {
         return delegate.numberOfLists(in: self)
     }
 
-    public func listContainerView(_ listContainerView: JXPagingListContainerView, viewForListInRow row: Int) -> UIView {
-        var list = validListDict[row]
+    public func listContainerView(_ listContainerView: JXPagingListContainerView, initListAt index: Int) -> JXPagingViewListViewDelegate {
+        var list = validListDict[index]
         if list == nil {
-            list = delegate.pagingView(self, initListAtIndex: row)
+            list = delegate.pagingView(self, initListAtIndex: index)
             list?.listViewDidScrollCallback {[weak self, weak list] (scrollView) in
                 self?.currentList = list
                 self?.listViewDidScroll(scrollView: scrollView)
             }
-            validListDict[row] = list!
+            validListDict[index] = list!
         }
-        for listItem in validListDict.values {
-            if listItem === list {
-                listItem.listScrollView().scrollsToTop = true
-            }else {
-                listItem.listScrollView().scrollsToTop = false
-            }
-        }
-        return list!.listView()
+        return list!
     }
+}
 
-    public func listContainerView(_ listContainerView: JXPagingListContainerView, willDisplayCellAt row: Int) {
-        listDidAppear(index: row)
-        currentScrollingListView = validListDict[row]?.listScrollView()
-    }
-
-    public func listContainerView(_ listContainerView: JXPagingListContainerView, didEndDisplayingCellAt row: Int) {
-        listDidDisappear(index: row)
-    }
-
+extension JXPagingView: JXPagingListContainerViewDelegate {
     public func listContainerViewWillBeginDragging(_ listContainerView: JXPagingListContainerView) {
         mainTableView.isScrollEnabled = false
     }
@@ -460,7 +335,17 @@ extension JXPagingView: JXPagingListContainerViewDelegate {
     public func listContainerViewDidEndScrolling(_ listContainerView: JXPagingListContainerView) {
         mainTableView.isScrollEnabled = true
     }
-}
 
+    public func listContainerView(_ listContainerView: JXPagingListContainerView, listDidAppearAt index: Int) {
+        currentScrollingListView = validListDict[index]?.listScrollView()
+        for listItem in validListDict.values {
+            if listItem === validListDict[index] {
+                listItem.listScrollView().scrollsToTop = true
+            }else {
+                listItem.listScrollView().scrollsToTop = false
+            }
+        }
+    }
+}
 
 

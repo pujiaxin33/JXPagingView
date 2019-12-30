@@ -60,7 +60,7 @@ extension NestViewController: JXSegmentedListContainerViewDataSource {
     func listContainerView(_ listContainerView: JXSegmentedListContainerView, initListAt index: Int) -> JXSegmentedListContainerViewListDelegate {
         let pagingVC = NestSubjectViewController()
         pagingVC.nestContentScrollView = listContainer.scrollView
-        pagingVC.pagingView.listContainerView.collectionView.isNestEnabled = true
+        pagingVC.pagingView.listContainerView.isCategoryNestPagingEnabled = true
         return pagingVC
     }
 }

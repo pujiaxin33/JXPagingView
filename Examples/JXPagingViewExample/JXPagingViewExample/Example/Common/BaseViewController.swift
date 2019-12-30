@@ -10,6 +10,8 @@ import UIKit
 import JXPagingView
 import JXSegmentedView
 
+extension JXPagingListContainerView: JXSegmentedViewListContainer {}
+
 class BaseViewController: UIViewController {
     lazy var pagingView: JXPagingView = preferredPagingView()
     lazy var userHeaderView: PagingViewTableHeaderView = preferredTableHeaderView()
@@ -53,10 +55,10 @@ class BaseViewController: UIViewController {
         pagingView.mainTableView.gestureDelegate = self
         self.view.addSubview(pagingView)
         
-        segmentedView.contentScrollView = pagingView.listContainerView.collectionView
+        segmentedView.listContainer = pagingView.listContainerView
 
         //扣边返回处理，下面的代码要加上
-        pagingView.listContainerView.collectionView.panGestureRecognizer.require(toFail: self.navigationController!.interactivePopGestureRecognizer!)
+        pagingView.listContainerView.scrollView.panGestureRecognizer.require(toFail: self.navigationController!.interactivePopGestureRecognizer!)
         pagingView.mainTableView.panGestureRecognizer.require(toFail: self.navigationController!.interactivePopGestureRecognizer!)
     }
 
@@ -110,8 +112,8 @@ extension BaseViewController: JXPagingViewDelegate {
     }
 
     func pagingView(_ pagingView: JXPagingView, initListAtIndex index: Int) -> JXPagingViewListViewDelegate {
-        let list = TestListBaseView()
-        list.naviController = self.navigationController
+        let list = ListViewController()
+        list.title = titles[index]
         list.isNeedHeader = isNeedHeader
         list.isNeedFooter = isNeedFooter
         if index == 0 {
@@ -121,7 +123,6 @@ extension BaseViewController: JXPagingViewDelegate {
         }else {
             list.dataSource = ["【剑士】罗罗诺亚·索隆", "【航海士】娜美", "【狙击手】乌索普", "【厨师】香吉士", "【船医】托尼托尼·乔巴", "【船匠】 弗兰奇", "【音乐家】布鲁克", "【考古学家】妮可·罗宾"]
         }
-        list.beginFirstRefresh()
         return list
     }
 }

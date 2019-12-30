@@ -9,6 +9,7 @@
 #import "ListViewController.h"
 #import "DetailViewController.h"
 #import <MJRefresh/MJRefresh.h>
+#import "UIWindow+JXSafeArea.h"
 
 @interface ListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, copy) void(^scrollCallback)(UIScrollView *scrollView);
@@ -25,6 +26,8 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    //列表的contentInsetAdjustmentBehavior失效，需要自己设置底部inset
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, UIApplication.sharedApplication.keyWindow.jx_layoutInsets.bottom, 0);
     [self.view addSubview:self.tableView];
 
     __weak typeof(self)weakSelf = self;
