@@ -11,9 +11,8 @@ import JXSegmentedView
 
 class NestViewController: UIViewController {
     var naviDataSource = JXSegmentedTitleDataSource()
-    var naviSegmentedView: JXSegmentedView!
-    var contentScrollView: UIScrollView!
-    var pagingVCArray = [BaseViewController]()
+    lazy var naviSegmentedView = JXSegmentedView()
+    lazy var listContainer = JXSegmentedListContainerView(dataSource: self, type: .scrollView)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +25,6 @@ class NestViewController: UIViewController {
         naviDataSource.titleSelectedColor = .white
         naviDataSource.isTitleMaskEnabled = true
 
-        naviSegmentedView = JXSegmentedView()
         naviSegmentedView.contentEdgeInsetLeft = 0
         naviSegmentedView.contentEdgeInsetRight = 0
         naviSegmentedView.frame = CGRect(x: 0, y: 0, width: 160, height: 30)
@@ -42,31 +40,27 @@ class NestViewController: UIViewController {
 
         navigationItem.titleView = naviSegmentedView
 
-        contentScrollView = UIScrollView()
-        contentScrollView.isPagingEnabled = true
-        contentScrollView.bounces = false
-        for _ in 0..<titles.count {
-            let pagingVC = BaseViewController()
-            pagingVC.nestContentScrollView = contentScrollView
-            addChild(pagingVC)
-            contentScrollView.addSubview(pagingVC.view)
-            pagingVCArray.append(pagingVC)
-        }
-        view.addSubview(contentScrollView)
+        view.addSubview(listContainer)
 
-        naviSegmentedView.contentScrollView = contentScrollView
+        naviSegmentedView.listContainer = listContainer
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        contentScrollView.frame = view.bounds
-        contentScrollView.contentSize = CGSize(width: contentScrollView.bounds.size.width*CGFloat(naviDataSource.titles.count), height: contentScrollView.bounds.size.height)
-        contentScrollView.contentOffset.x = CGFloat(naviSegmentedView.selectedIndex)*contentScrollView.bounds.size.width
-        for (index, vc) in pagingVCArray.enumerated() {
-            vc.view.frame = CGRect(x: contentScrollView.bounds.size.width*CGFloat(index), y: 0, width: contentScrollView.bounds.size.width, height: contentScrollView.bounds.size.height)
-            vc.pagingView.listContainerView.collectionView.isNestEnabled = true
-        }
+        listContainer.frame = view.bounds
+    }
+}
+
+extension NestViewController: JXSegmentedListContainerViewDataSource {
+    func numberOfLists(in listContainerView: JXSegmentedListContainerView) -> Int {
+        return 2
     }
 
+    func listContainerView(_ listContainerView: JXSegmentedListContainerView, initListAt index: Int) -> JXSegmentedListContainerViewListDelegate {
+        let pagingVC = NestSubjectViewController()
+        pagingVC.nestContentScrollView = listContainer.scrollView
+        pagingVC.pagingView.listContainerView.collectionView.isNestEnabled = true
+        return pagingVC
+    }
 }

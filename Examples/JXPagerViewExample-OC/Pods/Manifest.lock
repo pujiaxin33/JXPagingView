@@ -1,6 +1,6 @@
 PODS:
   - JXCategoryView (1.5.2)
-  - JXPagingView/Pager (1.1.19)
+  - JXPagingView/Pager (1.2.3)
   - MJRefresh (3.2.0)
 
 DEPENDENCIES:
@@ -19,7 +19,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   JXCategoryView: b284d35a7a8772eada05dd78642233e1eb763ea8
-  JXPagingView: 06b96c76f730e50847facf2a2d80f0e6e3a813e4
+  JXPagingView: cb3a6281f4649367230957a17e6fa813638e8971
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
 
 PODFILE CHECKSUM: 42faadad33a66b5b7b123d76a4da482db7476d1f

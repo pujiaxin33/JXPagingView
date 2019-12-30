@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JXPagerView.h"
 #import "PagingViewTableHeaderView.h"
-#import "TestListBaseView.h"
+#import "ListViewController.h"
 #import "JXCategoryTitleView.h"
 
 static const CGFloat JXTableHeaderViewHeight = 200;

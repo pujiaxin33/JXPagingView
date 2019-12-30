@@ -11,12 +11,11 @@ import JXPagingView
 import JXSegmentedView
 
 class BaseViewController: UIViewController {
-    var pagingView: JXPagingView!
-    var userHeaderView: PagingViewTableHeaderView!
+    lazy var pagingView: JXPagingView = preferredPagingView()
+    lazy var userHeaderView: PagingViewTableHeaderView = preferredTableHeaderView()
     let dataSource: JXSegmentedTitleDataSource = JXSegmentedTitleDataSource()
-    var segmentedView: JXSegmentedView!
+    lazy var segmentedView: JXSegmentedView = JXSegmentedView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(headerInSectionHeight)))
     var titles = ["能力", "爱好", "队友"]
-    weak var nestContentScrollView: UIScrollView?    //嵌套demo使用
     var tableHeaderViewHeight: Int = 200
     var headerInSectionHeight: Int = 50
     var isNeedHeader = false
@@ -28,15 +27,12 @@ class BaseViewController: UIViewController {
         self.title = "个人中心"
         self.navigationController?.navigationBar.isTranslucent = false
 
-        userHeaderView = preferredTableHeaderView()
-
         dataSource.titles = titles
         dataSource.titleSelectedColor = UIColor(red: 105/255, green: 144/255, blue: 239/255, alpha: 1)
         dataSource.titleNormalColor = UIColor.black
         dataSource.isTitleColorGradientEnabled = true
         dataSource.isTitleZoomEnabled = true
 
-        segmentedView = JXSegmentedView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(headerInSectionHeight)))
         segmentedView.backgroundColor = UIColor.white
         segmentedView.delegate = self
         segmentedView.isContentScrollViewClickTransitionAnimationEnabled = false
@@ -54,7 +50,6 @@ class BaseViewController: UIViewController {
         bottomLineView.autoresizingMask = .flexibleWidth
         segmentedView.addSubview(bottomLineView)
 
-        pagingView = preferredPagingView()
         pagingView.mainTableView.gestureDelegate = self
         self.view.addSubview(pagingView)
         
@@ -139,12 +134,8 @@ extension BaseViewController: JXSegmentedViewDelegate {
 
 extension BaseViewController: JXPagingMainTableViewGestureDelegate {
     func mainTableViewGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        //禁止Nest嵌套效果的时候，上下和左右都可以滚动
-        if otherGestureRecognizer.view == nestContentScrollView {
-            return false
-        }
         //禁止segmentedView左右滑动的时候，上下和左右都可以滚动
-        if otherGestureRecognizer == segmentedView?.collectionView.panGestureRecognizer {
+        if otherGestureRecognizer == segmentedView.collectionView.panGestureRecognizer {
             return false
         }
         return gestureRecognizer.isKind(of: UIPanGestureRecognizer.self) && otherGestureRecognizer.isKind(of: UIPanGestureRecognizer.self)

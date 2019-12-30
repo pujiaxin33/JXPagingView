@@ -16,6 +16,6 @@ class ZoomViewController: BaseViewController {
     }
 
     func mainTableViewDidScroll(_ scrollView: UIScrollView) {
-        userHeaderView?.scrollViewDidScroll(contentOffsetY: scrollView.contentOffset.y)
+        userHeaderView.scrollViewDidScroll(contentOffsetY: scrollView.contentOffset.y)
     }
 }

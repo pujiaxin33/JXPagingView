@@ -8,13 +8,9 @@
 
 #import "TestNestListBaseView.h"
 #import "MJRefresh.h"
-#import "TestTableViewCell.h"
 #import "JXCategoryTitleView.h"
 
 @interface TestNestListBaseView()<UITableViewDataSource, UITableViewDelegate>
-
-@property (nonatomic, strong) NSIndexPath *lastSelectedIndexPath;
-
 @end
 
 @implementation TestNestListBaseView
@@ -36,7 +32,7 @@
         self.tableView.tableFooterView = [UIView new];
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
-        [self.tableView registerClass:[TestTableViewCell class] forCellReuseIdentifier:@"cell"];
+        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
         [self addSubview:self.tableView];
 
         __weak typeof(self) weakSelf = self;
@@ -63,19 +59,6 @@
     self.tableView.frame = self.bounds;
 }
 
-- (void)selectCellAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.lastSelectedIndexPath == indexPath) {
-        return;
-    }
-    if (self.lastSelectedIndexPath != nil) {
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.lastSelectedIndexPath];
-        [cell setSelected:NO animated:NO];
-    }
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    [cell setSelected:YES animated:NO];
-    self.lastSelectedIndexPath = indexPath;
-}
-
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -83,12 +66,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TestTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.textLabel.text = self.dataSource[indexPath.row];
-    __weak typeof(self)weakSelf = self;
-    cell.bgButtonClicked = ^{
-        [weakSelf selectCellAtIndexPath:indexPath];
-    };
     return cell;
 }
 

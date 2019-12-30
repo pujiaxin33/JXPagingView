@@ -14,11 +14,12 @@
 
 @implementation JXPagerListRefreshView
 
-
-- (void)initializeViews {
-    [super initializeViews];
-
-    self.mainTableView.bounces = NO;
+- (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate listContainerType:(JXPagerListContainerType)type {
+    self = [super initWithDelegate:delegate listContainerType:type];
+    if (self) {
+        self.mainTableView.bounces = NO;
+    }
+    return self;
 }
 
 - (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView {

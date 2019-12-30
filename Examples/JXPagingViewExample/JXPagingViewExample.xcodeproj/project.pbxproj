@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		194A933723B9BFF600C05DBA /* NestSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194A933623B9BFF600C05DBA /* NestSubjectViewController.swift */; };
 		19F152EC2387DBA60043A86E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F152EB2387DBA60043A86E /* AppDelegate.swift */; };
 		19F152F02387DBA60043A86E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F152EF2387DBA60043A86E /* ViewController.swift */; };
 		19F152F32387DBA60043A86E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F152F12387DBA60043A86E /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		194A933623B9BFF600C05DBA /* NestSubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestSubjectViewController.swift; sourceTree = "<group>"; };
 		19F152E82387DBA60043A86E /* JXPagingViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JXPagingViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F152EB2387DBA60043A86E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19F152EF2387DBA60043A86E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				19F153062387DCCC0043A86E /* NestViewController.swift */,
+				194A933623B9BFF600C05DBA /* NestSubjectViewController.swift */,
 			);
 			path = CategoryNestPaging;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19F153352387DCCC0043A86E /* VCViewController.swift in Sources */,
+				194A933723B9BFF600C05DBA /* NestSubjectViewController.swift in Sources */,
 				19F153232387DCCC0043A86E /* NestViewController.swift in Sources */,
 				19F153212387DCCC0043A86E /* NaviHiddenViewController.swift in Sources */,
 				19F153312387DCCC0043A86E /* HeightChangeAnimationTableHeaderView.swift in Sources */,
@@ -542,7 +546,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXPagingViewExample.3;
+				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXPagingViewExample.33;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -566,7 +570,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXPagingViewExample.3;
+				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXPagingViewExample.33;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

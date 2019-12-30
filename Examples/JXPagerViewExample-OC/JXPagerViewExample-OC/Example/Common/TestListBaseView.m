@@ -14,14 +14,10 @@
 @interface TestListBaseView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, copy) void(^scrollCallback)(UIScrollView *scrollView);
 @property (nonatomic, strong) NSIndexPath *lastSelectedIndexPath;
+@property (nonatomic, assign) BOOL isHeaderRefreshed;   //默认为YES
 @end
 
 @implementation TestListBaseView
-
-- (void)dealloc
-{
-    self.scrollCallback = nil;
-}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -164,12 +160,20 @@
     self.scrollCallback = callback;
 }
 
+- (void)listWillAppear {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
 - (void)listDidAppear {
-    NSLog(@"listDidAppear");
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+- (void)listWillDisappear {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
 - (void)listDidDisappear {
-    NSLog(@"listDidDisappear");
+    NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
 @end

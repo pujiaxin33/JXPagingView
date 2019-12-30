@@ -6,17 +6,16 @@
 //  Copyright © 2018 jiaxin. All rights reserved.
 //
 
-#import "NestViewController.h"
+#import "PagingNestCategoryViewController.h"
 #import "JXCategoryView.h"
-#import "TestNestlistView.h"
 #import "JXPagerListRefreshView.h"
 #import "PagingViewTableHeaderView.h"
-#import "TestNestlistView.h"
+#import "PagingNestCategoryListViewController.h"
 
 static const CGFloat JXTableHeaderViewHeight = 200;
 static const CGFloat JXheightForHeaderInSection = 50;
 
-@interface NestViewController () <JXCategoryViewDelegate, JXPagerViewDelegate, JXPagerMainTableViewGestureDelegate>
+@interface PagingNestCategoryViewController () <JXCategoryViewDelegate, JXPagerViewDelegate, JXPagerMainTableViewGestureDelegate>
 
 @property (nonatomic, strong) JXPagerListRefreshView *pagerView;
 @property (nonatomic, strong) PagingViewTableHeaderView *userHeaderView;
@@ -25,7 +24,7 @@ static const CGFloat JXheightForHeaderInSection = 50;
 
 @end
 
-@implementation NestViewController
+@implementation PagingNestCategoryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,17 +51,15 @@ static const CGFloat JXheightForHeaderInSection = 50;
     lineView.indicatorWidth = 30;
     self.categoryView.indicators = @[lineView];
 
-
     //如果不想要下拉刷新的效果，改用JXPagerView类即可
     _pagerView = [[JXPagerListRefreshView alloc] initWithDelegate:self];
     self.pagerView.mainTableView.gestureDelegate = self;
     [self.view addSubview:self.pagerView];
 
-    self.categoryView.contentScrollView = self.pagerView.listContainerView.collectionView;
+    self.categoryView.listContainer = (id<JXCategoryViewListContainer>)self.pagerView.listContainerView;
 
     self.navigationController.interactivePopGestureRecognizer.enabled = (self.categoryView.selectedIndex == 0);
 }
-
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
@@ -93,8 +90,8 @@ static const CGFloat JXheightForHeaderInSection = 50;
 }
 
 - (id<JXPagerViewListViewDelegate>)pagerView:(JXPagerView *)pagerView initListAtIndex:(NSInteger)index {
-    TestNestlistView *listView = [[TestNestlistView alloc] init];
-    return listView;
+    PagingNestCategoryListViewController *list = [[PagingNestCategoryListViewController alloc] init];
+    return list;
 }
 
 #pragma mark - JXCategoryViewDelegate
@@ -122,8 +119,8 @@ static const CGFloat JXheightForHeaderInSection = 50;
 }
 
 - (BOOL)checkIsNestContentScrollView:(UIScrollView *)scrollView {
-    for (TestNestlistView *listView in self.pagerView.validListDict.allValues) {
-        if (listView.contentScrollView == scrollView) {
+    for (PagingNestCategoryListViewController *list in self.pagerView.validListDict.allValues) {
+        if (list.contentScrollView == scrollView) {
             return YES;
         }
     }

@@ -11,6 +11,7 @@
 		192226DE2238E5C100637AA2 /* HeaderPositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 192226DD2238E5C100637AA2 /* HeaderPositionViewController.m */; };
 		19278E6B2223D0F10041C293 /* PagingViewBannerTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19278E6A2223D0F10041C293 /* PagingViewBannerTableHeaderView.m */; };
 		19278E6F2223D3520041C293 /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19278E6E2223D3520041C293 /* BannerViewController.m */; };
+		194A92DF23B9A02E00C05DBA /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194A92DE23B9A02E00C05DBA /* ListViewController.m */; };
 		19502A79237E742E00C10560 /* SmoothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19502A78237E742E00C10560 /* SmoothViewController.m */; };
 		195C3D7D22BCC4B000521461 /* ScrollToTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 195C3D7C22BCC4B000521461 /* ScrollToTopViewController.m */; };
 		195C3D8122BCC5C900521461 /* ScrollToListCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 195C3D8022BCC5C900521461 /* ScrollToListCellViewController.m */; };
@@ -22,17 +23,17 @@
 		196428132148E481009C1D31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428122148E481009C1D31 /* main.m */; };
 		196428272148E58C009C1D31 /* PagingViewTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1964281C2148E58C009C1D31 /* PagingViewTableHeaderView.m */; };
 		196428292148E58C009C1D31 /* PagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1964281F2148E58C009C1D31 /* PagingViewController.m */; };
-		1964282A2148E58C009C1D31 /* TestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428232148E58C009C1D31 /* TestListBaseView.m */; };
 		196428AA2148E917009C1D31 /* ZoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428A92148E917009C1D31 /* ZoomViewController.m */; };
 		196428F02148E9E8009C1D31 /* RefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428EF2148E9E8009C1D31 /* RefreshViewController.m */; };
 		196428F32148ECB1009C1D31 /* ListRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428F22148ECB1009C1D31 /* ListRefreshViewController.m */; };
 		196428F62148EF19009C1D31 /* NaviBarHiddenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428F52148EF19009C1D31 /* NaviBarHiddenViewController.m */; };
 		196428F92148F419009C1D31 /* TestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428F82148F419009C1D31 /* TestTableViewCell.m */; };
 		1979C1EE21FEDFCD00DA40E7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1979C1ED21FEDFCD00DA40E7 /* DetailViewController.m */; };
-		197B3A382182B13E00561F08 /* NestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197B3A372182B13E00561F08 /* NestViewController.m */; };
-		197B3A3B2182B17F00561F08 /* TestNestlistView.m in Sources */ = {isa = PBXBuildFile; fileRef = 197B3A3A2182B17F00561F08 /* TestNestlistView.m */; };
+		197B3A382182B13E00561F08 /* PagingNestCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197B3A372182B13E00561F08 /* PagingNestCategoryViewController.m */; };
 		197B3A3E2182B22900561F08 /* TestNestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 197B3A3D2182B22900561F08 /* TestNestListBaseView.m */; };
 		19A735B7223BA91C008BB403 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A735B6223BA91C008BB403 /* BaseNavigationController.m */; };
+		19B9EA3423B9CD570099E656 /* TestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA3223B9CD560099E656 /* TestListBaseView.m */; };
+		19B9EA3723B9D0940099E656 /* PagingNestCategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA3623B9D0940099E656 /* PagingNestCategoryListViewController.m */; };
 		19C417CD215F1B630090E518 /* UIWindow+JXSafeArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */; };
 		19F152DC2387D49D0043A86E /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19F152DB2387D49C0043A86E /* lufei.jpg */; };
 		19FAC8F3238247820041E1C9 /* SmoothListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FAC8F2238247820041E1C9 /* SmoothListViewController.m */; };
@@ -51,6 +52,8 @@
 		19278E6A2223D0F10041C293 /* PagingViewBannerTableHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagingViewBannerTableHeaderView.m; sourceTree = "<group>"; };
 		19278E6D2223D3520041C293 /* BannerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerViewController.h; sourceTree = "<group>"; };
 		19278E6E2223D3520041C293 /* BannerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerViewController.m; sourceTree = "<group>"; };
+		194A92DD23B9A02E00C05DBA /* ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		194A92DE23B9A02E00C05DBA /* ListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		19502A77237E742E00C10560 /* SmoothViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmoothViewController.h; sourceTree = "<group>"; };
 		19502A78237E742E00C10560 /* SmoothViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmoothViewController.m; sourceTree = "<group>"; };
 		195C3D7B22BCC4B000521461 /* ScrollToTopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollToTopViewController.h; sourceTree = "<group>"; };
@@ -67,11 +70,9 @@
 		1964280F2148E481009C1D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		196428112148E481009C1D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		196428122148E481009C1D31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1964281B2148E58C009C1D31 /* TestListBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestListBaseView.h; sourceTree = "<group>"; };
 		1964281C2148E58C009C1D31 /* PagingViewTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagingViewTableHeaderView.m; sourceTree = "<group>"; };
 		1964281F2148E58C009C1D31 /* PagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagingViewController.m; sourceTree = "<group>"; };
 		196428222148E58C009C1D31 /* PagingViewTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagingViewTableHeaderView.h; sourceTree = "<group>"; };
-		196428232148E58C009C1D31 /* TestListBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestListBaseView.m; sourceTree = "<group>"; };
 		196428242148E58C009C1D31 /* PagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagingViewController.h; sourceTree = "<group>"; };
 		196428A82148E917009C1D31 /* ZoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoomViewController.h; sourceTree = "<group>"; };
 		196428A92148E917009C1D31 /* ZoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoomViewController.m; sourceTree = "<group>"; };
@@ -85,14 +86,16 @@
 		196428F82148F419009C1D31 /* TestTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTableViewCell.m; sourceTree = "<group>"; };
 		1979C1EC21FEDFCD00DA40E7 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		1979C1ED21FEDFCD00DA40E7 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		197B3A362182B13E00561F08 /* NestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NestViewController.h; sourceTree = "<group>"; };
-		197B3A372182B13E00561F08 /* NestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NestViewController.m; sourceTree = "<group>"; };
-		197B3A392182B17F00561F08 /* TestNestlistView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNestlistView.h; sourceTree = "<group>"; };
-		197B3A3A2182B17F00561F08 /* TestNestlistView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNestlistView.m; sourceTree = "<group>"; };
+		197B3A362182B13E00561F08 /* PagingNestCategoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagingNestCategoryViewController.h; sourceTree = "<group>"; };
+		197B3A372182B13E00561F08 /* PagingNestCategoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagingNestCategoryViewController.m; sourceTree = "<group>"; };
 		197B3A3C2182B22900561F08 /* TestNestListBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestNestListBaseView.h; sourceTree = "<group>"; };
 		197B3A3D2182B22900561F08 /* TestNestListBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestNestListBaseView.m; sourceTree = "<group>"; };
 		19A735B5223BA91C008BB403 /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		19A735B6223BA91C008BB403 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		19B9EA3223B9CD560099E656 /* TestListBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestListBaseView.m; sourceTree = "<group>"; };
+		19B9EA3323B9CD570099E656 /* TestListBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestListBaseView.h; sourceTree = "<group>"; };
+		19B9EA3523B9D0940099E656 /* PagingNestCategoryListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagingNestCategoryListViewController.h; sourceTree = "<group>"; };
+		19B9EA3623B9D0940099E656 /* PagingNestCategoryListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagingNestCategoryListViewController.m; sourceTree = "<group>"; };
 		19C417CB215F1B630090E518 /* UIWindow+JXSafeArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+JXSafeArea.h"; sourceTree = "<group>"; };
 		19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+JXSafeArea.m"; sourceTree = "<group>"; };
 		19F152DA2387D18D0043A86E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -246,8 +249,10 @@
 				1964281F2148E58C009C1D31 /* PagingViewController.m */,
 				19A735B5223BA91C008BB403 /* BaseNavigationController.h */,
 				19A735B6223BA91C008BB403 /* BaseNavigationController.m */,
-				1964281B2148E58C009C1D31 /* TestListBaseView.h */,
-				196428232148E58C009C1D31 /* TestListBaseView.m */,
+				194A92DD23B9A02E00C05DBA /* ListViewController.h */,
+				194A92DE23B9A02E00C05DBA /* ListViewController.m */,
+				19B9EA3323B9CD570099E656 /* TestListBaseView.h */,
+				19B9EA3223B9CD560099E656 /* TestListBaseView.m */,
 				196428F72148F419009C1D31 /* TestTableViewCell.h */,
 				196428F82148F419009C1D31 /* TestTableViewCell.m */,
 				196428222148E58C009C1D31 /* PagingViewTableHeaderView.h */,
@@ -294,10 +299,10 @@
 		197B3A352182B11400561F08 /* Nest */ = {
 			isa = PBXGroup;
 			children = (
-				197B3A362182B13E00561F08 /* NestViewController.h */,
-				197B3A372182B13E00561F08 /* NestViewController.m */,
-				197B3A392182B17F00561F08 /* TestNestlistView.h */,
-				197B3A3A2182B17F00561F08 /* TestNestlistView.m */,
+				197B3A362182B13E00561F08 /* PagingNestCategoryViewController.h */,
+				197B3A372182B13E00561F08 /* PagingNestCategoryViewController.m */,
+				19B9EA3523B9D0940099E656 /* PagingNestCategoryListViewController.h */,
+				19B9EA3623B9D0940099E656 /* PagingNestCategoryListViewController.m */,
 				197B3A3C2182B22900561F08 /* TestNestListBaseView.h */,
 				197B3A3D2182B22900561F08 /* TestNestListBaseView.m */,
 			);
@@ -441,12 +446,13 @@
 				196428F62148EF19009C1D31 /* NaviBarHiddenViewController.m in Sources */,
 				19FAC95023828E0D0041E1C9 /* SmoothCustomPagerHeaderViewController.m in Sources */,
 				19FAC8F3238247820041E1C9 /* SmoothListViewController.m in Sources */,
-				197B3A3B2182B17F00561F08 /* TestNestlistView.m in Sources */,
+				19B9EA3723B9D0940099E656 /* PagingNestCategoryListViewController.m in Sources */,
 				19C417CD215F1B630090E518 /* UIWindow+JXSafeArea.m in Sources */,
 				1979C1EE21FEDFCD00DA40E7 /* DetailViewController.m in Sources */,
 				19278E6F2223D3520041C293 /* BannerViewController.m in Sources */,
 				19502A79237E742E00C10560 /* SmoothViewController.m in Sources */,
 				196428F32148ECB1009C1D31 /* ListRefreshViewController.m in Sources */,
+				194A92DF23B9A02E00C05DBA /* ListViewController.m in Sources */,
 				196428F92148F419009C1D31 /* TestTableViewCell.m in Sources */,
 				197B3A3E2182B22900561F08 /* TestNestListBaseView.m in Sources */,
 				192226DE2238E5C100637AA2 /* HeaderPositionViewController.m in Sources */,
@@ -454,16 +460,16 @@
 				196428272148E58C009C1D31 /* PagingViewTableHeaderView.m in Sources */,
 				196428292148E58C009C1D31 /* PagingViewController.m in Sources */,
 				195C3D8122BCC5C900521461 /* ScrollToListCellViewController.m in Sources */,
+				19B9EA3423B9CD570099E656 /* TestListBaseView.m in Sources */,
 				196428AA2148E917009C1D31 /* ZoomViewController.m in Sources */,
 				196428082148E47F009C1D31 /* ViewController.m in Sources */,
-				197B3A382182B13E00561F08 /* NestViewController.m in Sources */,
+				197B3A382182B13E00561F08 /* PagingNestCategoryViewController.m in Sources */,
 				19FAC94A23827F160041E1C9 /* SmoothListCollectionViewController.m in Sources */,
 				190921DA22B1F8990045D18F /* ReloadWithoutInitListViewController.m in Sources */,
 				19FAC94D23828B350041E1C9 /* SmoothListScrollViewController.m in Sources */,
 				195C3D7D22BCC4B000521461 /* ScrollToTopViewController.m in Sources */,
 				196428132148E481009C1D31 /* main.m in Sources */,
 				196428052148E47F009C1D31 /* AppDelegate.m in Sources */,
-				1964282A2148E58C009C1D31 /* TestListBaseView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

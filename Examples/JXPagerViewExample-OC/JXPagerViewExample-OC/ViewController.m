@@ -11,7 +11,7 @@
 #import "RefreshViewController.h"
 #import "ListRefreshViewController.h"
 #import "NaviBarHiddenViewController.h"
-#import "NestViewController.h"
+#import "PagingNestCategoryViewController.h"
 #import "BannerViewController.h"
 #import "HeaderPositionViewController.h"
 #import "ReloadWithoutInitListViewController.h"
@@ -71,7 +71,7 @@
             break;
         case 4:
         {
-            NestViewController *vc = [[NestViewController alloc] init];
+            PagingNestCategoryViewController *vc = [[PagingNestCategoryViewController alloc] init];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }

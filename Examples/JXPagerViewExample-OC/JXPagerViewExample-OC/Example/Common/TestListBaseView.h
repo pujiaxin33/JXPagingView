@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "JXPagerView.h"
 
-
 @interface TestListBaseView : UIView <JXPagerViewListViewDelegate>
 
 @property (nonatomic, weak) UINavigationController *naviController;
@@ -17,7 +16,6 @@
 @property (nonatomic, strong) NSMutableArray <NSString *> *dataSource;
 @property (nonatomic, assign) BOOL isNeedFooter;
 @property (nonatomic, assign) BOOL isNeedHeader;
-@property (nonatomic, assign) BOOL isHeaderRefreshed;   //默认为YES
 
 - (void)beginFirstRefresh;
 
