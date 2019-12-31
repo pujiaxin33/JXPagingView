@@ -52,7 +52,10 @@ open class JXPagingSmoothView: UIView {
     let cellIdentifier = "cell"
 
     deinit {
-        listDict.values.forEach { $0.listScrollView().removeObserver(self, forKeyPath: "contentOffset")}
+        listDict.values.forEach {
+            $0.listScrollView().removeObserver(self, forKeyPath: "contentOffset")
+            $0.listScrollView().removeObserver(self, forKeyPath: "contentSize")
+        }
     }
 
     public init(dataSource: JXPagingSmoothViewDataSource) {
@@ -95,6 +98,7 @@ open class JXPagingSmoothView: UIView {
         listHeaderDict.removeAll()
         listDict.values.forEach { (list) in
             list.listScrollView().removeObserver(self, forKeyPath: "contentOffset")
+            list.listScrollView().removeObserver(self, forKeyPath: "contentSize")
             list.listView().removeFromSuperview()
         }
         listDict.removeAll()
@@ -171,6 +175,13 @@ open class JXPagingSmoothView: UIView {
             if let scrollView = object as? UIScrollView {
                 listDidScroll(scrollView: scrollView)
             }
+        }else if keyPath == "contentSize" {
+            if let scrollView = object as? UIScrollView {
+                let minContentSizeHeight = bounds.size.height - heightForPinHeader
+                if minContentSizeHeight > scrollView.contentSize.height {
+                    scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: minContentSizeHeight)
+                }
+            }
         }else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
@@ -242,6 +253,12 @@ extension JXPagingSmoothView: UICollectionViewDataSource, UICollectionViewDelega
             listDict[indexPath.item] = list!
             list?.listView().setNeedsLayout()
             list?.listView().layoutIfNeeded()
+            if list?.listScrollView().isMember(of: UITableView.self) == true {
+                (list?.listScrollView() as? UITableView)?.estimatedRowHeight = 0
+            }
+            if #available(iOS 11.0, *) {
+                list?.listScrollView().contentInsetAdjustmentBehavior = .never
+            }
             list?.listScrollView().contentInset = UIEdgeInsets(top: heightForPagingHeaderContainerView, left: 0, bottom: 0, right: 0)
             list?.listScrollView().contentOffset = CGPoint(x: 0, y: -heightForPagingHeaderContainerView + min(-currentPagingHeaderContainerViewY, heightForPagingHeader))
             let listHeader = UIView(frame: CGRect(x: 0, y: -heightForPagingHeaderContainerView, width: bounds.size.width, height: heightForPagingHeaderContainerView))
@@ -250,8 +267,8 @@ extension JXPagingSmoothView: UICollectionViewDataSource, UICollectionViewDelega
                 listHeader.addSubview(pagingHeaderContainerView)
             }
             listHeaderDict[indexPath.item] = listHeader
-
             list?.listScrollView().addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
+            list?.listScrollView().addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         }
         listDict.values.forEach { $0.listScrollView().scrollsToTop = ($0 === list) }
         if let listView = list?.listView(), listView.superview != cell.contentView {

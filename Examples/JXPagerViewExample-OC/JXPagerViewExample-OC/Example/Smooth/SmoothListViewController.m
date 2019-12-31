@@ -8,11 +8,9 @@
 
 #import "SmoothListViewController.h"
 #import <MJRefresh/MJRefresh.h>
-#import "UIWindow+JXSafeArea.h"
 
 @interface SmoothListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, assign) CGFloat contentOffsetY;
 @end
 
 @implementation SmoothListViewController
