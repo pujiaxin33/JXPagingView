@@ -45,6 +45,7 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
 {
     for (id<JXPagerSmoothViewListViewDelegate> list in self.listDict.allValues) {
         [[list listScrollView] removeObserver:self forKeyPath:@"contentOffset"];
+        [[list listScrollView] removeObserver:self forKeyPath:@"contentSize"];
     }
 }
 
@@ -103,6 +104,7 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     [self.listHeaderDict removeAllObjects];
     for (id<JXPagerSmoothViewListViewDelegate> list in self.listDict.allValues) {
         [[list listScrollView] removeObserver:self forKeyPath:@"contentOffset"];
+        [[list listScrollView] removeObserver:self forKeyPath:@"contentSize"];
         [[list listView] removeFromSuperview];
     }
     [_listDict removeAllObjects];
@@ -142,6 +144,12 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
         [[list listView] setNeedsLayout];
         [[list listView] layoutIfNeeded];
         UIScrollView *listScrollView = [list listScrollView];
+        if ([listScrollView isMemberOfClass:[UITableView class]]) {
+            ((UITableView *)listScrollView).estimatedRowHeight = 0;
+        }
+        if (@available(iOS 11.0, *)) {
+            listScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
         listScrollView.contentInset = UIEdgeInsetsMake(self.heightForPagerHeaderContainerView, 0, 0, 0);
         listScrollView.contentOffset = CGPointMake(0, -listScrollView.contentInset.top + MIN(-self.currentPagerHeaderContainerViewY, self.heightForPagerHeader));
         UIView *listHeader = [[UIView alloc] initWithFrame:CGRectMake(0, -self.heightForPagerHeaderContainerView, self.bounds.size.width, self.heightForPagerHeaderContainerView)];
@@ -151,6 +159,7 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
         }
         self.listHeaderDict[@(indexPath.item)] = listHeader;
         [listScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
+        [listScrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
     }
     for (id<JXPagerSmoothViewListViewDelegate> listItem in self.listDict.allValues) {
         [listItem listScrollView].scrollsToTop = (listItem == list);
@@ -210,6 +219,14 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
         UIScrollView *scrollView = (UIScrollView *)object;
         if (scrollView != nil) {
             [self listDidScroll:scrollView];
+        }
+    }else if([keyPath isEqualToString:@"contentSize"]) {
+        UIScrollView *scrollView = (UIScrollView *)object;
+        if (scrollView != nil) {
+            CGFloat minContentSizeHeight = self.bounds.size.height - self.heightForPinHeader;
+            if (minContentSizeHeight > scrollView.contentSize.height) {
+                scrollView.contentSize = CGSizeMake(scrollView.contentSize.width, minContentSizeHeight);
+            }
         }
     }else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -316,4 +333,3 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
 }
 
 @end
-

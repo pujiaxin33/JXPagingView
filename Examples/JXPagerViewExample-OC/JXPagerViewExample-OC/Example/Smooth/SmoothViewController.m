@@ -11,6 +11,7 @@
 #import "JXCategoryIndicatorLineView.h"
 #import "SmoothListCollectionViewController.h"
 #import "SmoothListScrollViewController.h"
+#import "SmoothViewDefines.h"
 
 @interface SmoothViewController () <JXPagerSmoothViewDataSource>
 @property (nonatomic, strong) UIImageView *headerView;
@@ -72,7 +73,7 @@
 }
 
 - (CGFloat)heightForPinHeaderInPagerView:(JXPagerSmoothView *)pagerView {
-    return 50;
+    return SmoothViewPinCategoryHeight;
 }
 
 - (UIView *)viewForPinHeaderInPagerView:(JXPagerSmoothView *)pagerView {

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <JXPagingView/JXPagerView.h>
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PagingNestCategoryListViewController : UIViewController
+@interface PagingNestCategoryListViewController : UIViewController <JXPagerViewListViewDelegate>
 @property (nonatomic, strong) UIScrollView *contentScrollView;
 @end
 

@@ -31,6 +31,7 @@
 		1979C1EE21FEDFCD00DA40E7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1979C1ED21FEDFCD00DA40E7 /* DetailViewController.m */; };
 		197B3A382182B13E00561F08 /* PagingNestCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197B3A372182B13E00561F08 /* PagingNestCategoryViewController.m */; };
 		197B3A3E2182B22900561F08 /* TestNestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 197B3A3D2182B22900561F08 /* TestNestListBaseView.m */; };
+		199F96D623BAF494001CC1A4 /* JXPagerSmoothCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 199F96D523BAF494001CC1A4 /* JXPagerSmoothCollectionFlowLayout.m */; };
 		19A735B7223BA91C008BB403 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A735B6223BA91C008BB403 /* BaseNavigationController.m */; };
 		19B9EA3423B9CD570099E656 /* TestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA3223B9CD560099E656 /* TestListBaseView.m */; };
 		19B9EA3723B9D0940099E656 /* PagingNestCategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA3623B9D0940099E656 /* PagingNestCategoryListViewController.m */; };
@@ -91,6 +92,9 @@
 		197B3A372182B13E00561F08 /* PagingNestCategoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagingNestCategoryViewController.m; sourceTree = "<group>"; };
 		197B3A3C2182B22900561F08 /* TestNestListBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestNestListBaseView.h; sourceTree = "<group>"; };
 		197B3A3D2182B22900561F08 /* TestNestListBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestNestListBaseView.m; sourceTree = "<group>"; };
+		199F96D423BAF494001CC1A4 /* JXPagerSmoothCollectionFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXPagerSmoothCollectionFlowLayout.h; sourceTree = "<group>"; };
+		199F96D523BAF494001CC1A4 /* JXPagerSmoothCollectionFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXPagerSmoothCollectionFlowLayout.m; sourceTree = "<group>"; };
+		199F96D923BAF830001CC1A4 /* SmoothViewDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmoothViewDefines.h; sourceTree = "<group>"; };
 		19A735B5223BA91C008BB403 /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		19A735B6223BA91C008BB403 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		19B9EA3223B9CD560099E656 /* TestListBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestListBaseView.m; sourceTree = "<group>"; };
@@ -160,12 +164,15 @@
 			children = (
 				19502A77237E742E00C10560 /* SmoothViewController.h */,
 				19502A78237E742E00C10560 /* SmoothViewController.m */,
+				199F96D923BAF830001CC1A4 /* SmoothViewDefines.h */,
 				19FAC94E23828E0D0041E1C9 /* SmoothCustomPagerHeaderViewController.h */,
 				19FAC94F23828E0D0041E1C9 /* SmoothCustomPagerHeaderViewController.m */,
 				19FAC8F1238247820041E1C9 /* SmoothListViewController.h */,
 				19FAC8F2238247820041E1C9 /* SmoothListViewController.m */,
 				19FAC94823827F160041E1C9 /* SmoothListCollectionViewController.h */,
 				19FAC94923827F160041E1C9 /* SmoothListCollectionViewController.m */,
+				199F96D423BAF494001CC1A4 /* JXPagerSmoothCollectionFlowLayout.h */,
+				199F96D523BAF494001CC1A4 /* JXPagerSmoothCollectionFlowLayout.m */,
 				19FAC94B23828B350041E1C9 /* SmoothListScrollViewController.h */,
 				19FAC94C23828B350041E1C9 /* SmoothListScrollViewController.m */,
 			);
@@ -467,6 +474,7 @@
 				196428F32148ECB1009C1D31 /* ListRefreshViewController.m in Sources */,
 				194A92DF23B9A02E00C05DBA /* ListViewController.m in Sources */,
 				196428F92148F419009C1D31 /* TestTableViewCell.m in Sources */,
+				199F96D623BAF494001CC1A4 /* JXPagerSmoothCollectionFlowLayout.m in Sources */,
 				197B3A3E2182B22900561F08 /* TestNestListBaseView.m in Sources */,
 				192226DE2238E5C100637AA2 /* HeaderPositionViewController.m in Sources */,
 				19278E6B2223D0F10041C293 /* PagingViewBannerTableHeaderView.m in Sources */,

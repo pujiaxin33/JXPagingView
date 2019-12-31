@@ -7,6 +7,8 @@
 //
 
 #import "SmoothListCollectionViewController.h"
+#import "JXPagerSmoothCollectionFlowLayout.h"
+#import "SmoothViewDefines.h"
 
 @interface SmoothListCollectionCell : UICollectionViewCell
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -42,7 +44,8 @@
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        JXPagerSmoothCollectionFlowLayout *layout = [[JXPagerSmoothCollectionFlowLayout alloc] init];
+        layout.pinCategoryHeight = SmoothViewPinCategoryHeight;
         layout.minimumLineSpacing = 10;
         layout.minimumInteritemSpacing = 10;
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;

@@ -8,9 +8,11 @@
 
 #import "SmoothListViewController.h"
 #import <MJRefresh/MJRefresh.h>
+#import "UIWindow+JXSafeArea.h"
 
-@interface SmoothListViewController () <UITableViewDataSource>
+@interface SmoothListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, assign) CGFloat contentOffsetY;
 @end
 
 @implementation SmoothListViewController
@@ -29,6 +31,7 @@
 
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
 
     if (self.isNeedHeaderRefresh) {
@@ -53,7 +56,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 50;
+    return 100;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -69,6 +76,5 @@
 - (UIView *)listView {
     return self.view;
 }
-
 
 @end
