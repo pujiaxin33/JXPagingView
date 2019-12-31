@@ -12,7 +12,7 @@ import MJRefresh
 
 class ListViewController: UIViewController {
     lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: .plain)
-    var dataSource: [String]?
+    var dataSource: [String] = [String]()
     var isNeedHeader = false
     var isNeedFooter = false
     var listViewDidScrollCallback: ((UIScrollView) -> ())?
@@ -65,7 +65,7 @@ class ListViewController: UIViewController {
 
     @objc func loadMore() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(2)) {
-            self.dataSource?.append("加载更多成功")
+            self.dataSource.append("加载更多成功")
             self.tableView.reloadData()
             self.tableView.mj_footer.endRefreshing()
         }
@@ -75,14 +75,14 @@ class ListViewController: UIViewController {
 extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isHeaderRefreshed {
-            return dataSource?.count ?? 0
+            return dataSource.count
         }
         return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = dataSource?[indexPath.row]
+        cell.textLabel?.text = dataSource[indexPath.row]
         return cell
     }
 

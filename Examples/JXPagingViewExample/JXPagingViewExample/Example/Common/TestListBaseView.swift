@@ -10,11 +10,11 @@ import UIKit
 import JXPagingView
 import MJRefresh
 
-@objc public class TestListBaseView: UIView {
+class TestListBaseView: UIView {
     weak var naviController: UINavigationController?
-    @objc public var tableView: UITableView!
-    @objc public var dataSource: [String]?
-    @objc public var isNeedHeader = false {
+    lazy var tableView: UITableView = UITableView(frame: frame, style: .plain)
+    var dataSource: [String] = [String]()
+    var isNeedHeader = false {
         didSet {
             if isNeedHeader {
                 self.tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(headerRefresh))
@@ -25,7 +25,7 @@ import MJRefresh
             }
         }
     }
-    @objc public var isNeedFooter = false {
+    var isNeedFooter = false {
         didSet {
             if isNeedFooter {
                 tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
@@ -44,7 +44,6 @@ import MJRefresh
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        tableView = UITableView(frame: frame, style: .plain)
         tableView.backgroundColor = UIColor.white
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
@@ -85,7 +84,7 @@ import MJRefresh
 
     @objc func loadMore() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(2)) {
-            self.dataSource?.append("加载更多成功")
+            self.dataSource.append("加载更多成功")
             self.tableView.reloadData()
             self.tableView.mj_footer.endRefreshing()
         }
@@ -111,14 +110,14 @@ import MJRefresh
 extension TestListBaseView: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isHeaderRefreshed {
-            return dataSource?.count ?? 0
+            return dataSource.count
         }
         return 0
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TestTableViewCell
-        cell.textLabel?.text = dataSource?[indexPath.row]
+        cell.textLabel?.text = dataSource[indexPath.row]
         cell.bgButtonClicked = {[weak self] in
             print("bgButtonClicked:\(indexPath)")
             self?.selectedCell(at: indexPath)
@@ -159,11 +158,7 @@ extension TestListBaseView: JXPagingViewListViewDelegate {
 
 class TestTableViewCell: UITableViewCell {
     var bgButtonClicked: (()->())?
-    private var bgButton: UIButton?
-
-    deinit {
-        bgButtonClicked = nil
-    }
+    private lazy var bgButton: UIButton = UIButton(type: .custom)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -178,30 +173,18 @@ class TestTableViewCell: UITableViewCell {
     }
 
     func initializeViews() {
-        bgButton = UIButton(type: .custom)
-        contentView.addSubview(bgButton!)
-        bgButton?.addTarget(self, action: #selector(bgButtonClicked(btn:)), for: .touchUpInside)
+        contentView.addSubview(bgButton)
+        bgButton.addTarget(self, action: #selector(bgButtonClicked(btn:)), for: .touchUpInside)
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        bgButton?.frame = contentView.bounds
+        bgButton.frame = contentView.bounds
     }
 
     @objc func bgButtonClicked(btn: UIButton) {
         bgButtonClicked?()
-    }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

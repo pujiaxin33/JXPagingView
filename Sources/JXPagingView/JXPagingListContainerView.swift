@@ -83,7 +83,7 @@ public protocol JXPagingListContainerViewDataSource {
 
 open class JXPagingListContainerView: UIView {
     public private(set) var type: JXPagingListContainerType
-    public private(set) weak var dataSource: JXPagingListContainerViewDataSource!
+    public private(set) unowned var dataSource: JXPagingListContainerViewDataSource
     public private(set) var scrollView: UIScrollView!
     public var isCategoryNestPagingEnabled = false {
         didSet {

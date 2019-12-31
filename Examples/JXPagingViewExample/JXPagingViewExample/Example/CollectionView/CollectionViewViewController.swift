@@ -11,9 +11,9 @@ import JXPagingView
 import JXSegmentedView
 
 class CollectionViewViewController: UIViewController {
-    var pagingView: JXPagingView!
-    var userHeaderView: PagingViewTableHeaderView!
-    var segmentedView: JXSegmentedView!
+    lazy var pagingView: JXPagingView = JXPagingView(delegate: self)
+    lazy var userHeaderView: PagingViewTableHeaderView = PagingViewTableHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(tableHeaderViewHeight)))
+    lazy var segmentedView: JXSegmentedView = JXSegmentedView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(headerInSectionHeight)))
     var dataSource = JXSegmentedTitleDataSource()
     var titles = ["能力", "爱好", "队友"]
     var tableHeaderViewHeight: Int = 200
@@ -25,15 +25,12 @@ class CollectionViewViewController: UIViewController {
         self.title = "CollectionView列表示例"
         self.navigationController?.navigationBar.isTranslucent = false
 
-        userHeaderView = PagingViewTableHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(tableHeaderViewHeight)))
-
         dataSource.titles = titles
         dataSource.titleSelectedColor = UIColor(red: 105/255, green: 144/255, blue: 239/255, alpha: 1)
         dataSource.titleNormalColor = UIColor.black
         dataSource.isTitleColorGradientEnabled = true
         dataSource.isTitleZoomEnabled = true
 
-        segmentedView = JXSegmentedView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: CGFloat(headerInSectionHeight)))
         segmentedView.backgroundColor = UIColor.white
         segmentedView.delegate = self
         segmentedView.dataSource = dataSource
@@ -50,7 +47,6 @@ class CollectionViewViewController: UIViewController {
         bottomLineView.autoresizingMask = .flexibleWidth
         segmentedView.addSubview(bottomLineView)
 
-        pagingView = preferredPagingView()
         self.view.addSubview(pagingView)
 
         segmentedView.listContainer = pagingView.listContainerView
@@ -65,10 +61,6 @@ class CollectionViewViewController: UIViewController {
         super.viewDidLayoutSubviews()
 
         pagingView.frame = self.view.bounds
-    }
-
-    func preferredPagingView() -> JXPagingView {
-        return JXPagingView(delegate: self)
     }
 
 }

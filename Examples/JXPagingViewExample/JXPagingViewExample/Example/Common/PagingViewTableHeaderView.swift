@@ -9,13 +9,12 @@
 import UIKit
 
 class PagingViewTableHeaderView: UIView {
-    var imageView: UIImageView!
-    var imageViewFrame: CGRect!
+    lazy var imageView: UIImageView = UIImageView(image: UIImage(named: "lufei.jpg"))
+    var imageViewFrame: CGRect = CGRect.zero
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        imageView = UIImageView(image: UIImage(named: "lufei.jpg"))
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
@@ -37,7 +36,7 @@ class PagingViewTableHeaderView: UIView {
     }
 
     func scrollViewDidScroll(contentOffsetY: CGFloat) {
-        var frame = imageViewFrame!
+        var frame = imageViewFrame
         frame.size.height -= contentOffsetY
         frame.origin.y = contentOffsetY
         imageView.frame = frame

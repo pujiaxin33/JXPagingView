@@ -57,7 +57,7 @@ extension ListCollectionViewController: UICollectionViewDataSource, UICollection
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ListCollectionViewCell
         cell.contentView.backgroundColor = .lightGray
-        cell.titleLabel?.text = String(format: "%d", indexPath.item)
+        cell.titleLabel.text = String(format: "%d", indexPath.item)
         return cell
     }
 
@@ -81,14 +81,13 @@ extension ListCollectionViewController: JXPagingViewListViewDelegate {
 }
 
 class ListCollectionViewCell: UICollectionViewCell {
-    var titleLabel: UILabel?
+    lazy var titleLabel: UILabel = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        titleLabel = UILabel()
-        titleLabel?.textAlignment = .center
-        addSubview(titleLabel!)
+        titleLabel.textAlignment = .center
+        addSubview(titleLabel)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -98,6 +97,6 @@ class ListCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        titleLabel?.frame = self.contentView.bounds
+        titleLabel.frame = self.contentView.bounds
     }
 }
