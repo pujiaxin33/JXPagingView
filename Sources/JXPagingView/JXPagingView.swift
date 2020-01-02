@@ -215,8 +215,6 @@ open class JXPagingView: UIView {
 
     /// 外部传入的listView，当其内部的scrollView滚动时，需要调用该方法
     func listViewDidScroll(scrollView: UIScrollView) {
-        currentScrollingListView = scrollView
-
         preferredProcessListViewDidScroll(scrollView: scrollView)
     }
 }
