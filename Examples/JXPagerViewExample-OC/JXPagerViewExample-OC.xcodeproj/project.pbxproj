@@ -37,6 +37,7 @@
 		19B9EA3723B9D0940099E656 /* PagingNestCategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA3623B9D0940099E656 /* PagingNestCategoryListViewController.m */; };
 		19B9EA4123B9F86A0099E656 /* MainTableViewOffsetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA4023B9F86A0099E656 /* MainTableViewOffsetViewController.m */; };
 		19C417CD215F1B630090E518 /* UIWindow+JXSafeArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */; };
+		19CB42D523BDBB8000C8B5A5 /* BGImageHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CB42D423BDBB8000C8B5A5 /* BGImageHeaderViewController.m */; };
 		19F152DC2387D49D0043A86E /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19F152DB2387D49C0043A86E /* lufei.jpg */; };
 		19FAC8F3238247820041E1C9 /* SmoothListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FAC8F2238247820041E1C9 /* SmoothListViewController.m */; };
 		19FAC94A23827F160041E1C9 /* SmoothListCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FAC94923827F160041E1C9 /* SmoothListCollectionViewController.m */; };
@@ -105,6 +106,8 @@
 		19B9EA4023B9F86A0099E656 /* MainTableViewOffsetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTableViewOffsetViewController.m; sourceTree = "<group>"; };
 		19C417CB215F1B630090E518 /* UIWindow+JXSafeArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+JXSafeArea.h"; sourceTree = "<group>"; };
 		19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+JXSafeArea.m"; sourceTree = "<group>"; };
+		19CB42D323BDBB8000C8B5A5 /* BGImageHeaderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGImageHeaderViewController.h; sourceTree = "<group>"; };
+		19CB42D423BDBB8000C8B5A5 /* BGImageHeaderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BGImageHeaderViewController.m; sourceTree = "<group>"; };
 		19F152DA2387D18D0043A86E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		19F152DB2387D49C0043A86E /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = lufei.jpg; path = ../../lufei.jpg; sourceTree = "<group>"; };
 		19FAC8F1238247820041E1C9 /* SmoothListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmoothListViewController.h; sourceTree = "<group>"; };
@@ -237,6 +240,7 @@
 		196428192148E58C009C1D31 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				19CB42D223BDBB5E00C8B5A5 /* BGImageHeader */,
 				19B9EA3E23B9F8490099E656 /* MainTableViewOffset */,
 				19502A76237E741500C10560 /* Smooth */,
 				195C3D7E22BCC5AB00521461 /* ScrollToListCell */,
@@ -327,6 +331,15 @@
 				19B9EA4023B9F86A0099E656 /* MainTableViewOffsetViewController.m */,
 			);
 			path = MainTableViewOffset;
+			sourceTree = "<group>";
+		};
+		19CB42D223BDBB5E00C8B5A5 /* BGImageHeader */ = {
+			isa = PBXGroup;
+			children = (
+				19CB42D323BDBB8000C8B5A5 /* BGImageHeaderViewController.h */,
+				19CB42D423BDBB8000C8B5A5 /* BGImageHeaderViewController.m */,
+			);
+			path = BGImageHeader;
 			sourceTree = "<group>";
 		};
 		7FC047E60E9F785952801AA5 /* Frameworks */ = {
@@ -473,6 +486,7 @@
 				19502A79237E742E00C10560 /* SmoothViewController.m in Sources */,
 				196428F32148ECB1009C1D31 /* ListRefreshViewController.m in Sources */,
 				194A92DF23B9A02E00C05DBA /* ListViewController.m in Sources */,
+				19CB42D523BDBB8000C8B5A5 /* BGImageHeaderViewController.m in Sources */,
 				196428F92148F419009C1D31 /* TestTableViewCell.m in Sources */,
 				199F96D623BAF494001CC1A4 /* JXPagerSmoothCollectionFlowLayout.m in Sources */,
 				197B3A3E2182B22900561F08 /* TestNestListBaseView.m in Sources */,

@@ -20,6 +20,7 @@
 #import "SmoothViewController.h"
 #import "SmoothCustomPagerHeaderViewController.h"
 #import "MainTableViewOffsetViewController.h"
+#import "BGImageHeaderViewController.h"
 
 @interface ViewController ()
 
@@ -147,6 +148,13 @@
         case 14:
         {
             MainTableViewOffsetViewController *vc = [[MainTableViewOffsetViewController alloc] init];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 15:
+        {
+            BGImageHeaderViewController *vc = [[BGImageHeaderViewController alloc] init];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }
