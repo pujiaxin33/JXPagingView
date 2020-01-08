@@ -80,8 +80,16 @@ self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:frame];
 self.pagerView = [[JXPagerView alloc] initWithDelegate:self];
 [self.view addSubview:self.pagerView];
 
-//关联contentScrollView，这样列表就可以和categoryView联动了。
-self.categoryView.contentScrollView = self.pagerView.listContainerView.collectionView;
+//⚠️⚠️⚠️将pagerView的listContainerView和categoryView.listContainer进行关联，这样列表就可以和categoryView联动了。⚠️⚠️⚠️
+self.categoryView.listContainer = (id<JXCategoryViewListContainer>)self.pagerView.listContainerView;
+```
+
+**Swift版本列表关联代码**
+```Swift
+//给JXPagingListContainerView添加extension，表示遵从JXSegmentedViewListContainer的协议
+extension JXPagingListContainerView: JXSegmentedViewListContainer {}
+//⚠️⚠️⚠️将pagingView的listContainerView和segmentedView.listContainer进行关联，这样列表就可以和categoryView联动了。⚠️⚠️⚠️
+segmentedView.listContainer = pagingView.listContainerView
 ```
 
 ### 2、实现`JXPagerViewDelegate`协议
@@ -211,6 +219,11 @@ self.categoryView.contentScrollView = self.pagerView.listContainerView.collectio
 
 需要使用`JXPagerListRefreshView`类（是`JXPagerView`的子类）
 
+### JXPagerListContainerType说明
+
+UIScrollView：优势：没有其他副作用。劣势：实时的视图内存占用相对大一点，因为所有加载之后的列表视图都在视图层级里面。
+UICollectionView：优势：因为列表被添加到cell上，实时的视图内存占用更少，适合内存要求特别高的场景。劣势：因为cell重用机制的问题，导致列表被移除屏幕外之后，会被放入缓存区，而不存在于视图层级中。如果刚好你的列表使用了下拉刷新视图，在快速切换过程中，就会导致下拉刷新回调不成功的问题。（使用MJRefresh会出现此问题）一句话概括：使用CollectionView的时候，就不要让列表使用下拉刷新加载。
+
 ### 关于下方列表视图的代理方法`- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath`有时候需要点击两次才回调
 
 出现步骤：当手指放在下方列表视图往下拉，直到TableHeaderView完全显示。
@@ -233,17 +246,6 @@ self.categoryView.defaultSelectedIndex = 2;
 
 如果TableHeaderView添加了轮播图，获取其他可以横向滚动的UIScrollView。如果不处理，就会出现左右滚动轮播图的时候又可以触发整个页面的上下滚动。为了规避该问题，请参考示例仓库中`BannerViewController`类的处理方法。即可同一时间只允许左右滚动或者上下滚动。
 
-### 关于JXCategoryView点击item之后的切换处理
-
-
-因为底层触发列表加载是在代理方法：`- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath`回调里面。
-所以，如果当前有5个item，当前在第1个，用户点击了第5个。categoryView默认是通过设置contentOffset.x滚动到指定的位置，这个时候有个问题，就会触发中间2、3、4的cellForItemAtIndexPath方法。也就会触发2、3、4的列表加载。
-
-为了避免这种情况，请加上下面这段代码：
-```Objective-C
-self.categoryView.contentScrollViewClickTransitionAnimationEnabled = NO;
-```
-
 ### 关于列表用UIViewController封装且要支持横竖屏的tips
 
 在列表UIViewController类里面一定要加上下面这段代码：(不要问我为什么，我也不知道，谁知道系统内部是怎么操作的，反正加上就没毛病了)
@@ -259,13 +261,18 @@ self.categoryView.contentScrollViewClickTransitionAnimationEnabled = NO;
 
 
 ## 迁移指南
-- 0.0.9版本将下面两个API的返回值修改为了NSUInteger(swift版本为Int)，之前版本是CGFloat，升级为0.0.9及以上的时候，记得修改一下使用地方的返回值类型，不然会引起crash。
+- **0.0.9版本**：将下面两个API的返回值修改为了NSUInteger(swift版本为Int)，之前版本是CGFloat，升级为0.0.9及以上的时候，记得修改一下使用地方的返回值类型，不然会引起crash。
   - `- (NSUInteger)heightForPinSectionHeaderInPagerView:(JXPagerView *)pagerView`
   - `- (NSUInteger)tableHeaderViewHeightInPagerView:(JXPagerView *)pagerView`
-- 1.0.0版本：
+- **1.0.0版本**：
   删除代理方法`- (NSArray <id<JXPagerViewListViewDelegate>> *)listViewsInPagerView:(JXPagerView *)pagerView;`，请参考示例使用下面两个代理方法:
   - `- (NSInteger)numberOfListsInPagerView:(JXPagerView *)pagerView;`
   - `- (id<JXPagerViewListViewDelegate>)pagerView:(JXPagerView *)pagerView initListAtIndex:(NSInteger)index;`
+- **2.0.0版本**：`JXPagerListContainerView`进行了重构，列表拥有了完整的生命周期方法。列表是`UIViewController`类，`viewWillAppear`等生命周期方法将会正确触发。
+- 
+    - 删除了collectionView，用`scrollView`属性替换。
+    - 和`CategoryView`的联动绑定代码更新为`self.categoryView.listContainer = (id<JXCategoryViewListContainer>)self.pagerView.listContainerView;`。
+    - `JXPagerView`新增`- (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate listContainerType:(JXPagerListContainerType)type`初始化方法，可以指定列表容器为`UIScrollView`或者`UICollectionView`；
     
 
 ## 补充
