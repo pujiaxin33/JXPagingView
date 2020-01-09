@@ -21,6 +21,7 @@
 #import "SmoothCustomPagerHeaderViewController.h"
 #import "MainTableViewOffsetViewController.h"
 #import "BGImageHeaderViewController.h"
+#import "HeaderPositionChangeViewController.h"
 
 @interface ViewController ()
 
@@ -159,6 +160,14 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
+        case 16:
+        {
+            HeaderPositionChangeViewController *vc = [[HeaderPositionChangeViewController alloc] init];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+
         default:
             break;
     }
