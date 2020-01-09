@@ -12,6 +12,7 @@
 		19278E6B2223D0F10041C293 /* PagingViewBannerTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19278E6A2223D0F10041C293 /* PagingViewBannerTableHeaderView.m */; };
 		19278E6F2223D3520041C293 /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19278E6E2223D3520041C293 /* BannerViewController.m */; };
 		194A918623C6CECD006BE6AB /* HeaderPositionChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194A918523C6CECD006BE6AB /* HeaderPositionChangeViewController.m */; };
+		194A91E023C6EE17006BE6AB /* CustomPinViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194A91DF23C6EE17006BE6AB /* CustomPinViewViewController.m */; };
 		194A92DF23B9A02E00C05DBA /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194A92DE23B9A02E00C05DBA /* ListViewController.m */; };
 		19502A79237E742E00C10560 /* SmoothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19502A78237E742E00C10560 /* SmoothViewController.m */; };
 		195C3D7D22BCC4B000521461 /* ScrollToTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 195C3D7C22BCC4B000521461 /* ScrollToTopViewController.m */; };
@@ -58,6 +59,8 @@
 		19278E6E2223D3520041C293 /* BannerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerViewController.m; sourceTree = "<group>"; };
 		194A918423C6CECD006BE6AB /* HeaderPositionChangeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderPositionChangeViewController.h; sourceTree = "<group>"; };
 		194A918523C6CECD006BE6AB /* HeaderPositionChangeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderPositionChangeViewController.m; sourceTree = "<group>"; };
+		194A91DE23C6EE17006BE6AB /* CustomPinViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPinViewViewController.h; sourceTree = "<group>"; };
+		194A91DF23C6EE17006BE6AB /* CustomPinViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPinViewViewController.m; sourceTree = "<group>"; };
 		194A92DD23B9A02E00C05DBA /* ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		194A92DE23B9A02E00C05DBA /* ListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		19502A77237E742E00C10560 /* SmoothViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmoothViewController.h; sourceTree = "<group>"; };
@@ -174,6 +177,15 @@
 			path = HeaderPositionChange;
 			sourceTree = "<group>";
 		};
+		194A91DD23C6EDA7006BE6AB /* CustomPinView */ = {
+			isa = PBXGroup;
+			children = (
+				194A91DE23C6EE17006BE6AB /* CustomPinViewViewController.h */,
+				194A91DF23C6EE17006BE6AB /* CustomPinViewViewController.m */,
+			);
+			path = CustomPinView;
+			sourceTree = "<group>";
+		};
 		19502A76237E741500C10560 /* Smooth */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +264,7 @@
 		196428192148E58C009C1D31 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				194A91DD23C6EDA7006BE6AB /* CustomPinView */,
 				194A918323C6CE87006BE6AB /* HeaderPositionChange */,
 				19CB42D223BDBB5E00C8B5A5 /* BGImageHeader */,
 				19B9EA3E23B9F8490099E656 /* MainTableViewOffset */,
@@ -507,6 +520,7 @@
 				192226DE2238E5C100637AA2 /* HeaderPositionViewController.m in Sources */,
 				19278E6B2223D0F10041C293 /* PagingViewBannerTableHeaderView.m in Sources */,
 				196428272148E58C009C1D31 /* PagingViewTableHeaderView.m in Sources */,
+				194A91E023C6EE17006BE6AB /* CustomPinViewViewController.m in Sources */,
 				196428292148E58C009C1D31 /* PagingViewController.m in Sources */,
 				195C3D8122BCC5C900521461 /* ScrollToListCellViewController.m in Sources */,
 				19B9EA3423B9CD570099E656 /* TestListBaseView.m in Sources */,

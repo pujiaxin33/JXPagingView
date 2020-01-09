@@ -22,6 +22,7 @@
 #import "MainTableViewOffsetViewController.h"
 #import "BGImageHeaderViewController.h"
 #import "HeaderPositionChangeViewController.h"
+#import "CustomPinViewViewController.h"
 
 @interface ViewController ()
 
@@ -167,7 +168,13 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-
+        case 17:
+        {
+            CustomPinViewViewController *vc = [[CustomPinViewViewController alloc] init];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
         default:
             break;
     }
