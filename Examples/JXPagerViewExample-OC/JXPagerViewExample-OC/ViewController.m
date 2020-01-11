@@ -23,6 +23,7 @@
 #import "BGImageHeaderViewController.h"
 #import "HeaderPositionChangeViewController.h"
 #import "CustomPinViewViewController.h"
+#import "TabBarExampleViewController.h"
 
 @interface ViewController ()
 
@@ -175,6 +176,14 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
+        case 18:
+        {
+            TabBarExampleViewController *vc = [[TabBarExampleViewController alloc] init];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+
         default:
             break;
     }

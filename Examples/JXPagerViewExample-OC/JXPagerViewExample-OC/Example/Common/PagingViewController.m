@@ -50,8 +50,8 @@
     self.categoryView.listContainer = (id<JXCategoryViewListContainer>)self.pagerView.listContainerView;
     
     //导航栏隐藏的情况，处理扣边返回，下面的代码要加上
-    [self.pagerView.listContainerView.scrollView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
-    [self.pagerView.mainTableView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
+//    [self.pagerView.listContainerView.scrollView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
+//    [self.pagerView.mainTableView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
