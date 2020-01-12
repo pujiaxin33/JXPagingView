@@ -229,6 +229,8 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
             if (minContentSizeHeight > scrollView.contentSize.height) {
                 scrollView.contentSize = CGSizeMake(scrollView.contentSize.width, minContentSizeHeight);
             }
+            scrollView.contentInset = UIEdgeInsetsMake(self.heightForPagerHeaderContainerView, 0, 0, 0);
+            scrollView.contentOffset = CGPointMake(0, -scrollView.contentInset.top + MIN(-self.currentPagerHeaderContainerViewY, self.heightForPagerHeader));
         }
     }else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
