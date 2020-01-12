@@ -144,8 +144,10 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
         [[list listView] setNeedsLayout];
         [[list listView] layoutIfNeeded];
         UIScrollView *listScrollView = [list listScrollView];
-        if ([listScrollView isMemberOfClass:[UITableView class]]) {
+        if ([listScrollView isKindOfClass:[UITableView class]]) {
             ((UITableView *)listScrollView).estimatedRowHeight = 0;
+            ((UITableView *)listScrollView).estimatedSectionFooterHeight = 0;
+            ((UITableView *)listScrollView).estimatedSectionHeaderHeight = 0;
         }
         if (@available(iOS 11.0, *)) {
             listScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
