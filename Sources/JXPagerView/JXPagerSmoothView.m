@@ -37,6 +37,7 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
 @property (nonatomic, assign) CGFloat heightForPagerHeader;
 @property (nonatomic, assign) CGFloat heightForPinHeader;
 @property (nonatomic, assign) CGFloat heightForPagerHeaderContainerView;
+@property (nonatomic, assign) CGFloat currentListInitializeContentOffsetY;
 @end
 
 @implementation JXPagerSmoothView
@@ -144,14 +145,17 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
         [[list listView] setNeedsLayout];
         [[list listView] layoutIfNeeded];
         UIScrollView *listScrollView = [list listScrollView];
-        if ([listScrollView isMemberOfClass:[UITableView class]]) {
+        if ([listScrollView isKindOfClass:[UITableView class]]) {
             ((UITableView *)listScrollView).estimatedRowHeight = 0;
+            ((UITableView *)listScrollView).estimatedSectionFooterHeight = 0;
+            ((UITableView *)listScrollView).estimatedSectionHeaderHeight = 0;
         }
         if (@available(iOS 11.0, *)) {
             listScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
         listScrollView.contentInset = UIEdgeInsetsMake(self.heightForPagerHeaderContainerView, 0, 0, 0);
-        listScrollView.contentOffset = CGPointMake(0, -listScrollView.contentInset.top + MIN(-self.currentPagerHeaderContainerViewY, self.heightForPagerHeader));
+        self.currentListInitializeContentOffsetY = -listScrollView.contentInset.top + MIN(-self.currentPagerHeaderContainerViewY, self.heightForPagerHeader);
+        listScrollView.contentOffset = CGPointMake(0, self.currentListInitializeContentOffsetY);
         UIView *listHeader = [[UIView alloc] initWithFrame:CGRectMake(0, -self.heightForPagerHeaderContainerView, self.bounds.size.width, self.heightForPagerHeaderContainerView)];
         [listScrollView addSubview:listHeader];
         if (self.pagerHeaderContainerView.superview == nil) {
@@ -226,6 +230,7 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
             CGFloat minContentSizeHeight = self.bounds.size.height - self.heightForPinHeader;
             if (minContentSizeHeight > scrollView.contentSize.height) {
                 scrollView.contentSize = CGSizeMake(scrollView.contentSize.width, minContentSizeHeight);
+                scrollView.contentOffset = CGPointMake(0, self.currentListInitializeContentOffsetY);
             }
         }
     }else {
