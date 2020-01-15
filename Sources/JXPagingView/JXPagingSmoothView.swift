@@ -39,7 +39,7 @@ open class JXPagingSmoothView: UIView {
     public let listCollectionView: JXPagingSmoothCollectionView
     public var defaultSelectedIndex: Int = 0
 
-    unowned var dataSource: JXPagingSmoothViewDataSource
+    weak var dataSource: JXPagingSmoothViewDataSource?
     var listHeaderDict = [Int : UIView]()
     var isSyncListContentOffsetEnabled: Bool = false
     let pagingHeaderContainerView: UIView
@@ -92,6 +92,7 @@ open class JXPagingSmoothView: UIView {
     }
 
     public func reloadData() {
+        guard let dataSource = dataSource else { return }
         currentListScrollView = nil
         currentIndex = defaultSelectedIndex
         currentPagingHeaderContainerViewY = 0
@@ -223,6 +224,7 @@ open class JXPagingSmoothView: UIView {
     }
 
     func listDidAppear(at index: Int) {
+        guard let dataSource = dataSource else { return }
         let count = dataSource.numberOfLists(in: self)
         if count <= 0 || index >= count {
             return
@@ -231,6 +233,7 @@ open class JXPagingSmoothView: UIView {
     }
 
     func listDidDisappear(at index: Int) {
+        guard let dataSource = dataSource else { return }
         let count = dataSource.numberOfLists(in: self)
         if count <= 0 || index >= count {
             return
@@ -258,10 +261,12 @@ extension JXPagingSmoothView: UICollectionViewDataSource, UICollectionViewDelega
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let dataSource = dataSource else { return 0 }
         return dataSource.numberOfLists(in: self)
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let dataSource = dataSource else { return UICollectionViewCell(frame: CGRect.zero) }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
         var list = listDict[indexPath.item]
         if list == nil {

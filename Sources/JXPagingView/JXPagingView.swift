@@ -54,7 +54,7 @@ open class JXPagingView: UIView {
     public var currentScrollingListView: UIScrollView?
     public var currentList: JXPagingViewListViewDelegate?
     private var currentIndex: Int = 0
-    private unowned var delegate: JXPagingViewDelegate
+    private weak var delegate: JXPagingViewDelegate?
     private var tableHeaderContainerView: UIView!
     private let cellIdentifier = "cell"
     private let listContainerType: JXPagingListContainerType
@@ -105,6 +105,7 @@ open class JXPagingView: UIView {
     }
 
     open func resizeTableHeaderViewHeight(animatable: Bool = false, duration: TimeInterval = 0.25, curve: UIView.AnimationCurve = .linear) {
+        guard let delegate = delegate else { return }
         if animatable {
             var options: UIView.AnimationOptions = .curveLinear
             switch curve {
@@ -171,6 +172,7 @@ open class JXPagingView: UIView {
     //MARK: - Private
 
     func refreshTableHeaderView() {
+        guard let delegate = delegate else { return }
         let tableHeaderView = delegate.tableHeaderView(in: self)
         let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat(delegate.tableHeaderViewHeight(in: self))))
         containerView.addSubview(tableHeaderView)
@@ -191,6 +193,7 @@ open class JXPagingView: UIView {
     }
 
     func mainTableViewMaxContentOffsetY() -> CGFloat {
+        guard let delegate = delegate else { return 0 }
         return CGFloat(delegate.tableHeaderViewHeight(in: self)) - CGFloat(pinSectionHeaderVerticalOffset)
     }
 
@@ -210,6 +213,7 @@ open class JXPagingView: UIView {
     }
 
     func pinSectionHeaderHeight() -> CGFloat {
+        guard let delegate = delegate else { return 0 }
         return CGFloat(delegate.heightForPinSectionHeader(in: self))
     }
 
@@ -243,6 +247,7 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let delegate = delegate else { return nil }
         return delegate.viewForPinSectionHeader(in: self)
     }
 
@@ -276,7 +281,7 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
             }
         }
         preferredProcessMainTableViewDidScroll(scrollView)
-        delegate.mainTableViewDidScroll?(scrollView)
+        delegate?.mainTableViewDidScroll?(scrollView)
     }
 
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -308,10 +313,12 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
 
 extension JXPagingView: JXPagingListContainerViewDataSource {
     public func numberOfLists(in listContainerView: JXPagingListContainerView) -> Int {
+        guard let delegate = delegate else { return 0 }
         return delegate.numberOfLists(in: self)
     }
 
     public func listContainerView(_ listContainerView: JXPagingListContainerView, initListAt index: Int) -> JXPagingViewListViewDelegate {
+        guard let delegate = delegate else { fatalError("JXPaingView.delegate must not be nil") }
         var list = validListDict[index]
         if list == nil {
             list = delegate.pagingView(self, initListAtIndex: index)

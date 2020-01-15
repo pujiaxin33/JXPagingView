@@ -83,7 +83,7 @@ public protocol JXPagingListContainerViewDataSource {
 
 open class JXPagingListContainerView: UIView {
     public private(set) var type: JXPagingListContainerType
-    public private(set) unowned var dataSource: JXPagingListContainerViewDataSource
+    public private(set) weak var dataSource: JXPagingListContainerViewDataSource?
     public private(set) var scrollView: UIScrollView!
     public var isCategoryNestPagingEnabled = false {
         didSet {
@@ -131,6 +131,7 @@ open class JXPagingListContainerView: UIView {
     }
 
     open func commonInit() {
+        guard let dataSource = dataSource else { return }
         containerVC = JXPagingListContainerViewController()
         containerVC.view.backgroundColor = .clear
         addSubview(containerVC.view)
@@ -207,6 +208,7 @@ open class JXPagingListContainerView: UIView {
     open override func layoutSubviews() {
         super.layoutSubviews()
 
+        guard let dataSource = dataSource else { return }
         containerVC.view.frame = bounds
         if type == .scrollView {
             if scrollView.frame == CGRect.zero || scrollView.bounds.size != bounds.size {
@@ -286,6 +288,7 @@ open class JXPagingListContainerView: UIView {
     }
 
     public func reloadData() {
+        guard let dataSource = dataSource else { return }
         if currentIndex < 0 || currentIndex >= dataSource.numberOfLists(in: self) {
             defaultSelectedIndex = 0
             currentIndex = 0
@@ -303,6 +306,7 @@ open class JXPagingListContainerView: UIView {
 
     //MARK: - Private
     func initListIfNeeded(at index: Int) {
+        guard let dataSource = dataSource else { return }
         if dataSource.listContainerView?(self, canInitListAt: index) == false {
             return
         }
@@ -332,6 +336,7 @@ open class JXPagingListContainerView: UIView {
     }
 
     private func listWillAppear(at index: Int) {
+        guard let dataSource = dataSource else { return }
         guard checkIndexValid(index) else {
             return
         }
@@ -412,6 +417,7 @@ open class JXPagingListContainerView: UIView {
     }
 
     private func checkIndexValid(_ index: Int) -> Bool {
+        guard let dataSource = dataSource else { return false }
         let count = dataSource.numberOfLists(in: self)
         if count <= 0 || index >= count {
             return false
@@ -422,6 +428,7 @@ open class JXPagingListContainerView: UIView {
 
 extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let dataSource = dataSource else { return 0 }
         return dataSource.numberOfLists(in: self)
     }
 
