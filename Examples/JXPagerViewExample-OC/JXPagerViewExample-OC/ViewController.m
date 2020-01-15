@@ -24,6 +24,7 @@
 #import "HeaderPositionChangeViewController.h"
 #import "CustomPinViewViewController.h"
 #import "TabBarExampleViewController.h"
+#import "CustomCategoryViewController.h"
 
 @interface ViewController ()
 
@@ -179,6 +180,13 @@
         case 18:
         {
             TabBarExampleViewController *vc = [[TabBarExampleViewController alloc] init];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 19:
+        {
+            CustomCategoryViewController *vc = [[CustomCategoryViewController alloc] init];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }

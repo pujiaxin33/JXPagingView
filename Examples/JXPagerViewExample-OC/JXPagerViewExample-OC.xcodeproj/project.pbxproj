@@ -18,6 +18,7 @@
 		19502A79237E742E00C10560 /* SmoothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19502A78237E742E00C10560 /* SmoothViewController.m */; };
 		195C3D7D22BCC4B000521461 /* ScrollToTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 195C3D7C22BCC4B000521461 /* ScrollToTopViewController.m */; };
 		195C3D8122BCC5C900521461 /* ScrollToListCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 195C3D8022BCC5C900521461 /* ScrollToListCellViewController.m */; };
+		195D95E423CEA07E00B1868F /* CustomCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 195D95E323CEA07E00B1868F /* CustomCategoryViewController.m */; };
 		196428052148E47F009C1D31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428042148E47F009C1D31 /* AppDelegate.m */; };
 		196428082148E47F009C1D31 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428072148E47F009C1D31 /* ViewController.m */; };
 		1964280B2148E47F009C1D31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196428092148E47F009C1D31 /* Main.storyboard */; };
@@ -72,6 +73,8 @@
 		195C3D7C22BCC4B000521461 /* ScrollToTopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollToTopViewController.m; sourceTree = "<group>"; };
 		195C3D7F22BCC5C900521461 /* ScrollToListCellViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollToListCellViewController.h; sourceTree = "<group>"; };
 		195C3D8022BCC5C900521461 /* ScrollToListCellViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollToListCellViewController.m; sourceTree = "<group>"; };
+		195D95E223CEA07E00B1868F /* CustomCategoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCategoryViewController.h; sourceTree = "<group>"; };
+		195D95E323CEA07E00B1868F /* CustomCategoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCategoryViewController.m; sourceTree = "<group>"; };
 		196428002148E47F009C1D31 /* JXPagerViewExample-OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JXPagerViewExample-OC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		196428032148E47F009C1D31 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		196428042148E47F009C1D31 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -198,11 +201,13 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		194A92F023C95D79006BE6AB /* JD */ = {
+		194A92F023C95D79006BE6AB /* CustomCategory */ = {
 			isa = PBXGroup;
 			children = (
+				195D95E223CEA07E00B1868F /* CustomCategoryViewController.h */,
+				195D95E323CEA07E00B1868F /* CustomCategoryViewController.m */,
 			);
-			path = JD;
+			path = CustomCategory;
 			sourceTree = "<group>";
 		};
 		19502A76237E741500C10560 /* Smooth */ = {
@@ -283,7 +288,7 @@
 		196428192148E58C009C1D31 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				194A92F023C95D79006BE6AB /* JD */,
+				194A92F023C95D79006BE6AB /* CustomCategory */,
 				194A929623C95565006BE6AB /* TabBar */,
 				194A91DD23C6EDA7006BE6AB /* CustomPinView */,
 				194A918323C6CE87006BE6AB /* HeaderPositionChange */,
@@ -542,6 +547,7 @@
 				19278E6B2223D0F10041C293 /* PagingViewBannerTableHeaderView.m in Sources */,
 				196428272148E58C009C1D31 /* PagingViewTableHeaderView.m in Sources */,
 				194A91E023C6EE17006BE6AB /* CustomPinViewViewController.m in Sources */,
+				195D95E423CEA07E00B1868F /* CustomCategoryViewController.m in Sources */,
 				196428292148E58C009C1D31 /* PagingViewController.m in Sources */,
 				195C3D8122BCC5C900521461 /* ScrollToListCellViewController.m in Sources */,
 				194A929923C955B5006BE6AB /* TabBarExampleViewController.m in Sources */,
