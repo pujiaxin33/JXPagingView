@@ -38,6 +38,7 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
 @property (nonatomic, assign) CGFloat heightForPinHeader;
 @property (nonatomic, assign) CGFloat heightForPagerHeaderContainerView;
 @property (nonatomic, assign) CGFloat currentListInitializeContentOffsetY;
+@property (nonatomic, strong) UIScrollView *singleScrollView;
 @end
 
 @implementation JXPagerSmoothView
@@ -94,6 +95,9 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     if (CGRectEqualToRect(self.pagerHeaderContainerView.frame, CGRectZero)) {
         [self reloadData];
     }
+    if (self.singleScrollView != nil) {
+        self.singleScrollView.frame = self.bounds;
+    }
 }
 
 - (void)reloadData {
@@ -124,6 +128,16 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     pinHeader.frame = CGRectMake(0, self.heightForPagerHeader, self.bounds.size.width, self.heightForPinHeader);
     [self.listCollectionView setContentOffset:CGPointMake(self.listCollectionView.bounds.size.width*self.defaultSelectedIndex, 0) animated:NO];
     [self.listCollectionView reloadData];
+
+    if ([self.dataSource numberOfListsInPagerView:self] == 0) {
+        self.singleScrollView = [[UIScrollView alloc] init];
+        [self addSubview:self.singleScrollView];
+        [self.singleScrollView addSubview:pagerHeader];
+        self.singleScrollView.contentSize = CGSizeMake(self.bounds.size.width, self.heightForPagerHeader);
+    }else if (self.singleScrollView != nil) {
+        [self.singleScrollView removeFromSuperview];
+        self.singleScrollView = nil;
+    }
 }
 
 #pragma mark - UICollectionViewDataSource & UICollectionViewDelegateFlowLayout

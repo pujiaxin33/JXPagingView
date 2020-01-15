@@ -51,6 +51,7 @@ open class JXPagingSmoothView: UIView {
     var heightForPagingHeaderContainerView: CGFloat = 0
     let cellIdentifier = "cell"
     var currentListInitializeContentOffsetY: CGFloat = 0
+    var singleScrollView: UIScrollView?
 
     deinit {
         listDict.values.forEach {
@@ -118,6 +119,16 @@ open class JXPagingSmoothView: UIView {
         pinHeader.frame = CGRect(x: 0, y: heightForPagingHeader, width: bounds.size.width, height: heightForPinHeader)
         listCollectionView.setContentOffset(CGPoint(x: listCollectionView.bounds.size.width*CGFloat(defaultSelectedIndex), y: 0), animated: false)
         listCollectionView.reloadData()
+
+        if dataSource.numberOfLists(in: self) == 0 {
+            singleScrollView = UIScrollView()
+            addSubview(singleScrollView!)
+            singleScrollView?.addSubview(pagingHeader)
+            singleScrollView?.contentSize = CGSize(width: bounds.size.width, height: heightForPagingHeader)
+        }else if singleScrollView != nil {
+            singleScrollView?.removeFromSuperview()
+            singleScrollView = nil
+        }
     }
 
     open override func layoutSubviews() {
@@ -126,6 +137,9 @@ open class JXPagingSmoothView: UIView {
         listCollectionView.frame = bounds
         if pagingHeaderContainerView.frame == CGRect.zero {
             reloadData()
+        }
+        if singleScrollView != nil {
+            singleScrollView?.frame = bounds
         }
     }
 
