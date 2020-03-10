@@ -17,7 +17,8 @@ import UIKit
     @objc optional func listDidDisappear()
 }
 
-@objc public protocol JXPagingSmoothViewDataSource {
+@objc
+public protocol JXPagingSmoothViewDataSource {
     /// 返回页面header的高度
     func heightForPagingHeader(in pagingView: JXPagingSmoothView) -> CGFloat
     /// 返回页面header视图
@@ -34,10 +35,17 @@ import UIKit
     func pagingView(_ pagingView: JXPagingSmoothView, initListAtIndex index: Int) -> JXPagingSmoothViewListViewDelegate
 }
 
+@objc
+public protocol JXPagingSmoothViewDelegate {
+    @objc optional func pagingSmoothViewDidScroll(_ scrollView: UIScrollView)
+}
+
+
 open class JXPagingSmoothView: UIView {
     public private(set) var listDict = [Int : JXPagingSmoothViewListViewDelegate]()
     public let listCollectionView: JXPagingSmoothCollectionView
     public var defaultSelectedIndex: Int = 0
+    public weak var delegate: JXPagingSmoothViewDelegate?
 
     weak var dataSource: JXPagingSmoothViewDataSource?
     var listHeaderDict = [Int : UIView]()
@@ -312,6 +320,7 @@ extension JXPagingSmoothView: UICollectionViewDataSource, UICollectionViewDelega
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        delegate?.pagingSmoothViewDidScroll?(scrollView)
         let index = Int(scrollView.contentOffset.x/scrollView.bounds.size.width)
         let listScrollView = listDict[index]?.listScrollView()
         if index != currentIndex && !(scrollView.isDragging || scrollView.isDecelerating) && listScrollView?.contentOffset.y ?? 0 <= -heightForPinHeader {

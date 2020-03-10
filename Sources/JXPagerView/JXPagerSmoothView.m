@@ -202,6 +202,9 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pagerSmoothViewDidScroll:)]) {
+        [self.delegate pagerSmoothViewDidScroll:scrollView];
+    }
     NSInteger index = scrollView.contentOffset.x/scrollView.bounds.size.width;
     UIScrollView *listScrollView = [self.listDict[@(index)] listScrollView];
     if (index != self.currentIndex && !(scrollView.isDragging || scrollView.isDecelerating) && listScrollView.contentOffset.y <= -self.heightForPinHeader) {

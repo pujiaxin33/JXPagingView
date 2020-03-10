@@ -66,6 +66,10 @@
 
 @end
 
+@protocol JXPagerSmoothViewDelegate <NSObject>
+- (void)pagerSmoothViewDidScroll:(UIScrollView *)scrollView;
+@end
+
 @interface JXPagerSmoothView : UIView
 
 /**
@@ -74,6 +78,7 @@
 @property (nonatomic, strong, readonly) NSDictionary <NSNumber *, id<JXPagerSmoothViewListViewDelegate>> *listDict;
 @property (nonatomic, strong, readonly) UICollectionView *listCollectionView;
 @property (nonatomic, assign) NSInteger defaultSelectedIndex;
+@property (nonatomic, weak) id<JXPagerSmoothViewDelegate> delegate;
 
 - (instancetype)initWithDataSource:(id<JXPagerSmoothViewDataSource>)dataSource NS_DESIGNATED_INITIALIZER;
 - (instancetype)init NS_UNAVAILABLE;
