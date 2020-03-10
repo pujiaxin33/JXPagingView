@@ -178,14 +178,11 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (self.pinSectionHeaderVerticalOffset != 0) {
-        if (scrollView.contentOffset.y < self.pinSectionHeaderVerticalOffset) {
-            //因为设置了contentInset.top，所以顶部会有对应高度的空白区间，所以需要设置负数抵消掉
-            if (scrollView.contentOffset.y >= 0) {
-                [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0)];
-            }
-        }else if (scrollView.contentOffset.y > self.pinSectionHeaderVerticalOffset) {
+        if (scrollView.contentOffset.y >= self.pinSectionHeaderVerticalOffset) {
             //固定的位置就是contentInset.top
             [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsMake(self.pinSectionHeaderVerticalOffset, 0, 0, 0)];
+        }else {
+            [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsZero];
         }
     }
     [self preferredProcessMainTableViewDidScroll:scrollView];
