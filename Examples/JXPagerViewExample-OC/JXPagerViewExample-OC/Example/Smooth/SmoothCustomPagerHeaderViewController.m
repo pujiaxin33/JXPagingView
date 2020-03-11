@@ -60,6 +60,7 @@
 - (id<JXPagerSmoothViewListViewDelegate>)pagerView:(JXPagerSmoothView *)pagerView initListAtIndex:(NSInteger)index {
     SmoothListViewController *listVC = [[SmoothListViewController alloc] init];
     listVC.isNeedHeaderRefresh = YES;
+    listVC.isNeedFooterLoad = YES;
     listVC.delegate = self;
     listVC.title = self.categoryView.titles[index];
     return listVC;
@@ -68,6 +69,7 @@
 #pragma mark - SmoothListViewControllerDelegate
 
 - (void)startHeaderRefresh {
+    //正在刷新的时候，需要暂时不允许用户交互。
     self.pager.listCollectionView.scrollEnabled = NO;
     self.categoryView.userInteractionEnabled = NO;
 }

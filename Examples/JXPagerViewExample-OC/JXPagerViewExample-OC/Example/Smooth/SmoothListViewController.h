@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SmoothListViewController : UIViewController <JXPagerSmoothViewListViewDelegate>
 @property (nonatomic, weak) id<SmoothListViewControllerDelegate> delegate;
 @property (nonatomic, assign) BOOL isNeedHeaderRefresh;
+@property (nonatomic, assign) BOOL isNeedFooterLoad;
 @end
 
 NS_ASSUME_NONNULL_END

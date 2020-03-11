@@ -11,6 +11,7 @@
 
 @interface SmoothListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, assign) NSInteger count;
 @end
 
 @implementation SmoothListViewController
@@ -27,14 +28,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.count = 100;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
 
+    __weak typeof(self)weakSelf = self;
     if (self.isNeedHeaderRefresh) {
-        __weak typeof(self)weakSelf = self;
         self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            //需要把下拉刷新事件告诉给外部
             [weakSelf.delegate startHeaderRefresh];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [weakSelf.tableView.mj_header endRefreshing];
@@ -42,6 +45,15 @@
             });
         }];
         self.tableView.mj_header.ignoredScrollViewContentInsetTop = [self.delegate pagerHeaderContainerHeight];//pageHeader+pinHeader的高度
+    }
+    if (self.isNeedFooterLoad) {
+        self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                weakSelf.count += 1;
+                [weakSelf.tableView reloadData];
+                [weakSelf.tableView.mj_footer endRefreshing];
+            });
+        }];
     }
 }
 
@@ -54,7 +66,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 100;
+    return self.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
