@@ -153,6 +153,7 @@ open class JXPagingListContainerView: UIView {
             }else {
                 scrollView = JXPagingListContainerScrollView.init()
             }
+            scrollView.backgroundColor = .clear
             scrollView.delegate = self
             scrollView.isPagingEnabled = true
             scrollView.showsVerticalScrollIndicator = false
@@ -173,6 +174,7 @@ open class JXPagingListContainerView: UIView {
             }else {
                 collectionView = JXPagingListContainerCollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
             }
+            collectionView.backgroundColor = .clear
             collectionView.isPagingEnabled = true
             collectionView.showsHorizontalScrollIndicator = false
             collectionView.showsVerticalScrollIndicator = false
