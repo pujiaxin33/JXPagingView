@@ -57,6 +57,15 @@
  */
 - (void)mainTableViewDidScroll:(UIScrollView *)scrollView;
 
+/**
+ 返回自定义UIScrollView或UICollectionView的Class
+ 某些特殊情况需要自己处理列表容器内UIScrollView内部逻辑。比如项目用了FDFullscreenPopGesture，需要处理手势相关代理。
+
+ @param pagerView JXPagerView
+ @return 自定义UIScrollView实例
+ */
+- (Class)scrollViewClassInlistContainerViewInPagerView:(JXPagerView *)pagerView;
+
 @end
 
 @interface JXPagerView : UIView

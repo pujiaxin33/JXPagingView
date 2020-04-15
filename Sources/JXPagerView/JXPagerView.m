@@ -7,6 +7,8 @@
 //
 
 #import "JXPagerView.h"
+@class JXPagerListContainerScrollView;
+@class JXPagerListContainerCollectionView;
 
 @interface JXPagerView () <UITableViewDataSource, UITableViewDelegate, JXPagerListContainerViewDelegate>
 @property (nonatomic, weak) id<JXPagerViewDelegate> delegate;
@@ -256,6 +258,13 @@
             [listItem listScrollView].scrollsToTop = NO;
         }
     }
+}
+
+- (Class)scrollViewClassInlistContainerView:(JXPagerListContainerView *)listContainerView {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(scrollViewClassInlistContainerViewInPagerView:)]) {
+        return [self.delegate scrollViewClassInlistContainerViewInPagerView:self];
+    }
+    return nil;
 }
 
 @end

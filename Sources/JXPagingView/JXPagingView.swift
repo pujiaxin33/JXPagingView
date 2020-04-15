@@ -27,8 +27,16 @@ import UIKit
     ///   - pagingView: pagingView description
     ///   - index: 新生成的列表实例
     func pagingView(_ pagingView: JXPagingView, initListAtIndex index: Int) -> JXPagingViewListViewDelegate
+
     /// mainTableView的滚动回调，用于实现头图跟随缩放
     @objc optional func mainTableViewDidScroll(_ scrollView: UIScrollView)
+
+    /// 返回自定义UIScrollView或UICollectionView的Class
+    /// 某些特殊情况需要自己处理列表容器内UIScrollView内部逻辑。比如项目用了FDFullscreenPopGesture，需要处理手势相关代理。
+    ///
+    /// - Parameter pagingView: JXPagingView
+    /// - Returns: 自定义UIScrollView实例
+    @objc optional func scrollViewClassInListContainerView(in pagingView: JXPagingView) -> AnyClass
 }
 
 open class JXPagingView: UIView {
