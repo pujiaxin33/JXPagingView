@@ -16,7 +16,7 @@
 
 @implementation MJRefreshFooter
 #pragma mark - 构造方法
-+ (instancetype)footerWithRefreshingBlock:(MJRefreshComponentRefreshingBlock)refreshingBlock
++ (instancetype)footerWithRefreshingBlock:(MJRefreshComponentAction)refreshingBlock
 {
     MJRefreshFooter *cmp = [[self alloc] init];
     cmp.refreshingBlock = refreshingBlock;
@@ -40,22 +40,6 @@
     // 默认不会自动隐藏
 //    self.automaticallyHidden = NO;
 }
-
-//- (void)willMoveToSuperview:(UIView *)newSuperview
-//{
-//    [super willMoveToSuperview:newSuperview];
-//
-//    if (newSuperview) {
-//        // 监听scrollView数据的变化
-//        if ([self.scrollView isKindOfClass:[UITableView class]] || [self.scrollView isKindOfClass:[UICollectionView class]]) {
-//            [self.scrollView setMj_reloadDataBlock:^(NSInteger totalDataCount) {
-//                if (self.isAutomaticallyHidden) {
-//                    self.hidden = (totalDataCount == 0);
-//                }
-//            }];
-//        }
-//    }
-//}
 
 #pragma mark - 公共方法
 - (void)endRefreshingWithNoMoreData

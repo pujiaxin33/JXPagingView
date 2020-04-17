@@ -32,7 +32,7 @@ class RefreshViewController: BaseViewController {
             self.segmentedView.defaultSelectedIndex = 0
             self.segmentedView.reloadData()
 
-            self.pagingView.mainTableView.mj_header.endRefreshing()
+            self.pagingView.mainTableView.mj_header?.endRefreshing()
             self.pagingView.reloadData()
         }
     }

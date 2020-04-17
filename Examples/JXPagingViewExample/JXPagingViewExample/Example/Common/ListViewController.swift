@@ -47,7 +47,7 @@ class ListViewController: UIViewController {
     func beginFirstRefresh() {
         if !isHeaderRefreshed {
             if (self.isNeedHeader) {
-                self.tableView.mj_header.beginRefreshing()
+                self.tableView.mj_header?.beginRefreshing()
             }else {
                 self.isHeaderRefreshed = true
                 self.tableView.reloadData()
@@ -57,7 +57,7 @@ class ListViewController: UIViewController {
 
     @objc func headerRefresh() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(2)) {
-            self.tableView.mj_header.endRefreshing()
+            self.tableView.mj_header?.endRefreshing()
             self.isHeaderRefreshed = true
             self.tableView.reloadData()
         }
@@ -67,7 +67,7 @@ class ListViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(2)) {
             self.dataSource.append("加载更多成功")
             self.tableView.reloadData()
-            self.tableView.mj_footer.endRefreshing()
+            self.tableView.mj_footer?.endRefreshing()
         }
     }
 }

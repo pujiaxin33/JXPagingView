@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,7 +18,6 @@
 		13611CB0839D7F8C3EFCB9F9ED5495BD /* NSBundle+MJRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = 335D92B9A38649B3C70EEBA33B62452A /* NSBundle+MJRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		16799DC7F05F1C33AF7971A31A079B6A /* JXSegmentedTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4CBDA8B3F643192CB6431074E8C6B9 /* JXSegmentedTitleCell.swift */; };
 		1730345E31C44C91B0AF1CF62C0EC4A5 /* JXSegmentedBaseItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB8F8E5423FB709E44F4F3086BA6642 /* JXSegmentedBaseItemModel.swift */; };
-		19B9EA3923B9D5C80099E656 /* JXPagingListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA3823B9D5C80099E656 /* JXPagingListContainerView.swift */; };
 		1AD892EE535725FD7EBC932925C7069A /* JXSegmentedTitleOrImageItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306D3D23FD38802E830F4052F5C27985 /* JXSegmentedTitleOrImageItemModel.swift */; };
 		203B20A2C1FE29823C352BBA289936B2 /* JXSegmentedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2A0AE9066F3475C0FA1ED11FFF108 /* JXSegmentedCollectionView.swift */; };
 		2146BD303C56DC788007D8655589FAE0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
@@ -105,6 +104,7 @@
 		ED3E2C1051BAC5B50BE441D95D8801C0 /* MJRefreshBackGifFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 652E062D51FB47FB5637FACEAFFEC45F /* MJRefreshBackGifFooter.m */; };
 		EE6FA6C79353FA315753304FAD69CA5D /* JXSegmentedTitleGradientDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BDA62BFC518E25FA484EF08D5841C6 /* JXSegmentedTitleGradientDataSource.swift */; };
 		EECE40C6F296379F86ABB36AF79BB8EC /* MJRefreshNormalHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BFE6426A796C0960979F37BACC69CBC /* MJRefreshNormalHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EF762B5B5585C3C67C7452ECFEDE62CA /* JXPagingListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22B0609F7C1BB9178858722C8ADB31 /* JXPagingListContainerView.swift */; };
 		EFB139B900FE4141AC0DFD79C9E8E825 /* JXSegmentedDotDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7604A5FC3DDC65C2A441C5A2FFBD218 /* JXSegmentedDotDataSource.swift */; };
 		F57BA25385E6996D6EC18EDD97E596FE /* MJRefresh-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EFC6605D945E7C2946056AC7C040E30 /* MJRefresh-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE350422B39C5EA00E5AA552F6D218FB /* MJRefreshBackNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C3C95D22DF6793D46335FF95D53BEC /* MJRefreshBackNormalFooter.m */; };
@@ -141,22 +141,21 @@
 		034CC2CC840D1B1494C9118675745FA6 /* JXSegmentedTitleAttributeDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleAttributeDataSource.swift; path = Sources/AttributeTitle/JXSegmentedTitleAttributeDataSource.swift; sourceTree = "<group>"; };
 		039C4FA900BCC5390281B95CA87BE1EF /* JXSegmentedView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JXSegmentedView.xcconfig; sourceTree = "<group>"; };
 		0403A5D10B44FEDB814A7E346D50647F /* JXPagingView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JXPagingView-prefix.pch"; sourceTree = "<group>"; };
-		050461C467DBED8AC6A61D70913B1CA9 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		07928762D9A8551470DAAD7C1E1F53A5 /* JXSegmentedView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JXSegmentedView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		050461C467DBED8AC6A61D70913B1CA9 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		07928762D9A8551470DAAD7C1E1F53A5 /* JXSegmentedView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JXSegmentedView.framework; path = JXSegmentedView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AFD113E6AFE3C72DDF90562D518D1CE /* JXPagingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPagingView.swift; path = Sources/JXPagingView/JXPagingView.swift; sourceTree = "<group>"; };
 		0DB2A0AE9066F3475C0FA1ED11FFF108 /* JXSegmentedCollectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedCollectionView.swift; path = Sources/Core/JXSegmentedCollectionView.swift; sourceTree = "<group>"; };
 		0FAA9156C0FF37DB5A21EC938C5F1919 /* JXPagingSmoothView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPagingSmoothView.swift; path = Sources/JXPagingView/JXPagingSmoothView.swift; sourceTree = "<group>"; };
 		16A7FC5E7D4E36FB9C8E631ED5CDF5CB /* JXSegmentedTitleGradientCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleGradientCell.swift; path = Sources/TitleGradient/JXSegmentedTitleGradientCell.swift; sourceTree = "<group>"; };
 		194078F7D042C079BD6066193010A1F4 /* MJRefreshAutoGifFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoGifFooter.h; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoGifFooter.h; sourceTree = "<group>"; };
 		1993CCA82CF7219839249D3285A5FFE1 /* JXSegmentedTitleAttributeCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleAttributeCell.swift; path = Sources/AttributeTitle/JXSegmentedTitleAttributeCell.swift; sourceTree = "<group>"; };
-		19B9EA3823B9D5C80099E656 /* JXPagingListContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JXPagingListContainerView.swift; path = Sources/JXPagingView/JXPagingListContainerView.swift; sourceTree = "<group>"; };
 		19EBA26B3DF5DA254BF5528DA00D0D2C /* JXSegmentedDotCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedDotCell.swift; path = Sources/Dot/JXSegmentedDotCell.swift; sourceTree = "<group>"; };
 		1C35B2AC2B64BD3224D3E5BD23057ACC /* MJRefreshBackFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackFooter.m; path = MJRefresh/Base/MJRefreshBackFooter.m; sourceTree = "<group>"; };
 		1F0CDF92F9FEF09187EEAA04C67CE6B5 /* MJRefreshFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshFooter.h; path = MJRefresh/Base/MJRefreshFooter.h; sourceTree = "<group>"; };
 		272B3DB3AF5FE646FC78388989D1B33A /* JXPagingListRefreshView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPagingListRefreshView.swift; path = Sources/JXPagingView/JXPagingListRefreshView.swift; sourceTree = "<group>"; };
 		27B415925C6EB634E77145E5623A91B8 /* JXSegmentedIndicatorLineView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorLineView.swift; path = Sources/Indicator/JXSegmentedIndicatorLineView.swift; sourceTree = "<group>"; };
 		29E63BFC958822F473828A4AB3EF1286 /* JXSegmentedView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JXSegmentedView-umbrella.h"; sourceTree = "<group>"; };
-		2F4A1CCB21DB7EA5A2ACEB11E374FBCA /* JXPagingView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JXPagingView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F4A1CCB21DB7EA5A2ACEB11E374FBCA /* JXPagingView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JXPagingView.framework; path = JXPagingView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		306D3D23FD38802E830F4052F5C27985 /* JXSegmentedTitleOrImageItemModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleOrImageItemModel.swift; path = Sources/TitleOrImage/JXSegmentedTitleOrImageItemModel.swift; sourceTree = "<group>"; };
 		30E2FB23A461DF04DE01B7EF8276FFA8 /* JXSegmentedTitleImageItemModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleImageItemModel.swift; path = Sources/TitleImage/JXSegmentedTitleImageItemModel.swift; sourceTree = "<group>"; };
 		312B988EF117AE4DE76A268D970131FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -217,7 +216,7 @@
 		9BC7B640A320F5DC9D581292E20FDC89 /* MJRefresh.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = MJRefresh.bundle; path = MJRefresh/MJRefresh.bundle; sourceTree = "<group>"; };
 		9BD8D588ED19E46563E656F1518234AF /* MJRefreshAutoGifFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoGifFooter.m; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoGifFooter.m; sourceTree = "<group>"; };
 		9CE3B622211A3E064BF6ACE2F334D43F /* JXPagingMainTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPagingMainTableView.swift; path = Sources/JXPagingView/JXPagingMainTableView.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9EFC6605D945E7C2946056AC7C040E30 /* MJRefresh-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJRefresh-umbrella.h"; sourceTree = "<group>"; };
 		A20017FC7583D459E13287AB42F18D11 /* JXSegmentedView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JXSegmentedView-prefix.pch"; sourceTree = "<group>"; };
 		A2E32D57AC4A90A4474278627D4D1FC7 /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+MJExtension.h"; path = "MJRefresh/UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
@@ -226,7 +225,8 @@
 		A95069434D25EF91666A01E34FF1A357 /* MJRefresh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MJRefresh.xcconfig; sourceTree = "<group>"; };
 		AA46D84EF41376B622DA4FE4ACD8D7BF /* JXSegmentedIndicatorBackgroundView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorBackgroundView.swift; path = Sources/Indicator/JXSegmentedIndicatorBackgroundView.swift; sourceTree = "<group>"; };
 		ACAF9ACB706A28EBA93CC028E0D6016F /* JXSegmentedBaseDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedBaseDataSource.swift; path = Sources/Core/JXSegmentedBaseDataSource.swift; sourceTree = "<group>"; };
-		ADA29B2A0E4A24F2CF68EE15027FD1C6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ADA29B2A0E4A24F2CF68EE15027FD1C6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		AE22B0609F7C1BB9178858722C8ADB31 /* JXPagingListContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPagingListContainerView.swift; path = Sources/JXPagingView/JXPagingListContainerView.swift; sourceTree = "<group>"; };
 		B3E8A8BA693954144630AB5EF7642B74 /* JXSegmentedIndicatorDoubleLineView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorDoubleLineView.swift; path = Sources/Indicator/JXSegmentedIndicatorDoubleLineView.swift; sourceTree = "<group>"; };
 		B7BEDA26E8FF051C6B340928D26C44DA /* NSBundle+MJRefresh.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+MJRefresh.m"; path = "MJRefresh/NSBundle+MJRefresh.m"; sourceTree = "<group>"; };
 		B8585A50878A75FEF46224704626A478 /* MJRefreshConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshConst.h; path = MJRefresh/MJRefreshConst.h; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 		C18575D49EA240AB3AC99ACA878865EA /* JXPagingView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JXPagingView.xcconfig; sourceTree = "<group>"; };
 		C1DBB20DE2C2B57789826D07EEC4827A /* UIScrollView+MJRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+MJRefresh.h"; path = "MJRefresh/UIScrollView+MJRefresh.h"; sourceTree = "<group>"; };
 		C87BBEDB1BAF9E08A3D2215732769785 /* MJRefreshBackStateFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackStateFooter.h; path = MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.h; sourceTree = "<group>"; };
-		C93707ACD96010B6DB391273C37EA675 /* Pods_JXPagingViewExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JXPagingViewExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C93707ACD96010B6DB391273C37EA675 /* Pods_JXPagingViewExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_JXPagingViewExample.framework; path = "Pods-JXPagingViewExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A501172E456751C6D577CDD39715B2 /* JXSegmentedIndicatorBaseView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorBaseView.swift; path = Sources/Indicator/JXSegmentedIndicatorBaseView.swift; sourceTree = "<group>"; };
 		CB100CC1AB1D3767C4FB902EC3FDF867 /* MJRefreshBackStateFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackStateFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.m; sourceTree = "<group>"; };
 		CF7B8494736CCD37EF9D92EF5D7AB02F /* Pods-JXPagingViewExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JXPagingViewExample-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -248,14 +248,14 @@
 		D7604A5FC3DDC65C2A441C5A2FFBD218 /* JXSegmentedDotDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedDotDataSource.swift; path = Sources/Dot/JXSegmentedDotDataSource.swift; sourceTree = "<group>"; };
 		DE7964205E62A7242384F1DE71FDF8F0 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+MJRefresh.m"; path = "MJRefresh/UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		E0158CD106A6EEE8F48E4CC59A556A16 /* MJRefresh-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MJRefresh-Info.plist"; sourceTree = "<group>"; };
-		E49D6D248DD1CEE584E6776B9164A1B2 /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E49D6D248DD1CEE584E6776B9164A1B2 /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MJRefresh.framework; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E66569A02E8077ADE3F071A10BDB335C /* MJRefreshGifHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshGifHeader.m; path = MJRefresh/Custom/Header/MJRefreshGifHeader.m; sourceTree = "<group>"; };
 		EBBD90EEB44B1AE55E0C85D3046C9DA2 /* JXPagingView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JXPagingView-Info.plist"; sourceTree = "<group>"; };
 		EED201AE8EEF85003E79FFDDFCD9F3F4 /* MJRefreshAutoNormalFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoNormalFooter.m; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoNormalFooter.m; sourceTree = "<group>"; };
 		EF5BCC010C830C554CFC85F128C5E4D4 /* JXSegmentedIndicatorImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorImageView.swift; path = Sources/Indicator/JXSegmentedIndicatorImageView.swift; sourceTree = "<group>"; };
 		F03EF29056C3FF319814F2838BDEC4BB /* Pods-JXPagingViewExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JXPagingViewExample-dummy.m"; sourceTree = "<group>"; };
 		F0E8EFCF20C55BB947A6825EBBDC50A0 /* Pods-JXPagingViewExample-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JXPagingViewExample-Info.plist"; sourceTree = "<group>"; };
-		F11677BDB96CD211B32F006033920665 /* JXPagingView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = JXPagingView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F11677BDB96CD211B32F006033920665 /* JXPagingView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = JXPagingView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F2628DB50884CD52F5328CD0CDFCA6B5 /* Pods-JXPagingViewExample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JXPagingViewExample-frameworks.sh"; sourceTree = "<group>"; };
 		F3111D7C66135275530DB84082C25906 /* MJRefreshNormalHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshNormalHeader.m; path = MJRefresh/Custom/Header/MJRefreshNormalHeader.m; sourceTree = "<group>"; };
 		F31DE60BBB18AEB8C6E2A689E0EC2EBD /* JXSegmentedViewTool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedViewTool.swift; path = Sources/Common/JXSegmentedViewTool.swift; sourceTree = "<group>"; };
@@ -372,6 +372,7 @@
 				F31DE60BBB18AEB8C6E2A689E0EC2EBD /* JXSegmentedViewTool.swift */,
 				2B10C83A7BF1758C02E94DEB24409802 /* Support Files */,
 			);
+			name = JXSegmentedView;
 			path = JXSegmentedView;
 			sourceTree = "<group>";
 		};
@@ -430,10 +431,10 @@
 		69CA7DFCE800F786F9F89924F2524D32 /* Paging */ = {
 			isa = PBXGroup;
 			children = (
+				AE22B0609F7C1BB9178858722C8ADB31 /* JXPagingListContainerView.swift */,
 				272B3DB3AF5FE646FC78388989D1B33A /* JXPagingListRefreshView.swift */,
 				9CE3B622211A3E064BF6ACE2F334D43F /* JXPagingMainTableView.swift */,
 				0FAA9156C0FF37DB5A21EC938C5F1919 /* JXPagingSmoothView.swift */,
-				19B9EA3823B9D5C80099E656 /* JXPagingListContainerView.swift */,
 				0AFD113E6AFE3C72DDF90562D518D1CE /* JXPagingView.swift */,
 			);
 			name = Paging;
@@ -486,6 +487,7 @@
 				B302300176B7CCB186A382F51FAC6168 /* Resources */,
 				CDFB11BA962131444E07C46F82861B09 /* Support Files */,
 			);
+			name = MJRefresh;
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
@@ -707,7 +709,7 @@
 				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -764,8 +766,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF762B5B5585C3C67C7452ECFEDE62CA /* JXPagingListContainerView.swift in Sources */,
 				EC244F0F5827B00713E322FCBBE4B681 /* JXPagingListRefreshView.swift in Sources */,
-				19B9EA3923B9D5C80099E656 /* JXPagingListContainerView.swift in Sources */,
 				7A6B3F2A868B61AA657D85F19F5D6588 /* JXPagingMainTableView.swift in Sources */,
 				53BDDEB709D7F33A0143E988071A8101 /* JXPagingSmoothView.swift in Sources */,
 				4A1AFBB480ABF2EF2ACA19410765EEED /* JXPagingView-dummy.m in Sources */,

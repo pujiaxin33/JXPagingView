@@ -28,13 +28,13 @@ class SmoothListViewController: UIViewController, JXPagingSmoothViewListViewDele
         view.addSubview(tableView)
 
         tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(headerRefresh))
-        tableView.mj_header.ignoredScrollViewContentInsetTop = 350
+        tableView.mj_header?.ignoredScrollViewContentInsetTop = 350
     }
 
     @objc func headerRefresh() {
         delegate?.startRefresh()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(2)) {
-            self.tableView.mj_header.endRefreshing()
+            self.tableView.mj_header?.endRefreshing()
             self.delegate?.endRefresh()
         }
     }

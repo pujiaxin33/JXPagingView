@@ -55,13 +55,14 @@
     [self removeObservers];
     
     if (newSuperview) { // 新的父控件
-        // 设置宽度
-        self.mj_w = newSuperview.mj_w;
-        // 设置位置
-        self.mj_x = -_scrollView.mj_insetL;
-        
         // 记录UIScrollView
         _scrollView = (UIScrollView *)newSuperview;
+        
+        // 设置宽度
+        self.mj_w = _scrollView.mj_w;
+        // 设置位置
+        self.mj_x = -_scrollView.mj_insetL;
+    
         // 设置永远支持垂直弹簧效果
         _scrollView.alwaysBounceVertical = YES;
         // 记录UIScrollView最开始的contentInset
@@ -236,6 +237,11 @@
         }
     })
 }
+
+#pragma mark - <<< Deprecation compatible function >>> -
+- (void)setEndRefreshingAnimateCompletionBlock:(MJRefreshComponentEndRefreshingCompletionBlock)endRefreshingAnimateCompletionBlock {
+    _endRefreshingAnimationBeginAction = endRefreshingAnimateCompletionBlock;
+}
 @end
 
 @implementation UILabel(MJRefresh)
@@ -250,22 +256,22 @@
     return label;
 }
 
-- (CGFloat)mj_textWith {
+- (CGFloat)mj_textWidth {
     CGFloat stringWidth = 0;
     CGSize size = CGSizeMake(MAXFLOAT, MAXFLOAT);
-    if (self.text.length > 0) {
-#if defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
-        stringWidth =[self.text
-                      boundingRectWithSize:size
-                      options:NSStringDrawingUsesLineFragmentOrigin
-                      attributes:@{NSFontAttributeName:self.font}
-                      context:nil].size.width;
-#else
-        
-        stringWidth = [self.text sizeWithFont:self.font
-                            constrainedToSize:size
-                                lineBreakMode:NSLineBreakByCharWrapping].width;
-#endif
+    
+    if (self.attributedText) {
+        if (self.attributedText.length == 0) { return 0; }
+        stringWidth = [self.attributedText boundingRectWithSize:size
+                                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                                        context:nil].size.width;
+    } else {
+        if (self.text.length == 0) { return 0; }
+        NSAssert(self.font != nil, @"请检查 mj_label's `font` 是否设置正确");
+        stringWidth = [self.text boundingRectWithSize:size
+                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                           attributes:@{NSFontAttributeName:self.font}
+                                              context:nil].size.width;
     }
     return stringWidth;
 }

@@ -1,12 +1,12 @@
 PODS:
   - JXCategoryView (1.5.2)
-  - JXPagingView/Pager (1.2.3)
-  - MJRefresh (3.2.0)
+  - JXPagingView/Pager (2.0.2)
+  - MJRefresh (3.4.0)
 
 DEPENDENCIES:
   - JXCategoryView
   - JXPagingView/Pager (from `../../../JXPagingView`)
-  - MJRefresh
+  - MJRefresh (= 3.4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -19,9 +19,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   JXCategoryView: b284d35a7a8772eada05dd78642233e1eb763ea8
-  JXPagingView: cb3a6281f4649367230957a17e6fa813638e8971
-  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  JXPagingView: 6a871421874fbbd3d38f03bcc7a2a5b9f59cc76b
+  MJRefresh: 95b08b3b8b6457d2c69510439e0349599050ea34
 
-PODFILE CHECKSUM: 42faadad33a66b5b7b123d76a4da482db7476d1f
+PODFILE CHECKSUM: 68b012b1c828abb6bd47dffccaccd3dd13a58453
 
 COCOAPODS: 1.7.5
