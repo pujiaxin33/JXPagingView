@@ -139,6 +139,12 @@
     [self preferredProcessListViewDidScroll:scrollView];
 }
 
+//仅用于处理设置了pinSectionHeaderVerticalOffset，又添加了MJRefresh的下拉刷新。这种情况会导致JXPagingView和MJRefresh来回设置contentInset值。针对这种及其特殊的情况，就内部特殊处理了。通过下面的判断条件，来判定当前是否处于下拉刷新中。请勿让pinSectionHeaderVerticalOffset和下拉刷新设置的contentInset.top值相同。
+//具体原因参考：https://github.com/pujiaxin33/JXPagingView/issues/203
+- (BOOL)isSetMainScrollViewContentInsetToZeroEnabled:(UIScrollView *)scrollView {
+    return !(scrollView.contentInset.top != 0 && scrollView.contentInset.top != self.pinSectionHeaderVerticalOffset);
+}
+
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -185,7 +191,9 @@
             //固定的位置就是contentInset.top
             [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsMake(self.pinSectionHeaderVerticalOffset, 0, 0, 0)];
         }else {
-            [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsZero];
+            if ([self isSetMainScrollViewContentInsetToZeroEnabled:scrollView]) {
+                [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsZero];
+            }
         }
     }
     [self preferredProcessMainTableViewDidScroll:scrollView];
@@ -208,8 +216,10 @@
     if (self.isListHorizontalScrollEnabled) {
         self.listContainerView.scrollView.scrollEnabled = YES;
     }
-    if (self.mainTableView.contentInset.top != 0 && self.pinSectionHeaderVerticalOffset != 0) {
-        [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsZero];
+    if ([self isSetMainScrollViewContentInsetToZeroEnabled:scrollView]) {
+        if (self.mainTableView.contentInset.top != 0 && self.pinSectionHeaderVerticalOffset != 0) {
+            [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsZero];
+        }
     }
 }
 

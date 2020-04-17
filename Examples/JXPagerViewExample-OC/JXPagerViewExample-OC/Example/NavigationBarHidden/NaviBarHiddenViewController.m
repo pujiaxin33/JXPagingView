@@ -41,6 +41,17 @@
     back.frame = CGRectMake(12, topSafeMargin, 44, 44);
     [back addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.naviBGView addSubview:back];
+
+    __weak typeof(self)weakSelf = self;
+    self.pagerView.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+       dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+           self.categoryView.titles = @[@"高级能力", @"高级爱好", @"高级队友"];
+           self.categoryView.defaultSelectedIndex = 0;
+           [self.categoryView reloadData];
+           [self.pagerView reloadData];
+           [weakSelf.pagerView.mainTableView.mj_header endRefreshing];
+       });
+   }];
 }
 
 - (void)backButtonClicked:(UIButton *)btn {

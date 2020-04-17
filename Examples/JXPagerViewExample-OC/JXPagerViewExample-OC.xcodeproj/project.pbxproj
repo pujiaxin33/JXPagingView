@@ -713,7 +713,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "jiaxin.JXPagerViewExample-OC.jiaxin.3333333333";
+				PRODUCT_BUNDLE_IDENTIFIER = "jiaxin.JXPagerViewExample-OC.jiaxin.33333333333";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

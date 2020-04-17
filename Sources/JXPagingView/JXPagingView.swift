@@ -200,6 +200,12 @@ open class JXPagingView: UIView {
         }
     }
 
+    //仅用于处理设置了pinSectionHeaderVerticalOffset，又添加了MJRefresh的下拉刷新。这种情况会导致JXPagingView和MJRefresh来回设置contentInset值。针对这种及其特殊的情况，就内部特殊处理了。通过下面的判断条件，来判定当前是否处于下拉刷新中。请勿让pinSectionHeaderVerticalOffset和下拉刷新设置的contentInset.top值相同。
+    //具体原因参考：https://github.com/pujiaxin33/JXPagingView/issues/203
+    func isSetMainScrollViewContentInsetToZeroEnabled(scrollView: UIScrollView) -> Bool {
+        return !(scrollView.contentInset.top != 0 && scrollView.contentInset.top != CGFloat(pinSectionHeaderVerticalOffset))
+    }
+
     func mainTableViewMaxContentOffsetY() -> CGFloat {
         guard let delegate = delegate else { return 0 }
         return CGFloat(delegate.tableHeaderViewHeight(in: self)) - CGFloat(pinSectionHeaderVerticalOffset)
@@ -277,7 +283,9 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
                 //固定的位置就是contentInset.top
                adjustMainScrollViewToTargetContentInsetIfNeeded(inset: UIEdgeInsets(top: CGFloat(pinSectionHeaderVerticalOffset), left: 0, bottom: 0, right: 0))
             }else {
-                adjustMainScrollViewToTargetContentInsetIfNeeded(inset: UIEdgeInsets.zero)
+                if isSetMainScrollViewContentInsetToZeroEnabled(scrollView: scrollView) {
+                    adjustMainScrollViewToTargetContentInsetIfNeeded(inset: UIEdgeInsets.zero)
+                }
             }
         }
         preferredProcessMainTableViewDidScroll(scrollView)
@@ -299,8 +307,10 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
         if isListHorizontalScrollEnabled {
             listContainerView.scrollView.isScrollEnabled = true
         }
-        if mainTableView.contentInset.top != 0 && pinSectionHeaderVerticalOffset != 0 {
-            adjustMainScrollViewToTargetContentInsetIfNeeded(inset: UIEdgeInsets.zero)
+        if isSetMainScrollViewContentInsetToZeroEnabled(scrollView: scrollView) {
+            if mainTableView.contentInset.top != 0 && pinSectionHeaderVerticalOffset != 0 {
+                adjustMainScrollViewToTargetContentInsetIfNeeded(inset: UIEdgeInsets.zero)
+            }
         }
     }
 
