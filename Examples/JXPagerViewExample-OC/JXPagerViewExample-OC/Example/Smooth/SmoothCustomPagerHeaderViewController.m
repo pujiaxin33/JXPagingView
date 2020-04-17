@@ -27,6 +27,7 @@
     self.pagerHeader.dataSource = self;
     self.pagerHeader.delegate = self;
     self.pagerHeader.bounces = NO;
+    self.pagerHeader.scrollsToTop = NO;
     [self.pagerHeader registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
 }
 
