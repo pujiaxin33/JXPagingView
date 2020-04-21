@@ -27,7 +27,7 @@
     self.categoryView.titles = @[@"爱好", @"队友", @"其他"];
     //titles有删除的情况，需要清空对应的list缓存
     [self.listCache removeObjectForKey:@"能力"];
-    [self.categoryView reloadData];
+    [self.categoryView reloadDataWithoutListContainer];
     [self.pagerView reloadData];
     /*
     //第二种：pinSectionHeaderVerticalOffset更新之后的reload
@@ -43,6 +43,7 @@
         return listInCache;
     }else {
         ListViewController *listView = [[ListViewController alloc] init];
+        listView.title = self.categoryView.titles[index];
         listView.isNeedHeader = YES;
         if (index == 0) {
             listView.dataSource = @[@"橡胶火箭", @"橡胶火箭炮", @"橡胶机关枪", @"橡胶子弹", @"橡胶攻城炮", @"橡胶象枪", @"橡胶象枪乱打", @"橡胶灰熊铳", @"橡胶雷神象枪", @"橡胶猿王枪", @"橡胶犀·榴弹炮", @"橡胶大蛇炮", @"橡胶火箭", @"橡胶火箭炮", @"橡胶机关枪", @"橡胶子弹", @"橡胶攻城炮", @"橡胶象枪", @"橡胶象枪乱打", @"橡胶灰熊铳", @"橡胶雷神象枪", @"橡胶猿王枪", @"橡胶犀·榴弹炮", @"橡胶大蛇炮"].mutableCopy;
