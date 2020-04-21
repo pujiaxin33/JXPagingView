@@ -48,7 +48,7 @@
         }
         [self addSubview:self.mainTableView];
 
-        _listContainerView = [[JXPagerListContainerView alloc] initWithType:JXPagerListContainerType_CollectionView delegate:self];
+        _listContainerView = [[JXPagerListContainerView alloc] initWithType:type delegate:self];
     }
     return self;
 }

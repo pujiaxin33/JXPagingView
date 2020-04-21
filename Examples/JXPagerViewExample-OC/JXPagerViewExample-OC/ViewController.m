@@ -25,6 +25,8 @@
 #import "CustomPinViewViewController.h"
 #import "TabBarExampleViewController.h"
 #import "CustomCategoryViewController.h"
+#import "FullScreenGestureViewController.h"
+#import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 
 @interface ViewController ()
 
@@ -35,6 +37,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
+    self.navigationController.fd_fullscreenPopGestureRecognizer.enabled = NO;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -187,6 +191,13 @@
         case 19:
         {
             CustomCategoryViewController *vc = [[CustomCategoryViewController alloc] init];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 20:
+        {
+            FullScreenGestureViewController *vc = [[FullScreenGestureViewController alloc] init];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }
