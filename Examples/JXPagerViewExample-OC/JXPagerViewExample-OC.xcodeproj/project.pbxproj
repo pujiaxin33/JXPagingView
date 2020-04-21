@@ -10,6 +10,9 @@
 		190921DA22B1F8990045D18F /* ReloadWithoutInitListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 190921D922B1F8990045D18F /* ReloadWithoutInitListViewController.m */; };
 		190C03D9244E850B00399B5C /* FullScreenGestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 190C03D8244E850B00399B5C /* FullScreenGestureViewController.m */; };
 		190C03DC244E856300399B5C /* FullScreenGestureScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 190C03DB244E856300399B5C /* FullScreenGestureScrollView.m */; };
+		190C056D244EDA8900399B5C /* XIBHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 190C056C244EDA8900399B5C /* XIBHeaderViewController.m */; };
+		190C056F244EDA9B00399B5C /* XIBHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 190C056E244EDA9B00399B5C /* XIBHeader.xib */; };
+		190C0572244EDAA800399B5C /* XIBHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 190C0571244EDAA800399B5C /* XIBHeader.m */; };
 		192226DE2238E5C100637AA2 /* HeaderPositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 192226DD2238E5C100637AA2 /* HeaderPositionViewController.m */; };
 		19278E6B2223D0F10041C293 /* PagingViewBannerTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19278E6A2223D0F10041C293 /* PagingViewBannerTableHeaderView.m */; };
 		19278E6F2223D3520041C293 /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19278E6E2223D3520041C293 /* BannerViewController.m */; };
@@ -59,6 +62,11 @@
 		190C03D8244E850B00399B5C /* FullScreenGestureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullScreenGestureViewController.m; sourceTree = "<group>"; };
 		190C03DA244E856300399B5C /* FullScreenGestureScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FullScreenGestureScrollView.h; sourceTree = "<group>"; };
 		190C03DB244E856300399B5C /* FullScreenGestureScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullScreenGestureScrollView.m; sourceTree = "<group>"; };
+		190C056B244EDA8900399B5C /* XIBHeaderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XIBHeaderViewController.h; sourceTree = "<group>"; };
+		190C056C244EDA8900399B5C /* XIBHeaderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XIBHeaderViewController.m; sourceTree = "<group>"; };
+		190C056E244EDA9B00399B5C /* XIBHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XIBHeader.xib; sourceTree = "<group>"; };
+		190C0570244EDAA800399B5C /* XIBHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XIBHeader.h; sourceTree = "<group>"; };
+		190C0571244EDAA800399B5C /* XIBHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XIBHeader.m; sourceTree = "<group>"; };
 		192226DC2238E5C100637AA2 /* HeaderPositionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderPositionViewController.h; sourceTree = "<group>"; };
 		192226DD2238E5C100637AA2 /* HeaderPositionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderPositionViewController.m; sourceTree = "<group>"; };
 		19278E692223D0F10041C293 /* PagingViewBannerTableHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagingViewBannerTableHeaderView.h; sourceTree = "<group>"; };
@@ -171,6 +179,18 @@
 				190C03DB244E856300399B5C /* FullScreenGestureScrollView.m */,
 			);
 			path = FullScreenGesture;
+			sourceTree = "<group>";
+		};
+		190C056A244EDA0400399B5C /* XIBHeader */ = {
+			isa = PBXGroup;
+			children = (
+				190C056B244EDA8900399B5C /* XIBHeaderViewController.h */,
+				190C056C244EDA8900399B5C /* XIBHeaderViewController.m */,
+				190C0570244EDAA800399B5C /* XIBHeader.h */,
+				190C0571244EDAA800399B5C /* XIBHeader.m */,
+				190C056E244EDA9B00399B5C /* XIBHeader.xib */,
+			);
+			path = XIBHeader;
 			sourceTree = "<group>";
 		};
 		192226DB2238E59100637AA2 /* HeaderPosition */ = {
@@ -305,6 +325,7 @@
 		196428192148E58C009C1D31 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				190C056A244EDA0400399B5C /* XIBHeader */,
 				190C03D6244E84D400399B5C /* FullScreenGesture */,
 				194A92F023C95D79006BE6AB /* CustomCategory */,
 				194A929623C95565006BE6AB /* TabBar */,
@@ -489,6 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				196428102148E481009C1D31 /* LaunchScreen.storyboard in Resources */,
+				190C056F244EDA9B00399B5C /* XIBHeader.xib in Resources */,
 				19F152DC2387D49D0043A86E /* lufei.jpg in Resources */,
 				1964280D2148E481009C1D31 /* Assets.xcassets in Resources */,
 				1964280B2148E47F009C1D31 /* Main.storyboard in Resources */,
@@ -570,6 +592,7 @@
 				196428292148E58C009C1D31 /* PagingViewController.m in Sources */,
 				195C3D8122BCC5C900521461 /* ScrollToListCellViewController.m in Sources */,
 				194A929923C955B5006BE6AB /* TabBarExampleViewController.m in Sources */,
+				190C0572244EDAA800399B5C /* XIBHeader.m in Sources */,
 				190C03D9244E850B00399B5C /* FullScreenGestureViewController.m in Sources */,
 				19B9EA3423B9CD570099E656 /* TestListBaseView.m in Sources */,
 				196428AA2148E917009C1D31 /* ZoomViewController.m in Sources */,
@@ -579,6 +602,7 @@
 				19B9EA4123B9F86A0099E656 /* MainTableViewOffsetViewController.m in Sources */,
 				190921DA22B1F8990045D18F /* ReloadWithoutInitListViewController.m in Sources */,
 				19FAC94D23828B350041E1C9 /* SmoothListScrollViewController.m in Sources */,
+				190C056D244EDA8900399B5C /* XIBHeaderViewController.m in Sources */,
 				195C3D7D22BCC4B000521461 /* ScrollToTopViewController.m in Sources */,
 				196428132148E481009C1D31 /* main.m in Sources */,
 				196428052148E47F009C1D31 /* AppDelegate.m in Sources */,

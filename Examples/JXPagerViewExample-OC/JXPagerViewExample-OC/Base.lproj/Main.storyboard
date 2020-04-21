@@ -12,7 +12,7 @@
             <objects>
                 <tableViewController id="96C-cw-LFJ" customClass="ViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XTO-ap-s9I">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
@@ -459,6 +459,27 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="65" id="ZJi-Qy-qSC">
+                                        <rect key="frame" x="0.0" y="1393" width="375" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZJi-Qy-qSC" id="Ih8-xC-kEH">
+                                            <rect key="frame" x="0.0" y="0.0" width="348" height="65"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header是XIB示例" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOG-8U-OzU">
+                                                    <rect key="frame" x="16" y="22" width="135" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kOG-8U-OzU" secondAttribute="trailing" constant="20" symbolic="YES" id="Daw-Hn-AWc"/>
+                                                <constraint firstItem="kOG-8U-OzU" firstAttribute="leading" secondItem="Ih8-xC-kEH" secondAttribute="leading" constant="16" id="Woc-hs-kvF"/>
+                                                <constraint firstItem="kOG-8U-OzU" firstAttribute="centerY" secondItem="Ih8-xC-kEH" secondAttribute="centerY" id="jRY-Bx-kCp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -468,7 +489,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="zJM-5h-uss"/>
-                    <size key="freeformSize" width="375" height="1500"/>
+                    <size key="freeformSize" width="375" height="2000"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NnH-Cj-BfE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

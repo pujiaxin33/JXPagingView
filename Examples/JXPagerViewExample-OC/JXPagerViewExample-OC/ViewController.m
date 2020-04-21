@@ -27,6 +27,7 @@
 #import "CustomCategoryViewController.h"
 #import "FullScreenGestureViewController.h"
 #import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
+#import "XIBHeaderViewController.h"
 
 @interface ViewController ()
 
@@ -202,6 +203,14 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
+        case 21:
+        {
+            XIBHeaderViewController *vc = [[XIBHeaderViewController alloc] init];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+
 
         default:
             break;
