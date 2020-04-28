@@ -136,6 +136,9 @@
 }
 
 - (void)listViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView != self.currentScrollingListView) {
+        self.currentScrollingListView = scrollView;
+    }
     [self preferredProcessListViewDidScroll:scrollView];
 }
 
