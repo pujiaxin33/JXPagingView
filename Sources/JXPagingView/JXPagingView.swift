@@ -196,7 +196,10 @@ open class JXPagingView: UIView {
 
     func adjustMainScrollViewToTargetContentInsetIfNeeded(inset: UIEdgeInsets) {
         if mainTableView.contentInset != inset {
+            //防止循环调用
+            mainTableView.delegate = nil
             mainTableView.contentInset = inset
+            mainTableView.delegate = self
         }
     }
 

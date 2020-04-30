@@ -131,7 +131,9 @@
 
 - (void)adjustMainScrollViewToTargetContentInsetIfNeeded:(UIEdgeInsets)insets {
     if (UIEdgeInsetsEqualToEdgeInsets(insets, self.mainTableView.contentInset) == NO) {
+        self.mainTableView.delegate = nil;
         self.mainTableView.contentInset = insets;
+        self.mainTableView.delegate = self;
     }
 }
 
