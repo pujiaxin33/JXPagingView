@@ -404,6 +404,8 @@
     }else {
         [self.collectionView reloadData];
     }
+    [self listWillAppear:self.currentIndex];
+    [self listDidAppear:self.currentIndex];
 }
 
 #pragma mark - Private
