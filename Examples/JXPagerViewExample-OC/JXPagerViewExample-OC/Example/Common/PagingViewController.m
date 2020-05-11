@@ -24,6 +24,7 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = false;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     _titles = @[@"能力", @"爱好", @"队友"];
 
     _userHeaderView = [[PagingViewTableHeaderView alloc] init];
