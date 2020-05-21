@@ -344,6 +344,13 @@ extension JXPagingView: JXPagingListContainerViewDataSource {
         }
         return list!
     }
+
+    public func scrollViewClass(in listContainerView: JXPagingListContainerView) -> AnyClass {
+        if let any = delegate?.scrollViewClassInListContainerView?(in: self) {
+            return any
+        }
+        return UIView.self
+    }
 }
 
 extension JXPagingView: JXPagingListContainerViewDelegate {
