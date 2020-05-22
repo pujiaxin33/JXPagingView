@@ -45,6 +45,8 @@
 		19B9EA3423B9CD570099E656 /* TestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA3223B9CD560099E656 /* TestListBaseView.m */; };
 		19B9EA3723B9D0940099E656 /* PagingNestCategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA3623B9D0940099E656 /* PagingNestCategoryListViewController.m */; };
 		19B9EA4123B9F86A0099E656 /* MainTableViewOffsetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA4023B9F86A0099E656 /* MainTableViewOffsetViewController.m */; };
+		19BB16C124777C38008E242F /* DynamicHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BB16C024777C38008E242F /* DynamicHeaderViewController.m */; };
+		19BB16C424777C4A008E242F /* DynamicHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BB16C324777C4A008E242F /* DynamicHeader.m */; };
 		19C417CD215F1B630090E518 /* UIWindow+JXSafeArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */; };
 		19CB42D523BDBB8000C8B5A5 /* BGImageHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CB42D423BDBB8000C8B5A5 /* BGImageHeaderViewController.m */; };
 		19F152DC2387D49D0043A86E /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19F152DB2387D49C0043A86E /* lufei.jpg */; };
@@ -130,6 +132,10 @@
 		19B9EA3623B9D0940099E656 /* PagingNestCategoryListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagingNestCategoryListViewController.m; sourceTree = "<group>"; };
 		19B9EA3F23B9F86A0099E656 /* MainTableViewOffsetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTableViewOffsetViewController.h; sourceTree = "<group>"; };
 		19B9EA4023B9F86A0099E656 /* MainTableViewOffsetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTableViewOffsetViewController.m; sourceTree = "<group>"; };
+		19BB16BF24777C38008E242F /* DynamicHeaderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicHeaderViewController.h; sourceTree = "<group>"; };
+		19BB16C024777C38008E242F /* DynamicHeaderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicHeaderViewController.m; sourceTree = "<group>"; };
+		19BB16C224777C4A008E242F /* DynamicHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicHeader.h; sourceTree = "<group>"; };
+		19BB16C324777C4A008E242F /* DynamicHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicHeader.m; sourceTree = "<group>"; };
 		19C417CB215F1B630090E518 /* UIWindow+JXSafeArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+JXSafeArea.h"; sourceTree = "<group>"; };
 		19C417CC215F1B630090E518 /* UIWindow+JXSafeArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+JXSafeArea.m"; sourceTree = "<group>"; };
 		19CB42D323BDBB8000C8B5A5 /* BGImageHeaderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGImageHeaderViewController.h; sourceTree = "<group>"; };
@@ -325,6 +331,7 @@
 		196428192148E58C009C1D31 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				19BB16BE24777C1F008E242F /* DynamicHeader */,
 				190C056A244EDA0400399B5C /* XIBHeader */,
 				190C03D6244E84D400399B5C /* FullScreenGesture */,
 				194A92F023C95D79006BE6AB /* CustomCategory */,
@@ -422,6 +429,17 @@
 				19B9EA4023B9F86A0099E656 /* MainTableViewOffsetViewController.m */,
 			);
 			path = MainTableViewOffset;
+			sourceTree = "<group>";
+		};
+		19BB16BE24777C1F008E242F /* DynamicHeader */ = {
+			isa = PBXGroup;
+			children = (
+				19BB16BF24777C38008E242F /* DynamicHeaderViewController.h */,
+				19BB16C024777C38008E242F /* DynamicHeaderViewController.m */,
+				19BB16C224777C4A008E242F /* DynamicHeader.h */,
+				19BB16C324777C4A008E242F /* DynamicHeader.m */,
+			);
+			path = DynamicHeader;
 			sourceTree = "<group>";
 		};
 		19CB42D223BDBB5E00C8B5A5 /* BGImageHeader */ = {
@@ -574,6 +592,7 @@
 				19B9EA3723B9D0940099E656 /* PagingNestCategoryListViewController.m in Sources */,
 				19C417CD215F1B630090E518 /* UIWindow+JXSafeArea.m in Sources */,
 				1979C1EE21FEDFCD00DA40E7 /* DetailViewController.m in Sources */,
+				19BB16C424777C4A008E242F /* DynamicHeader.m in Sources */,
 				19278E6F2223D3520041C293 /* BannerViewController.m in Sources */,
 				19502A79237E742E00C10560 /* SmoothViewController.m in Sources */,
 				196428F32148ECB1009C1D31 /* ListRefreshViewController.m in Sources */,
@@ -604,6 +623,7 @@
 				19FAC94D23828B350041E1C9 /* SmoothListScrollViewController.m in Sources */,
 				190C056D244EDA8900399B5C /* XIBHeaderViewController.m in Sources */,
 				195C3D7D22BCC4B000521461 /* ScrollToTopViewController.m in Sources */,
+				19BB16C124777C38008E242F /* DynamicHeaderViewController.m in Sources */,
 				196428132148E481009C1D31 /* main.m in Sources */,
 				196428052148E47F009C1D31 /* AppDelegate.m in Sources */,
 			);

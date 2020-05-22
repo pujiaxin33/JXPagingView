@@ -28,6 +28,7 @@
 #import "FullScreenGestureViewController.h"
 #import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 #import "XIBHeaderViewController.h"
+#import "DynamicHeaderViewController.h"
 
 @interface ViewController ()
 
@@ -206,6 +207,13 @@
         case 21:
         {
             XIBHeaderViewController *vc = [[XIBHeaderViewController alloc] init];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 22:
+        {
+            DynamicHeaderViewController *vc = [[DynamicHeaderViewController alloc] init];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }
