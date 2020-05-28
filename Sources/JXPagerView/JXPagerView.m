@@ -207,6 +207,9 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     self.listContainerView.scrollView.scrollEnabled = NO;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(mainTableViewWillBeginDragging:)]) {
+        [self.delegate mainTableViewWillBeginDragging:scrollView];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -223,6 +226,9 @@
         if (self.mainTableView.contentInset.top != 0 && self.pinSectionHeaderVerticalOffset != 0) {
             [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsZero];
         }
+    }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(mainTableViewDidEndDecelerating:)]) {
+        [self.delegate mainTableViewDidEndDecelerating:scrollView];
     }
 }
 
