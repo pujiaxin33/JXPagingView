@@ -70,7 +70,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
-- (void)mainTableViewDidScroll:(UIScrollView *)scrollView {
+- (void)pagerView:(JXPagerView *)pagerView mainTableViewDidScroll:(UIScrollView *)scrollView {
     CGFloat thresholdDistance = 100;
     CGFloat percent = scrollView.contentOffset.y/thresholdDistance;
     percent = MAX(0, MIN(1, percent));

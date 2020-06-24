@@ -10,7 +10,7 @@
 
 @implementation ZoomViewController
 
-- (void)mainTableViewDidScroll:(UIScrollView *)scrollView {
+- (void)pagerView:(JXPagerView *)pagerView mainTableViewDidScroll:(UIScrollView *)scrollView {
     [self.userHeaderView scrollViewDidScroll:scrollView.contentOffset.y];
 }
 

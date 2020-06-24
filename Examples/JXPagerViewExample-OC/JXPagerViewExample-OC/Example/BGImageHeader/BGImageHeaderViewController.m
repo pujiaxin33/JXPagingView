@@ -39,7 +39,7 @@
     self.pagerView.mainTableView.backgroundView = bgView;
 }
 
-- (void)mainTableViewDidScroll:(UIScrollView *)scrollView {
+- (void)pagerView:(JXPagerView *)pagerView mainTableViewDidScroll:(UIScrollView *)scrollView {
     double percent = scrollView.contentOffset.y/JXTableHeaderViewHeight;
     self.bgMaskView.alpha = MIN(percent, 1);
 }

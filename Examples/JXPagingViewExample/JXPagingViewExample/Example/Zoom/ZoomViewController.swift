@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JXPagingView
 
 class ZoomViewController: BaseViewController {
 
@@ -15,7 +16,7 @@ class ZoomViewController: BaseViewController {
 
     }
 
-    func mainTableViewDidScroll(_ scrollView: UIScrollView) {
+    func pagingView(_ pagingView: JXPagingView, mainTableViewDidScroll scrollView: UIScrollView) {
         userHeaderView.scrollViewDidScroll(contentOffsetY: scrollView.contentOffset.y)
     }
 }

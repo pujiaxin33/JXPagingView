@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JXPagingView
 
 class NaviHiddenViewController: BaseViewController {
     lazy var naviBGView: UIView = UIView()
@@ -58,7 +59,7 @@ class NaviHiddenViewController: BaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
-    func mainTableViewDidScroll(_ scrollView: UIScrollView) {
+    func pagingView(_ pagingView: JXPagingView, mainTableViewDidScroll scrollView: UIScrollView) {
         let thresholdDistance: CGFloat = 100
         var percent = scrollView.contentOffset.y/thresholdDistance
         percent = max(0, min(1, percent))

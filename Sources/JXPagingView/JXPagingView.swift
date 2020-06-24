@@ -28,8 +28,15 @@ import UIKit
     ///   - index: 新生成的列表实例
     func pagingView(_ pagingView: JXPagingView, initListAtIndex index: Int) -> JXPagingViewListViewDelegate
 
-    /// mainTableView的滚动回调，用于实现头图跟随缩放
+    /// 将要被弃用！请使用pagingView(_ pagingView: JXPagingView, mainTableViewDidScroll scrollView: UIScrollView) 方法作为替代。
+    @available(*, message: "Use pagingView(_ pagingView: JXPagingView, mainTableViewDidScroll scrollView: UIScrollView) method")
     @objc optional func mainTableViewDidScroll(_ scrollView: UIScrollView)
+    @objc optional func pagingView(_ pagingView: JXPagingView, mainTableViewDidScroll scrollView: UIScrollView)
+    @objc optional func pagingView(_ pagingView: JXPagingView, mainTableViewWillBeginDragging scrollView: UIScrollView)
+    @objc optional func pagingView(_ pagingView: JXPagingView, mainTableViewDidEndDragging scrollView: UIScrollView, willDecelerate decelerate: Bool)
+    @objc optional func pagingView(_ pagingView: JXPagingView, mainTableViewDidEndDecelerating scrollView: UIScrollView)
+    @objc optional func pagingView(_ pagingView: JXPagingView, mainTableViewDidEndScrollingAnimation scrollView: UIScrollView)
+
 
     /// 返回自定义UIScrollView或UICollectionView的Class
     /// 某些特殊情况需要自己处理列表容器内UIScrollView内部逻辑。比如项目用了FDFullscreenPopGesture，需要处理手势相关代理。
@@ -294,17 +301,20 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
         }
         preferredProcessMainTableViewDidScroll(scrollView)
         delegate?.mainTableViewDidScroll?(scrollView)
+        delegate?.pagingView?(self, mainTableViewDidScroll: scrollView)
     }
 
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         //用户正在上下滚动的时候，就不允许左右滚动
         listContainerView.scrollView.isScrollEnabled = false
+        delegate?.pagingView?(self, mainTableViewWillBeginDragging: scrollView)
     }
 
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if isListHorizontalScrollEnabled && !decelerate {
             listContainerView.scrollView.isScrollEnabled = true
         }
+        delegate?.pagingView?(self, mainTableViewDidEndDragging: scrollView, willDecelerate: decelerate)
     }
 
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -316,12 +326,14 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
                 adjustMainScrollViewToTargetContentInsetIfNeeded(inset: UIEdgeInsets.zero)
             }
         }
+        delegate?.pagingView?(self, mainTableViewDidEndDecelerating: scrollView)
     }
 
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         if isListHorizontalScrollEnabled {
             listContainerView.scrollView.isScrollEnabled = true
         }
+        delegate?.pagingView?(self, mainTableViewDidEndScrollingAnimation: scrollView)
     }
 }
 

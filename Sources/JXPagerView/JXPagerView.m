@@ -201,17 +201,29 @@
     }
     [self preferredProcessMainTableViewDidScroll:scrollView];
     if (self.delegate && [self.delegate respondsToSelector:@selector(mainTableViewDidScroll:)]) {
+        #pragma GCC diagnostic push
+        #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         [self.delegate mainTableViewDidScroll:scrollView];
+        #pragma GCC diagnostic pop
+    }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pagerView:mainTableViewDidScroll:)]) {
+        [self.delegate pagerView:self mainTableViewDidScroll:scrollView];
     }
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     self.listContainerView.scrollView.scrollEnabled = NO;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pagerView:mainTableViewWillBeginDragging:)]) {
+        [self.delegate pagerView:self mainTableViewWillBeginDragging:scrollView];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (self.isListHorizontalScrollEnabled && !decelerate) {
         self.listContainerView.scrollView.scrollEnabled = YES;
+    }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pagerView:mainTableViewDidEndDragging:willDecelerate:)]) {
+        [self.delegate pagerView:self mainTableViewDidEndDragging:scrollView willDecelerate:decelerate];
     }
 }
 
@@ -224,11 +236,17 @@
             [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsZero];
         }
     }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pagerView:mainTableViewDidEndDecelerating:)]) {
+        [self.delegate pagerView:self mainTableViewDidEndDecelerating:scrollView];
+    }
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     if (self.isListHorizontalScrollEnabled) {
         self.listContainerView.scrollView.scrollEnabled = YES;
+    }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pagerView:mainTableViewDidEndScrollingAnimation:)]) {
+        [self.delegate pagerView:self mainTableViewDidEndScrollingAnimation:scrollView];
     }
 }
 
