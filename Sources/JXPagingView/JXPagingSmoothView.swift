@@ -204,7 +204,10 @@ open class JXPagingSmoothView: UIView {
                 let minContentSizeHeight = bounds.size.height - heightForPinHeader
                 if minContentSizeHeight > scrollView.contentSize.height {
                     scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: minContentSizeHeight)
-                    scrollView.contentOffset = CGPoint(x: 0, y: currentListInitializeContentOffsetY)
+                    //新的scrollView第一次加载的时候重置contentOffset
+                    if currentListScrollView != nil, scrollView != currentListScrollView! {
+                        scrollView.contentOffset = CGPoint(x: 0, y: currentListInitializeContentOffsetY)
+                    }
                 }
             }
         }else {
