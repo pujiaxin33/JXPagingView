@@ -148,7 +148,9 @@
 //仅用于处理设置了pinSectionHeaderVerticalOffset，又添加了MJRefresh的下拉刷新。这种情况会导致JXPagingView和MJRefresh来回设置contentInset值。针对这种及其特殊的情况，就内部特殊处理了。通过下面的判断条件，来判定当前是否处于下拉刷新中。请勿让pinSectionHeaderVerticalOffset和下拉刷新设置的contentInset.top值相同。
 //具体原因参考：https://github.com/pujiaxin33/JXPagingView/issues/203
 - (BOOL)isSetMainScrollViewContentInsetToZeroEnabled:(UIScrollView *)scrollView {
-    return !(scrollView.contentInset.top != 0 && scrollView.contentInset.top != self.pinSectionHeaderVerticalOffset);
+    //scrollView.contentInset.top不为0，且scrollView.contentInset.top不等于pinSectionHeaderVerticalOffset，即可认为列表正在刷新。所以这里必须要保证pinSectionHeaderVerticalOffset和MJRefresh的mj_insetT的值不相等。
+    BOOL isRefreshing = scrollView.contentInset.top != 0 && scrollView.contentInset.top != self.pinSectionHeaderVerticalOffset;
+    return !isRefreshing;
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
