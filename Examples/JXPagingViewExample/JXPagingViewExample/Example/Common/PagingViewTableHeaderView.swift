@@ -27,6 +27,21 @@ class PagingViewTableHeaderView: UIView {
         label.textColor = UIColor.red
         label.autoresizingMask = [.flexibleRightMargin, .flexibleTopMargin]
         self.addSubview(label)
+
+        let follow = UIButton(type: .system)
+        follow.setTitle("关注", for: .normal)
+        follow.addTarget(self, action: #selector(followDidClick), for: .touchUpInside)
+        follow.frame = CGRect(x: label.frame.maxX + 10, y: label.frame.minY, width: 50, height: 30)
+        addSubview(follow)
+        follow.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 9.0, *) {
+            follow.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 5).isActive = true
+            follow.centerYAnchor.constraint(equalTo: label.centerYAnchor).isActive = true
+        }
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func layoutSubviews() {
@@ -42,8 +57,8 @@ class PagingViewTableHeaderView: UIView {
         imageView.frame = frame
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @objc func followDidClick() {
+        print("关注成功")
     }
 
 }
