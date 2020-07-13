@@ -19,12 +19,15 @@ open class JXPagingListRefreshView: JXPagingView {
 
     override open func preferredProcessMainTableViewDidScroll(_ scrollView: UIScrollView) {
         if pinSectionHeaderVerticalOffset != 0 {
-            if scrollView.contentOffset.y <= 0 {
-                mainTableView.bounces = false
-                mainTableView.contentOffset = CGPoint.zero
-                return
-            }else {
-                mainTableView.bounces = true
+            if currentScrollingListView != nil && currentScrollingListView!.contentOffset.y > minContentOffsetYInListScrollView(currentScrollingListView!) {
+                //没有处于滚动某一个listView的状态
+                if scrollView.contentOffset.y <= 0 {
+                    mainTableView.bounces = false
+                    mainTableView.contentOffset = CGPoint.zero
+                    return
+                }else {
+                    mainTableView.bounces = true
+                }
             }
         }
         guard let currentScrollingListView = currentScrollingListView else { return }

@@ -195,12 +195,15 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (self.pinSectionHeaderVerticalOffset != 0) {
-        if (scrollView.contentOffset.y >= self.pinSectionHeaderVerticalOffset) {
-            //固定的位置就是contentInset.top
-            [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsMake(self.pinSectionHeaderVerticalOffset, 0, 0, 0)];
-        }else {
-            if ([self isSetMainScrollViewContentInsetToZeroEnabled:scrollView]) {
-                [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsZero];
+        if (!(self.currentScrollingListView != nil && self.currentScrollingListView.contentOffset.y > [self minContentOffsetYInListScrollView:self.currentScrollingListView])) {
+            //没有处于滚动某一个listView的状态
+            if (scrollView.contentOffset.y >= self.pinSectionHeaderVerticalOffset) {
+                //固定的位置就是contentInset.top
+                [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsMake(self.pinSectionHeaderVerticalOffset, 0, 0, 0)];
+            }else {
+                if ([self isSetMainScrollViewContentInsetToZeroEnabled:scrollView]) {
+                    [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsZero];
+                }
             }
         }
     }
