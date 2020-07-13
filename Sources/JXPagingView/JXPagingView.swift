@@ -115,6 +115,9 @@ open class JXPagingView: UIView {
         validListDict.values.forEach { $0.listView().removeFromSuperview() }
         validListDict.removeAll()
         refreshTableHeaderView()
+        if pinSectionHeaderVerticalOffset != 0 {
+            mainTableView.contentOffset = .zero
+        }
         mainTableView.reloadData()
         listContainerView.reloadData()
     }
