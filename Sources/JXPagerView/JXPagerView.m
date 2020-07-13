@@ -77,10 +77,6 @@
 - (void)reloadData {
     self.currentList = nil;
     self.currentScrollingListView = nil;
-
-    for (id<JXPagerViewListViewDelegate> list in self.validListDict.allValues) {
-        [list.listView removeFromSuperview];
-    }
     [_validListDict removeAllObjects];
 
     [self refreshTableHeaderView];

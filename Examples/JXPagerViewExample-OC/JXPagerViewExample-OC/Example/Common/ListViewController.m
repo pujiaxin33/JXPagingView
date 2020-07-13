@@ -17,6 +17,10 @@
 
 @implementation ListViewController
 
+- (void)dealloc {
+    NSLog(@"ListViewController dealloced");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 

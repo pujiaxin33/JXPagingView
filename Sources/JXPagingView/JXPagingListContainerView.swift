@@ -295,7 +295,12 @@ open class JXPagingListContainerView: UIView {
             defaultSelectedIndex = 0
             currentIndex = 0
         }
-        validListDict.values.forEach{ $0.listView().removeFromSuperview() }
+        validListDict.values.forEach { (list) in
+            if let listVC = list as? UIViewController {
+                listVC.removeFromParent()
+            }
+            list.listView().removeFromSuperview()
+        }
         validListDict.removeAll()
         if type == .scrollView {
             scrollView.contentSize = CGSize(width: scrollView.bounds.size.width*CGFloat(dataSource.numberOfLists(in: self)), height: scrollView.bounds.size.height)

@@ -112,7 +112,6 @@ open class JXPagingView: UIView {
     open func reloadData() {
         currentList = nil
         currentScrollingListView = nil
-        validListDict.values.forEach { $0.listView().removeFromSuperview() }
         validListDict.removeAll()
         refreshTableHeaderView()
         if pinSectionHeaderVerticalOffset != 0 {
