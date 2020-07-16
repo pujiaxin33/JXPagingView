@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.categoryView.listContainer = nil;
     self.customCategoryView = [[UIView alloc] init];
 
     CGFloat buttonWidth = self.view.bounds.size.width/2;
