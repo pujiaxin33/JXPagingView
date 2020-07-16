@@ -76,6 +76,7 @@ public protocol JXPagingListContainerViewDataSource {
 }
 
 @objc protocol JXPagingListContainerViewDelegate {
+    @objc optional func listContainerViewDidScroll(_ listContainerView: JXPagingListContainerView)
     @objc optional func listContainerViewWillBeginDragging(_ listContainerView: JXPagingListContainerView)
     @objc optional func listContainerViewDidEndScrolling(_ listContainerView: JXPagingListContainerView)
     @objc optional func listContainerView(_ listContainerView: JXPagingListContainerView, listDidAppearAt index: Int)
@@ -425,6 +426,8 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        delegate?.listContainerViewDidScroll?(self)
+
         let percent = scrollView.contentOffset.x/scrollView.bounds.size.width
         let maxCount = Int(round(scrollView.contentSize.width/scrollView.bounds.size.width))
         var leftIndex = Int(floor(Double(percent)))
