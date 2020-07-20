@@ -434,37 +434,35 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
         leftIndex = max(0, min(maxCount - 1, leftIndex))
         let rightIndex = leftIndex + 1;
         let remainderRatio = percent - CGFloat(leftIndex)
-        if (remainderRatio != 0) {
-            if rightIndex == currentIndex {
-                //当前选中的在右边，用户正在从右边往左边滑动
-                if percent < (1 - initListPercent) {
-                    initListIfNeeded(at: leftIndex)
+        if rightIndex == currentIndex {
+            //当前选中的在右边，用户正在从右边往左边滑动
+            if remainderRatio < (1 - initListPercent) {
+                initListIfNeeded(at: leftIndex)
+            }
+            if willAppearIndex == -1 {
+                willAppearIndex = leftIndex;
+                if validListDict[leftIndex] != nil {
+                    listWillAppear(at: willAppearIndex)
                 }
-                if willAppearIndex == -1 {
-                    willAppearIndex = leftIndex;
-                    if validListDict[leftIndex] != nil {
-                        listWillAppear(at: willAppearIndex)
-                    }
+            }
+            if willDisappearIndex == -1 {
+                willDisappearIndex = rightIndex
+                listWillDisappear(at: willDisappearIndex)
+            }
+        }else {
+            //当前选中的在左边，用户正在从左边往右边滑动
+            if remainderRatio > initListPercent {
+                initListIfNeeded(at: rightIndex)
+            }
+            if willAppearIndex == -1 {
+                willAppearIndex = rightIndex
+                if validListDict[rightIndex] != nil {
+                    listWillAppear(at: willAppearIndex)
                 }
-                if willDisappearIndex == -1 {
-                    willDisappearIndex = rightIndex
-                    listWillDisappear(at: willDisappearIndex)
-                }
-            }else {
-                //当前选中的在左边，用户正在从左边往右边滑动
-                if percent > initListPercent {
-                    initListIfNeeded(at: rightIndex)
-                }
-                if willAppearIndex == -1 {
-                    willAppearIndex = rightIndex
-                    if validListDict[rightIndex] != nil {
-                        listWillAppear(at: willAppearIndex)
-                    }
-                }
-                if willDisappearIndex == -1 {
-                    willDisappearIndex = leftIndex
-                    listWillDisappear(at: willDisappearIndex)
-                }
+            }
+            if willDisappearIndex == -1 {
+                willDisappearIndex = leftIndex
+                listWillDisappear(at: willDisappearIndex)
             }
         }
 
