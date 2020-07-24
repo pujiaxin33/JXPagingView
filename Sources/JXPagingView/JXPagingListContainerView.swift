@@ -433,6 +433,9 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
         var leftIndex = Int(floor(Double(percent)))
         leftIndex = max(0, min(maxCount - 1, leftIndex))
         let rightIndex = leftIndex + 1;
+        if percent < 0 || rightIndex >= maxCount {
+            return
+        }
         let remainderRatio = percent - CGFloat(leftIndex)
         if rightIndex == currentIndex {
             //当前选中的在右边，用户正在从右边往左边滑动
