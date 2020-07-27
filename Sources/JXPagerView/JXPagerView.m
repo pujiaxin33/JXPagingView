@@ -163,11 +163,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor clearColor];
-    for (UIView *view in cell.contentView.subviews) {
-        [view removeFromSuperview];
+    if (self.listContainerView.superview != cell.contentView) {
+        self.listContainerView.frame = cell.bounds;
+        [cell.contentView addSubview:self.listContainerView];
     }
-    self.listContainerView.frame = cell.bounds;
-    [cell.contentView addSubview:self.listContainerView];
     return cell;
 }
 
