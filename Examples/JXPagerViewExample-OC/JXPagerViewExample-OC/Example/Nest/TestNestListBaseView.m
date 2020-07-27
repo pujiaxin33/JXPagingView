@@ -83,4 +83,10 @@
     !self.scrollCallback ?: self.scrollCallback(scrollView);
 }
 
+#pragma mark - JXCategoryListContentViewDelegate
+
+- (UIView *)listView {
+    return self.tableView;
+}
+
 @end

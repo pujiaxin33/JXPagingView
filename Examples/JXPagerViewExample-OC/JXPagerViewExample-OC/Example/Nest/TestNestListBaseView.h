@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <JXCategoryView/JXCategoryView.h>
 
-
-@interface TestNestListBaseView : UIView
+@interface TestNestListBaseView : UIView <JXCategoryListContentViewDelegate>
 
 @property (nonatomic, copy) void(^scrollCallback)(UIScrollView *scrollView);
 @property (nonatomic, strong) UITableView *tableView;
