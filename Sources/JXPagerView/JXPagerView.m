@@ -164,8 +164,10 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor clearColor];
     if (self.listContainerView.superview != cell.contentView) {
-        self.listContainerView.frame = cell.bounds;
         [cell.contentView addSubview:self.listContainerView];
+    }
+    if (!CGRectEqualToRect(self.listContainerView.frame, cell.bounds)) {
+        self.listContainerView.frame = cell.bounds;
     }
     return cell;
 }
