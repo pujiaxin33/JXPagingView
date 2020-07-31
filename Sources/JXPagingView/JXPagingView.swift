@@ -148,19 +148,18 @@ open class JXPagingView: UIView {
     }
 
     open func preferredProcessListViewDidScroll(scrollView: UIScrollView) {
-        guard let currentScrollingListView = currentScrollingListView, let currentList = currentList else { return }
         if (mainTableView.contentOffset.y < mainTableViewMaxContentOffsetY()) {
             //mainTableView的header还没有消失，让listScrollView一直为0
-            currentList.listScrollViewWillResetContentOffset?()
-            setListScrollViewToMinContentOffsetY(currentScrollingListView)
+            currentList?.listScrollViewWillResetContentOffset?()
+            setListScrollViewToMinContentOffsetY(scrollView)
             if automaticallyDisplayListVerticalScrollIndicator {
-                currentScrollingListView.showsVerticalScrollIndicator = false
+                scrollView.showsVerticalScrollIndicator = false
             }
         } else {
             //mainTableView的header刚好消失，固定mainTableView的位置，显示listScrollView的滚动条
             setMainTableViewToMaxContentOffsetY()
             if automaticallyDisplayListVerticalScrollIndicator {
-                currentScrollingListView.showsVerticalScrollIndicator = true
+                scrollView.showsVerticalScrollIndicator = true
             }
         }
     }
