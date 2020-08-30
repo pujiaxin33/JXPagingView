@@ -205,9 +205,10 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     if (self.delegate && [self.delegate respondsToSelector:@selector(pagerSmoothViewDidScroll:)]) {
         [self.delegate pagerSmoothViewDidScroll:scrollView];
     }
-    NSInteger index = scrollView.contentOffset.x/scrollView.bounds.size.width;
+    CGFloat indexPercent = scrollView.contentOffset.x/scrollView.bounds.size.width;
+    NSInteger index = floor(indexPercent);
     UIScrollView *listScrollView = [self.listDict[@(index)] listScrollView];
-    if (index != self.currentIndex && !(scrollView.isDragging || scrollView.isDecelerating) && listScrollView.contentOffset.y <= -self.heightForPinHeader) {
+    if (indexPercent - index == 0 && index != self.currentIndex && !(scrollView.isDragging || scrollView.isDecelerating) && listScrollView.contentOffset.y <= -self.heightForPinHeader) {
         [self horizontalScrollDidEndAtIndex:index];
     }else {
         //左右滚动的时候，就把listHeaderContainerView添加到self，达到悬浮在顶部的效果
