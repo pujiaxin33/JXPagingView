@@ -229,6 +229,7 @@ open class JXPagingListContainerView: UIView {
             if collectionView.frame == CGRect.zero || collectionView.bounds.size != bounds.size {
                 collectionView.frame = bounds
                 collectionView.collectionViewLayout.invalidateLayout()
+                collectionView.reloadData()
                 collectionView.setContentOffset(CGPoint(x: CGFloat(currentIndex)*collectionView.bounds.size.width, y: 0), animated: false)
             }else {
                 collectionView.frame = bounds
@@ -439,7 +440,11 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
         let list = validListDict[indexPath.item]
         if list != nil {
-            list?.listView().frame = cell.contentView.bounds
+            if list is UIViewController {
+                list?.listView().frame = cell.contentView.bounds
+            }else {
+                list?.listView().frame = cell.bounds
+            }
             cell.contentView.addSubview(list!.listView())
         }
         return cell
