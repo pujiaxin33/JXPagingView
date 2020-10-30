@@ -44,6 +44,7 @@
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        //如果列表是`UICollectionView`是参考`JXPagerSmoothCollectionFlowLayout`处理`collectionViewContentSize`
         JXPagerSmoothCollectionFlowLayout *layout = [[JXPagerSmoothCollectionFlowLayout alloc] init];
         layout.pinCategoryHeight = SmoothViewPinCategoryHeight;
         layout.minimumLineSpacing = 10;
