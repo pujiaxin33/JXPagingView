@@ -16,7 +16,7 @@ class ZoomViewController: BaseViewController {
 
     }
 
-    func pagingView(_ pagingView: JXPagingView, mainTableViewDidScroll scrollView: UIScrollView) {
+    override func pagingView(_ pagingView: JXPagingView, mainTableViewDidScroll scrollView: UIScrollView) {
         userHeaderView.scrollViewDidScroll(contentOffsetY: scrollView.contentOffset.y)
     }
 }

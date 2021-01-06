@@ -16,8 +16,7 @@ public enum JXPagingListContainerType {
     case collectionView
 }
 
-@objc
-public protocol JXPagingViewListViewDelegate {
+public protocol JXPagingViewListViewDelegate: NSObjectProtocol {
     /// 如果列表是VC，就返回VC.view
     /// 如果列表是View，就返回View自己
     ///
@@ -34,19 +33,27 @@ public protocol JXPagingViewListViewDelegate {
     func listViewDidScrollCallback(callback: @escaping (UIScrollView)->())
 
     /// 将要重置listScrollView的contentOffset
-    @objc optional func listScrollViewWillResetContentOffset()
+    func listScrollViewWillResetContentOffset()
     /// 可选实现，列表将要显示的时候调用
-    @objc optional func listWillAppear()
+    func listWillAppear()
     /// 可选实现，列表显示的时候调用
-    @objc optional func listDidAppear()
+    func listDidAppear()
     /// 可选实现，列表将要消失的时候调用
-    @objc optional func listWillDisappear()
+    func listWillDisappear()
     /// 可选实现，列表消失的时候调用
-    @objc optional func listDidDisappear()
+    func listDidDisappear()
 }
 
-@objc
-public protocol JXPagingListContainerViewDataSource {
+public extension JXPagingViewListViewDelegate {
+    
+    func listScrollViewWillResetContentOffset() {}
+    func listWillAppear() {}
+    func listDidAppear() {}
+    func listWillDisappear() {}
+    func listDidDisappear() {}
+}
+
+public protocol JXPagingListContainerViewDataSource: NSObjectProtocol {
     /// 返回list的数量
     ///
     /// - Parameter listContainerView: JXPagingListContainerView
@@ -65,21 +72,34 @@ public protocol JXPagingListContainerViewDataSource {
 
 
     /// 控制能否初始化对应index的列表。有些业务需求，需要在某些情况才允许初始化某些列表，通过通过该代理实现控制。
-    @objc optional func listContainerView(_ listContainerView: JXPagingListContainerView, canInitListAt index: Int) -> Bool
+    func listContainerView(_ listContainerView: JXPagingListContainerView, canInitListAt index: Int) -> Bool
 
     /// 返回自定义UIScrollView或UICollectionView的Class
     /// 某些特殊情况需要自己处理UIScrollView内部逻辑。比如项目用了FDFullscreenPopGesture，需要处理手势相关代理。
     ///
     /// - Parameter listContainerView: JXPagingListContainerView
     /// - Returns: 自定义UIScrollView实例
-    @objc optional func scrollViewClass(in listContainerView: JXPagingListContainerView) -> AnyClass
+    func scrollViewClass(in listContainerView: JXPagingListContainerView) -> AnyClass?
 }
 
-@objc protocol JXPagingListContainerViewDelegate {
-    @objc optional func listContainerViewDidScroll(_ listContainerView: JXPagingListContainerView)
-    @objc optional func listContainerViewWillBeginDragging(_ listContainerView: JXPagingListContainerView)
-    @objc optional func listContainerViewDidEndScrolling(_ listContainerView: JXPagingListContainerView)
-    @objc optional func listContainerView(_ listContainerView: JXPagingListContainerView, listDidAppearAt index: Int)
+public extension JXPagingListContainerViewDataSource {
+    func listContainerView(_ listContainerView: JXPagingListContainerView, canInitListAt index: Int) -> Bool { true }
+    func scrollViewClass(in listContainerView: JXPagingListContainerView) -> AnyClass? { nil }
+}
+
+protocol JXPagingListContainerViewDelegate: NSObjectProtocol {
+    func listContainerViewDidScroll(_ listContainerView: JXPagingListContainerView)
+    func listContainerViewWillBeginDragging(_ listContainerView: JXPagingListContainerView)
+    func listContainerViewDidEndScrolling(_ listContainerView: JXPagingListContainerView)
+    func listContainerView(_ listContainerView: JXPagingListContainerView, listDidAppearAt index: Int)
+}
+
+extension JXPagingListContainerViewDelegate {
+    
+    func listContainerViewDidScroll(_ listContainerView: JXPagingListContainerView) {}
+    func listContainerViewWillBeginDragging(_ listContainerView: JXPagingListContainerView) {}
+    func listContainerViewDidEndScrolling(_ listContainerView: JXPagingListContainerView) {}
+    func listContainerView(_ listContainerView: JXPagingListContainerView, listDidAppearAt index: Int) {}
 }
 
 open class JXPagingListContainerView: UIView {
@@ -149,7 +169,7 @@ open class JXPagingListContainerView: UIView {
             self?.listDidDisappear(at: self?.currentIndex ?? 0)
         }
         if type == .scrollView {
-            if let scrollViewClass = dataSource.scrollViewClass?(in: self) as? UIScrollView.Type {
+            if let scrollViewClass = dataSource.scrollViewClass(in: self) as? UIScrollView.Type {
                 scrollView = scrollViewClass.init()
             }else {
                 scrollView = JXPagingListContainerScrollView.init()
@@ -170,7 +190,7 @@ open class JXPagingListContainerView: UIView {
             layout.scrollDirection = .horizontal
             layout.minimumLineSpacing = 0
             layout.minimumInteritemSpacing = 0
-            if let collectionViewClass = dataSource.scrollViewClass?(in: self) as? UICollectionView.Type {
+            if let collectionViewClass = dataSource.scrollViewClass(in: self) as? UICollectionView.Type {
                 collectionView = collectionViewClass.init(frame: CGRect.zero, collectionViewLayout: layout)
             }else {
                 collectionView = JXPagingListContainerCollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
@@ -285,7 +305,7 @@ open class JXPagingListContainerView: UIView {
     //MARK: - Private
     func initListIfNeeded(at index: Int) {
         guard let dataSource = dataSource else { return }
-        if dataSource.listContainerView?(self, canInitListAt: index) == false {
+        if dataSource.listContainerView(self, canInitListAt: index) == false {
             return
         }
         var existedList = validListDict[index]
@@ -319,13 +339,13 @@ open class JXPagingListContainerView: UIView {
         }
         var existedList = validListDict[index]
         if existedList != nil {
-            existedList?.listWillAppear?()
+            existedList?.listWillAppear()
             if let vc = existedList as? UIViewController {
                 vc.beginAppearanceTransition(true, animated: false)
             }
         }else {
             //当前列表未被创建（页面初始化或通过点击触发的listWillAppear）
-            guard dataSource.listContainerView?(self, canInitListAt: index) != false else {
+            guard dataSource.listContainerView(self, canInitListAt: index) != false else {
                 return
             }
             existedList = dataSource.listContainerView(self, initListAt: index)
@@ -341,7 +361,7 @@ open class JXPagingListContainerView: UIView {
                     list.listView().frame = CGRect(x: CGFloat(index)*scrollView.bounds.size.width, y: 0, width: scrollView.bounds.size.width, height: scrollView.bounds.size.height)
                     scrollView.addSubview(list.listView())
                 }
-                list.listWillAppear?()
+                list.listWillAppear()
                 if let vc = list as? UIViewController {
                     vc.beginAppearanceTransition(true, animated: false)
                 }
@@ -350,7 +370,7 @@ open class JXPagingListContainerView: UIView {
                 cell?.contentView.subviews.forEach { $0.removeFromSuperview() }
                 list.listView().frame = cell?.contentView.bounds ?? CGRect.zero
                 cell?.contentView.addSubview(list.listView())
-                list.listWillAppear?()
+                list.listWillAppear()
                 if let vc = list as? UIViewController {
                     vc.beginAppearanceTransition(true, animated: false)
                 }
@@ -364,11 +384,11 @@ open class JXPagingListContainerView: UIView {
         }
         currentIndex = index
         let list = validListDict[index]
-        list?.listDidAppear?()
+        list?.listDidAppear()
         if let vc = list as? UIViewController {
             vc.endAppearanceTransition()
         }
-        delegate?.listContainerView?(self, listDidAppearAt: index)
+        delegate?.listContainerView(self, listDidAppearAt: index)
     }
 
     private func listWillDisappear(at index: Int) {
@@ -376,7 +396,7 @@ open class JXPagingListContainerView: UIView {
             return
         }
         let list = validListDict[index]
-        list?.listWillDisappear?()
+        list?.listWillDisappear()
         if let vc = list as? UIViewController {
             vc.beginAppearanceTransition(false, animated: false)
         }
@@ -387,7 +407,7 @@ open class JXPagingListContainerView: UIView {
             return
         }
         let list = validListDict[index]
-        list?.listDidDisappear?()
+        list?.listDidDisappear()
         if let vc = list as? UIViewController {
             vc.endAppearanceTransition()
         }
@@ -455,7 +475,7 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        delegate?.listContainerViewDidScroll?(self)
+        delegate?.listContainerViewDidScroll(self)
         guard scrollView.isTracking || scrollView.isDragging else {
             return
         }
@@ -511,21 +531,21 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
             willDisappearIndex = -1
             willAppearIndex = -1
         }
-        delegate?.listContainerViewDidEndScrolling?(self)
+        delegate?.listContainerViewDidEndScrolling(self)
     }
 
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        delegate?.listContainerViewWillBeginDragging?(self)
+        delegate?.listContainerViewWillBeginDragging(self)
     }
 
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
-            delegate?.listContainerViewDidEndScrolling?(self)
+            delegate?.listContainerViewDidEndScrolling(self)
         }
     }
 
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        delegate?.listContainerViewDidEndScrolling?(self)
+        delegate?.listContainerViewDidEndScrolling(self)
     }
 }
 

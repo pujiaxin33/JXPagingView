@@ -15,7 +15,6 @@ class ListViewController: UIViewController {
     var dataSource: [String] = [String]()
     var isNeedHeader = false
     var isNeedFooter = false
-    var listViewDidScrollCallback: ((UIScrollView) -> ())?
     var isHeaderRefreshed = false
 
     override func viewDidLoad() {
@@ -90,10 +89,6 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         return 50
     }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.listViewDidScrollCallback?(scrollView)
-    }
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailViewController()
         self.navigationController?.pushViewController(vc, animated: true)
@@ -101,31 +96,10 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension ListViewController: JXPagingViewListViewDelegate {
-    func listView() -> UIView {
-        return view
-    }
-
-    func listViewDidScrollCallback(callback: @escaping (UIScrollView) -> ()) {
-        self.listViewDidScrollCallback = callback
-    }
-
-    func listScrollView() -> UIScrollView {
-        return self.tableView
-    }
-
-    func listWillAppear() {
-        print("\(self.title ?? ""):\(#function)")
-    }
-
-    func listDidAppear() {
-        print("\(self.title ?? ""):\(#function)")
-    }
-
-    func listWillDisappear() {
-        print("\(self.title ?? ""):\(#function)")
-    }
-
-    func listDidDisappear() {
-        print("\(self.title ?? ""):\(#function)")
+    
+    func listScrollView() -> UIScrollView { tableView }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        listViewDidScrollCallback?(scrollView)
     }
 }

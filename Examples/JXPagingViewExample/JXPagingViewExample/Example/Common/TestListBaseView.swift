@@ -36,7 +36,6 @@ class TestListBaseView: UIView {
             }
         }
     }
-    var listViewDidScrollCallback: ((UIScrollView) -> ())?
     var lastSelectedIndexPath: IndexPath?
     var isHeaderRefreshed = false
 
@@ -128,31 +127,14 @@ extension TestListBaseView: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.listViewDidScrollCallback?(scrollView)
-    }
 }
 
 extension TestListBaseView: JXPagingViewListViewDelegate {
-    public func listView() -> UIView {
-        return self
-    }
     
-    public func listViewDidScrollCallback(callback: @escaping (UIScrollView) -> ()) {
-        self.listViewDidScrollCallback = callback
-    }
-
-    public func listScrollView() -> UIScrollView {
-        return self.tableView
-    }
-
-    public func listDidDisappear() {
-        print("listDidDisappear")
-    }
-
-    public func listDidAppear() {
-        print("listDidAppear")
+    func listScrollView() -> UIScrollView { tableView }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        listViewDidScrollCallback?(scrollView)
     }
 }
 
