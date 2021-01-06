@@ -11,8 +11,7 @@ import JXPagingView
 
 class ListCollectionViewController: UIViewController {
     let collectionView: UICollectionView
-    var listViewDidScrollCallback: ((UIScrollView) -> ())?
-
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         let itemMargin: CGFloat = 10
         let itemWidth = floor((UIScreen.main.bounds.size.width - itemMargin*4)/3)
@@ -60,24 +59,6 @@ extension ListCollectionViewController: UICollectionViewDataSource, UICollection
         cell.titleLabel.text = String(format: "%d", indexPath.item)
         return cell
     }
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.listViewDidScrollCallback?(scrollView)
-    }
-}
-
-extension ListCollectionViewController: JXPagingViewListViewDelegate {
-    public func listView() -> UIView {
-        return view
-    }
-
-    public func listViewDidScrollCallback(callback: @escaping (UIScrollView) -> ()) {
-        self.listViewDidScrollCallback = callback
-    }
-
-    public func listScrollView() -> UIScrollView {
-        return self.collectionView
-    }
 }
 
 class ListCollectionViewCell: UICollectionViewCell {
@@ -98,5 +79,14 @@ class ListCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
 
         titleLabel.frame = self.contentView.bounds
+    }
+}
+
+extension ListCollectionViewController: JXPagingViewListViewDelegate {
+    
+    func listScrollView() -> UIScrollView { collectionView }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        listViewDidScrollCallback?(scrollView)
     }
 }
