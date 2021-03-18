@@ -458,7 +458,7 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate?.listContainerViewDidScroll?(self)
-        guard scrollView.isTracking || scrollView.isDragging else {
+        guard scrollView.isTracking || scrollView.isDragging || scrollView.isDecelerating else {
             return
         }
         let percent = scrollView.contentOffset.x/scrollView.bounds.size.width
