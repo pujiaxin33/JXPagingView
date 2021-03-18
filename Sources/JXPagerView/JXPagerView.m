@@ -80,7 +80,7 @@
     [_validListDict removeAllObjects];
 
     [self refreshTableHeaderView];
-    if (self.pinSectionHeaderVerticalOffset != 0) {
+    if (self.pinSectionHeaderVerticalOffset != 0 && self.mainTableView.contentOffset.y > self.pinSectionHeaderVerticalOffset) {
         self.mainTableView.contentOffset = CGPointZero;
     }
     [self.mainTableView reloadData];

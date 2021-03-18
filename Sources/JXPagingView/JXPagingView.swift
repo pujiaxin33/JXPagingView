@@ -114,7 +114,7 @@ open class JXPagingView: UIView {
         currentScrollingListView = nil
         validListDict.removeAll()
         refreshTableHeaderView()
-        if pinSectionHeaderVerticalOffset != 0 {
+        if pinSectionHeaderVerticalOffset != 0 && mainTableView.contentOffset.y > CGFloat(pinSectionHeaderVerticalOffset) {
             mainTableView.contentOffset = .zero
         }
         mainTableView.reloadData()
