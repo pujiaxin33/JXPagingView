@@ -12,7 +12,7 @@ import JXSegmentedView
 
 extension JXPagingListContainerView: JXSegmentedViewListContainer {}
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, JXSegmentedViewDelegate {
     lazy var pagingView: JXPagingView = preferredPagingView()
     lazy var userHeaderView: PagingViewTableHeaderView = preferredTableHeaderView()
     let dataSource: JXSegmentedTitleDataSource = JXSegmentedTitleDataSource()
@@ -87,6 +87,10 @@ class BaseViewController: UIViewController {
     func preferredPagingView() -> JXPagingView {
         return JXPagingView(delegate: self)
     }
+
+    func segmentedView(_ segmentedView: JXSegmentedView, didSelectedItemAt index: Int) {
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = (index == 0)
+    }
 }
 
 extension BaseViewController: JXPagingViewDelegate {
@@ -124,12 +128,6 @@ extension BaseViewController: JXPagingViewDelegate {
             list.dataSource = ["【剑士】罗罗诺亚·索隆", "【航海士】娜美", "【狙击手】乌索普", "【厨师】香吉士", "【船医】托尼托尼·乔巴", "【船匠】 弗兰奇", "【音乐家】布鲁克", "【考古学家】妮可·罗宾"]
         }
         return list
-    }
-}
-
-extension BaseViewController: JXSegmentedViewDelegate {
-    func segmentedView(_ segmentedView: JXSegmentedView, didSelectedItemAt index: Int) {
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = (index == 0)
     }
 }
 

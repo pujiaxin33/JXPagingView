@@ -8,6 +8,7 @@
 
 import UIKit
 import JXPagingView
+import JXSegmentedView
 
 class ListRefreshViewController: BaseViewController {
 
@@ -21,5 +22,15 @@ class ListRefreshViewController: BaseViewController {
         return JXPagingListRefreshView(delegate: self)
     }
 
+    //用于测试每次点击segment切换，都触发子列表的下拉刷新
+/*
+    override func segmentedView(_ segmentedView: JXSegmentedView, didSelectedItemAt index: Int) {
+        super.segmentedView(segmentedView, didSelectedItemAt: index)
 
+        guard let list = pagingView.validListDict[index] as? ListViewController else {
+            return
+        }
+        list.tableView.mj_header?.beginRefreshing()
+    }
+ */
 }
