@@ -66,8 +66,8 @@ open class JXPagingView: UIView {
     }
     /// 是否允许当前列表自动显示或隐藏列表是垂直滚动指示器。true：悬浮的headerView滚动到顶部开始滚动列表时，就会显示，反之隐藏。false：内部不会处理列表的垂直滚动指示器。默认为：true。
     public var automaticallyDisplayListVerticalScrollIndicator = true
-    public var currentScrollingListView: UIScrollView?
-    public var currentList: JXPagingViewListViewDelegate?
+    internal var currentScrollingListView: UIScrollView?
+    internal var currentList: JXPagingViewListViewDelegate?
     private var currentIndex: Int = 0
     private weak var delegate: JXPagingViewDelegate?
     private var tableHeaderContainerView: UIView!
