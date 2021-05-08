@@ -263,8 +263,8 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         cell.selectionStyle = .none
         cell.backgroundColor = UIColor.clear
-        if listContainerView.superview != cell.contentView {
-            cell.contentView.addSubview(listContainerView)
+        if listContainerView.superview != cell {
+            cell.addSubview(listContainerView)
         }
         if listContainerView.frame != cell.bounds {
             listContainerView.frame = cell.bounds
