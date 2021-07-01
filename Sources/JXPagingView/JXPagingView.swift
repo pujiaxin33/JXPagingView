@@ -82,7 +82,7 @@ open class JXPagingView: UIView {
     private var tableHeaderContainerView: UIView!
     private let cellIdentifier = "cell"
     private let listContainerType: JXPagingListContainerType
-    private var cacheList = [String:JXPagingViewListViewDelegate]()
+    private var listCache = [String:JXPagingViewListViewDelegate]()
 
     public init(delegate: JXPagingViewDelegate, listContainerType: JXPagingListContainerType = .collectionView) {
         self.delegate = delegate
@@ -131,10 +131,10 @@ open class JXPagingView: UIView {
                     newListIdentifierArray.append(listIdentifier)
                 }
             }
-            let existedKeys = Array(cacheList.keys)
+            let existedKeys = Array(listCache.keys)
             for listIdentifier in existedKeys {
                 if !newListIdentifierArray.contains(listIdentifier) {
-                    cacheList.removeValue(forKey: listIdentifier)
+                    listCache.removeValue(forKey: listIdentifier)
                 }
             }
         }
@@ -378,8 +378,8 @@ extension JXPagingView: JXPagingListContainerViewDataSource {
     public func listContainerView(_ listContainerView: JXPagingListContainerView, initListAt index: Int) -> JXPagingViewListViewDelegate {
         guard let delegate = delegate else { fatalError("JXPaingView.delegate must not be nil") }
         var list = validListDict[index]
-        if list == nil, let listIdentifier = delegate.pagingView?(self, listIdentifierAtIndex: index) {
-            list = cacheList[listIdentifier]
+        if allowsCacheList, list == nil, let listIdentifier = delegate.pagingView?(self, listIdentifierAtIndex: index) {
+            list = listCache[listIdentifier]
         }
         if list == nil {
             list = delegate.pagingView(self, initListAtIndex: index)
@@ -389,7 +389,7 @@ extension JXPagingView: JXPagingListContainerViewDataSource {
             }
             validListDict[index] = list!
             if allowsCacheList, let listIdentifier = delegate.pagingView?(self, listIdentifierAtIndex: index) {
-                cacheList[listIdentifier] = list
+                listCache[listIdentifier] = list
             }
         }
         return list!
