@@ -28,6 +28,13 @@ import UIKit
     ///   - index: 新生成的列表实例
     func pagingView(_ pagingView: JXPagingView, initListAtIndex index: Int) -> JXPagingViewListViewDelegate
 
+
+    /// 返回对应index的列表唯一标识
+    /// - Parameters:
+    ///   - pagingView: pagingView description
+    ///   - index: 列表的下标
+    @objc optional func pagingView(_ pagingView: JXPagingView, listIdentifierAtIndex index: Int) -> String
+
     /// 将要被弃用！请使用pagingView(_ pagingView: JXPagingView, mainTableViewDidScroll scrollView: UIScrollView) 方法作为替代。
     @available(*, message: "Use pagingView(_ pagingView: JXPagingView, mainTableViewDidScroll scrollView: UIScrollView) method")
     @objc optional func mainTableViewDidScroll(_ scrollView: UIScrollView)
@@ -66,6 +73,8 @@ open class JXPagingView: UIView {
     }
     /// 是否允许当前列表自动显示或隐藏列表是垂直滚动指示器。true：悬浮的headerView滚动到顶部开始滚动列表时，就会显示，反之隐藏。false：内部不会处理列表的垂直滚动指示器。默认为：true。
     public var automaticallyDisplayListVerticalScrollIndicator = true
+    /// 当allowsCacheList为true时，请务必实现代理方法`func pagingView(_ pagingView: JXPagingView, listIdentifierAtIndex index: Int) -> String`
+    public var allowsCacheList: Bool = false
     internal var currentScrollingListView: UIScrollView?
     internal var currentList: JXPagingViewListViewDelegate?
     private var currentIndex: Int = 0
@@ -73,6 +82,7 @@ open class JXPagingView: UIView {
     private var tableHeaderContainerView: UIView!
     private let cellIdentifier = "cell"
     private let listContainerType: JXPagingListContainerType
+    private var cacheList = [String:JXPagingViewListViewDelegate]()
 
     public init(delegate: JXPagingViewDelegate, listContainerType: JXPagingListContainerType = .collectionView) {
         self.delegate = delegate
@@ -113,6 +123,21 @@ open class JXPagingView: UIView {
         currentList = nil
         currentScrollingListView = nil
         validListDict.removeAll()
+        if allowsCacheList, let listCount = delegate?.numberOfLists(in: self) {
+            //根据新数据删除不需要的list
+            var newListIdentifierArray = [String]()
+            for index in 0..<listCount {
+                if let listIdentifier = delegate?.pagingView?(self, listIdentifierAtIndex: index) {
+                    newListIdentifierArray.append(listIdentifier)
+                }
+            }
+            let existedKeys = Array(cacheList.keys)
+            for listIdentifier in existedKeys {
+                if !newListIdentifierArray.contains(listIdentifier) {
+                    cacheList.removeValue(forKey: listIdentifier)
+                }
+            }
+        }
         refreshTableHeaderView()
         if pinSectionHeaderVerticalOffset != 0 && mainTableView.contentOffset.y > CGFloat(pinSectionHeaderVerticalOffset) {
             mainTableView.contentOffset = .zero
@@ -353,6 +378,9 @@ extension JXPagingView: JXPagingListContainerViewDataSource {
     public func listContainerView(_ listContainerView: JXPagingListContainerView, initListAt index: Int) -> JXPagingViewListViewDelegate {
         guard let delegate = delegate else { fatalError("JXPaingView.delegate must not be nil") }
         var list = validListDict[index]
+        if list == nil, let listIdentifier = delegate.pagingView?(self, listIdentifierAtIndex: index) {
+            list = cacheList[listIdentifier]
+        }
         if list == nil {
             list = delegate.pagingView(self, initListAtIndex: index)
             list?.listViewDidScrollCallback {[weak self, weak list] (scrollView) in
@@ -360,6 +388,9 @@ extension JXPagingView: JXPagingListContainerViewDataSource {
                 self?.listViewDidScroll(scrollView: scrollView)
             }
             validListDict[index] = list!
+            if allowsCacheList, let listIdentifier = delegate.pagingView?(self, listIdentifierAtIndex: index) {
+                cacheList[listIdentifier] = list
+            }
         }
         return list!
     }
