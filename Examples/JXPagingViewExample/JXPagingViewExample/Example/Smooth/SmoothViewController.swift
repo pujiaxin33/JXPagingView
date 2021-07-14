@@ -54,6 +54,8 @@ class SmoothViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "reload", style: .plain, target: self, action: #selector(didNaviRightItemClick))
         paging.listCollectionView.panGestureRecognizer.require(toFail: navigationController!.interactivePopGestureRecognizer!)
+        paging.pinSectionHeaderVerticalOffset = 100
+//         paging.pinSectionHeaderVerticalOffset = -20
     }
 
     @objc func didNaviRightItemClick() {
