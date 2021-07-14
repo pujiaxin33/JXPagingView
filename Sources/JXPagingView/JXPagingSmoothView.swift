@@ -46,6 +46,8 @@ open class JXPagingSmoothView: UIView {
     public let listCollectionView: JXPagingSmoothCollectionView
     public var defaultSelectedIndex: Int = 0
     public weak var delegate: JXPagingSmoothViewDelegate?
+    /// 顶部固定sectionHeader的垂直偏移量。数值越大越往下沉。
+    public var pinSectionHeaderVerticalOffset: CGFloat = 0
 
     weak var dataSource: JXPagingSmoothViewDataSource?
     var listHeaderDict = [Int : UIView]()
@@ -162,7 +164,7 @@ open class JXPagingSmoothView: UIView {
         }
         currentListScrollView = scrollView
         let contentOffsetY = scrollView.contentOffset.y + heightForPagingHeaderContainerView
-        if contentOffsetY < heightForPagingHeader {
+        if contentOffsetY + pinSectionHeaderVerticalOffset < heightForPagingHeader {
             isSyncListContentOffsetEnabled = true
             currentPagingHeaderContainerViewY = -contentOffsetY
             for list in listDict.values {
@@ -177,15 +179,15 @@ open class JXPagingSmoothView: UIView {
             }
         }else {
             if pagingHeaderContainerView.superview != self {
-                pagingHeaderContainerView.frame.origin.y = -heightForPagingHeader
+                pagingHeaderContainerView.frame.origin.y = -heightForPagingHeader + pinSectionHeaderVerticalOffset
                 addSubview(pagingHeaderContainerView)
             }
             if isSyncListContentOffsetEnabled {
                 isSyncListContentOffsetEnabled = false
-                currentPagingHeaderContainerViewY = -heightForPagingHeader
+                currentPagingHeaderContainerViewY = -heightForPagingHeader + pinSectionHeaderVerticalOffset
                 for list in listDict.values {
                     if list.listScrollView() != currentListScrollView {
-                        list.listScrollView().setContentOffset(CGPoint(x: 0, y: -heightForPinHeader), animated: false)
+                        list.listScrollView().setContentOffset(CGPoint(x: 0, y: -(heightForPinHeader + pinSectionHeaderVerticalOffset)), animated: false)
                     }
                 }
             }
@@ -206,7 +208,7 @@ open class JXPagingSmoothView: UIView {
                     scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: minContentSizeHeight)
                     //新的scrollView第一次加载的时候重置contentOffset
                     if currentListScrollView != nil, scrollView != currentListScrollView! {
-                        scrollView.contentOffset = CGPoint(x: 0, y: currentListInitializeContentOffsetY)
+                        scrollView.setContentOffset(CGPoint(x: 0, y: currentListInitializeContentOffsetY), animated: false)
                     }
                 }
             }
@@ -294,8 +296,8 @@ extension JXPagingSmoothView: UICollectionViewDataSource, UICollectionViewDelega
                 list?.listScrollView().contentInsetAdjustmentBehavior = .never
             }
             list?.listScrollView().contentInset = UIEdgeInsets(top: heightForPagingHeaderContainerView, left: 0, bottom: 0, right: 0)
-            currentListInitializeContentOffsetY = -heightForPagingHeaderContainerView + min(-currentPagingHeaderContainerViewY, heightForPagingHeader)
-            list?.listScrollView().contentOffset = CGPoint(x: 0, y: currentListInitializeContentOffsetY)
+            currentListInitializeContentOffsetY = -heightForPagingHeaderContainerView + min(-currentPagingHeaderContainerViewY, heightForPagingHeader - pinSectionHeaderVerticalOffset)
+            list?.listScrollView().setContentOffset(CGPoint(x: 0, y: currentListInitializeContentOffsetY), animated: false)
             let listHeader = UIView(frame: CGRect(x: 0, y: -heightForPagingHeaderContainerView, width: bounds.size.width, height: heightForPagingHeaderContainerView))
             list?.listScrollView().addSubview(listHeader)
             if pagingHeaderContainerView.superview == nil {
