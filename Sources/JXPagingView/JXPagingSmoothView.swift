@@ -203,7 +203,7 @@ open class JXPagingSmoothView: UIView {
             }
         }else if keyPath == "contentSize" {
             if let scrollView = object as? UIScrollView {
-                let minContentSizeHeight = bounds.size.height - heightForPinHeader
+                let minContentSizeHeight = bounds.size.height - (heightForPinHeader + pinSectionHeaderVerticalOffset)
                 if minContentSizeHeight > scrollView.contentSize.height {
                     scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: minContentSizeHeight)
                     //新的scrollView第一次加载的时候重置contentOffset
@@ -261,7 +261,7 @@ open class JXPagingSmoothView: UIView {
             return
         }
         listDict.values.forEach { $0.listScrollView().scrollsToTop = ($0.listScrollView() === listScrollView) }
-        if listScrollView.contentOffset.y <= -heightForPinHeader {
+        if listScrollView.contentOffset.y <= -(heightForPinHeader + pinSectionHeaderVerticalOffset) {
             pagingHeaderContainerView.frame.origin.y = 0
             listHeader.addSubview(pagingHeaderContainerView)
         }
@@ -285,8 +285,10 @@ extension JXPagingSmoothView: UICollectionViewDataSource, UICollectionViewDelega
         if list == nil {
             list = dataSource.pagingView(self, initListAtIndex: indexPath.item)
             listDict[indexPath.item] = list!
-            list?.listView().setNeedsLayout()
-            list?.listView().layoutIfNeeded()
+            DispatchQueue.main.async {
+                list?.listView().setNeedsLayout()
+                list?.listView().layoutIfNeeded()
+            }
             if list?.listScrollView().isKind(of: UITableView.self) == true {
                 (list?.listScrollView() as? UITableView)?.estimatedRowHeight = 0
                 (list?.listScrollView() as? UITableView)?.estimatedSectionHeaderHeight = 0
@@ -329,7 +331,7 @@ extension JXPagingSmoothView: UICollectionViewDataSource, UICollectionViewDelega
         let indexPercent = scrollView.contentOffset.x/scrollView.bounds.size.width
         let index = Int(scrollView.contentOffset.x/scrollView.bounds.size.width)
         let listScrollView = listDict[index]?.listScrollView()
-        if (indexPercent - CGFloat(index) == 0) && index != currentIndex && !(scrollView.isDragging || scrollView.isDecelerating) && listScrollView?.contentOffset.y ?? 0 <= -heightForPinHeader {
+        if (indexPercent - CGFloat(index) == 0) && index != currentIndex && !(scrollView.isDragging || scrollView.isDecelerating) && listScrollView?.contentOffset.y ?? 0 <= -(heightForPinHeader + pinSectionHeaderVerticalOffset) {
             horizontalScrollDidEnd(at: index)
         }else {
             //左右滚动的时候，就把listHeaderContainerView添加到self，达到悬浮在顶部的效果
