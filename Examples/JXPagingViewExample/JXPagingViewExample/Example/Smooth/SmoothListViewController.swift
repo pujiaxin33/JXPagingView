@@ -28,7 +28,7 @@ class SmoothListViewController: UIViewController, JXPagingSmoothViewListViewDele
         view.addSubview(tableView)
 
         tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(headerRefresh))
-        tableView.mj_header?.ignoredScrollViewContentInsetTop = 350
+        tableView.mj_header?.ignoredScrollViewContentInsetTop = tableView.contentInset.top
     }
 
     @objc func headerRefresh() {
@@ -43,6 +43,7 @@ class SmoothListViewController: UIViewController, JXPagingSmoothViewListViewDele
         super.viewDidLayoutSubviews()
 
         tableView.frame = view.bounds
+        tableView.mj_header?.ignoredScrollViewContentInsetTop = tableView.contentInset.top
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
