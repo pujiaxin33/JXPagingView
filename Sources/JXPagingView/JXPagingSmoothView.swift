@@ -141,6 +141,60 @@ open class JXPagingSmoothView: UIView {
             singleScrollView = nil
         }
     }
+    
+    open func resizePagingTopHeight(animatable: Bool = false, duration: TimeInterval = 0.25, curve: UIView.AnimationCurve = .linear) {
+        guard let dataSource = dataSource else { return }
+        
+        heightForPagingHeader = dataSource.heightForPagingHeader(in: self)
+        heightForPinHeader = dataSource.heightForPinHeader(in: self)
+        heightForPagingHeaderContainerView = heightForPagingHeader + heightForPinHeader
+        
+        let pagingHeader = dataSource.viewForPagingHeader(in: self)
+        let pinHeader = dataSource.viewForPinHeader(in: self)
+        
+        var frame = pagingHeaderContainerView.frame
+        frame.size.height = heightForPagingHeaderContainerView
+        
+        if animatable {
+            var options: UIView.AnimationOptions = .curveLinear
+            switch curve {
+            case .easeIn: options = .curveEaseIn
+            case .easeOut: options = .curveEaseOut
+            case .easeInOut: options = .curveEaseInOut
+            default: break
+            }
+            
+            UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
+                self.pagingHeaderContainerView.frame = frame
+                pagingHeader.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.heightForPagingHeader)
+                pinHeader.frame = CGRect(x: 0, y: self.heightForPagingHeader, width: self.bounds.size.width, height: self.heightForPinHeader)
+                
+                for list in self.listDict.values {
+                    let scrollView = list.listScrollView()
+                    var contentInset = scrollView.contentInset
+                    contentInset.top = self.heightForPagingHeaderContainerView
+                    scrollView.contentInset = contentInset
+                    if let header = self.listHeader(for: scrollView) {
+                        header.frame = CGRect(x: 0, y: -self.heightForPagingHeaderContainerView, width: self.bounds.size.width, height: self.heightForPagingHeaderContainerView)
+                    }
+                }
+            }, completion: nil)
+        }else {
+            pagingHeaderContainerView.frame = frame
+            pagingHeader.frame = CGRect(x: 0, y: 0, width: bounds.size.width, height: heightForPagingHeader)
+            pinHeader.frame = CGRect(x: 0, y: heightForPagingHeader, width: bounds.size.width, height: heightForPinHeader)
+            
+            for list in listDict.values {
+                let scrollView = list.listScrollView()
+                var contentInset = scrollView.contentInset
+                contentInset.top = heightForPagingHeaderContainerView
+                scrollView.contentInset = contentInset
+                if let header = listHeader(for: scrollView) {
+                    header.frame = CGRect(x: 0, y: -heightForPagingHeaderContainerView, width: bounds.size.width, height: heightForPagingHeaderContainerView)
+                }
+            }
+        }
+    }
 
     open override func layoutSubviews() {
         super.layoutSubviews()
@@ -297,7 +351,10 @@ extension JXPagingSmoothView: UICollectionViewDataSource, UICollectionViewDelega
             if #available(iOS 11.0, *) {
                 list?.listScrollView().contentInsetAdjustmentBehavior = .never
             }
-            list?.listScrollView().contentInset = UIEdgeInsets(top: heightForPagingHeaderContainerView, left: 0, bottom: list!.listScrollView().contentInset.bottom, right: 0)
+            if var contentInset = list?.listScrollView().contentInset {
+                contentInset.top = heightForPagingHeaderContainerView
+                list?.listScrollView().contentInset = contentInset
+            }
             currentListInitializeContentOffsetY = -heightForPagingHeaderContainerView + min(-currentPagingHeaderContainerViewY, heightForPagingHeader - pinSectionHeaderVerticalOffset)
             list?.listScrollView().setContentOffset(CGPoint(x: 0, y: currentListInitializeContentOffsetY), animated: false)
             let listHeader = UIView(frame: CGRect(x: 0, y: -heightForPagingHeaderContainerView, width: bounds.size.width, height: heightForPagingHeaderContainerView))
