@@ -22,7 +22,8 @@ class SmoothViewController: UIViewController {
         return UIImageView(image: UIImage(named: "lufei.jpg"))
     }()
     let dataSource = JXSegmentedTitleDataSource()
-
+    var headerHeight: CGFloat = 300
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,6 +66,9 @@ class SmoothViewController: UIViewController {
         paging.defaultSelectedIndex = 1
         segmentedView.reloadData()
         paging.reloadData()
+        
+        headerHeight = 200
+        paging.resizePagingTopHeight(animatable: true, duration: 0.25, curve: .easeInOut)
     }
 
     override func viewDidLayoutSubviews() {
@@ -82,7 +86,7 @@ extension SmoothViewController: JXSegmentedViewDelegate {
 
 extension SmoothViewController: JXPagingSmoothViewDataSource {
     func heightForPagingHeader(in pagingView: JXPagingSmoothView) -> CGFloat {
-        return 300
+        return headerHeight
     }
 
     func viewForPagingHeader(in pagingView: JXPagingSmoothView) -> UIView {
