@@ -154,6 +154,9 @@ open class JXPagingSmoothView: UIView {
         
         var frame = pagingHeaderContainerView.frame
         frame.size.height = heightForPagingHeaderContainerView
+        if pagingHeaderContainerView.superview == self {
+            frame.origin.y = -heightForPagingHeader + pinSectionHeaderVerticalOffset
+        }
         
         if animatable {
             var options: UIView.AnimationOptions = .curveLinear
@@ -177,6 +180,9 @@ open class JXPagingSmoothView: UIView {
                     if let header = self.listHeader(for: scrollView) {
                         header.frame = CGRect(x: 0, y: -self.heightForPagingHeaderContainerView, width: self.bounds.size.width, height: self.heightForPagingHeaderContainerView)
                     }
+                    
+                    list.listView().setNeedsLayout()
+                    list.listView().layoutIfNeeded()
                 }
             }, completion: nil)
         }else {
@@ -192,6 +198,9 @@ open class JXPagingSmoothView: UIView {
                 if let header = listHeader(for: scrollView) {
                     header.frame = CGRect(x: 0, y: -heightForPagingHeaderContainerView, width: bounds.size.width, height: heightForPagingHeaderContainerView)
                 }
+                
+                list.listView().setNeedsLayout()
+                list.listView().layoutIfNeeded()
             }
         }
     }
