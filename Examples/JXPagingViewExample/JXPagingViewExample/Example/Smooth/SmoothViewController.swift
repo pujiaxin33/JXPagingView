@@ -23,6 +23,7 @@ class SmoothViewController: UIViewController {
     }()
     let dataSource = JXSegmentedTitleDataSource()
     var headerHeight: CGFloat = 300
+    var preventScrolling = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +57,19 @@ class SmoothViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "reload", style: .plain, target: self, action: #selector(didNaviRightItemClick))
         paging.listCollectionView.panGestureRecognizer.require(toFail: navigationController!.interactivePopGestureRecognizer!)
         paging.pinSectionHeaderVerticalOffset = 100
+        
+        let textField = TextField(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+        textField.backgroundColor = .red
+        textField.becomeFirstResponderBlock = { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.preventScrolling = true
+            let scrollView = self.paging.listDict[self.segmentedView.selectedIndex]?.listScrollView()
+            scrollView?.delegate = self
+        }
+        headerView.isUserInteractionEnabled = true
+        headerView.addSubview(textField)
     }
 
     @objc func didNaviRightItemClick() {
@@ -121,5 +135,17 @@ extension SmoothViewController: SmoothListViewControllerDelegate {
     func endRefresh() {
         paging.listCollectionView.isScrollEnabled = true
         segmentedView.isUserInteractionEnabled = true
+    }
+}
+
+extension SmoothViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if preventScrolling {
+            scrollView.setContentOffset(CGPoint(x: 0, y: -scrollView.contentInset.top), animated: false)
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        preventScrolling = false
     }
 }

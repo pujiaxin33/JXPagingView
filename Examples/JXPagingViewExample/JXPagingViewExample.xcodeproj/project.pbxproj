@@ -40,6 +40,7 @@
 		8E9977024E317FDC76D67F71 /* Pods_JXPagingViewExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49ACF6F0193C33097F115C72 /* Pods_JXPagingViewExample.framework */; };
 		E4A8644126A913140016316C /* SmoothListRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A8643F26A913140016316C /* SmoothListRefreshViewController.swift */; };
 		E4A8644226A913140016316C /* SmoothRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A8644026A913140016316C /* SmoothRefreshViewController.swift */; };
+		E4F2B31F26A9555F008F1D0B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2B31E26A9555F008F1D0B /* TextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		8D67C720C98DE57835BC77F5 /* Pods-JXPagingViewExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXPagingViewExample.release.xcconfig"; path = "Target Support Files/Pods-JXPagingViewExample/Pods-JXPagingViewExample.release.xcconfig"; sourceTree = "<group>"; };
 		E4A8643F26A913140016316C /* SmoothListRefreshViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmoothListRefreshViewController.swift; sourceTree = "<group>"; };
 		E4A8644026A913140016316C /* SmoothRefreshViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmoothRefreshViewController.swift; sourceTree = "<group>"; };
+		E4F2B31E26A9555F008F1D0B /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 				19F1530C2387DCCC0043A86E /* SmoothListViewController.swift */,
 				E4A8644026A913140016316C /* SmoothRefreshViewController.swift */,
 				E4A8643F26A913140016316C /* SmoothListRefreshViewController.swift */,
+				E4F2B31E26A9555F008F1D0B /* TextField.swift */,
 			);
 			path = Smooth;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				19F153262387DCCC0043A86E /* SmoothViewController.swift in Sources */,
 				19F153302387DCCC0043A86E /* HeaderPositionViewController.swift in Sources */,
 				19F1532D2387DCCC0043A86E /* TestListBaseView.swift in Sources */,
+				E4F2B31F26A9555F008F1D0B /* TextField.swift in Sources */,
 				19259FE3268D67150001B853 /* ListCacheViewController.swift in Sources */,
 				E4A8644126A913140016316C /* SmoothListRefreshViewController.swift in Sources */,
 				19F153222387DCCC0043A86E /* CollectionViewViewController.swift in Sources */,
