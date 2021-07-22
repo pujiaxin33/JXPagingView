@@ -38,6 +38,8 @@
 		19F153362387DCCC0043A86E /* VCListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F153202387DCCC0043A86E /* VCListViewController.swift */; };
 		19F1538C2387DFD00043A86E /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19F1538B2387DFD00043A86E /* lufei.jpg */; };
 		8E9977024E317FDC76D67F71 /* Pods_JXPagingViewExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49ACF6F0193C33097F115C72 /* Pods_JXPagingViewExample.framework */; };
+		E4A8644126A913140016316C /* SmoothListRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A8643F26A913140016316C /* SmoothListRefreshViewController.swift */; };
+		E4A8644226A913140016316C /* SmoothRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A8644026A913140016316C /* SmoothRefreshViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		49ACF6F0193C33097F115C72 /* Pods_JXPagingViewExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JXPagingViewExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA744871C0EA0BD9A6D025B /* Pods-JXPagingViewExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXPagingViewExample.debug.xcconfig"; path = "Target Support Files/Pods-JXPagingViewExample/Pods-JXPagingViewExample.debug.xcconfig"; sourceTree = "<group>"; };
 		8D67C720C98DE57835BC77F5 /* Pods-JXPagingViewExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXPagingViewExample.release.xcconfig"; path = "Target Support Files/Pods-JXPagingViewExample/Pods-JXPagingViewExample.release.xcconfig"; sourceTree = "<group>"; };
+		E4A8643F26A913140016316C /* SmoothListRefreshViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmoothListRefreshViewController.swift; sourceTree = "<group>"; };
+		E4A8644026A913140016316C /* SmoothRefreshViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmoothRefreshViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +186,8 @@
 			children = (
 				19F1530B2387DCCC0043A86E /* SmoothViewController.swift */,
 				19F1530C2387DCCC0043A86E /* SmoothListViewController.swift */,
+				E4A8644026A913140016316C /* SmoothRefreshViewController.swift */,
+				E4A8643F26A913140016316C /* SmoothListRefreshViewController.swift */,
 			);
 			path = Smooth;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4A8644226A913140016316C /* SmoothRefreshViewController.swift in Sources */,
 				19F153352387DCCC0043A86E /* VCViewController.swift in Sources */,
 				19B9EA3D23B9F0340099E656 /* ListCollectionViewController.swift in Sources */,
 				194A933723B9BFF600C05DBA /* NestSubjectViewController.swift in Sources */,
@@ -391,6 +398,7 @@
 				19F153302387DCCC0043A86E /* HeaderPositionViewController.swift in Sources */,
 				19F1532D2387DCCC0043A86E /* TestListBaseView.swift in Sources */,
 				19259FE3268D67150001B853 /* ListCacheViewController.swift in Sources */,
+				E4A8644126A913140016316C /* SmoothListRefreshViewController.swift in Sources */,
 				19F153222387DCCC0043A86E /* CollectionViewViewController.swift in Sources */,
 				19F153272387DCCC0043A86E /* SmoothListViewController.swift in Sources */,
 				19B9EA3B23B9EA550099E656 /* ListViewController.swift in Sources */,

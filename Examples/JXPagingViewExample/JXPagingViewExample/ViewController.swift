@@ -14,6 +14,13 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.isTranslucent = false
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .white
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -63,6 +70,9 @@ class ViewController: UITableViewController {
             let vc = SmoothViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         case 11:
+            let vc = SmoothRefreshViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 12:
             let vc = ListCacheViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         default:
