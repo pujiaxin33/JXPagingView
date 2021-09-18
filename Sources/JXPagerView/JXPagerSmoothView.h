@@ -26,6 +26,13 @@
 
 @end
 
+@protocol JXPagerSmoothViewListViewRefreshDelegate <NSObject>
+
+- (void)listStartRefresh:(id<JXPagerSmoothViewListViewDelegate>)list;
+- (void)listEndRefresh:(id<JXPagerSmoothViewListViewDelegate>)list;
+
+@end
+
 @protocol JXPagerSmoothViewDataSource <NSObject>
 
 /**
@@ -68,6 +75,8 @@
 
 @protocol JXPagerSmoothViewDelegate <NSObject>
 - (void)pagerSmoothViewDidScroll:(UIScrollView *)scrollView;
+@optional
+- (void)pagerCurrentScrollViewDidScroll:(UIScrollView *)scrollView;
 @end
 
 @interface JXPagerSmoothView : UIView
@@ -77,15 +86,19 @@
  */
 @property (nonatomic, strong, readonly) NSDictionary <NSNumber *, id<JXPagerSmoothViewListViewDelegate>> *listDict;
 @property (nonatomic, strong, readonly) UICollectionView *listCollectionView;
+@property (nonatomic, strong, readonly) UIScrollView *currentListScrollView;
 @property (nonatomic, assign) NSInteger defaultSelectedIndex;
+/// 顶部固定 Header 的垂直偏移量。数值越大越往下沉。
+@property (nonatomic, assign) CGFloat pinSectionHeaderVerticalOffset;
 @property (nonatomic, weak) id<JXPagerSmoothViewDelegate> delegate;
 
-- (instancetype)initWithDataSource:(id<JXPagerSmoothViewDataSource>)dataSource NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDataSource:(id<JXPagerSmoothViewDataSource>)dataSource pagerHeaderBounces:(BOOL)pagerHeaderBounces NS_DESIGNATED_INITIALIZER;
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
 
 - (void)reloadData;
+- (void)resizePagerTopHeightAnimatable:(BOOL)animatable duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options;
 
 @end
 

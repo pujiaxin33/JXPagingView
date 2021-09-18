@@ -33,7 +33,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = false;
     
-    self.pager = [[JXPagerSmoothView alloc] initWithDataSource:self];
+    self.pager = [[JXPagerSmoothView alloc] initWithDataSource:self pagerHeaderBounces:YES];
     [self.view addSubview:self.pager];
 
     _categoryView = [[JXCategoryTitleView alloc] init];

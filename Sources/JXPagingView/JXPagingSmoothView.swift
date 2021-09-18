@@ -17,6 +17,11 @@ import UIKit
     @objc optional func listDidDisappear()
 }
 
+@objc public protocol JXPagerSmoothViewListViewRefreshDelegate {
+    @objc optional func listStartRefresh(list: JXPagingSmoothViewListViewDelegate)
+    @objc optional func listEndRefresh(list: JXPagingSmoothViewListViewDelegate)
+}
+
 @objc
 public protocol JXPagingSmoothViewDataSource {
     /// 返回页面header的高度
@@ -38,11 +43,13 @@ public protocol JXPagingSmoothViewDataSource {
 @objc
 public protocol JXPagingSmoothViewDelegate {
     @objc optional func pagingSmoothViewDidScroll(_ scrollView: UIScrollView)
+    @objc optional func pagingCurrentScrollViewDidScroll(_ scrollView: UIScrollView)
 }
 
 
 open class JXPagingSmoothView: UIView {
     public private(set) var listDict = [Int : JXPagingSmoothViewListViewDelegate]()
+    public private(set) var currentListScrollView: UIScrollView?
     public let listCollectionView: JXPagingSmoothCollectionView
     public var defaultSelectedIndex: Int = 0
     public weak var delegate: JXPagingSmoothViewDelegate?
@@ -57,7 +64,6 @@ open class JXPagingSmoothView: UIView {
     let pagingHeaderContainerView: UIView
     var currentPagingHeaderContainerViewY: CGFloat = 0
     var currentIndex: Int = 0
-    var currentListScrollView: UIScrollView?
     var heightForPagingHeader: CGFloat = 0
     var heightForPinHeader: CGFloat = 0
     var heightForPagingHeaderContainerView: CGFloat = 0
@@ -154,7 +160,7 @@ open class JXPagingSmoothView: UIView {
         }
     }
     
-    open func resizePagingTopHeight(animatable: Bool = false, duration: TimeInterval = 0.25, curve: UIView.AnimationCurve = .linear) {
+    public func resizePagingTopHeight(animatable: Bool = false, duration: TimeInterval = 0.25, options: UIView.AnimationOptions = .curveEaseInOut) {
         guard let dataSource = dataSource else { return }
         
         heightForPagingHeader = dataSource.heightForPagingHeader(in: self)
@@ -169,18 +175,10 @@ open class JXPagingSmoothView: UIView {
                 frame.origin.y = -heightForPagingHeader + pinSectionHeaderVerticalOffset
                 currentPagingHeaderContainerViewY = -heightForPagingHeader + pinSectionHeaderVerticalOffset
             }
-            frame.size.height = heightForPagingHeaderContainerView
         }
+        frame.size.height = heightForPagingHeaderContainerView
         
         if animatable {
-            var options: UIView.AnimationOptions = .curveLinear
-            switch curve {
-            case .easeIn: options = .curveEaseIn
-            case .easeOut: options = .curveEaseOut
-            case .easeInOut: options = .curveEaseInOut
-            default: break
-            }
-            
             UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
                 self.resizePagingTopHeight(pagingHeader: pagingHeader, pinHeader: pinHeader, pagingHeaderContainerViewFrame: frame)
             }, completion: nil)
@@ -288,6 +286,7 @@ open class JXPagingSmoothView: UIView {
     open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "contentOffset" {
             if let scrollView = object as? UIScrollView {
+                delegate?.pagingCurrentScrollViewDidScroll?(scrollView)
                 listDidScroll(scrollView: scrollView)
             }
         }else if keyPath == "contentSize" {
@@ -376,10 +375,8 @@ extension JXPagingSmoothView: UICollectionViewDataSource, UICollectionViewDelega
         if list == nil {
             list = dataSource.pagingView(self, initListAtIndex: indexPath.item)
             listDict[indexPath.item] = list!
-            DispatchQueue.main.async {
-                list?.listView().setNeedsLayout()
-                list?.listView().layoutIfNeeded()
-            }
+            list?.listView().setNeedsLayout()
+            list?.listView().layoutIfNeeded()
             if list?.listScrollView().isKind(of: UITableView.self) == true {
                 (list?.listScrollView() as? UITableView)?.estimatedRowHeight = 0
                 (list?.listScrollView() as? UITableView)?.estimatedSectionHeaderHeight = 0

@@ -72,7 +72,7 @@ class SmoothRefreshViewController: UIViewController {
         paging.reloadData()
         
         headerHeight = 200
-        paging.resizePagingTopHeight(animatable: true, duration: 0.25, curve: .easeInOut)
+        paging.resizePagingTopHeight(animatable: true, duration: 0.25, options: .curveEaseInOut)
     }
     
     override func viewDidLayoutSubviews() {
