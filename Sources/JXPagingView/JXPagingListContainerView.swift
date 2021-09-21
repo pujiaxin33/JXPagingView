@@ -321,14 +321,16 @@ open class JXPagingListContainerView: UIView {
             containerVC.addChild(vc)
         }
         validListDict[index] = list
-        if type == .scrollView {
-            list.listView().frame = CGRect(x: CGFloat(index)*scrollView.bounds.size.width, y: 0, width: scrollView.bounds.size.width, height: scrollView.bounds.size.height)
-            scrollView.addSubview(list.listView())
-        }else {
-            let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0))
-            cell?.contentView.subviews.forEach { $0.removeFromSuperview() }
-            list.listView().frame = cell?.contentView.bounds ?? CGRect.zero
-            cell?.contentView.addSubview(list.listView())
+        switch type {
+            case .scrollView:
+                list.listView().frame = CGRect(x: CGFloat(index)*scrollView.bounds.size.width, y: 0, width: scrollView.bounds.size.width, height: scrollView.bounds.size.height)
+                scrollView.addSubview(list.listView())
+            case .collectionView:
+                if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) {
+                    cell.contentView.subviews.forEach { $0.removeFromSuperview() }
+                    list.listView().frame = cell.contentView.bounds
+                    cell.contentView.addSubview(list.listView())
+                }
         }
     }
 

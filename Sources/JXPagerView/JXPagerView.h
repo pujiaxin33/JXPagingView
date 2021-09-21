@@ -52,6 +52,10 @@
 
 @optional
 
+/// 返回对应index的列表唯一标识
+/// @param pagerView pagerView description
+/// @param index index description
+- (NSString *)pagerView:(JXPagerView *)pagerView listIdentifierAtIndex:(NSInteger)index;
 - (void)mainTableViewDidScroll:(UIScrollView *)scrollView __attribute__ ((deprecated));
 - (void)pagerView:(JXPagerView *)pagerView mainTableViewDidScroll:(UIScrollView *)scrollView;
 - (void)pagerView:(JXPagerView *)pagerView mainTableViewWillBeginDragging:(UIScrollView *)scrollView;
@@ -93,6 +97,10 @@
  是否允许当前列表自动显示或隐藏列表是垂直滚动指示器。YES：悬浮的headerView滚动到顶部开始滚动列表时，就会显示，反之隐藏。NO：内部不会处理列表的垂直滚动指示器。默认为：YES。
  */
 @property (nonatomic, assign) BOOL automaticallyDisplayListVerticalScrollIndicator;
+/**
+ 当allowsCacheList为true时，请务必实现代理方法`- (NSString *)pagerView:(JXPagerView *)pagerView listIdentifierAtIndex:(NSInteger)index`
+ */
+@property (nonatomic, assign) BOOL allowsCacheList;
 
 - (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate;
 - (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate listContainerType:(JXPagerListContainerType)type NS_DESIGNATED_INITIALIZER;

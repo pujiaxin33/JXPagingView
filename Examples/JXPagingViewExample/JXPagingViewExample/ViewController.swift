@@ -62,6 +62,9 @@ class ViewController: UITableViewController {
         case 10:
             let vc = SmoothViewController()
             self.navigationController?.pushViewController(vc, animated: true)
+        case 11:
+            let vc = ListCacheViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }

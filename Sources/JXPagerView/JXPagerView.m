@@ -18,6 +18,7 @@
 @property (nonatomic, strong) id<JXPagerViewListViewDelegate> currentList;
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXPagerViewListViewDelegate>> *validListDict;
 @property (nonatomic, strong) UIView *tableHeaderContainerView;
+@property (nonatomic, strong) NSMutableDictionary<NSString *, id<JXPagerViewListViewDelegate>> *listCache;
 @end
 
 @implementation JXPagerView
@@ -78,9 +79,27 @@
     self.currentList = nil;
     self.currentScrollingListView = nil;
     [_validListDict removeAllObjects];
-
+    //根据新数据删除不需要的list
+    if (self.allowsCacheList) {
+        NSMutableArray *newListIdentifierArray = [NSMutableArray array];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(numberOfListsInPagerView:)]) {
+            NSInteger listCount = [self.delegate numberOfListsInPagerView:self];
+            for (NSInteger index = 0; index < listCount; index ++) {
+                if (self.delegate && [self.delegate respondsToSelector:@selector(pagerView:listIdentifierAtIndex:)]) {
+                    NSString *listIdentifier = [self.delegate pagerView:self listIdentifierAtIndex:index];
+                    [newListIdentifierArray addObject:listIdentifier];
+                }
+            }
+        }
+        NSArray *existedKeys = self.listCache.allKeys;
+        for (NSString *listIdentifier in existedKeys) {
+            if (![newListIdentifierArray containsObject:listIdentifier]) {
+                [self.listCache removeObjectForKey:listIdentifier];
+            }
+        }
+    }
     [self refreshTableHeaderView];
-    if (self.pinSectionHeaderVerticalOffset != 0) {
+    if (self.pinSectionHeaderVerticalOffset != 0 && self.mainTableView.contentOffset.y > self.pinSectionHeaderVerticalOffset) {
         self.mainTableView.contentOffset = CGPointZero;
     }
     [self.mainTableView reloadData];
@@ -264,6 +283,12 @@
 - (id<JXPagerViewListViewDelegate>)listContainerView:(JXPagerListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     id<JXPagerViewListViewDelegate> list = self.validListDict[@(index)];
     if (list == nil) {
+        if (self.allowsCacheList && self.delegate && [self.delegate respondsToSelector:@selector(pagerView:listIdentifierAtIndex:)]) {
+            NSString *listIdentifier = [self.delegate pagerView:self listIdentifierAtIndex:index];
+            list = self.listCache[listIdentifier];
+        }
+    }
+    if (list == nil) {
         list = [self.delegate pagerView:self initListAtIndex:index];
         __weak typeof(self)weakSelf = self;
         __weak typeof(id<JXPagerViewListViewDelegate>) weakList = list;
@@ -272,6 +297,10 @@
             [weakSelf listViewDidScroll:scrollView];
         }];
         _validListDict[@(index)] = list;
+        if (self.allowsCacheList && self.delegate && [self.delegate respondsToSelector:@selector(pagerView:listIdentifierAtIndex:)]) {
+            NSString *listIdentifier = [self.delegate pagerView:self listIdentifierAtIndex:index];
+            self.listCache[listIdentifier] = list;
+        }
     }
     return list;
 }

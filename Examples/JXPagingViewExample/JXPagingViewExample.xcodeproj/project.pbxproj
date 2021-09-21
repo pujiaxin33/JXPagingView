@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19259FE3268D67150001B853 /* ListCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19259FE2268D67150001B853 /* ListCacheViewController.swift */; };
 		194A933723B9BFF600C05DBA /* NestSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194A933623B9BFF600C05DBA /* NestSubjectViewController.swift */; };
 		19B9EA3B23B9EA550099E656 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA3A23B9EA550099E656 /* ListViewController.swift */; };
 		19B9EA3D23B9F0340099E656 /* ListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA3C23B9F0340099E656 /* ListCollectionViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19259FE2268D67150001B853 /* ListCacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCacheViewController.swift; sourceTree = "<group>"; };
 		194A933623B9BFF600C05DBA /* NestSubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestSubjectViewController.swift; sourceTree = "<group>"; };
 		19B9EA3A23B9EA550099E656 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		19B9EA3C23B9F0340099E656 /* ListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				19F153082387DCCC0043A86E /* RefreshViewController.swift */,
 				19F153092387DCCC0043A86E /* ListRefreshViewController.swift */,
+				19259FE2268D67150001B853 /* ListCacheViewController.swift */,
 			);
 			path = Refresh;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				B3519FDC25A5C82500AE0F5C /* JXPagingViewListViewable.swift in Sources */,
 				19F153302387DCCC0043A86E /* HeaderPositionViewController.swift in Sources */,
 				19F1532D2387DCCC0043A86E /* TestListBaseView.swift in Sources */,
+				19259FE3268D67150001B853 /* ListCacheViewController.swift in Sources */,
 				19F153222387DCCC0043A86E /* CollectionViewViewController.swift in Sources */,
 				19F153272387DCCC0043A86E /* SmoothListViewController.swift in Sources */,
 				19B9EA3B23B9EA550099E656 /* ListViewController.swift in Sources */,
@@ -550,7 +554,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.JXPagingViewExample.333;
+				PRODUCT_BUNDLE_IDENTIFIER = com.monkey.pagingViewExample.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -574,7 +578,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.JXPagingViewExample.333;
+				PRODUCT_BUNDLE_IDENTIFIER = com.monkey.pagingViewExample.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

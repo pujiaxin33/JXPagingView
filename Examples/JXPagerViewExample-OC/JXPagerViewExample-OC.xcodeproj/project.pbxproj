@@ -777,7 +777,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "jiaxin.JXPagerViewExample-OC.3";
+				PRODUCT_BUNDLE_IDENTIFIER = com.monkey.pagingViewExample.oc.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

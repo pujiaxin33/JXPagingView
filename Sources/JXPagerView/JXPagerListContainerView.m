@@ -287,7 +287,7 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerViewDidScroll:)]) {
         [self.delegate listContainerViewDidScroll:scrollView];
     }
-    if (!scrollView.isDragging && !scrollView.isTracking) {
+    if (!scrollView.isDragging && !scrollView.isTracking && !scrollView.isDecelerating) {
         return;
     }
     CGFloat ratio = scrollView.contentOffset.x/scrollView.bounds.size.width;
@@ -431,16 +431,24 @@
     }
     _validListDict[@(index)] = list;
 
-    if (self.containerType == JXPagerListContainerType_ScrollView) {
-        [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
-        [self.scrollView addSubview:[list listView]];
-    }else {
-        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-        for (UIView *subview in cell.contentView.subviews) {
-            [subview removeFromSuperview];
+    switch (self.containerType) {
+        case JXPagerListContainerType_ScrollView: {
+            [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
+            [self.scrollView addSubview:[list listView]];
+            break;
         }
-        [list listView].frame = cell.contentView.bounds;
-        [cell.contentView addSubview:[list listView]];
+        case JXPagerListContainerType_CollectionView: {
+            UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+            if (cell != nil) {
+                for (UIView *subview in cell.contentView.subviews) {
+                    [subview removeFromSuperview];
+                }
+                [list listView].frame = cell.contentView.bounds;
+                [cell.contentView addSubview:[list listView]];
+            }
+            break;
+        }
+
     }
 }
 
