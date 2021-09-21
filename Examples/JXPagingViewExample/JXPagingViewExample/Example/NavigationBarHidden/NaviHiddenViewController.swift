@@ -59,7 +59,7 @@ class NaviHiddenViewController: BaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
-    func pagingView(_ pagingView: JXPagingView, mainTableViewDidScroll scrollView: UIScrollView) {
+    override func pagingView(_ pagingView: JXPagingView, mainTableViewDidScroll scrollView: UIScrollView) {
         let thresholdDistance: CGFloat = 100
         var percent = scrollView.contentOffset.y/thresholdDistance
         percent = max(0, min(1, percent))

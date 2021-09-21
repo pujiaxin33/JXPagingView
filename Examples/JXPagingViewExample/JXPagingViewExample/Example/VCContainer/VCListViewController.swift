@@ -12,7 +12,6 @@ import JXPagingView
 class VCListViewController: UIViewController {
     let tableView: UITableView
     let dataSource: [String]
-    var listViewDidScrollCallback: ((UIScrollView) -> ())?
 
     //如果使用UIViewController来封装逻辑，且要支持横竖屏切换，一定要加上下面这个方法。不加会有bug的。
     override func loadView() {
@@ -63,25 +62,16 @@ extension VCListViewController: UITableViewDataSource, UITableViewDelegate {
         return 50
     }
 
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.listViewDidScrollCallback?(scrollView)
-    }
-
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationController?.pushViewController(DetailViewController(), animated: true)
     }
 }
 
 extension VCListViewController: JXPagingViewListViewDelegate {
-    func listView() -> UIView {
-        return self.view
-    }
-
-    func listScrollView() -> UIScrollView {
-        return tableView
-    }
-
-    func listViewDidScrollCallback(callback: @escaping (UIScrollView) -> ()) {
-        listViewDidScrollCallback = callback
+    
+    func listScrollView() -> UIScrollView { tableView }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        listViewDidScrollCallback?(scrollView)
     }
 }
