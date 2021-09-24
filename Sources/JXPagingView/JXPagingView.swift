@@ -92,7 +92,7 @@ open class JXPagingView: UIView {
     public var automaticallyDisplayListVerticalScrollIndicator = true
     /// 当allowsCacheList为true时，请务必实现代理方法`func pagingView(_ pagingView: JXPagingView, listIdentifierAtIndex index: Int) -> String`
     public var allowsCacheList: Bool = false
-    internal var currentScrollingListView: UIScrollView?
+    public private(set) var currentScrollingListView: UIScrollView?
     internal var currentList: JXPagingViewListViewDelegate?
     private var currentIndex: Int = 0
     private weak var delegate: JXPagingViewDelegate?
