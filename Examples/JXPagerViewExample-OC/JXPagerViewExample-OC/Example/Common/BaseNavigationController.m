@@ -18,6 +18,17 @@
     [super viewDidLoad];
 
     self.interactivePopGestureRecognizer.delegate = self;
+    
+    if (@available(iOS 13.0, *)) {
+        // iOS15 系统下 push 后导航条变黑色 且 有卡顿
+        UINavigationBarAppearance *barAppearance = [[UINavigationBarAppearance alloc] init];
+        barAppearance.backgroundColor = [UIColor whiteColor];
+        self.navigationBar.scrollEdgeAppearance = barAppearance;
+        self.navigationBar.standardAppearance = barAppearance;
+    } else {
+        // Fallback on earlier versions
+    }
+    
 }
 
 #pragma mark - UIGestureRecognizerDelegate
