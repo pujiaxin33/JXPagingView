@@ -133,7 +133,7 @@ open class JXPagingListContainerView: UIView {
         }
     }
     weak var delegate: JXPagingListContainerViewDelegate?
-    private var currentIndex: Int = 0
+    public private(set) var currentIndex: Int = 0
     private var collectionView: UICollectionView!
     private var containerVC: JXPagingListContainerViewController!
     private var willAppearIndex: Int = -1

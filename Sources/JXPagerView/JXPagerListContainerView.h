@@ -109,6 +109,7 @@ typedef NS_ENUM(NSUInteger, JXPagerListContainerType) {
 @property (nonatomic, assign) CGFloat initListPercent;
 ///当使用Category嵌套Paging的时候，需要设置为YES，默认为NO；
 @property (nonatomic, assign, getter=isCategoryNestPagingEnabled) BOOL categoryNestPagingEnabled;
+@property (nonatomic, assign, readonly) NSInteger currentIndex;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
