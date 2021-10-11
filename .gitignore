@@ -68,3 +68,4 @@ fastlane/screenshots/**/*.png
 fastlane/test_output
 JXPagingView.xcodeproj/xcuserdata/jiaxin.xcuserdatad/xcschemes/xcschememanagement.plist
 IDEWorkspaceChecks.plist
+contents.xcworkspacedata
