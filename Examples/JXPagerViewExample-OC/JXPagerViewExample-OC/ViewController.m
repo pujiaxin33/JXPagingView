@@ -218,7 +218,14 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-
+        case 23:
+        {
+            SmoothViewController *vc = [[SmoothViewController alloc] init];
+            vc.title = title;
+            vc.type = SmoothListType_InputHeader;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
 
         default:
             break;

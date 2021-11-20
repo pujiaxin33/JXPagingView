@@ -14,7 +14,7 @@
 #import "SmoothViewDefines.h"
 
 @interface SmoothViewController () <JXPagerSmoothViewDataSource>
-@property (nonatomic, strong) UIImageView *headerView;
+@property (nonatomic, strong) UIView *headerView;
 @end
 
 @implementation SmoothViewController
@@ -50,8 +50,17 @@
     lineView.indicatorWidth = 30;
     self.categoryView.indicators = @[lineView];
 
-    self.headerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lufei.jpg"]];
-    self.headerView.contentMode = UIViewContentModeScaleAspectFill;
+    if (self.type == SmoothListType_InputHeader) {
+        UITextField *textField = [[UITextField alloc] init];
+        textField.placeholder = @"这是输入框测试，请点击我";
+        textField.frame = CGRectMake(0, 0, 0, 300);
+        self.headerView = textField;
+    }else {
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lufei.jpg"]];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        self.headerView = imageView;
+    }
+    
 
     self.categoryView.contentScrollView = self.pager.listCollectionView;
 }
@@ -87,7 +96,7 @@
 - (id<JXPagerSmoothViewListViewDelegate>)pagerView:(JXPagerSmoothView *)pagerView initListAtIndex:(NSInteger)index {
     switch (self.type) {
         case SmoothListType_TableView: {
-            SmoothListViewController *listVC = [[SmoothListViewController alloc] init];
+            SmoothListViewController *listVC = [[SmoothListViewController alloc] initWithType:self.type];
             listVC.title = self.categoryView.titles[index];
             return listVC;
             break;
@@ -100,6 +109,12 @@
         }
         case SmoothListType_ScrollView: {
             SmoothListScrollViewController *listVC = [[SmoothListScrollViewController alloc] init];
+            listVC.title = self.categoryView.titles[index];
+            return listVC;
+            break;
+        }
+        case SmoothListType_InputHeader: {
+            SmoothListViewController *listVC = [[SmoothListViewController alloc] initWithType:self.type];
             listVC.title = self.categoryView.titles[index];
             return listVC;
             break;

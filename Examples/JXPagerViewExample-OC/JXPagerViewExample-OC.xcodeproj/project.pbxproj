@@ -54,6 +54,7 @@
 		19FAC94A23827F160041E1C9 /* SmoothListCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FAC94923827F160041E1C9 /* SmoothListCollectionViewController.m */; };
 		19FAC94D23828B350041E1C9 /* SmoothListScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FAC94C23828B350041E1C9 /* SmoothListScrollViewController.m */; };
 		19FAC95023828E0D0041E1C9 /* SmoothCustomPagerHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FAC94F23828E0D0041E1C9 /* SmoothCustomPagerHeaderViewController.m */; };
+		EAF8D56C274897A200AE1569 /* SmoothTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF8D56B274897A200AE1569 /* SmoothTableView.m */; };
 		FF053089944F44A0F635F394 /* libPods-JXPagerViewExample-OC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7462D375D10977F46C22C6B /* libPods-JXPagerViewExample-OC.a */; };
 /* End PBXBuildFile section */
 
@@ -152,6 +153,8 @@
 		19FAC94F23828E0D0041E1C9 /* SmoothCustomPagerHeaderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmoothCustomPagerHeaderViewController.m; sourceTree = "<group>"; };
 		2644A207806147BB55CEAB4A /* Pods-JXPagerViewExample-OC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXPagerViewExample-OC.release.xcconfig"; path = "Target Support Files/Pods-JXPagerViewExample-OC/Pods-JXPagerViewExample-OC.release.xcconfig"; sourceTree = "<group>"; };
 		7C9EC10DC38C7A20D2C6FE7C /* Pods-JXPagerViewExample-OC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXPagerViewExample-OC.debug.xcconfig"; path = "Target Support Files/Pods-JXPagerViewExample-OC/Pods-JXPagerViewExample-OC.debug.xcconfig"; sourceTree = "<group>"; };
+		EAF8D56A274897A200AE1569 /* SmoothTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmoothTableView.h; sourceTree = "<group>"; };
+		EAF8D56B274897A200AE1569 /* SmoothTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmoothTableView.m; sourceTree = "<group>"; };
 		F7462D375D10977F46C22C6B /* libPods-JXPagerViewExample-OC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JXPagerViewExample-OC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -263,6 +266,8 @@
 				19FAC94F23828E0D0041E1C9 /* SmoothCustomPagerHeaderViewController.m */,
 				19FAC8F1238247820041E1C9 /* SmoothListViewController.h */,
 				19FAC8F2238247820041E1C9 /* SmoothListViewController.m */,
+				EAF8D56A274897A200AE1569 /* SmoothTableView.h */,
+				EAF8D56B274897A200AE1569 /* SmoothTableView.m */,
 				19FAC94823827F160041E1C9 /* SmoothListCollectionViewController.h */,
 				19FAC94923827F160041E1C9 /* SmoothListCollectionViewController.m */,
 				199F96D423BAF494001CC1A4 /* JXPagerSmoothCollectionFlowLayout.h */,
@@ -618,6 +623,7 @@
 				196428082148E47F009C1D31 /* ViewController.m in Sources */,
 				197B3A382182B13E00561F08 /* PagingNestCategoryViewController.m in Sources */,
 				19FAC94A23827F160041E1C9 /* SmoothListCollectionViewController.m in Sources */,
+				EAF8D56C274897A200AE1569 /* SmoothTableView.m in Sources */,
 				19B9EA4123B9F86A0099E656 /* MainTableViewOffsetViewController.m in Sources */,
 				190921DA22B1F8990045D18F /* ReloadWithoutInitListViewController.m in Sources */,
 				19FAC94D23828B350041E1C9 /* SmoothListScrollViewController.m in Sources */,

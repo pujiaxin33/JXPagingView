@@ -256,6 +256,7 @@ self.categoryView.defaultSelectedIndex = 2;
 ```
 
 ### `JXPagerSmoothView` header有UITextField或者`UITextView`
+详情参考OC版本示例【滚动延续 Header有输入框】
 
 列表自定义子类化`UITableView`或者`UICollectionView`，然后重载`scrollRectToVisible`方法，示例代码如下。
 ```Object-C

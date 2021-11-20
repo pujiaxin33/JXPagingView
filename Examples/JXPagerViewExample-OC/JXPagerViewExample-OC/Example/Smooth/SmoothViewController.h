@@ -14,6 +14,7 @@ typedef NS_ENUM(NSUInteger, SmoothListType) {
     SmoothListType_TableView,
     SmoothListType_CollectionView,
     SmoothListType_ScrollView,
+    SmoothListType_InputHeader,
 };
 
 NS_ASSUME_NONNULL_BEGIN

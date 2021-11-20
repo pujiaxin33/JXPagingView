@@ -8,6 +8,7 @@
 
 #import "SmoothListViewController.h"
 #import <MJRefresh/MJRefresh.h>
+#import "SmoothTableView.h"
 
 @interface SmoothListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -16,11 +17,15 @@
 
 @implementation SmoothListViewController
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (instancetype)initWithType:(SmoothListType)type {
+    self = [super initWithNibName:nil bundle:nil];
     if (self) {
         //需要在初始化器里面初始化列表视图
-        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        if (type == SmoothListType_InputHeader) {
+            self.tableView = [[SmoothTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        }else {
+            self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        }
     }
     return self;
 }
