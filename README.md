@@ -255,6 +255,17 @@ self.categoryView.defaultSelectedIndex = 2;
 }
 ```
 
+### `JXPagerSmoothView` header有UITextField或者`UITextView`
+
+列表自定义子类化`UITableView`或者`UICollectionView`，然后重载`scrollRectToVisible`方法，示例代码如下。
+```Object-C
+@implementation TestTableView
+- (void)scrollRectToVisible:(CGRect)rect animated:(BOOL)animated {
+    [self setContentOffset:CGPointMake(self.contentOffset.x, rect.origin.y) animated:animated];
+}
+@end
+```
+
 ### `FDFullscreenPopGesture`等全屏手势兼容处理
 
 [全屏手势兼容处理文档，点击查看 ❗️❗️❗️](https://github.com/pujiaxin33/JXPagingView/blob/master/Document/%E5%85%A8%E5%B1%8F%E6%89%8B%E5%8A%BF%E5%A4%84%E7%90%86.md)
