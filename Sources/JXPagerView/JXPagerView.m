@@ -47,9 +47,11 @@
         if (@available(iOS 11.0, *)) {
             self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 150000
         if (@available(iOS 15.0, *)) {
             self.mainTableView.sectionHeaderTopPadding = 0;
         }
+#endif
         [self addSubview:self.mainTableView];
 
         _listContainerView = [[JXPagerListContainerView alloc] initWithType:type delegate:self];
