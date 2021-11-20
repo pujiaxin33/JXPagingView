@@ -381,7 +381,7 @@
                 _validListDict[@(index)] = list;
             }
             if (self.containerType == JXCategoryListContainerType_ScrollView) {
-                if ([list listView].superview == nil) {
+                if ([list listView].superview == nil || [list listView].superview != self.scrollView) {
                     [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
                     [self.scrollView addSubview:[list listView]];
 
