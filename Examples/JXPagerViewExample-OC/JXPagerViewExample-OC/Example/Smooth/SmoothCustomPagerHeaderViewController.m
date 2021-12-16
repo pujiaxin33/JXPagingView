@@ -59,7 +59,7 @@
 }
 
 - (id<JXPagerSmoothViewListViewDelegate>)pagerView:(JXPagerSmoothView *)pagerView initListAtIndex:(NSInteger)index {
-    SmoothListViewController *listVC = [[SmoothListViewController alloc] init];
+    SmoothListViewController *listVC = [[SmoothListViewController alloc] initWithType:SmoothListType_TableView];
     listVC.isNeedHeaderRefresh = YES;
     listVC.isNeedFooterLoad = YES;
     listVC.delegate = self;
