@@ -19,7 +19,7 @@ static const CGFloat JXheightForHeaderInSection = 50;
 
 @property (nonatomic, strong) JXPagerListRefreshView *pagerView;
 @property (nonatomic, strong) PagingViewTableHeaderView *userHeaderView;
-@property (nonatomic, strong) JXCategoryTitleView *categoryView;
+@property (nonatomic, strong) JXCategoryTitleImageView *categoryView;
 @property (nonatomic, strong) NSArray <NSString *> *titles;
 
 @end
@@ -36,9 +36,12 @@ static const CGFloat JXheightForHeaderInSection = 50;
 
     _userHeaderView = [[PagingViewTableHeaderView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, JXTableHeaderViewHeight)];
 
-    _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 50, [UIScreen mainScreen].bounds.size.width, 50)];
+    _categoryView = [[JXCategoryTitleImageView alloc] initWithFrame:CGRectMake(0, 50, [UIScreen mainScreen].bounds.size.width, 50)];
+    self.categoryView.imageNames = @[@"unSelected_icon", @"unSelected_icon", @"unSelected_icon"];
+    self.categoryView.selectedImageNames = @[@"selected_icon", @"selected_icon", @"selected_icon"];
+    self.categoryView.imageTypes = @[@6, @6, @6];
+    self.categoryView.imageEdgeInsets = UIEdgeInsetsMake(6, 16, 6, 16);
     self.categoryView.titles = self.titles;
-    self.categoryView.backgroundColor = [UIColor greenColor];
     self.categoryView.delegate = self;
     self.categoryView.titleSelectedColor = [UIColor colorWithRed:105/255.0 green:144/255.0 blue:239/255.0 alpha:1];
     self.categoryView.titleColor = [UIColor blackColor];
@@ -46,10 +49,10 @@ static const CGFloat JXheightForHeaderInSection = 50;
     self.categoryView.titleLabelZoomEnabled = YES;
     self.categoryView.titleLabelZoomScale = 1.2;
 
-    JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-    lineView.indicatorColor = [UIColor colorWithRed:105/255.0 green:144/255.0 blue:239/255.0 alpha:1];
-    lineView.indicatorWidth = 30;
-    self.categoryView.indicators = @[lineView];
+//    JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+//    lineView.indicatorColor = [UIColor colorWithRed:105/255.0 green:144/255.0 blue:239/255.0 alpha:1];
+//    lineView.indicatorWidth = 30;
+//    self.categoryView.indicators = @[lineView];
 
     //如果不想要下拉刷新的效果，改用JXPagerView类即可
     _pagerView = [[JXPagerListRefreshView alloc] initWithDelegate:self];

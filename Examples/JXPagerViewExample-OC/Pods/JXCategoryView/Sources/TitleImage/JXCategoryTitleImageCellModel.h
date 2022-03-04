@@ -15,6 +15,7 @@ typedef NS_ENUM(NSUInteger, JXCategoryTitleImageType) {
     JXCategoryTitleImageType_RightImage,
     JXCategoryTitleImageType_OnlyImage,
     JXCategoryTitleImageType_OnlyTitle,
+    JXCategoryTitleImageType_ImageBg  // 有 titleLabel 和 imageView。 image 做 background
 };
 
 @interface JXCategoryTitleImageCellModel : JXCategoryTitleCellModel
@@ -38,5 +39,8 @@ typedef NS_ENUM(NSUInteger, JXCategoryTitleImageType) {
 @property (nonatomic, assign, getter=isImageZoomEnabled) BOOL imageZoomEnabled;
 
 @property (nonatomic, assign) CGFloat imageZoomScale;
+
+// 仅 imageType 设置为 JXCategoryTitleImageType_ImageBg 时使用，用此属性为 imageView 与 titleLabel 四个方向设置相对距离
+@property (nonatomic, assign) UIEdgeInsets imageEdgeInsets;
 
 @end

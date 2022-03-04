@@ -70,6 +70,7 @@
     if (index == self.selectedIndex) {
         myCellModel.imageZoomScale = self.imageZoomScale;
     }
+    myCellModel.imageEdgeInsets = self.imageEdgeInsets;
 }
 
 - (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel {
@@ -114,6 +115,8 @@
             case JXCategoryTitleImageType_BottomImage:
                 cellWidth = MAX(titleWidth, self.imageSize.width);
                 break;
+            case JXCategoryTitleImageType_ImageBg:
+                cellWidth = titleWidth + self.imageEdgeInsets.left + self.imageEdgeInsets.right;
         }
         return cellWidth;
     }

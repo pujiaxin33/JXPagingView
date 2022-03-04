@@ -32,5 +32,7 @@
 @property (nonatomic, assign, getter=isImageZoomEnabled) BOOL imageZoomEnabled;
 //图片缩放的最大scale。默认1.2，imageZoomEnabled为YES才生效
 @property (nonatomic, assign) CGFloat imageZoomScale;
+// imageType 设置为 JXCategoryTitleImageType_ImageBg 时，用此属性为 image 和 title 四个方向设置距离
+@property (nonatomic, assign) UIEdgeInsets imageEdgeInsets;
 
 @end

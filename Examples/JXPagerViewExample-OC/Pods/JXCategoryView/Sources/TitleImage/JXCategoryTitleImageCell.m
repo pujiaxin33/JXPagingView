@@ -86,6 +86,21 @@
             [self refreshTitleLabelCenter:self.contentView.center];
         }
             break;
+        case JXCategoryTitleImageType_ImageBg:
+        {
+            self.titleLabel.hidden = NO;
+            self.imageView.hidden = NO;
+            
+            CGFloat contentWidth = self.titleLabel.bounds.size.width + myCellModel.imageEdgeInsets.left + myCellModel.imageEdgeInsets.right;
+            
+            CGFloat contentHeight = self.titleLabel.bounds.size.height + myCellModel.imageEdgeInsets.top + myCellModel.imageEdgeInsets.bottom;
+
+            self.imageView.bounds = CGRectMake(0, 0, contentWidth, contentHeight);
+            
+            [self refreshTitleLabelCenter:CGPointMake(self.contentView.center.x, self.contentView.center.y)];
+            self.imageView.center = CGPointMake(self.contentView.center.x, self.contentView.center.y);
+        }
+            break;
 
         default:
             break;
