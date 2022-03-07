@@ -32,7 +32,7 @@ static const CGFloat JXheightForHeaderInSection = 50;
     self.title = @"个人中心";
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = false;
-    _titles = @[@"主题一", @"主题二", @"主题三"];
+    _titles = @[@"主题一", @"主题二", @"我是主题三"];
 
     _userHeaderView = [[PagingViewTableHeaderView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, JXTableHeaderViewHeight)];
 
@@ -47,6 +47,7 @@ static const CGFloat JXheightForHeaderInSection = 50;
     self.categoryView.titleColor = [UIColor blackColor];
     self.categoryView.titleColorGradientEnabled = YES;
     self.categoryView.titleLabelZoomEnabled = YES;
+    self.categoryView.imageContentMode = UIViewContentModeScaleToFill;
     self.categoryView.titleLabelZoomScale = 1.2;
 
 //    JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];

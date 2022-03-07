@@ -10,4 +10,11 @@
 
 @implementation JXCategoryTitleImageCellModel
 
+- (instancetype)init {
+    if (self = [super init]) {
+        self.imageContentMode = UIViewContentModeScaleAspectFit;
+    }
+    return self;
+}
+
 @end

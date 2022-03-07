@@ -34,5 +34,6 @@
 @property (nonatomic, assign) CGFloat imageZoomScale;
 // imageType 设置为 JXCategoryTitleImageType_ImageBg 时，用此属性为 image 和 title 四个方向设置距离
 @property (nonatomic, assign) UIEdgeInsets imageEdgeInsets;
-
+// imageView img 的 contentMode
+@property(nonatomic, assign) UIViewContentMode imageContentMode;
 @end

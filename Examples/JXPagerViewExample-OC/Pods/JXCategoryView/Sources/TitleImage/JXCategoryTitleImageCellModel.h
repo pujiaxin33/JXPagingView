@@ -43,4 +43,7 @@ typedef NS_ENUM(NSUInteger, JXCategoryTitleImageType) {
 // 仅 imageType 设置为 JXCategoryTitleImageType_ImageBg 时使用，用此属性为 imageView 与 titleLabel 四个方向设置相对距离
 @property (nonatomic, assign) UIEdgeInsets imageEdgeInsets;
 
+/// imageView img 的 contentMode
+@property(nonatomic, assign) UIViewContentMode imageContentMode;
+
 @end

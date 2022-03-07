@@ -71,6 +71,7 @@
         myCellModel.imageZoomScale = self.imageZoomScale;
     }
     myCellModel.imageEdgeInsets = self.imageEdgeInsets;
+    myCellModel.imageContentMode = self.imageContentMode;
 }
 
 - (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel {

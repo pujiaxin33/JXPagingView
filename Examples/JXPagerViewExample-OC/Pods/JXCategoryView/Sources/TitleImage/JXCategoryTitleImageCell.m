@@ -89,6 +89,7 @@
         case JXCategoryTitleImageType_ImageBg:
         {
             self.titleLabel.hidden = NO;
+            self.imageView.contentMode = (myCellModel.imageContentMode != UIViewContentModeScaleAspectFit) ? myCellModel.imageContentMode : myCellModel.imageContentMode;
             self.imageView.hidden = NO;
             
             CGFloat contentWidth = self.titleLabel.bounds.size.width + myCellModel.imageEdgeInsets.left + myCellModel.imageEdgeInsets.right;
@@ -141,8 +142,9 @@
         }
     }
     if (currentImageName != nil && ![currentImageName isEqualToString:self.currentImageName]) {
+        UIImage *curImage = [self resizingImg:[UIImage imageNamed:currentImageName]];
         self.currentImageName = currentImageName;
-        self.imageView.image = [UIImage imageNamed:currentImageName];
+        self.imageView.image = curImage;
     }else if (currentImageURL != nil && ![currentImageURL.absoluteString isEqualToString:self.currentImageURL.absoluteString]) {
         self.currentImageURL = currentImageURL;
         if (myCellModel.loadImageCallback != nil) {
@@ -157,6 +159,15 @@
     }
 
     [self setNeedsLayout];
+}
+
+- (UIImage *)resizingImg:(UIImage *)image {
+    CGPoint center = CGPointMake(image.size.width / 2.0f, image.size.height / 2.0f);
+    
+    UIEdgeInsets edgeInsets = UIEdgeInsetsMake(center.y, center.x, center.y, center.x);
+    
+    image = [image resizableImageWithCapInsets:edgeInsets resizingMode:UIImageResizingModeStretch];
+    return image;
 }
 
 
