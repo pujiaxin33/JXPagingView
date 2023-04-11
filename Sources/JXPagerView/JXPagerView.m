@@ -64,7 +64,8 @@
 
     if (!CGRectEqualToRect(self.bounds, self.mainTableView.frame)) {
         self.mainTableView.frame = self.bounds;
-        [self.mainTableView reloadData];
+//MARK: 会议最小化导致All分组空白, 暂无横屏使用场景, 如果需要支持横竖屏, 不能这样修改
+//        [self.mainTableView reloadData];
     }
 }
 
