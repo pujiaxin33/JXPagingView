@@ -264,7 +264,7 @@ open class JXPagingView: UIView {
         return !(scrollView.contentInset.top != 0 && scrollView.contentInset.top != CGFloat(pinSectionHeaderVerticalOffset))
     }
 
-    func mainTableViewMaxContentOffsetY() -> CGFloat {
+    public func mainTableViewMaxContentOffsetY() -> CGFloat {
         guard let delegate = delegate else { return 0 }
         return CGFloat(delegate.tableHeaderViewHeight(in: self)) - CGFloat(pinSectionHeaderVerticalOffset)
     }
@@ -423,6 +423,11 @@ extension JXPagingView: JXPagingListContainerViewDataSource {
 }
 
 extension JXPagingView: JXPagingListContainerViewDelegate {
+    
+    public func listContainerViewDidScroll(_ listContainerView: JXPagingListContainerView) {
+        print("listContainerViewDidScroll-->")
+    }
+    
     public func listContainerViewWillBeginDragging(_ listContainerView: JXPagingListContainerView) {
         mainTableView.isScrollEnabled = false
     }
