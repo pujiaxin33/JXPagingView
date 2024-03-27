@@ -40,6 +40,7 @@ public protocol JXPagingViewDelegate: NSObjectProtocol {
     func mainTableViewDidScroll(_ scrollView: UIScrollView)
     func pagingView(_ pagingView: JXPagingView, mainTableViewDidScroll scrollView: UIScrollView)
     func pagingView(_ pagingView: JXPagingView, mainTableViewWillBeginDragging scrollView: UIScrollView)
+    func pagingView(_ pagingView: JXPagingView, mainTableViewWillEndDragging scrollView: UIScrollView, withVelocity velocity: CGPoint)
     func pagingView(_ pagingView: JXPagingView, mainTableViewDidEndDragging scrollView: UIScrollView, willDecelerate decelerate: Bool)
     func pagingView(_ pagingView: JXPagingView, mainTableViewDidEndDecelerating scrollView: UIScrollView)
     func pagingView(_ pagingView: JXPagingView, mainTableViewDidEndScrollingAnimation scrollView: UIScrollView)
@@ -51,6 +52,11 @@ public protocol JXPagingViewDelegate: NSObjectProtocol {
     /// - Parameter pagingView: JXPagingView
     /// - Returns: 自定义UIScrollView实例
     func scrollViewClassInListContainerView(in pagingView: JXPagingView) -> AnyClass?
+    
+    /// 容器相关
+    func pagingView(_ pagingView: JXPagingView, listContainerViewDidScroll containerView: JXPagingListContainerView)
+    func pagingView(_ pagingView: JXPagingView, listContainerViewWillBeginDragging containerView: JXPagingListContainerView)
+    func pagingView(_ pagingView: JXPagingView, listContainerViewDidEndScrolling containerView: JXPagingListContainerView)
 }
 
 public extension JXPagingViewDelegate {
@@ -59,6 +65,7 @@ public extension JXPagingViewDelegate {
     func mainTableViewDidScroll(_ scrollView: UIScrollView) {}
     func pagingView(_ pagingView: JXPagingView, mainTableViewDidScroll scrollView: UIScrollView) {}
     func pagingView(_ pagingView: JXPagingView, mainTableViewWillBeginDragging scrollView: UIScrollView) {}
+    func pagingView(_ pagingView: JXPagingView, mainTableViewWillEndDragging scrollView: UIScrollView, withVelocity velocity: CGPoint) {}
     func pagingView(_ pagingView: JXPagingView, mainTableViewDidEndDragging scrollView: UIScrollView, willDecelerate decelerate: Bool) {}
     func pagingView(_ pagingView: JXPagingView, mainTableViewDidEndDecelerating scrollView: UIScrollView) {}
     func pagingView(_ pagingView: JXPagingView, mainTableViewDidEndScrollingAnimation scrollView: UIScrollView) {}
@@ -70,6 +77,11 @@ public extension JXPagingViewDelegate {
     /// - Parameter pagingView: JXPagingView
     /// - Returns: 自定义UIScrollView实例
     func scrollViewClassInListContainerView(in pagingView: JXPagingView) -> AnyClass? { nil }
+    
+    /// 容器相关
+    func pagingView(_ pagingView: JXPagingView, listContainerViewDidScroll containerView: JXPagingListContainerView) {}
+    func pagingView(_ pagingView: JXPagingView, listContainerViewWillBeginDragging containerView: JXPagingListContainerView) {}
+    func pagingView(_ pagingView: JXPagingView, listContainerViewDidEndScrolling containerView: JXPagingListContainerView) {}
 }
 
 open class JXPagingView: UIView {
@@ -363,6 +375,10 @@ extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
         listContainerView.scrollView.isScrollEnabled = false
         delegate?.pagingView(self, mainTableViewWillBeginDragging: scrollView)
     }
+    
+    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        delegate?.pagingView(self, mainTableViewWillEndDragging: scrollView, withVelocity: velocity)
+    }
 
     open func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if isListHorizontalScrollEnabled && !decelerate {
@@ -425,15 +441,17 @@ extension JXPagingView: JXPagingListContainerViewDataSource {
 extension JXPagingView: JXPagingListContainerViewDelegate {
     
     public func listContainerViewDidScroll(_ listContainerView: JXPagingListContainerView) {
-        print("listContainerViewDidScroll-->")
+        delegate?.pagingView(self, listContainerViewDidScroll: listContainerView)
     }
     
     public func listContainerViewWillBeginDragging(_ listContainerView: JXPagingListContainerView) {
         mainTableView.isScrollEnabled = false
+        delegate?.pagingView(self, listContainerViewWillBeginDragging: listContainerView)
     }
 
     public func listContainerViewDidEndScrolling(_ listContainerView: JXPagingListContainerView) {
         mainTableView.isScrollEnabled = true
+        delegate?.pagingView(self, listContainerViewDidEndScrolling: listContainerView)
     }
 
     public func listContainerView(_ listContainerView: JXPagingListContainerView, listDidAppearAt index: Int) {
