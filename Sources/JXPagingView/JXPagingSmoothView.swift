@@ -71,7 +71,7 @@ open class JXPagingSmoothView: UIView {
     public init(dataSource: JXPagingSmoothViewDataSource) {
         self.dataSource = dataSource
         pagingHeaderContainerView = UIView()
-        let layout = UICollectionViewFlowLayout()
+        let layout = JXRTLFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
