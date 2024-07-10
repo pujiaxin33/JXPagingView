@@ -14,6 +14,14 @@ class BaseNavigationController: UINavigationController {
         super.viewDidLoad()
 
         self.interactivePopGestureRecognizer?.delegate = self
+        
+        if #available(iOS 13.0, *) {
+            // iOS15 系统下 push 后导航条变黑色 且 有卡顿
+            let barAppearance = UINavigationBarAppearance()
+            barAppearance.backgroundColor = .white
+            self.navigationBar.scrollEdgeAppearance = barAppearance
+            self.navigationBar.standardAppearance = barAppearance;
+        }
     }
 }
 

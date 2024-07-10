@@ -1,5 +1,5 @@
 PODS:
-  - JXPagingView/Paging (2.1.3)
+  - JXPagingView/Paging (2.1.4)
   - JXSegmentedView (1.0.2)
   - MJRefresh (3.4.0)
 
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "../../../JXPagingView"
 
 SPEC CHECKSUMS:
-  JXPagingView: afdd2e9af09c90160dd232b970d603cc6e7ddd0e
+  JXPagingView: 28ab45ab0f9811153ef28266071877d42483ba8c
   JXSegmentedView: 2988fe07060a9b91b0112eabd6dee0df0cbca8b3
   MJRefresh: 95b08b3b8b6457d2c69510439e0349599050ea34
 

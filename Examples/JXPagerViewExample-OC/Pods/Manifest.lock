@@ -1,7 +1,7 @@
 PODS:
   - FDFullscreenPopGesture (1.1)
   - JXCategoryView (1.5.2)
-  - JXPagingView/Pager (2.0.2)
+  - JXPagingView/Pager (2.1.4)
   - MJRefresh (3.4.0)
 
 DEPENDENCIES:
@@ -11,7 +11,7 @@ DEPENDENCIES:
   - MJRefresh (= 3.4.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - FDFullscreenPopGesture
     - JXCategoryView
     - MJRefresh
@@ -23,9 +23,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   JXCategoryView: b284d35a7a8772eada05dd78642233e1eb763ea8
-  JXPagingView: 6a871421874fbbd3d38f03bcc7a2a5b9f59cc76b
+  JXPagingView: 28ab45ab0f9811153ef28266071877d42483ba8c
   MJRefresh: 95b08b3b8b6457d2c69510439e0349599050ea34
 
 PODFILE CHECKSUM: f2f368988a01cb8305f116e306d3d45a46ce0a01
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.15.2

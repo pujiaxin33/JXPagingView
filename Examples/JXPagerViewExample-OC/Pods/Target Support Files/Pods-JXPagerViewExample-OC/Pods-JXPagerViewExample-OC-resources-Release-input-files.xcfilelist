@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-JXPagerViewExample-OC/Pods-JXPagerViewExample-OC-resources.sh
+${PODS_CONFIGURATION_BUILD_DIR}/JXPagingView/JXPagerView.bundle
 ${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle

@@ -3,23 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		03C6F912A1AAEB8268D4D8F4801FA65E /* MJRefreshBackFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = C5FA44BA7161DAC96F326B81686F3E8E /* MJRefreshBackFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		046572937DCC3BF4C71E404F5F50B83E /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F257E54F23ACA8D22045B3EE00A1E7 /* MJRefreshAutoFooter.m */; };
-		08593ACC3F8955B57D3865FBE5940230 /* JXPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A9949D722627B90067A95420620AF2 /* JXPagingView.swift */; };
+		0798F6A5D6254D6FCF6856C695801BFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
 		0B3C4BEC78EF0F0EC0753A425CE4278B /* UIScrollView+MJRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = 04720FEA41E34578EA1180E0138A00C3 /* UIScrollView+MJRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F1EB784EA3B47A84C86025070AA6BDA /* JXSegmentedTitleImageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C4F55EC784394BD0E4ABCD9A5848D /* JXSegmentedTitleImageDataSource.swift */; };
 		108FD7A53369647CB9D069E7EB207871 /* JXSegmentedTitleAttributeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B09E66C92D951E4381E4384FB6B849 /* JXSegmentedTitleAttributeDataSource.swift */; };
-		12EC6890A8A59536867A18E8F83C8BB7 /* JXPagingView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 02A1359433D1179438AB11B390E378A7 /* JXPagingView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1430DD405C5D3B0FDC0BE582ECE49F55 /* JXSegmentedIndicatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C73A6875CD1D20CB1B33EF75FEF9 /* JXSegmentedIndicatorProtocol.swift */; };
 		14E4D845FFBA08C0039CD4616E3AC65B /* MJRefreshAutoGifFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C32567806C4FD2756FBF6ECFBFE66F /* MJRefreshAutoGifFooter.m */; };
 		15928B063F569A3B402FA3DCF9AAF474 /* JXSegmentedListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CE84953F0225AE0A434DA501F2C67 /* JXSegmentedListContainerView.swift */; };
 		17D9B8882AFFB5407A6B395BDB58F8AF /* JXSegmentedView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 713209183FF915E7A9D7ABFB0C535801 /* JXSegmentedView-dummy.m */; };
 		18E4F15762BD6CCB5B6F91473AC86B2B /* UIView+MJExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 084D03731C28A3578EB5081600EE459E /* UIView+MJExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		192ACC5A5E5293D09FA1B7929538FE1F /* JXSegmentedBaseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A4DE6BC9A1A4D134673B5E639DFF24 /* JXSegmentedBaseDataSource.swift */; };
+		1D9D7A7134A1323F971729CB62290FDB /* JXPagingListRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEBD6F8013D7851398D4A3B9F6FAD1E /* JXPagingListRefreshView.swift */; };
 		214117237F38A082356B52B9A1624CCA /* JXSegmentedAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C76CF7618D40B3085D64BB7DCEFFEEE /* JXSegmentedAnimator.swift */; };
 		223734B1D0F49345C45F7E64A60198DB /* JXSegmentedNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11CFFCB4CF22D8D8085504CC976CF85 /* JXSegmentedNumberCell.swift */; };
 		2A96B95DAA266004A3EB358B04D688F2 /* MJRefreshBackStateFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FE4CA48A6BF65EC977A8AFE67A2CBF4 /* MJRefreshBackStateFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,17 +29,15 @@
 		3618DE23BD1CF86571790C577EA28171 /* MJRefreshConst.h in Headers */ = {isa = PBXBuildFile; fileRef = C533E34330B0765BE8547E0EBA4B1ADD /* MJRefreshConst.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		36F17CB9E9F1254E26B2B8B4AE3A3323 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
 		3D9C100D16108407A589AF05D7DE127D /* MJRefreshAutoFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 612A2886307000BB105CCA0EB45AC94E /* MJRefreshAutoFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FF0162982699174D6CA467E01CE4409 /* JXPagingView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7E654160B9D080C64DB35CBA778F7 /* JXPagingView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FF28F4A07B24A54F9C54FC3E70CB43E /* JXSegmentedTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C8379A3C2C63A58335C864664CAC42 /* JXSegmentedTitleCell.swift */; };
 		403F0130EF206AF55AAC0F797712A4A3 /* MJRefreshNormalHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 33FEB012FFD2CA0215CB16B786D46943 /* MJRefreshNormalHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		43FA0157F585C6EE61823B61BC0311FF /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = ADB2243403FD44AC8F5C4ACE01E4C713 /* PrivacyInfo.xcprivacy */; };
-		440C0830E1410552E2ED0A1647CC4209 /* JXPagingListRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC15C1D114750A7296E42FCEF58D6689 /* JXPagingListRefreshView.swift */; };
 		463F4262F8E5123284532430EBBF34D6 /* Pods-JXPagingViewExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F03EF29056C3FF319814F2838BDEC4BB /* Pods-JXPagingViewExample-dummy.m */; };
 		49F8E5B70DC837CA928660810B361E9C /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AFE6353BE114F3C11F3033865EFC94 /* UIScrollView+MJExtension.m */; };
 		4AEFC3560A1D723BA80F4F9B6C72313C /* MJRefreshStateHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 844A53347703D579FFB47F9DECDFD87A /* MJRefreshStateHeader.m */; };
 		4D5693C6E3A03BEA68315FF576C0CFA9 /* JXSegmentedIndicatorImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4972C0D593EC35203C467935D3894A /* JXSegmentedIndicatorImageView.swift */; };
 		506DF32910A5B4841E00A273893D8183 /* JXSegmentedIndicatorTriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA1867B8E9BC3E9EEC4C44DBE8237A /* JXSegmentedIndicatorTriangleView.swift */; };
 		50F8F5B829E89C459B45BEC05092BA37 /* MJRefreshBackGifFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1980B75A42E0D568FFD5E2B160B2DEAC /* MJRefreshBackGifFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		56987A745C2D39979A167EBF45B8D073 /* JXPagingSmoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6498884ABBD43899028DF96C8C002BF2 /* JXPagingSmoothView.swift */; };
 		596F495FC044F0F917C0EA45F636E7AE /* JXSegmentedDotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584A2B9449655F890DB9F547AC0973FC /* JXSegmentedDotCell.swift */; };
 		599338500F1BD625F3063DC8194F9EFE /* MJRefreshAutoNormalFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EDEDAAEA2B46175659C59A14A89A920 /* MJRefreshAutoNormalFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5A5A588C52CFC9BC35334FD7197F3448 /* MJRefreshComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = BC133E72F3C6C1E2345A122883338EF6 /* MJRefreshComponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -47,6 +45,7 @@
 		5C2CF8F65DB93AEE1E67076C97F1D425 /* JXSegmentedTitleGradientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1BB17E9BCF9EEA1D2F52B673DCA5E /* JXSegmentedTitleGradientCell.swift */; };
 		5CE7A10406375F3698057DAFD1578EB3 /* JXSegmentedTitleImageItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70C50F35602DBFDB265C484BE9B499A /* JXSegmentedTitleImageItemModel.swift */; };
 		5F3AD0FB43CEFDB92D03516F026BE4A1 /* MJRefreshGifHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = DE2638503B2458AA62E950BBF112A5AB /* MJRefreshGifHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6061CFE1ED7B2739A359B5E7F4BA5122 /* JXPagingView-JXPagingView in Resources */ = {isa = PBXBuildFile; fileRef = 7EB20B4E68CCB69F85E7D08B7F8463D6 /* JXPagingView-JXPagingView */; };
 		62A7FF30CBE720487F4548673AE5AE41 /* MJRefreshBackNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B64B4307F5D173F5E04AAA0CD834E2 /* MJRefreshBackNormalFooter.m */; };
 		6311768DB0D26A74F84AA5F10EDB39DB /* JXSegmentedTitleGradientItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43018F5D96D5931187E1431CD8C9202B /* JXSegmentedTitleGradientItemModel.swift */; };
 		66B5E0DA455465307382DC6F6200AC22 /* JXSegmentedIndicatorLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23A85FF207F19EDB9B613D96D91F304 /* JXSegmentedIndicatorLineView.swift */; };
@@ -55,12 +54,10 @@
 		6F09061F447385010986143AB09203E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
 		70BB68080049F9B5845732C475CEFA9C /* MJRefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD99FE4C070F8D65FE2306ED30C27C /* MJRefreshAutoNormalFooter.m */; };
 		7254796D9C801BE5F04E5D9387C60622 /* JXSegmentedIndicatorDotLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E67301AEC46B8C1FA0B4E8930027D7D /* JXSegmentedIndicatorDotLineView.swift */; };
-		74145F14ACD710C1D165C5F9B3F0D7ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
 		76E6AE4FD3FC58FF645BEA5F4593BB9C /* JXSegmentedIndicatorRainbowLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BF40BD64B8ED023B7ABA75928B5F68 /* JXSegmentedIndicatorRainbowLineView.swift */; };
 		7C3FF36BFA5813E8034D592210E17348 /* JXSegmentedNumberItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D061D9F73E7896D5B8CAEE93B35E268A /* JXSegmentedNumberItemModel.swift */; };
 		7CCFE11E3671F509B5E9FF7E942CAE5E /* MJRefreshHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 3704A4F63C4DDC8161658196593AA7CC /* MJRefreshHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8239D9031806E96DECD83BEB56DB02B3 /* NSBundle+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 667E91AEB5F9EE1F0AB71687E14FA453 /* NSBundle+MJRefresh.m */; };
-		83DBC0F86AD7C6EFB6947E0F3616467E /* JXPagingListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56E19D77498E04D9B9610A255DC23C /* JXPagingListContainerView.swift */; };
 		84408F4D9CCC7BC92345D382D31C606E /* MJRefreshAutoStateFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3168A4ED50DE7CC0118A2CCF28723887 /* MJRefreshAutoStateFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8576E37F8516AD88277BE1964103E9CB /* JXSegmentedDotItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4031C67B661B8CDA1950934E7DABEF8 /* JXSegmentedDotItemModel.swift */; };
 		85D7673E9D07A7C4B5B1421AB4F0DFAD /* JXSegmentedTitleOrImageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE1094BF217C16E93D6F0D0905DF98 /* JXSegmentedTitleOrImageDataSource.swift */; };
@@ -71,6 +68,7 @@
 		94EE3E2B2069EA5B647D386527551114 /* MJRefreshNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 718015F1BBC7BF7BC3443E878F369684 /* MJRefreshNormalHeader.m */; };
 		96B48EF458112A62CA8636A20032E55F /* MJRefreshConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A8FCE489D7CFFDE0ECD871B663031100 /* MJRefreshConfig.m */; };
 		983C577CC4B2C578648CD5095D653466 /* MJRefreshBackNormalFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C30F89FE4AE80ED0F82F23BE5CEE82C /* MJRefreshBackNormalFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9C340FF73920F1D58A6AABD5F1E7E4AE /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = EDE721503D8700E2E17444AFDE32F401 /* PrivacyInfo.xcprivacy */; };
 		9D1D0D25C75C7312DCF50FC8C255EF3A /* Pods-JXPagingViewExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F96500AEFB3E45A51CE6F3AD0651E67 /* Pods-JXPagingViewExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9D819FAEB9B2017EE9A7B00C914552C0 /* JXSegmentedTitleItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09E7E5811ADB3ECB621A8680B34D8EE /* JXSegmentedTitleItemModel.swift */; };
 		9EC810DC7D1C5F9F4F1F2B4A16F5C19A /* MJRefreshAutoStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF64E9D6DC01A5D2883BCF8B533D32F /* MJRefreshAutoStateFooter.m */; };
@@ -79,28 +77,32 @@
 		A5F70C50B1DA5582A3AEB09180581B2B /* NSBundle+MJRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = 34AE99A7B23446CFDC876E7826747EC5 /* NSBundle+MJRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6082066BE4084E94ADCF61207C19BC8 /* JXSegmentedNumberDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E55C8D60F30A60E46940EDC2C1691B /* JXSegmentedNumberDataSource.swift */; };
 		A9A375154FF3B0090DA029E8AF0AE1F9 /* JXSegmentedTitleAttributeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBCA0C61139FA5DA1103D3412791ECD /* JXSegmentedTitleAttributeCell.swift */; };
+		AC8CA5EDD0B0EE7618FCAAFB7E54F64B /* JXRTLFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CE02D3E187CD06A0C56AD7A613808 /* JXRTLFlowLayout.swift */; };
 		B3EDCF894D0573A478DAE0821BA89A7E /* JXSegmentedTitleGradientDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CF1504FADB20019C0A3FB8EF524C8 /* JXSegmentedTitleGradientDataSource.swift */; };
 		B6BD011761CE3BEA754BB44EE20BF5CC /* JXSegmentedIndicatorParamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C3926ECD1342D261A5E2E7931FB97F /* JXSegmentedIndicatorParamsModel.swift */; };
 		B76D9F7C92F6A68660B9BEA3D0B2A14A /* MJRefreshFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FE92566CD7C2F9BEA89F0B9D5CAE0EE /* MJRefreshFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB8E5669BBF573B059380588FA1BC3A6 /* MJRefreshBackGifFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4183A6FC3450E6A0C7BB1D3D487F24DA /* MJRefreshBackGifFooter.m */; };
 		BD323B7E7FCEC3A790A33F68E1D753BA /* MJRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = 19E066D5C5DFCB33978CDF0E506E0943 /* MJRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFCEF3111D3A8C7BA688125ED190A417 /* JXPagingView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7401268AEF78839771367D92944F43 /* JXPagingView-dummy.m */; };
 		C7D267911ACC9EBF95AA71A0BE82851C /* JXSegmentedComponetGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D4C44E5533C16D6BD7E3DD36CC4B61 /* JXSegmentedComponetGradientView.swift */; };
 		C91D06C0ED5219A5D740688DBA99E437 /* JXSegmentedDotDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01AFFC283AA8E11C218E272EDE5A3F4 /* JXSegmentedDotDataSource.swift */; };
 		C957DCA31D663C7B5605A7C2284AFBC1 /* UIScrollView+MJExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 54B649E0080FFC633F50D15506D48F56 /* UIScrollView+MJExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9595C88383C98F0950EF95A76A66512 /* JXSegmentedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CF97A0546C02CD9329CD8131C0BCB /* JXSegmentedCollectionView.swift */; };
 		CA5F2DA77913ACF688DF22344C3638AC /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BC549737AF9122CEAEADED32AFEEB5 /* MJRefreshConst.m */; };
-		CCD6784611A32AE82D759F673AD23B47 /* JXPagingView-JXPagingView in Resources */ = {isa = PBXBuildFile; fileRef = 7EB20B4E68CCB69F85E7D08B7F8463D6 /* JXPagingView-JXPagingView */; };
 		CCF4A2E8966D27EE531D9CE9C88F30B5 /* JXSegmentedBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B829DB6AC511F59263170AA9C2FFCFF /* JXSegmentedBaseCell.swift */; };
+		D031457E3AEDBF38DFCCA82420014039 /* JXPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E761FE9B394A267DC02091C4635E6F5 /* JXPagingView.swift */; };
+		D142BDFB7E387CCFE3713D8FE3868D05 /* JXPagingListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A27B80CC82A7E8FC76DB3FF5DB0EAB2 /* JXPagingListContainerView.swift */; };
 		D22CDB0E947D0AE5AC2D48E32720D5C5 /* JXSegmentedView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EE0D7DCE19EB5C594E0CF728286C476F /* JXSegmentedView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D50D4F48FC9C437050F3413054BFA13B /* JXPagingMainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5676E85CA676E5AD37BACF9FDC783B5 /* JXPagingMainTableView.swift */; };
 		D5787347852CE489CA9CFBFF8F7AD258 /* JXSegmentedTitleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40655D50AF0451455553609D35AADCB9 /* JXSegmentedTitleDataSource.swift */; };
 		D6BAE05F93FC63070C0612F4E2C44DD7 /* JXSegmentedBaseItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2609E99D3423812237136E0554418B10 /* JXSegmentedBaseItemModel.swift */; };
 		DC6CFD42F04E05EB7FFB7EBE0FC5FA27 /* MJRefreshConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = E889AB3717D63F4822A07B0E2469B30E /* MJRefreshConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFD201F845B63D6D7D541FB815B4088F /* MJRefreshAutoGifFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A678DD37060F23A7FDEDA1EA14709DA /* MJRefreshAutoGifFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2AD582709E6079BA9D5BDDA5D8D6A03 /* MJRefreshStateHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AEA117AA852AFDD1EBFEFFD6EE30627 /* MJRefreshStateHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E4A40D25C9EDBC8846976E8178E0D53A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */; };
+		E72BA790CA2799AB2B20D3A32CB7BE06 /* JXPagingSmoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6050BFAED2811ECEC2712C6A1B418B75 /* JXPagingSmoothView.swift */; };
 		E787A1F91C92B49FABC3184E33B95E2F /* JXSegmentedTitleAttributeItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF57466DA0C65476BC8DB9AEC1D76AF1 /* JXSegmentedTitleAttributeItemModel.swift */; };
 		ECBDE09957367B2411617B4598852AC4 /* MJRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D8479D8D0DF6ADB818C6AF6097DD98 /* MJRefreshHeader.m */; };
-		ED3AF010A8D34BC50D7C0D7BE3D2E890 /* JXPagingView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B8AB1FD6E84E24EC569BC30A9F3188F5 /* JXPagingView-dummy.m */; };
 		EE244544366C35D5A4F33EFB2CB4F55A /* MJRefresh-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 01C4B60829E2FEAD187637F4CF403640 /* MJRefresh-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EF5DEBCB4FC48178545D861E6E549303 /* MJRefreshBackStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 30005B1B6647D4B19F443BF977601E85 /* MJRefreshBackStateFooter.m */; };
 		F1657EAA38B45FA80189FE63EFDA4BEA /* JXSegmentedTitleImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C8AA2DF4B3E6B5A4EE29FB50028162 /* JXSegmentedTitleImageCell.swift */; };
@@ -109,43 +111,41 @@
 		F9ED6DBB670D53621D239B1A89143782 /* JXSegmentedTitleOrImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA72A73667E233073D29FBC6D6FECFF /* JXSegmentedTitleOrImageCell.swift */; };
 		FB2AB3917F785956D1F51157F07EE660 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE46A1D895384EB255049E224D1D24 /* UIScrollView+MJRefresh.m */; };
 		FB6613D9BD9F16E85DEF93463DDAC673 /* MJRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE227E8C738B0D673C3FA11432A4D9 /* MJRefreshFooter.m */; };
-		FDEB8D2D369F9FEBF8FC3D822E5C96C6 /* JXPagingMainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C035E7E3ECE3CE2AFA63BD29A922B2 /* JXPagingMainTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		404DF0C7199567C7AE816BDED92243BD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C4E1020AF425614337737213AA26DBD5;
-			remoteInfo = JXPagingView;
-		};
-		85F21884513B8BF134C239C233B3A94B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6868056D761E163D10FDAF8CF1C4D9B8;
-			remoteInfo = MJRefresh;
-		};
-		982B3C53209C7AC4391C5B0A027EA5B5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B2B2AD5303610D8EBEA025B2660C8EC5;
-			remoteInfo = "JXPagingView-JXPagingView";
-		};
-		E618D5BACFF72EB3E6EF116F361DE1D5 /* PBXContainerItemProxy */ = {
+		29FF43BA033BF9EE223CCE1DD63C1CB2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E863A9A96F52A35F47491E7B41ECEF9A;
 			remoteInfo = JXSegmentedView;
 		};
+		33EE96620E8694DD9D03059B1F5E733B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2B2AD5303610D8EBEA025B2660C8EC5;
+			remoteInfo = "JXPagingView-JXPagingView";
+		};
+		4CE375F2E89106C0F0850840428652B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6868056D761E163D10FDAF8CF1C4D9B8;
+			remoteInfo = MJRefresh;
+		};
+		EE96FA9B01B233897E4182EDE17E919F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4E1020AF425614337737213AA26DBD5;
+			remoteInfo = JXPagingView;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		01C4B60829E2FEAD187637F4CF403640 /* MJRefresh-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJRefresh-umbrella.h"; sourceTree = "<group>"; };
-		02A1359433D1179438AB11B390E378A7 /* JXPagingView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JXPagingView-umbrella.h"; sourceTree = "<group>"; };
 		04720FEA41E34578EA1180E0138A00C3 /* UIScrollView+MJRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+MJRefresh.h"; path = "MJRefresh/UIScrollView+MJRefresh.h"; sourceTree = "<group>"; };
 		07928762D9A8551470DAAD7C1E1F53A5 /* JXSegmentedView */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JXSegmentedView; path = JXSegmentedView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		084D03731C28A3578EB5081600EE459E /* UIView+MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+MJExtension.h"; path = "MJRefresh/UIView+MJExtension.h"; sourceTree = "<group>"; };
@@ -153,10 +153,11 @@
 		0AEA117AA852AFDD1EBFEFFD6EE30627 /* MJRefreshStateHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshStateHeader.h; path = MJRefresh/Custom/Header/MJRefreshStateHeader.h; sourceTree = "<group>"; };
 		0C498E2E64681627EE093037749C0C5E /* JXSegmentedTitleOrImageItemModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleOrImageItemModel.swift; path = Sources/TitleOrImage/JXSegmentedTitleOrImageItemModel.swift; sourceTree = "<group>"; };
 		0E1A90B14FC27D3CBF7B24253801FD0F /* JXSegmentedView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JXSegmentedView.modulemap; sourceTree = "<group>"; };
+		1358F6AC4EF683CE3BBB4D41A85FFE71 /* JXPagingView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JXPagingView.debug.xcconfig; sourceTree = "<group>"; };
 		16C1BB17E9BCF9EEA1D2F52B673DCA5E /* JXSegmentedTitleGradientCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleGradientCell.swift; path = Sources/TitleGradient/JXSegmentedTitleGradientCell.swift; sourceTree = "<group>"; };
 		16C32567806C4FD2756FBF6ECFBFE66F /* MJRefreshAutoGifFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoGifFooter.m; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoGifFooter.m; sourceTree = "<group>"; };
 		17BF40BD64B8ED023B7ABA75928B5F68 /* JXSegmentedIndicatorRainbowLineView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorRainbowLineView.swift; path = Sources/Indicator/JXSegmentedIndicatorRainbowLineView.swift; sourceTree = "<group>"; };
-		182B95FC10608C16C195FF7ABF3DC406 /* ResourceBundle-JXPagingView-JXPagingView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-JXPagingView-JXPagingView-Info.plist"; sourceTree = "<group>"; };
+		18A7E654160B9D080C64DB35CBA778F7 /* JXPagingView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JXPagingView-umbrella.h"; sourceTree = "<group>"; };
 		1980B75A42E0D568FFD5E2B160B2DEAC /* MJRefreshBackGifFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackGifFooter.h; path = MJRefresh/Custom/Footer/Back/MJRefreshBackGifFooter.h; sourceTree = "<group>"; };
 		19E066D5C5DFCB33978CDF0E506E0943 /* MJRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefresh.h; path = MJRefresh/MJRefresh.h; sourceTree = "<group>"; };
 		1C44A3FB022B79A04936E8A36624FAC0 /* JXSegmentedView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JXSegmentedView-prefix.pch"; sourceTree = "<group>"; };
@@ -171,10 +172,10 @@
 		30005B1B6647D4B19F443BF977601E85 /* MJRefreshBackStateFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackStateFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.m; sourceTree = "<group>"; };
 		3168A4ED50DE7CC0118A2CCF28723887 /* MJRefreshAutoStateFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoStateFooter.h; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoStateFooter.h; sourceTree = "<group>"; };
 		33FEB012FFD2CA0215CB16B786D46943 /* MJRefreshNormalHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshNormalHeader.h; path = MJRefresh/Custom/Header/MJRefreshNormalHeader.h; sourceTree = "<group>"; };
+		345F86261E57775798C6B7B895B9423B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		34AE99A7B23446CFDC876E7826747EC5 /* NSBundle+MJRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+MJRefresh.h"; path = "MJRefresh/NSBundle+MJRefresh.h"; sourceTree = "<group>"; };
 		34B64B4307F5D173F5E04AAA0CD834E2 /* MJRefreshBackNormalFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackNormalFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackNormalFooter.m; sourceTree = "<group>"; };
 		3704A4F63C4DDC8161658196593AA7CC /* MJRefreshHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshHeader.h; path = MJRefresh/Base/MJRefreshHeader.h; sourceTree = "<group>"; };
-		39D997A7D2574F09D9C3EED54BC78467 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		39E55C8D60F30A60E46940EDC2C1691B /* JXSegmentedNumberDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedNumberDataSource.swift; path = Sources/Number/JXSegmentedNumberDataSource.swift; sourceTree = "<group>"; };
 		3C22F0CB1B78277AB245637305515192 /* JXSegmentedView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JXSegmentedView.debug.xcconfig; sourceTree = "<group>"; };
 		3C30F89FE4AE80ED0F82F23BE5CEE82C /* MJRefreshBackNormalFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackNormalFooter.h; path = MJRefresh/Custom/Footer/Back/MJRefreshBackNormalFooter.h; sourceTree = "<group>"; };
@@ -184,16 +185,18 @@
 		40655D50AF0451455553609D35AADCB9 /* JXSegmentedTitleDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleDataSource.swift; path = Sources/Title/JXSegmentedTitleDataSource.swift; sourceTree = "<group>"; };
 		4183A6FC3450E6A0C7BB1D3D487F24DA /* MJRefreshBackGifFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackGifFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackGifFooter.m; sourceTree = "<group>"; };
 		43018F5D96D5931187E1431CD8C9202B /* JXSegmentedTitleGradientItemModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleGradientItemModel.swift; path = Sources/TitleGradient/JXSegmentedTitleGradientItemModel.swift; sourceTree = "<group>"; };
-		458AF1F59D5234B06FFF3D2CBC2A0F5E /* JXPagingView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JXPagingView-Info.plist"; sourceTree = "<group>"; };
-		45A9949D722627B90067A95420620AF2 /* JXPagingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPagingView.swift; path = Sources/JXPagingView/JXPagingView.swift; sourceTree = "<group>"; };
+		4339A0545AFB8826F39625B11DF92CB4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		4504806ABBE13AB95C696C0C34EF8395 /* ResourceBundle-JXPagingView-JXPagingView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-JXPagingView-JXPagingView-Info.plist"; sourceTree = "<group>"; };
 		4843ABEB072AA25864D857F93399867E /* MJRefresh-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MJRefresh-dummy.m"; sourceTree = "<group>"; };
 		4AF9412B19B2F4357783C2A20A2D0D38 /* MJRefresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MJRefresh.release.xcconfig; sourceTree = "<group>"; };
 		4E0CE84953F0225AE0A434DA501F2C67 /* JXSegmentedListContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedListContainerView.swift; path = Sources/Common/JXSegmentedListContainerView.swift; sourceTree = "<group>"; };
 		4E67301AEC46B8C1FA0B4E8930027D7D /* JXSegmentedIndicatorDotLineView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorDotLineView.swift; path = Sources/Indicator/JXSegmentedIndicatorDotLineView.swift; sourceTree = "<group>"; };
+		4EBED14EBF0B180B743C3557603221EC /* JXPagingView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = JXPagingView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4EDEDAAEA2B46175659C59A14A89A920 /* MJRefreshAutoNormalFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoNormalFooter.h; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoNormalFooter.h; sourceTree = "<group>"; };
 		4F96500AEFB3E45A51CE6F3AD0651E67 /* Pods-JXPagingViewExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JXPagingViewExample-umbrella.h"; sourceTree = "<group>"; };
 		54A4534051EBDE561EC1AD5DF6CF43BD /* Pods-JXPagingViewExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JXPagingViewExample.debug.xcconfig"; sourceTree = "<group>"; };
 		54B649E0080FFC633F50D15506D48F56 /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+MJExtension.h"; path = "MJRefresh/UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
+		55EA7B11F1F3B19D0D9F68A76F1BDF2C /* JXPagingView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JXPagingView.modulemap; sourceTree = "<group>"; };
 		584A2B9449655F890DB9F547AC0973FC /* JXSegmentedDotCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedDotCell.swift; path = Sources/Dot/JXSegmentedDotCell.swift; sourceTree = "<group>"; };
 		5AAC74180F47E39EF34B00E462C5722B /* JXSegmentedIndicatorDoubleLineView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorDoubleLineView.swift; path = Sources/Indicator/JXSegmentedIndicatorDoubleLineView.swift; sourceTree = "<group>"; };
 		5B829DB6AC511F59263170AA9C2FFCFF /* JXSegmentedBaseCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedBaseCell.swift; path = Sources/Core/JXSegmentedBaseCell.swift; sourceTree = "<group>"; };
@@ -201,26 +204,28 @@
 		5ECE227E8C738B0D673C3FA11432A4D9 /* MJRefreshFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshFooter.m; path = MJRefresh/Base/MJRefreshFooter.m; sourceTree = "<group>"; };
 		5EDE46A1D895384EB255049E224D1D24 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+MJRefresh.m"; path = "MJRefresh/UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		5FF64E9D6DC01A5D2883BCF8B533D32F /* MJRefreshAutoStateFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoStateFooter.m; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoStateFooter.m; sourceTree = "<group>"; };
+		6050BFAED2811ECEC2712C6A1B418B75 /* JXPagingSmoothView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPagingSmoothView.swift; path = Sources/JXPagingView/JXPagingSmoothView.swift; sourceTree = "<group>"; };
 		612A2886307000BB105CCA0EB45AC94E /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoFooter.h; path = MJRefresh/Base/MJRefreshAutoFooter.h; sourceTree = "<group>"; };
-		6498884ABBD43899028DF96C8C002BF2 /* JXPagingSmoothView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPagingSmoothView.swift; path = Sources/JXPagingView/JXPagingSmoothView.swift; sourceTree = "<group>"; };
 		656CC29484DF161834EA7D86A90D14C0 /* Pods-JXPagingViewExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JXPagingViewExample.release.xcconfig"; sourceTree = "<group>"; };
 		667E91AEB5F9EE1F0AB71687E14FA453 /* NSBundle+MJRefresh.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+MJRefresh.m"; path = "MJRefresh/NSBundle+MJRefresh.m"; sourceTree = "<group>"; };
 		66C3926ECD1342D261A5E2E7931FB97F /* JXSegmentedIndicatorParamsModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorParamsModel.swift; path = Sources/Indicator/JXSegmentedIndicatorParamsModel.swift; sourceTree = "<group>"; };
 		69B09E66C92D951E4381E4384FB6B849 /* JXSegmentedTitleAttributeDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleAttributeDataSource.swift; path = Sources/AttributeTitle/JXSegmentedTitleAttributeDataSource.swift; sourceTree = "<group>"; };
+		6A27B80CC82A7E8FC76DB3FF5DB0EAB2 /* JXPagingListContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPagingListContainerView.swift; path = Sources/JXPagingView/JXPagingListContainerView.swift; sourceTree = "<group>"; };
 		6A678DD37060F23A7FDEDA1EA14709DA /* MJRefreshAutoGifFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoGifFooter.h; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoGifFooter.h; sourceTree = "<group>"; };
 		6D30F056C215C5B66116EB8722C78F8A /* MJRefresh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MJRefresh.debug.xcconfig; sourceTree = "<group>"; };
+		6FB93298AAB651AB9E60C240F5934B57 /* JXPagingView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JXPagingView-Info.plist"; sourceTree = "<group>"; };
 		713209183FF915E7A9D7ABFB0C535801 /* JXSegmentedView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JXSegmentedView-dummy.m"; sourceTree = "<group>"; };
 		718015F1BBC7BF7BC3443E878F369684 /* MJRefreshNormalHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshNormalHeader.m; path = MJRefresh/Custom/Header/MJRefreshNormalHeader.m; sourceTree = "<group>"; };
 		742A59D360A27EEB518D6B666CB20DC4 /* MJRefresh-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MJRefresh-Info.plist"; sourceTree = "<group>"; };
+		785CE02D3E187CD06A0C56AD7A613808 /* JXRTLFlowLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXRTLFlowLayout.swift; path = Sources/JXPagingView/JXRTLFlowLayout.swift; sourceTree = "<group>"; };
+		7E761FE9B394A267DC02091C4635E6F5 /* JXPagingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPagingView.swift; path = Sources/JXPagingView/JXPagingView.swift; sourceTree = "<group>"; };
 		7EB20B4E68CCB69F85E7D08B7F8463D6 /* JXPagingView-JXPagingView */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "JXPagingView-JXPagingView"; path = JXPagingView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		81511DED1A8A11952919A8B64C2390B6 /* MJRefresh-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJRefresh-prefix.pch"; sourceTree = "<group>"; };
 		82070BAEA7DB1C86123BC5E3D7764DCB /* Pods-JXPagingViewExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JXPagingViewExample.modulemap"; sourceTree = "<group>"; };
 		844A53347703D579FFB47F9DECDFD87A /* MJRefreshStateHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshStateHeader.m; path = MJRefresh/Custom/Header/MJRefreshStateHeader.m; sourceTree = "<group>"; };
 		89AFE6353BE114F3C11F3033865EFC94 /* UIScrollView+MJExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+MJExtension.m"; path = "MJRefresh/UIScrollView+MJExtension.m"; sourceTree = "<group>"; };
 		8BDA1867B8E9BC3E9EEC4C44DBE8237A /* JXSegmentedIndicatorTriangleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorTriangleView.swift; path = Sources/Indicator/JXSegmentedIndicatorTriangleView.swift; sourceTree = "<group>"; };
-		8E56E19D77498E04D9B9610A255DC23C /* JXPagingListContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPagingListContainerView.swift; path = Sources/JXPagingView/JXPagingListContainerView.swift; sourceTree = "<group>"; };
 		90F257E54F23ACA8D22045B3EE00A1E7 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoFooter.m; path = MJRefresh/Base/MJRefreshAutoFooter.m; sourceTree = "<group>"; };
-		9225ECA4290CE00502B28964053C753A /* JXPagingView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JXPagingView.debug.xcconfig; sourceTree = "<group>"; };
 		981C4F55EC784394BD0E4ABCD9A5848D /* JXSegmentedTitleImageDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleImageDataSource.swift; path = Sources/TitleImage/JXSegmentedTitleImageDataSource.swift; sourceTree = "<group>"; };
 		990477ED22AB84EDBFFB78D1009E8BE6 /* Pods-JXPagingViewExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JXPagingViewExample-acknowledgements.plist"; sourceTree = "<group>"; };
 		9A8A5F56FA3E7F15555F7EAD31188ADE /* MJRefreshGifHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshGifHeader.m; path = MJRefresh/Custom/Header/MJRefreshGifHeader.m; sourceTree = "<group>"; };
@@ -229,67 +234,57 @@
 		A23A85FF207F19EDB9B613D96D91F304 /* JXSegmentedIndicatorLineView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorLineView.swift; path = Sources/Indicator/JXSegmentedIndicatorLineView.swift; sourceTree = "<group>"; };
 		A3A9B04591D11CAE8369A61517CDABB6 /* JXSegmentedIndicatorBackgroundView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorBackgroundView.swift; path = Sources/Indicator/JXSegmentedIndicatorBackgroundView.swift; sourceTree = "<group>"; };
 		A52E9FB8F2BB2A845CBD346E913B2138 /* MJRefresh.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MJRefresh.modulemap; sourceTree = "<group>"; };
+		A5676E85CA676E5AD37BACF9FDC783B5 /* JXPagingMainTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPagingMainTableView.swift; path = Sources/JXPagingView/JXPagingMainTableView.swift; sourceTree = "<group>"; };
 		A8FCE489D7CFFDE0ECD871B663031100 /* MJRefreshConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshConfig.m; path = MJRefresh/MJRefreshConfig.m; sourceTree = "<group>"; };
 		A95CD08B8440A997B6201061EF9964F3 /* MJRefresh.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = MJRefresh.bundle; path = MJRefresh/MJRefresh.bundle; sourceTree = "<group>"; };
 		AA03113367592348DC586383B88D3A89 /* JXSegmentedViewTool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedViewTool.swift; path = Sources/Common/JXSegmentedViewTool.swift; sourceTree = "<group>"; };
-		ADB2243403FD44AC8F5C4ACE01E4C713 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Sources/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		B09E7E5811ADB3ECB621A8680B34D8EE /* JXSegmentedTitleItemModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleItemModel.swift; path = Sources/Title/JXSegmentedTitleItemModel.swift; sourceTree = "<group>"; };
 		B11CFFCB4CF22D8D8085504CC976CF85 /* JXSegmentedNumberCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedNumberCell.swift; path = Sources/Number/JXSegmentedNumberCell.swift; sourceTree = "<group>"; };
 		B19DE12551F7573C82ABDE07A87B5EAC /* JXSegmentedIndicatorGradientView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorGradientView.swift; path = Sources/Indicator/JXSegmentedIndicatorGradientView.swift; sourceTree = "<group>"; };
 		B4031C67B661B8CDA1950934E7DABEF8 /* JXSegmentedDotItemModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedDotItemModel.swift; path = Sources/Dot/JXSegmentedDotItemModel.swift; sourceTree = "<group>"; };
-		B8AB1FD6E84E24EC569BC30A9F3188F5 /* JXPagingView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JXPagingView-dummy.m"; sourceTree = "<group>"; };
 		BC133E72F3C6C1E2345A122883338EF6 /* MJRefreshComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshComponent.h; path = MJRefresh/Base/MJRefreshComponent.h; sourceTree = "<group>"; };
-		BF3DA462345F18DDFBD4AC49AF1F578B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		BF7CF1504FADB20019C0A3FB8EF524C8 /* JXSegmentedTitleGradientDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleGradientDataSource.swift; path = Sources/TitleGradient/JXSegmentedTitleGradientDataSource.swift; sourceTree = "<group>"; };
 		C091FBAA64976DD4694E4B07F20E8BA0 /* JXSegmentedView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedView.swift; path = Sources/Core/JXSegmentedView.swift; sourceTree = "<group>"; };
 		C533E34330B0765BE8547E0EBA4B1ADD /* MJRefreshConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshConst.h; path = MJRefresh/MJRefreshConst.h; sourceTree = "<group>"; };
 		C5FA44BA7161DAC96F326B81686F3E8E /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackFooter.h; path = MJRefresh/Base/MJRefreshBackFooter.h; sourceTree = "<group>"; };
 		C93707ACD96010B6DB391273C37EA675 /* Pods-JXPagingViewExample */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-JXPagingViewExample"; path = Pods_JXPagingViewExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD3EA6CDFD8D0EB1210D376EAE3AE255 /* JXPagingView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JXPagingView-prefix.pch"; sourceTree = "<group>"; };
 		CD9DE51DF264F6B885A1EEED55DF3ECB /* MJRefreshComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshComponent.m; path = MJRefresh/Base/MJRefreshComponent.m; sourceTree = "<group>"; };
+		CE7401268AEF78839771367D92944F43 /* JXPagingView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JXPagingView-dummy.m"; sourceTree = "<group>"; };
 		CF57466DA0C65476BC8DB9AEC1D76AF1 /* JXSegmentedTitleAttributeItemModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleAttributeItemModel.swift; path = Sources/AttributeTitle/JXSegmentedTitleAttributeItemModel.swift; sourceTree = "<group>"; };
 		CF7B8494736CCD37EF9D92EF5D7AB02F /* Pods-JXPagingViewExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JXPagingViewExample-acknowledgements.markdown"; sourceTree = "<group>"; };
+		CFEBD6F8013D7851398D4A3B9F6FAD1E /* JXPagingListRefreshView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPagingListRefreshView.swift; path = Sources/JXPagingView/JXPagingListRefreshView.swift; sourceTree = "<group>"; };
 		D061D9F73E7896D5B8CAEE93B35E268A /* JXSegmentedNumberItemModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedNumberItemModel.swift; path = Sources/Number/JXSegmentedNumberItemModel.swift; sourceTree = "<group>"; };
 		D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		D3BB51FFE7D3D0636EA0072BA55D3BCC /* JXPagingView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JXPagingView.release.xcconfig; sourceTree = "<group>"; };
 		D4A4DE6BC9A1A4D134673B5E639DFF24 /* JXSegmentedBaseDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedBaseDataSource.swift; path = Sources/Core/JXSegmentedBaseDataSource.swift; sourceTree = "<group>"; };
 		D68D5C64E9B80300B8BBE745021AD8EA /* JXSegmentedIndicatorBaseView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorBaseView.swift; path = Sources/Indicator/JXSegmentedIndicatorBaseView.swift; sourceTree = "<group>"; };
 		D70C50F35602DBFDB265C484BE9B499A /* JXSegmentedTitleImageItemModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleImageItemModel.swift; path = Sources/TitleImage/JXSegmentedTitleImageItemModel.swift; sourceTree = "<group>"; };
-		DC2846463BBE880138C31F5A46E13131 /* JXPagingView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JXPagingView.modulemap; sourceTree = "<group>"; };
 		DE2638503B2458AA62E950BBF112A5AB /* MJRefreshGifHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshGifHeader.h; path = MJRefresh/Custom/Header/MJRefreshGifHeader.h; sourceTree = "<group>"; };
 		E01AFFC283AA8E11C218E272EDE5A3F4 /* JXSegmentedDotDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedDotDataSource.swift; path = Sources/Dot/JXSegmentedDotDataSource.swift; sourceTree = "<group>"; };
 		E49D6D248DD1CEE584E6776B9164A1B2 /* MJRefresh */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MJRefresh; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E660F67F0AD68B33792F4E2543E667DC /* MJRefreshBackFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackFooter.m; path = MJRefresh/Base/MJRefreshBackFooter.m; sourceTree = "<group>"; };
-		E6C035E7E3ECE3CE2AFA63BD29A922B2 /* JXPagingMainTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPagingMainTableView.swift; path = Sources/JXPagingView/JXPagingMainTableView.swift; sourceTree = "<group>"; };
 		E7C8379A3C2C63A58335C864664CAC42 /* JXSegmentedTitleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleCell.swift; path = Sources/Title/JXSegmentedTitleCell.swift; sourceTree = "<group>"; };
 		E889AB3717D63F4822A07B0E2469B30E /* MJRefreshConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshConfig.h; path = MJRefresh/MJRefreshConfig.h; sourceTree = "<group>"; };
 		EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		EC15C1D114750A7296E42FCEF58D6689 /* JXPagingListRefreshView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPagingListRefreshView.swift; path = Sources/JXPagingView/JXPagingListRefreshView.swift; sourceTree = "<group>"; };
+		EDE721503D8700E2E17444AFDE32F401 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Sources/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		EE0D7DCE19EB5C594E0CF728286C476F /* JXSegmentedView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JXSegmentedView-umbrella.h"; sourceTree = "<group>"; };
 		F03EF29056C3FF319814F2838BDEC4BB /* Pods-JXPagingViewExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JXPagingViewExample-dummy.m"; sourceTree = "<group>"; };
 		F0E8EFCF20C55BB947A6825EBBDC50A0 /* Pods-JXPagingViewExample-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JXPagingViewExample-Info.plist"; sourceTree = "<group>"; };
 		F2628DB50884CD52F5328CD0CDFCA6B5 /* Pods-JXPagingViewExample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JXPagingViewExample-frameworks.sh"; sourceTree = "<group>"; };
 		F2BC549737AF9122CEAEADED32AFEEB5 /* MJRefreshConst.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshConst.m; path = MJRefresh/MJRefreshConst.m; sourceTree = "<group>"; };
 		F2D4C44E5533C16D6BD7E3DD36CC4B61 /* JXSegmentedComponetGradientView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedComponetGradientView.swift; path = Sources/Indicator/JXSegmentedComponetGradientView.swift; sourceTree = "<group>"; };
-		F6AD932CA455EF8948B3A4DD9D14980C /* JXPagingView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = JXPagingView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F6C8AA2DF4B3E6B5A4EE29FB50028162 /* JXSegmentedTitleImageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleImageCell.swift; path = Sources/TitleImage/JXSegmentedTitleImageCell.swift; sourceTree = "<group>"; };
 		FA4972C0D593EC35203C467935D3894A /* JXSegmentedIndicatorImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorImageView.swift; path = Sources/Indicator/JXSegmentedIndicatorImageView.swift; sourceTree = "<group>"; };
+		FB0050F6B9F4525E640CB90C5359723C /* JXPagingView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JXPagingView.release.xcconfig; sourceTree = "<group>"; };
+		FD2E64DF2D30680A9F1FDC3CAC9BA584 /* JXPagingView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JXPagingView-prefix.pch"; sourceTree = "<group>"; };
 		FEA7FBEC2A5B46BA1BD077FC707B69EB /* JXSegmentedView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JXSegmentedView-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		142367D96CC66440877AA0744C3EFF72 /* Frameworks */ = {
+		16BF708E5B44468111F4AD7DAE549DB0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74145F14ACD710C1D165C5F9B3F0D7ED /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3C069EB323F7A943304D6DDD7B053A7E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				0798F6A5D6254D6FCF6856C695801BFB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +293,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F09061F447385010986143AB09203E8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9662BAA31555BD90ADEAEDF03D44A00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,7 +326,7 @@
 		12B1E55A9751A3C957F36B913E8620D6 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B4AF64CB730001158701FAC8EAE7DDCE /* JXPagingView */,
+				D8C5B4E2FDDD76C75C148BE24F47E1F7 /* JXPagingView */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -350,6 +352,22 @@
 				59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5142D1E9A5926755FCDDC20AA9836259 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				55EA7B11F1F3B19D0D9F68A76F1BDF2C /* JXPagingView.modulemap */,
+				CE7401268AEF78839771367D92944F43 /* JXPagingView-dummy.m */,
+				6FB93298AAB651AB9E60C240F5934B57 /* JXPagingView-Info.plist */,
+				FD2E64DF2D30680A9F1FDC3CAC9BA584 /* JXPagingView-prefix.pch */,
+				18A7E654160B9D080C64DB35CBA778F7 /* JXPagingView-umbrella.h */,
+				1358F6AC4EF683CE3BBB4D41A85FFE71 /* JXPagingView.debug.xcconfig */,
+				FB0050F6B9F4525E640CB90C5359723C /* JXPagingView.release.xcconfig */,
+				4504806ABBE13AB95C696C0C34EF8395 /* ResourceBundle-JXPagingView-JXPagingView-Info.plist */,
+			);
+			name = "Support Files";
+			path = "Examples/JXPagingViewExample/Pods/Target Support Files/JXPagingView";
 			sourceTree = "<group>";
 		};
 		5590112CBF31270F4037F1F6569DD16F /* Pods-JXPagingViewExample */ = {
@@ -388,6 +406,16 @@
 				C93707ACD96010B6DB391273C37EA675 /* Pods-JXPagingViewExample */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		709E6CFF642C9878345494FA7AB9A56A /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				4EBED14EBF0B180B743C3557603221EC /* JXPagingView.podspec */,
+				345F86261E57775798C6B7B895B9423B /* LICENSE */,
+				4339A0545AFB8826F39625B11DF92CB4 /* README.md */,
+			);
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		79BEEDD0E44BF2E1FBC88D468AC29698 /* Support Files */ = {
@@ -455,16 +483,6 @@
 			path = JXSegmentedView;
 			sourceTree = "<group>";
 		};
-		8BA910E37C5FE28E630CC293645D2457 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				F6AD932CA455EF8948B3A4DD9D14980C /* JXPagingView.podspec */,
-				BF3DA462345F18DDFBD4AC49AF1F578B /* LICENSE */,
-				39D997A7D2574F09D9C3EED54BC78467 /* README.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
 		8E99CEAE3D16C17D168BD61E83411125 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,17 +500,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		B4AF64CB730001158701FAC8EAE7DDCE /* JXPagingView */ = {
-			isa = PBXGroup;
-			children = (
-				F5783A7214F6445E5A3B197A4203081E /* Paging */,
-				8BA910E37C5FE28E630CC293645D2457 /* Pod */,
-				F2DC58915198965AA5A73F5B20F8C88D /* Support Files */,
-			);
-			name = JXPagingView;
-			path = ../../..;
-			sourceTree = "<group>";
-		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +512,20 @@
 			);
 			sourceTree = "<group>";
 		};
+		CFAEB1AEC66AC68894563D054D761F5A /* Paging */ = {
+			isa = PBXGroup;
+			children = (
+				6A27B80CC82A7E8FC76DB3FF5DB0EAB2 /* JXPagingListContainerView.swift */,
+				CFEBD6F8013D7851398D4A3B9F6FAD1E /* JXPagingListRefreshView.swift */,
+				A5676E85CA676E5AD37BACF9FDC783B5 /* JXPagingMainTableView.swift */,
+				6050BFAED2811ECEC2712C6A1B418B75 /* JXPagingSmoothView.swift */,
+				7E761FE9B394A267DC02091C4635E6F5 /* JXPagingView.swift */,
+				785CE02D3E187CD06A0C56AD7A613808 /* JXRTLFlowLayout.swift */,
+				EDE721503D8700E2E17444AFDE32F401 /* PrivacyInfo.xcprivacy */,
+			);
+			name = Paging;
+			sourceTree = "<group>";
+		};
 		D84BB9B27928DB9E83300CAFDFA856DC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,33 +534,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		F2DC58915198965AA5A73F5B20F8C88D /* Support Files */ = {
+		D8C5B4E2FDDD76C75C148BE24F47E1F7 /* JXPagingView */ = {
 			isa = PBXGroup;
 			children = (
-				DC2846463BBE880138C31F5A46E13131 /* JXPagingView.modulemap */,
-				B8AB1FD6E84E24EC569BC30A9F3188F5 /* JXPagingView-dummy.m */,
-				458AF1F59D5234B06FFF3D2CBC2A0F5E /* JXPagingView-Info.plist */,
-				CD3EA6CDFD8D0EB1210D376EAE3AE255 /* JXPagingView-prefix.pch */,
-				02A1359433D1179438AB11B390E378A7 /* JXPagingView-umbrella.h */,
-				9225ECA4290CE00502B28964053C753A /* JXPagingView.debug.xcconfig */,
-				D3BB51FFE7D3D0636EA0072BA55D3BCC /* JXPagingView.release.xcconfig */,
-				182B95FC10608C16C195FF7ABF3DC406 /* ResourceBundle-JXPagingView-JXPagingView-Info.plist */,
+				CFAEB1AEC66AC68894563D054D761F5A /* Paging */,
+				709E6CFF642C9878345494FA7AB9A56A /* Pod */,
+				5142D1E9A5926755FCDDC20AA9836259 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "Examples/JXPagingViewExample/Pods/Target Support Files/JXPagingView";
-			sourceTree = "<group>";
-		};
-		F5783A7214F6445E5A3B197A4203081E /* Paging */ = {
-			isa = PBXGroup;
-			children = (
-				8E56E19D77498E04D9B9610A255DC23C /* JXPagingListContainerView.swift */,
-				EC15C1D114750A7296E42FCEF58D6689 /* JXPagingListRefreshView.swift */,
-				E6C035E7E3ECE3CE2AFA63BD29A922B2 /* JXPagingMainTableView.swift */,
-				6498884ABBD43899028DF96C8C002BF2 /* JXPagingSmoothView.swift */,
-				45A9949D722627B90067A95420620AF2 /* JXPagingView.swift */,
-				ADB2243403FD44AC8F5C4ACE01E4C713 /* PrivacyInfo.xcprivacy */,
-			);
-			name = Paging;
+			name = JXPagingView;
+			path = ../../..;
 			sourceTree = "<group>";
 		};
 		F5CD6CC98645200F6A0B4778A819358F /* MJRefresh */ = {
@@ -596,11 +599,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		3FBE446322EDFA526FB50BE550C80874 /* Headers */ = {
+		7BE449EBD4970FAEEA54DA33549FE414 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12EC6890A8A59536867A18E8F83C8BB7 /* JXPagingView-umbrella.h in Headers */,
+				3FF0162982699174D6CA467E01CE4409 /* JXPagingView-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,9 +667,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				71ED554D0F326CD9A52AA723896B5911 /* PBXTargetDependency */,
-				65E047B9452A5067E181BE5DD305FC92 /* PBXTargetDependency */,
-				B51ED896ADD3B73FF40F221C7F2636BA /* PBXTargetDependency */,
+				EC06A60268ADF41F0114271A0F7472F9 /* PBXTargetDependency */,
+				264161DA2B217DA3D8D9457A98C8819C /* PBXTargetDependency */,
+				930027C2D84A7F192429F42503FB7D15 /* PBXTargetDependency */,
 			);
 			name = "Pods-JXPagingViewExample";
 			productName = Pods_JXPagingViewExample;
@@ -693,11 +696,11 @@
 		};
 		B2B2AD5303610D8EBEA025B2660C8EC5 /* JXPagingView-JXPagingView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 30EE3988D02CE681F8730FAD7FFD9E99 /* Build configuration list for PBXNativeTarget "JXPagingView-JXPagingView" */;
+			buildConfigurationList = 9F7EBA398B6AEEFD2B91025E9E082B9F /* Build configuration list for PBXNativeTarget "JXPagingView-JXPagingView" */;
 			buildPhases = (
-				5E143112F383DFC30B18B7A40BB8A6EA /* Sources */,
-				3C069EB323F7A943304D6DDD7B053A7E /* Frameworks */,
-				07B6F37CE8D7B7D9986488A279F50C4E /* Resources */,
+				DF26F32BD340A1FC6C347B8D9E691EE0 /* Sources */,
+				A9662BAA31555BD90ADEAEDF03D44A00 /* Frameworks */,
+				23B8B1F97E40662A946D361317421A69 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -710,17 +713,17 @@
 		};
 		C4E1020AF425614337737213AA26DBD5 /* JXPagingView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EF5C4DEBE2675B6E4A59F72D208FCC83 /* Build configuration list for PBXNativeTarget "JXPagingView" */;
+			buildConfigurationList = 61994409990383863DE85A416CED6B28 /* Build configuration list for PBXNativeTarget "JXPagingView" */;
 			buildPhases = (
-				3FBE446322EDFA526FB50BE550C80874 /* Headers */,
-				9A14FD911C3032D94868E9D0EB100A2F /* Sources */,
-				142367D96CC66440877AA0744C3EFF72 /* Frameworks */,
-				0BAF278E95DCCDFBCB49933C4F5A6284 /* Resources */,
+				7BE449EBD4970FAEEA54DA33549FE414 /* Headers */,
+				707F2BD2579EB120CC7727C2A12FF275 /* Sources */,
+				16BF708E5B44468111F4AD7DAE549DB0 /* Frameworks */,
+				B64918907B201B005F2863B3DE718F76 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EAD2CBB6C74EEC0CD227FB252075CA42 /* PBXTargetDependency */,
+				D6CF7C936CB3F124649A0AA8CF275F65 /* PBXTargetDependency */,
 			);
 			name = JXPagingView;
 			productName = JXPagingView;
@@ -755,7 +758,7 @@
 				LastUpgradeCheck = 1500;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 10.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -777,22 +780,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		07B6F37CE8D7B7D9986488A279F50C4E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				43FA0157F585C6EE61823B61BC0311FF /* PrivacyInfo.xcprivacy in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0BAF278E95DCCDFBCB49933C4F5A6284 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CCD6784611A32AE82D759F673AD23B47 /* JXPagingView-JXPagingView in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		16C0BBCD57FC2AC831247DD2F4FD5137 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -800,10 +787,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		23B8B1F97E40662A946D361317421A69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C340FF73920F1D58A6AABD5F1E7E4AE /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		506A173D11C089E5CD8671EFE8E6BD10 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B64918907B201B005F2863B3DE718F76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6061CFE1ED7B2739A359B5E7F4BA5122 /* JXPagingView-JXPagingView in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -867,23 +870,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5E143112F383DFC30B18B7A40BB8A6EA /* Sources */ = {
+		707F2BD2579EB120CC7727C2A12FF275 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A14FD911C3032D94868E9D0EB100A2F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				83DBC0F86AD7C6EFB6947E0F3616467E /* JXPagingListContainerView.swift in Sources */,
-				440C0830E1410552E2ED0A1647CC4209 /* JXPagingListRefreshView.swift in Sources */,
-				FDEB8D2D369F9FEBF8FC3D822E5C96C6 /* JXPagingMainTableView.swift in Sources */,
-				56987A745C2D39979A167EBF45B8D073 /* JXPagingSmoothView.swift in Sources */,
-				08593ACC3F8955B57D3865FBE5940230 /* JXPagingView.swift in Sources */,
-				ED3AF010A8D34BC50D7C0D7BE3D2E890 /* JXPagingView-dummy.m in Sources */,
+				D142BDFB7E387CCFE3713D8FE3868D05 /* JXPagingListContainerView.swift in Sources */,
+				1D9D7A7134A1323F971729CB62290FDB /* JXPagingListRefreshView.swift in Sources */,
+				D50D4F48FC9C437050F3413054BFA13B /* JXPagingMainTableView.swift in Sources */,
+				E72BA790CA2799AB2B20D3A32CB7BE06 /* JXPagingSmoothView.swift in Sources */,
+				D031457E3AEDBF38DFCCA82420014039 /* JXPagingView.swift in Sources */,
+				BFCEF3111D3A8C7BA688125ED190A417 /* JXPagingView-dummy.m in Sources */,
+				AC8CA5EDD0B0EE7618FCAAFB7E54F64B /* JXRTLFlowLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,32 +920,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DF26F32BD340A1FC6C347B8D9E691EE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		65E047B9452A5067E181BE5DD305FC92 /* PBXTargetDependency */ = {
+		264161DA2B217DA3D8D9457A98C8819C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = JXSegmentedView;
 			target = E863A9A96F52A35F47491E7B41ECEF9A /* JXSegmentedView */;
-			targetProxy = E618D5BACFF72EB3E6EF116F361DE1D5 /* PBXContainerItemProxy */;
+			targetProxy = 29FF43BA033BF9EE223CCE1DD63C1CB2 /* PBXContainerItemProxy */;
 		};
-		71ED554D0F326CD9A52AA723896B5911 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = JXPagingView;
-			target = C4E1020AF425614337737213AA26DBD5 /* JXPagingView */;
-			targetProxy = 404DF0C7199567C7AE816BDED92243BD /* PBXContainerItemProxy */;
-		};
-		B51ED896ADD3B73FF40F221C7F2636BA /* PBXTargetDependency */ = {
+		930027C2D84A7F192429F42503FB7D15 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MJRefresh;
 			target = 6868056D761E163D10FDAF8CF1C4D9B8 /* MJRefresh */;
-			targetProxy = 85F21884513B8BF134C239C233B3A94B /* PBXContainerItemProxy */;
+			targetProxy = 4CE375F2E89106C0F0850840428652B3 /* PBXContainerItemProxy */;
 		};
-		EAD2CBB6C74EEC0CD227FB252075CA42 /* PBXTargetDependency */ = {
+		D6CF7C936CB3F124649A0AA8CF275F65 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "JXPagingView-JXPagingView";
 			target = B2B2AD5303610D8EBEA025B2660C8EC5 /* JXPagingView-JXPagingView */;
-			targetProxy = 982B3C53209C7AC4391C5B0A027EA5B5 /* PBXContainerItemProxy */;
+			targetProxy = 33EE96620E8694DD9D03059B1F5E733B /* PBXContainerItemProxy */;
+		};
+		EC06A60268ADF41F0114271A0F7472F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = JXPagingView;
+			target = C4E1020AF425614337737213AA26DBD5 /* JXPagingView */;
+			targetProxy = EE96FA9B01B233897E4182EDE17E919F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -988,15 +992,15 @@
 			};
 			name = Release;
 		};
-		2C3AD0F14A28BF7B7BE530ADB2C916D6 /* Release */ = {
+		223E8FB9BC4DF824E238C0F7FBCD26B9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3BB51FFE7D3D0636EA0072BA55D3BCC /* JXPagingView.release.xcconfig */;
+			baseConfigurationReference = FB0050F6B9F4525E640CB90C5359723C /* JXPagingView.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGNING_ALLOWED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/JXPagingView";
 				IBSC_MODULE = JXPagingView;
 				INFOPLIST_FILE = "Target Support Files/JXPagingView/ResourceBundle-JXPagingView-JXPagingView-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = JXPagingView;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1040,6 +1044,41 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		692D6DFE1833CAA9886DE72A13EE1858 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB0050F6B9F4525E640CB90C5359723C /* JXPagingView.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/JXPagingView/JXPagingView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JXPagingView/JXPagingView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/JXPagingView/JXPagingView.modulemap";
+				PRODUCT_MODULE_NAME = JXPagingView;
+				PRODUCT_NAME = JXPagingView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		6D1FB5DA5F09A6B8D85071BDADD8EF60 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1209,6 +1248,40 @@
 			};
 			name = Debug;
 		};
+		9298127EB5FC2A6B3DA7A32E6D118DA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1358F6AC4EF683CE3BBB4D41A85FFE71 /* JXPagingView.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/JXPagingView/JXPagingView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JXPagingView/JXPagingView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/JXPagingView/JXPagingView.modulemap";
+				PRODUCT_MODULE_NAME = JXPagingView;
+				PRODUCT_NAME = JXPagingView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		D423AF8C9E9732376619B749DE048010 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3C22F0CB1B78277AB245637305515192 /* JXSegmentedView.debug.xcconfig */;
@@ -1242,58 +1315,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		D957FA61FEDCD6ABE815F80A37D79A72 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9225ECA4290CE00502B28964053C753A /* JXPagingView.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/JXPagingView";
-				IBSC_MODULE = JXPagingView;
-				INFOPLIST_FILE = "Target Support Files/JXPagingView/ResourceBundle-JXPagingView-JXPagingView-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = JXPagingView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		E0D85AC35AE1FCCF988F5CD7503DDB0F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3BB51FFE7D3D0636EA0072BA55D3BCC /* JXPagingView.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/JXPagingView/JXPagingView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/JXPagingView/JXPagingView-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/JXPagingView/JXPagingView.modulemap";
-				PRODUCT_MODULE_NAME = JXPagingView;
-				PRODUCT_NAME = JXPagingView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		E4D0D44B090D4284607EBBC4E71A96C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1361,52 +1382,26 @@
 			};
 			name = Debug;
 		};
-		F0C13041D6C39FC95F94A7215BB92DF1 /* Debug */ = {
+		EC1A51A5EC92496B6A731D84662D7854 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9225ECA4290CE00502B28964053C753A /* JXPagingView.debug.xcconfig */;
+			baseConfigurationReference = 1358F6AC4EF683CE3BBB4D41A85FFE71 /* JXPagingView.debug.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/JXPagingView/JXPagingView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/JXPagingView/JXPagingView-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/JXPagingView/JXPagingView.modulemap";
-				PRODUCT_MODULE_NAME = JXPagingView;
+				CODE_SIGNING_ALLOWED = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/JXPagingView";
+				IBSC_MODULE = JXPagingView;
+				INFOPLIST_FILE = "Target Support Files/JXPagingView/ResourceBundle-JXPagingView-JXPagingView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = JXPagingView;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		30EE3988D02CE681F8730FAD7FFD9E99 /* Build configuration list for PBXNativeTarget "JXPagingView-JXPagingView" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D957FA61FEDCD6ABE815F80A37D79A72 /* Debug */,
-				2C3AD0F14A28BF7B7BE530ADB2C916D6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		31F85442073A59C5667146BDC6EBC611 /* Build configuration list for PBXNativeTarget "JXSegmentedView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1425,6 +1420,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		61994409990383863DE85A416CED6B28 /* Build configuration list for PBXNativeTarget "JXPagingView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9298127EB5FC2A6B3DA7A32E6D118DA8 /* Debug */,
+				692D6DFE1833CAA9886DE72A13EE1858 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8CD15C13756F6B7B3E537F34836DA758 /* Build configuration list for PBXNativeTarget "MJRefresh" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1434,20 +1438,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		9F7EBA398B6AEEFD2B91025E9E082B9F /* Build configuration list for PBXNativeTarget "JXPagingView-JXPagingView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC1A51A5EC92496B6A731D84662D7854 /* Debug */,
+				223E8FB9BC4DF824E238C0F7FBCD26B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C473396BAF9CBB34573CA6D7D45A8DAB /* Build configuration list for PBXNativeTarget "Pods-JXPagingViewExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3EBC20FC75C5EA2166E511B52EECC8FC /* Debug */,
 				6D1FB5DA5F09A6B8D85071BDADD8EF60 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EF5C4DEBE2675B6E4A59F72D208FCC83 /* Build configuration list for PBXNativeTarget "JXPagingView" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F0C13041D6C39FC95F94A7215BB92DF1 /* Debug */,
-				E0D85AC35AE1FCCF988F5CD7503DDB0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
