@@ -7,7 +7,7 @@
 //
 
 #import "JXPagerSmoothView.h"
-
+#import "JXRTLFlowLayout.h"
 static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
 
 @interface JXPagerSmoothCollectionView : UICollectionView <UIGestureRecognizerDelegate>
@@ -66,7 +66,7 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
 - (void)initializeViews {
     self.pagerHeaderContainerView = [[UIView alloc] init];
 
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    JXRTLFlowLayout *layout = [[JXRTLFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.minimumLineSpacing = 0;
     layout.minimumInteritemSpacing = 0;
