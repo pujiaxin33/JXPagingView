@@ -105,7 +105,9 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
     self.currentIndex = self.defaultSelectedIndex;
     self.currentPagerHeaderContainerViewY = 0;
     self.syncListContentOffsetEnabled = NO;
-
+    for (UIView *view in self.listHeaderDict.allValues){
+        [view removeFromSuperview];
+    }
     [self.listHeaderDict removeAllObjects];
     for (id<JXPagerSmoothViewListViewDelegate> list in self.listDict.allValues) {
         [[list listScrollView] removeObserver:self forKeyPath:@"contentOffset"];
