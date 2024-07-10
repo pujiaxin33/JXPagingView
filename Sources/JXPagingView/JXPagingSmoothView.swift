@@ -106,6 +106,7 @@ open class JXPagingSmoothView: UIView {
         currentPagingHeaderContainerViewY = 0
         isSyncListContentOffsetEnabled = false
 
+        listHeaderDict.values.forEach { $0.removeFromSuperview() }
         listHeaderDict.removeAll()
         listDict.values.forEach { (list) in
             list.listScrollView().removeObserver(self, forKeyPath: "contentOffset")
