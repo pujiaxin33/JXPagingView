@@ -25,14 +25,18 @@ class ListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        //列表的contentInsetAdjustmentBehavior失效，需要自己设置底部inset
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: UIApplication.shared.keyWindow!.jx_layoutInsets().bottom, right: 0)
         view.addSubview(tableView)
         if isNeedHeader {
             self.tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(headerRefresh))
         }
         if isNeedFooter {
             tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
+            if #available(iOS 11.0, *) {
+                tableView.contentInsetAdjustmentBehavior = .never
+            }
+        } else {
+            //列表的contentInsetAdjustmentBehavior失效，需要自己设置底部inset
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: UIApplication.shared.keyWindow!.jx_layoutInsets().bottom, right: 0)
         }
         beginFirstRefresh()
     }
