@@ -294,7 +294,12 @@ extension JXPagingSmoothView: UICollectionViewDataSource, UICollectionViewDelega
             if #available(iOS 11.0, *) {
                 list?.listScrollView().contentInsetAdjustmentBehavior = .never
             }
-            list?.listScrollView().contentInset = UIEdgeInsets(top: heightForPagingHeaderContainerView, left: 0, bottom: 0, right: 0)
+            
+            /// Only chang top for listScrollView contentInset
+            var contentInset = list?.listScrollView().contentInset ?? .zero
+            contentInset.top = heightForPagingHeaderContainerView
+            list?.listScrollView().contentInset = contentInset
+            
             currentListInitializeContentOffsetY = -heightForPagingHeaderContainerView + min(-currentPagingHeaderContainerViewY, heightForPagingHeader)
             list?.listScrollView().contentOffset = CGPoint(x: 0, y: currentListInitializeContentOffsetY)
             let listHeader = UIView(frame: CGRect(x: 0, y: -heightForPagingHeaderContainerView, width: bounds.size.width, height: heightForPagingHeaderContainerView))
@@ -365,3 +370,4 @@ public class JXPagingSmoothCollectionView: UICollectionView, UIGestureRecognizer
         return true
     }
 }
+ 
