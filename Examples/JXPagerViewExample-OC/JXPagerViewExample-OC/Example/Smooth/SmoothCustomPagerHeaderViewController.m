@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.cellCount = 20;
     self.cellHeight = 50;
     self.pagerHeader = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
@@ -29,6 +29,12 @@
     self.pagerHeader.bounces = NO;
     self.pagerHeader.scrollsToTop = NO;
     [self.pagerHeader registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"reload" style:UIBarButtonItemStylePlain target:self action:@selector(reloadData)];
+}
+
+- (void)reloadData {
+    [self.pager reloadData];
 }
 
 #pragma mark - UITableViewDataSource & UITableViewDelegate

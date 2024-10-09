@@ -121,9 +121,11 @@ open class JXPagingView: UIView {
         if #available(iOS 11.0, *) {
             mainTableView.contentInsetAdjustmentBehavior = .never
         }
+        #if compiler(>=5.5)
         if #available(iOS 15.0, *) {
             mainTableView.sectionHeaderTopPadding = 0
         }
+        #endif
         addSubview(mainTableView)
     }
 
@@ -147,15 +149,19 @@ open class JXPagingView: UIView {
         validListDict.removeAll()
         if allowsCacheList, let listCount = delegate?.numberOfLists(in: self) {
             //根据新数据删除不需要的list
-            var newListIdentifierArray = [String]()
+            var newListDict = [String: Int]()
             for index in 0..<listCount {
                 if let listIdentifier = delegate?.pagingView(self, listIdentifierAtIndex: index) {
-                    newListIdentifierArray.append(listIdentifier)
+                    newListDict[listIdentifier] = index
                 }
             }
             let existedKeys = Array(listCache.keys)
             for listIdentifier in existedKeys {
-                if !newListIdentifierArray.contains(listIdentifier) {
+                if let index = newListDict[listIdentifier] {
+                    // 更新 validListDict 保留 listCache 中的值
+                    validListDict[index] = listCache[listIdentifier]
+                } else {
+                    // 從 listCache 中移除
                     listCache.removeValue(forKey: listIdentifier)
                 }
             }
@@ -401,7 +407,10 @@ extension JXPagingView: JXPagingListContainerViewDataSource {
         guard let delegate = delegate else { fatalError("JXPaingView.delegate must not be nil") }
         var list = validListDict[index]
         if allowsCacheList, list == nil, let listIdentifier = delegate.pagingView(self, listIdentifierAtIndex: index) {
-            list = listCache[listIdentifier]
+            if let cacheList = listCache[listIdentifier] {
+                list = cacheList
+                validListDict[index] = cacheList
+            }
         }
         if list == nil {
             list = delegate.pagingView(self, initListAtIndex: index)

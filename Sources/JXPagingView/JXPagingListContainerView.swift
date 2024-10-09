@@ -186,7 +186,7 @@ open class JXPagingListContainerView: UIView {
             }
             containerVC.view.addSubview(scrollView)
         }else if type == .collectionView {
-            let layout = UICollectionViewFlowLayout()
+            let layout = JXRTLFlowLayout()
             layout.scrollDirection = .horizontal
             layout.minimumLineSpacing = 0
             layout.minimumInteritemSpacing = 0

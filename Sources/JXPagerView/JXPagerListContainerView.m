@@ -8,7 +8,7 @@
 
 #import "JXPagerListContainerView.h"
 #import <objc/runtime.h>
-
+#import "JXRTLFlowLayout.h"
 @interface JXPagerListContainerScrollView: UIScrollView <UIGestureRecognizerDelegate>
 @property (nonatomic, assign, getter=isCategoryNestPagingEnabled) BOOL categoryNestPagingEnabled;
 @end
@@ -158,7 +158,7 @@
         }
         [self.containerVC.view addSubview:self.scrollView];
     }else {
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        JXRTLFlowLayout *layout = [[JXRTLFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         layout.minimumLineSpacing = 0;
         layout.minimumInteritemSpacing = 0;

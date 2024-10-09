@@ -30,8 +30,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    //列表的contentInsetAdjustmentBehavior失效，需要自己设置底部inset
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, UIApplication.sharedApplication.keyWindow.jx_layoutInsets.bottom, 0);
+    
     [self.view addSubview:self.tableView];
 
     __weak typeof(self)weakSelf = self;
@@ -50,6 +49,12 @@
                 [weakSelf.tableView.mj_footer endRefreshing];
             });
         }];
+        if (@available(iOS 11.0, *)) {
+            self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
+    } else {
+        //列表的contentInsetAdjustmentBehavior失效，需要自己设置底部inset
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, UIApplication.sharedApplication.keyWindow.jx_layoutInsets.bottom, 0);
     }
 
     [self beginFirstRefresh];
