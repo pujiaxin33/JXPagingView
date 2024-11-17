@@ -91,7 +91,8 @@ protocol JXPagingListContainerViewDelegate: NSObjectProtocol {
     func listContainerViewDidScroll(_ listContainerView: JXPagingListContainerView)
     func listContainerViewWillBeginDragging(_ listContainerView: JXPagingListContainerView)
     func listContainerViewDidEndScrolling(_ listContainerView: JXPagingListContainerView)
-    func listContainerView(_ listContainerView: JXPagingListContainerView, listDidAppearAt index: Int)
+    func listContainerView(_ listContainerView: JXPagingListContainerView, list: JXPagingViewListViewDelegate, willAppearAt index: Int)
+    func listContainerView(_ listContainerView: JXPagingListContainerView, list: JXPagingViewListViewDelegate, didAppearAt index: Int)
     func listContainerView(_ listContainerView: JXPagingListContainerView, panGestureRecognizerShouldBegin gestureRecognizer: UIPanGestureRecognizer) -> Bool
 }
 
@@ -100,7 +101,8 @@ extension JXPagingListContainerViewDelegate {
     func listContainerViewDidScroll(_ listContainerView: JXPagingListContainerView) {}
     func listContainerViewWillBeginDragging(_ listContainerView: JXPagingListContainerView) {}
     func listContainerViewDidEndScrolling(_ listContainerView: JXPagingListContainerView) {}
-    func listContainerView(_ listContainerView: JXPagingListContainerView, listDidAppearAt index: Int) {}
+    func listContainerView(_ listContainerView: JXPagingListContainerView, list: JXPagingViewListViewDelegate, willAppearAt index: Int) {}
+    func listContainerView(_ listContainerView: JXPagingListContainerView, list: JXPagingViewListViewDelegate, didAppearAt index: Int) {}
     func listContainerView(_ listContainerView: JXPagingListContainerView, panGestureRecognizerShouldBegin gestureRecognizer: UIPanGestureRecognizer) -> Bool { true }
 }
 
@@ -346,8 +348,9 @@ open class JXPagingListContainerView: UIView {
             return
         }
         var existedList = validListDict[index]
-        if existedList != nil {
-            existedList?.listWillAppear()
+        if let existedList {
+            delegate?.listContainerView(self, list: existedList, willAppearAt: index)
+            existedList.listWillAppear()
             if let vc = existedList as? UIViewController {
                 vc.beginAppearanceTransition(true, animated: false)
             }
@@ -369,6 +372,7 @@ open class JXPagingListContainerView: UIView {
                     list.listView().frame = CGRect(x: CGFloat(index)*scrollView.bounds.size.width, y: 0, width: scrollView.bounds.size.width, height: scrollView.bounds.size.height)
                     scrollView.addSubview(list.listView())
                 }
+                delegate?.listContainerView(self, list: list, willAppearAt: index)
                 list.listWillAppear()
                 if let vc = list as? UIViewController {
                     vc.beginAppearanceTransition(true, animated: false)
@@ -378,6 +382,7 @@ open class JXPagingListContainerView: UIView {
                 cell?.contentView.subviews.forEach { $0.removeFromSuperview() }
                 list.listView().frame = cell?.contentView.bounds ?? CGRect.zero
                 cell?.contentView.addSubview(list.listView())
+                delegate?.listContainerView(self, list: list, willAppearAt: index)
                 list.listWillAppear()
                 if let vc = list as? UIViewController {
                     vc.beginAppearanceTransition(true, animated: false)
@@ -391,12 +396,13 @@ open class JXPagingListContainerView: UIView {
             return
         }
         currentIndex = index
-        let list = validListDict[index]
-        list?.listDidAppear()
-        if let vc = list as? UIViewController {
-            vc.endAppearanceTransition()
+        if let list = validListDict[index] {
+            list.listDidAppear()
+            if let vc = list as? UIViewController {
+                vc.endAppearanceTransition()
+            }
+            delegate?.listContainerView(self, list: list, didAppearAt: index)
         }
-        delegate?.listContainerView(self, listDidAppearAt: index)
     }
 
     private func listWillDisappear(at index: Int) {
