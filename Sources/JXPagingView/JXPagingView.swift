@@ -43,7 +43,7 @@ public protocol JXPagingViewDelegate: NSObjectProtocol {
     func pagingView(_ pagingView: JXPagingView, mainTableViewDidEndDragging scrollView: UIScrollView, willDecelerate decelerate: Bool)
     func pagingView(_ pagingView: JXPagingView, mainTableViewDidEndDecelerating scrollView: UIScrollView)
     func pagingView(_ pagingView: JXPagingView, mainTableViewDidEndScrollingAnimation scrollView: UIScrollView)
-
+    func pagingView(_ pagingView: JXPagingView, panGestureRecognizerShouldBegin gestureRecognizer: UIPanGestureRecognizer) -> Bool
 
     /// 返回自定义UIScrollView或UICollectionView的Class
     /// 某些特殊情况需要自己处理列表容器内UIScrollView内部逻辑。比如项目用了FDFullscreenPopGesture，需要处理手势相关代理。
@@ -62,7 +62,7 @@ public extension JXPagingViewDelegate {
     func pagingView(_ pagingView: JXPagingView, mainTableViewDidEndDragging scrollView: UIScrollView, willDecelerate decelerate: Bool) {}
     func pagingView(_ pagingView: JXPagingView, mainTableViewDidEndDecelerating scrollView: UIScrollView) {}
     func pagingView(_ pagingView: JXPagingView, mainTableViewDidEndScrollingAnimation scrollView: UIScrollView) {}
-
+    func pagingView(_ pagingView: JXPagingView, panGestureRecognizerShouldBegin gestureRecognizer: UIPanGestureRecognizer) -> Bool { true }
 
     /// 返回自定义UIScrollView或UICollectionView的Class
     /// 某些特殊情况需要自己处理列表容器内UIScrollView内部逻辑。比如项目用了FDFullscreenPopGesture，需要处理手势相关代理。
@@ -449,6 +449,10 @@ extension JXPagingView: JXPagingListContainerViewDelegate {
                 listItem.listScrollView().scrollsToTop = false
             }
         }
+    }
+    
+    func listContainerView(_ listContainerView: JXPagingListContainerView, panGestureRecognizerShouldBegin gestureRecognizer: UIPanGestureRecognizer) -> Bool {
+        delegate?.pagingView(self, panGestureRecognizerShouldBegin: gestureRecognizer) ?? true
     }
 }
 
