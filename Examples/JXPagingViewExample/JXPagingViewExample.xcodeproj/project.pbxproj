@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0911A35A2CEADDCB00AA21AF /* SwipeDeleteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911A3592CEADDC700AA21AF /* SwipeDeleteController.swift */; };
+		0911A35C2CEADDDE00AA21AF /* SwipeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911A35B2CEADDD500AA21AF /* SwipeTableView.swift */; };
+		0911A35E2CEADEFD00AA21AF /* SwipeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911A35D2CEADEF300AA21AF /* SwipeListViewController.swift */; };
+		0911A3642CEAE62E00AA21AF /* SwipeActionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911A3632CEAE62C00AA21AF /* SwipeActionListViewController.swift */; };
 		19259FE3268D67150001B853 /* ListCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19259FE2268D67150001B853 /* ListCacheViewController.swift */; };
 		194A933723B9BFF600C05DBA /* NestSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194A933623B9BFF600C05DBA /* NestSubjectViewController.swift */; };
 		19B9EA3B23B9EA550099E656 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9EA3A23B9EA550099E656 /* ListViewController.swift */; };
@@ -42,6 +46,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0911A3592CEADDC700AA21AF /* SwipeDeleteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDeleteController.swift; sourceTree = "<group>"; };
+		0911A35B2CEADDD500AA21AF /* SwipeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableView.swift; sourceTree = "<group>"; };
+		0911A35D2CEADEF300AA21AF /* SwipeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeListViewController.swift; sourceTree = "<group>"; };
+		0911A3632CEAE62C00AA21AF /* SwipeActionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeActionListViewController.swift; sourceTree = "<group>"; };
 		19259FE2268D67150001B853 /* ListCacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCacheViewController.swift; sourceTree = "<group>"; };
 		194A933623B9BFF600C05DBA /* NestSubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestSubjectViewController.swift; sourceTree = "<group>"; };
 		19B9EA3A23B9EA550099E656 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +101,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0911A3582CEADDAD00AA21AF /* SwipeToDelete */ = {
+			isa = PBXGroup;
+			children = (
+				0911A3592CEADDC700AA21AF /* SwipeDeleteController.swift */,
+				0911A35D2CEADEF300AA21AF /* SwipeListViewController.swift */,
+				0911A3632CEAE62C00AA21AF /* SwipeActionListViewController.swift */,
+				0911A35B2CEADDD500AA21AF /* SwipeTableView.swift */,
+			);
+			path = SwipeToDelete;
+			sourceTree = "<group>";
+		};
 		19F152DF2387DBA60043A86E = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +159,7 @@
 				19F153182387DCCC0043A86E /* HeightChange */,
 				19F1531C2387DCCC0043A86E /* Zoom */,
 				19F1531E2387DCCC0043A86E /* VCContainer */,
+				0911A3582CEADDAD00AA21AF /* SwipeToDelete */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -374,6 +394,7 @@
 			files = (
 				19F153352387DCCC0043A86E /* VCViewController.swift in Sources */,
 				19B9EA3D23B9F0340099E656 /* ListCollectionViewController.swift in Sources */,
+				0911A35A2CEADDCB00AA21AF /* SwipeDeleteController.swift in Sources */,
 				194A933723B9BFF600C05DBA /* NestSubjectViewController.swift in Sources */,
 				19F153232387DCCC0043A86E /* NestViewController.swift in Sources */,
 				19F153212387DCCC0043A86E /* NaviHiddenViewController.swift in Sources */,
@@ -386,10 +407,12 @@
 				19F152EC2387DBA60043A86E /* AppDelegate.swift in Sources */,
 				19F153292387DCCC0043A86E /* UIWindow+JXSafeArea.swift in Sources */,
 				19F153252387DCCC0043A86E /* ListRefreshViewController.swift in Sources */,
+				0911A3642CEAE62E00AA21AF /* SwipeActionListViewController.swift in Sources */,
 				19F153282387DCCC0043A86E /* BaseViewController.swift in Sources */,
 				19F1532C2387DCCC0043A86E /* BaseNavigationController.swift in Sources */,
 				19F153242387DCCC0043A86E /* RefreshViewController.swift in Sources */,
 				19F1532B2387DCCC0043A86E /* PagingViewTableHeaderView.swift in Sources */,
+				0911A35E2CEADEFD00AA21AF /* SwipeListViewController.swift in Sources */,
 				19F153262387DCCC0043A86E /* SmoothViewController.swift in Sources */,
 				B3519FDC25A5C82500AE0F5C /* JXPagingViewListViewable.swift in Sources */,
 				19F153302387DCCC0043A86E /* HeaderPositionViewController.swift in Sources */,
@@ -398,6 +421,7 @@
 				19F153222387DCCC0043A86E /* CollectionViewViewController.swift in Sources */,
 				19F153272387DCCC0043A86E /* SmoothListViewController.swift in Sources */,
 				19B9EA3B23B9EA550099E656 /* ListViewController.swift in Sources */,
+				0911A35C2CEADDDE00AA21AF /* SwipeTableView.swift in Sources */,
 				19F153332387DCCC0043A86E /* HeightChangeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,11 +569,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MHW5BL2Z4W;
+				DEVELOPMENT_TEAM = H9SKD59BJP;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JXPagingViewExample/Swift-Bridge-Objective-C.h";
 				INFOPLIST_FILE = JXPagingViewExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -569,11 +593,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MHW5BL2Z4W;
+				DEVELOPMENT_TEAM = H9SKD59BJP;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JXPagingViewExample/Swift-Bridge-Objective-C.h";
 				INFOPLIST_FILE = JXPagingViewExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
