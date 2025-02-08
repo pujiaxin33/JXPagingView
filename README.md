@@ -271,6 +271,8 @@ self.categoryView.defaultSelectedIndex = 2;
 
 [全屏手势兼容处理文档，点击查看 ❗️❗️❗️](https://github.com/pujiaxin33/JXPagingView/blob/master/Document/%E5%85%A8%E5%B1%8F%E6%89%8B%E5%8A%BF%E5%A4%84%E7%90%86.md)
 
+### 侧滑手势处理
+[侧滑手势处理](./Document/侧滑手势处理.md)
 
 ## 迁移指南
 - **0.0.9版本**：将下面两个API的返回值修改为了NSUInteger(swift版本为Int)，之前版本是CGFloat，升级为0.0.9及以上的时候，记得修改一下使用地方的返回值类型，不然会引起crash。
