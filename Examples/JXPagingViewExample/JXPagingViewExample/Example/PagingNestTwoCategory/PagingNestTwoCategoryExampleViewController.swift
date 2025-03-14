@@ -1,5 +1,5 @@
 //
-//  PagingNestCategoryExampleViewController.swift
+//  PagingNestTwoCategoryExampleViewController.swift
 //  JXPagingViewExample
 //
 //  Created by Jason on 2025/3/14.
@@ -10,7 +10,7 @@ import UIKit
 import JXPagingView
 import MJRefresh
 
-class PagingNestCategoryExampleViewController: BaseViewController {
+class PagingNestTwoCategoryExampleViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class PagingNestCategoryExampleViewController: BaseViewController {
     }
     
     @objc private func headerRefresh() {
-        guard let currentList = self.pagingView.validListDict[self.segmentedView.selectedIndex] as? PagingNestCategoryFirstLayerViewController else {
+        guard let currentList = self.pagingView.validListDict[self.segmentedView.selectedIndex] as? PagingNestTwoCategoryFirstLayerViewController else {
             return
         }
         
@@ -36,7 +36,7 @@ class PagingNestCategoryExampleViewController: BaseViewController {
     }
     
     override func pagingView(_ pagingView: JXPagingView, initListAtIndex index: Int) -> any JXPagingViewListViewDelegate {
-        let page = PagingNestCategoryFirstLayerViewController()
+        let page = PagingNestTwoCategoryFirstLayerViewController()
         page.refreshDelegate = self
         return page
     }
@@ -45,7 +45,7 @@ class PagingNestCategoryExampleViewController: BaseViewController {
         guard let scrollView: UIScrollView = view as? UIScrollView else {
             return false
         }
-        guard let listArray = Array(self.pagingView.validListDict.values) as? [PagingNestCategoryFirstLayerViewController] else {
+        guard let listArray = Array(self.pagingView.validListDict.values) as? [PagingNestTwoCategoryFirstLayerViewController] else {
             return false
         }
         
@@ -58,7 +58,7 @@ class PagingNestCategoryExampleViewController: BaseViewController {
     }
 }
 
-extension PagingNestCategoryExampleViewController: ListViewControllerHeaderAndFooterRefreshEventProtocol {
+extension PagingNestTwoCategoryExampleViewController: ListViewControllerHeaderAndFooterRefreshEventProtocol {
     func endHeaderRefresh() {
         self.pagingView.mainTableView.mj_header?.endRefreshing()
     }

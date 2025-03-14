@@ -1,5 +1,5 @@
 //
-//  PagingNestCategoryFirstLayerViewController.swift
+//  PagingNestTwoCategoryFirstLayerViewController.swift
 //  JXPagingViewExample
 //
 //  Created by Jason on 2025/3/14.
@@ -10,13 +10,14 @@ import UIKit
 import JXSegmentedView
 import JXPagingView
 
-class PagingNestCategoryFirstLayerViewController: UIViewController {
+class PagingNestTwoCategoryFirstLayerViewController: UIViewController {
     weak var refreshDelegate: ListViewControllerHeaderAndFooterRefreshEventProtocol?
     
     var containerScrollViews: [UIScrollView] {
-        return [listContainer.scrollView]
+        let listArray = Array(listContainer.validListDict.values) as? [PagingNestTwoCategorySecondLayerViewController]
+        let listScrollViewArray = listArray?.map { $0.containerScrollView } ?? []
+        return [listContainer.scrollView] + listScrollViewArray
     }
-    var currentListView: UIScrollView?
     
     var titleDataSource = JXSegmentedTitleDataSource()
     lazy var segmentedView = JXSegmentedView()
@@ -25,7 +26,7 @@ class PagingNestCategoryFirstLayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let titles = ["主题一", "主题二", "主题三"]
+        let titles = ["第一级一", "第一级二", "第一级三", "第一级四", "第一级五"]
         titleDataSource.titles = titles
         titleDataSource.itemSpacing = 0
         titleDataSource.itemContentWidth = 80
@@ -60,61 +61,48 @@ class PagingNestCategoryFirstLayerViewController: UIViewController {
     }
     
     func headerRefresh() {
-        guard let currentList = self.listContainer.validListDict[self.segmentedView.selectedIndex] as? ListViewController else {
+        guard let currentList = self.listContainer.validListDict[self.segmentedView.selectedIndex] as? PagingNestTwoCategorySecondLayerViewController else {
             return
         }
         
-        currentList.mockHeaderRefreshLoadNewData()
+        currentList.headerRefresh()
     }
 }
 
-extension PagingNestCategoryFirstLayerViewController: JXPagingViewListViewDelegate {
+extension PagingNestTwoCategoryFirstLayerViewController: JXPagingViewListViewDelegate {
     func listView() -> UIView {
         return self.view
     }
     
     func listScrollView() -> UIScrollView {
-        return self.currentListView ?? UIScrollView()
+        let currentListVC = listContainer.validListDict[segmentedView.selectedIndex] as? PagingNestTwoCategorySecondLayerViewController
+        return currentListVC?.currentListView ?? UIScrollView()
     }
 
     func listScrollViewWillResetContentOffset() {
-        guard let listArray = Array(self.listContainer.validListDict.values) as? [ListViewController] else {
-            return
-        }
-        
-        listArray.forEach { list in
-            list.tableView.contentOffset = .zero
-        }
+        (Array(listContainer.validListDict.values) as? [PagingNestTwoCategorySecondLayerViewController])?.forEach({ list in
+            list.listScrollViewWillResetContentOffset()
+        })
     }
 }
 
 
-extension PagingNestCategoryFirstLayerViewController: JXSegmentedListContainerViewDataSource {
+extension PagingNestTwoCategoryFirstLayerViewController: JXSegmentedListContainerViewDataSource {
     func numberOfLists(in listContainerView: JXSegmentedListContainerView) -> Int {
         return titleDataSource.titles.count
     }
 
     func listContainerView(_ listContainerView: JXSegmentedListContainerView, initListAt index: Int) -> JXSegmentedListContainerViewListDelegate {
-        let list = ListViewController()
-        if index == 0 {
-            list.dataSource = ["橡胶火箭", "橡胶火箭炮", "橡胶机关枪", "橡胶子弹", "橡胶攻城炮", "橡胶象枪", "橡胶象枪乱打", "橡胶灰熊铳", "橡胶雷神象枪", "橡胶猿王枪", "橡胶犀·榴弹炮", "橡胶大蛇炮", "橡胶火箭", "橡胶火箭炮", "橡胶机关枪", "橡胶子弹", "橡胶攻城炮", "橡胶象枪", "橡胶象枪乱打", "橡胶灰熊铳", "橡胶雷神象枪", "橡胶猿王枪", "橡胶犀·榴弹炮", "橡胶大蛇炮"]
-        }else if index == 1 {
-            list.dataSource = ["吃烤肉", "吃鸡腿肉", "吃牛肉", "各种肉"]
-        }else {
-            list.dataSource = ["【剑士】罗罗诺亚·索隆", "【航海士】娜美", "【狙击手】乌索普", "【厨师】香吉士", "【船医】托尼托尼·乔巴", "【船匠】 弗兰奇", "【音乐家】布鲁克", "【考古学家】妮可·罗宾"]
-        }
+        let list = PagingNestTwoCategorySecondLayerViewController()
         list.listViewDidScrollCallback = { [weak self] (scrollView) in
             self?.listViewDidScrollCallback?(scrollView)
         }
-        currentListView = list.tableView
         list.refreshDelegate = refreshDelegate
         return list
     }
 }
 
-extension PagingNestCategoryFirstLayerViewController: JXSegmentedViewDelegate {
+extension PagingNestTwoCategoryFirstLayerViewController: JXSegmentedViewDelegate {
     func segmentedView(_ segmentedView: JXSegmentedView, didClickSelectedItemAt index: Int) {
-        let list = self.listContainer.validListDict[index] as? ListViewController
-        self.currentListView = list?.tableView
     }
 }
