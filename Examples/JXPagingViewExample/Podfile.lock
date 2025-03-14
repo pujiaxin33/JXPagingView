@@ -9,7 +9,7 @@ DEPENDENCIES:
   - MJRefresh (= 3.4.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - JXSegmentedView
     - MJRefresh
 
@@ -22,6 +22,6 @@ SPEC CHECKSUMS:
   JXSegmentedView: 2988fe07060a9b91b0112eabd6dee0df0cbca8b3
   MJRefresh: 95b08b3b8b6457d2c69510439e0349599050ea34
 
-PODFILE CHECKSUM: dab91da853c9fd1be405d37420971efd00eb0086
+PODFILE CHECKSUM: 4a1efecfab50d3c91601221b19e58c54aa7e3ab8
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2
