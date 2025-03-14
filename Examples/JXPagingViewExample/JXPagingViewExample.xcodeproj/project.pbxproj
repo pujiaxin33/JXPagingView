@@ -38,6 +38,8 @@
 		19F153362387DCCC0043A86E /* VCListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F153202387DCCC0043A86E /* VCListViewController.swift */; };
 		19F1538C2387DFD00043A86E /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19F1538B2387DFD00043A86E /* lufei.jpg */; };
 		8E9977024E317FDC76D67F71 /* Pods_JXPagingViewExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49ACF6F0193C33097F115C72 /* Pods_JXPagingViewExample.framework */; };
+		967E3C2A2D83D08B0012BA6B /* PagingNestCategoryExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E3C292D83D08B0012BA6B /* PagingNestCategoryExampleViewController.swift */; };
+		967E3C2C2D83D2910012BA6B /* PagingNestCategoryFirstLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E3C2B2D83D2910012BA6B /* PagingNestCategoryFirstLayerViewController.swift */; };
 		B3519FDC25A5C82500AE0F5C /* JXPagingViewListViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3519FDB25A5C82500AE0F5C /* JXPagingViewListViewable.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +80,8 @@
 		49ACF6F0193C33097F115C72 /* Pods_JXPagingViewExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JXPagingViewExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA744871C0EA0BD9A6D025B /* Pods-JXPagingViewExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXPagingViewExample.debug.xcconfig"; path = "Target Support Files/Pods-JXPagingViewExample/Pods-JXPagingViewExample.debug.xcconfig"; sourceTree = "<group>"; };
 		8D67C720C98DE57835BC77F5 /* Pods-JXPagingViewExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXPagingViewExample.release.xcconfig"; path = "Target Support Files/Pods-JXPagingViewExample/Pods-JXPagingViewExample.release.xcconfig"; sourceTree = "<group>"; };
+		967E3C292D83D08B0012BA6B /* PagingNestCategoryExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingNestCategoryExampleViewController.swift; sourceTree = "<group>"; };
+		967E3C2B2D83D2910012BA6B /* PagingNestCategoryFirstLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingNestCategoryFirstLayerViewController.swift; sourceTree = "<group>"; };
 		B3519FDB25A5C82500AE0F5C /* JXPagingViewListViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXPagingViewListViewable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +134,7 @@
 		19F153002387DCCC0043A86E /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				967E3C282D83D0620012BA6B /* PagingNestCategory */,
 				19F153012387DCCC0043A86E /* NavigationBarHidden */,
 				19F153032387DCCC0043A86E /* CollectionView */,
 				19F153052387DCCC0043A86E /* CategoryNestPaging */,
@@ -246,6 +251,15 @@
 				8D67C720C98DE57835BC77F5 /* Pods-JXPagingViewExample.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		967E3C282D83D0620012BA6B /* PagingNestCategory */ = {
+			isa = PBXGroup;
+			children = (
+				967E3C292D83D08B0012BA6B /* PagingNestCategoryExampleViewController.swift */,
+				967E3C2B2D83D2910012BA6B /* PagingNestCategoryFirstLayerViewController.swift */,
+			);
+			path = PagingNestCategory;
 			sourceTree = "<group>";
 		};
 		D66270A02717E8FF527EB8FD /* Frameworks */ = {
@@ -377,7 +391,9 @@
 				194A933723B9BFF600C05DBA /* NestSubjectViewController.swift in Sources */,
 				19F153232387DCCC0043A86E /* NestViewController.swift in Sources */,
 				19F153212387DCCC0043A86E /* NaviHiddenViewController.swift in Sources */,
+				967E3C2A2D83D08B0012BA6B /* PagingNestCategoryExampleViewController.swift in Sources */,
 				19F153312387DCCC0043A86E /* HeightChangeAnimationTableHeaderView.swift in Sources */,
+				967E3C2C2D83D2910012BA6B /* PagingNestCategoryFirstLayerViewController.swift in Sources */,
 				19F152F02387DBA60043A86E /* ViewController.swift in Sources */,
 				19F1532A2387DCCC0043A86E /* DetailViewController.swift in Sources */,
 				19F153342387DCCC0043A86E /* ZoomViewController.swift in Sources */,
@@ -545,7 +561,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MHW5BL2Z4W;
+				DEVELOPMENT_TEAM = FB56U85EZE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JXPagingViewExample/Swift-Bridge-Objective-C.h";
 				INFOPLIST_FILE = JXPagingViewExample/Info.plist;
@@ -554,7 +570,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.monkey.pagingViewExample.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.monkey.pagingViewExample.33;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -569,7 +585,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MHW5BL2Z4W;
+				DEVELOPMENT_TEAM = FB56U85EZE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JXPagingViewExample/Swift-Bridge-Objective-C.h";
 				INFOPLIST_FILE = JXPagingViewExample/Info.plist;
@@ -578,7 +594,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.monkey.pagingViewExample.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.monkey.pagingViewExample.33;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

@@ -9,14 +9,22 @@
 import UIKit
 import JXPagingView
 import MJRefresh
+import JXSegmentedView
+
+protocol ListViewControllerHeaderAndFooterRefreshEventProtocol: NSObject {
+    func endHeaderRefresh()
+    func endFooterLoadMore()
+}
 
 class ListViewController: UIViewController {
+    weak var refreshDelegate: ListViewControllerHeaderAndFooterRefreshEventProtocol?
+    
     lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: .plain)
     var dataSource: [String] = [String]()
     var isNeedHeader = false
     var isNeedFooter = false
     var isHeaderRefreshed = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,11 +67,7 @@ class ListViewController: UIViewController {
     }
 
     @objc func headerRefresh() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(2)) {
-            self.tableView.mj_header?.endRefreshing()
-            self.isHeaderRefreshed = true
-            self.tableView.reloadData()
-        }
+        mockHeaderRefreshLoadNewData()
     }
 
     @objc func loadMore() {
@@ -71,6 +75,17 @@ class ListViewController: UIViewController {
             self.dataSource.append("加载更多成功")
             self.tableView.reloadData()
             self.tableView.mj_footer?.endRefreshing()
+            self.refreshDelegate?.endFooterLoadMore()
+        }
+    }
+    
+    func mockHeaderRefreshLoadNewData() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(2)) {
+            self.tableView.mj_header?.endRefreshing()
+            self.isHeaderRefreshed = true
+            self.dataSource = self.dataSource.map { $0 + " new version"}
+            self.tableView.reloadData()
+            self.refreshDelegate?.endHeaderRefresh()
         }
     }
 }
@@ -97,6 +112,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         let vc = DetailViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
 }
 
 extension ListViewController: JXPagingViewListViewDelegate {
@@ -105,5 +121,11 @@ extension ListViewController: JXPagingViewListViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         listViewDidScrollCallback?(scrollView)
+    }
+}
+
+extension ListViewController: JXSegmentedListContainerViewListDelegate {
+    func listView() -> UIView {
+        return self.view
     }
 }
