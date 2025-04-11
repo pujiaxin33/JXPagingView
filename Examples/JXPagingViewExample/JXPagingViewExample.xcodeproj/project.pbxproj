@@ -43,6 +43,8 @@
 		967E3C312D83F9780012BA6B /* PagingNestTwoCategoryExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E3C302D83F9780012BA6B /* PagingNestTwoCategoryExampleViewController.swift */; };
 		967E3C332D83F9A00012BA6B /* PagingNestTwoCategoryFirstLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E3C322D83F9A00012BA6B /* PagingNestTwoCategoryFirstLayerViewController.swift */; };
 		967E3C352D83F9D60012BA6B /* PagingNestTwoCategorySecondLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E3C342D83F9D60012BA6B /* PagingNestTwoCategorySecondLayerViewController.swift */; };
+		96965C8B2DA91879000AF6A9 /* PagingNestPagingExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96965C8A2DA91879000AF6A9 /* PagingNestPagingExampleViewController.swift */; };
+		96965C8D2DA9192E000AF6A9 /* PagingNestPagingSubpageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96965C8C2DA9192E000AF6A9 /* PagingNestPagingSubpageViewController.swift */; };
 		B3519FDC25A5C82500AE0F5C /* JXPagingViewListViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3519FDB25A5C82500AE0F5C /* JXPagingViewListViewable.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +90,8 @@
 		967E3C302D83F9780012BA6B /* PagingNestTwoCategoryExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingNestTwoCategoryExampleViewController.swift; sourceTree = "<group>"; };
 		967E3C322D83F9A00012BA6B /* PagingNestTwoCategoryFirstLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingNestTwoCategoryFirstLayerViewController.swift; sourceTree = "<group>"; };
 		967E3C342D83F9D60012BA6B /* PagingNestTwoCategorySecondLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingNestTwoCategorySecondLayerViewController.swift; sourceTree = "<group>"; };
+		96965C8A2DA91879000AF6A9 /* PagingNestPagingExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingNestPagingExampleViewController.swift; sourceTree = "<group>"; };
+		96965C8C2DA9192E000AF6A9 /* PagingNestPagingSubpageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingNestPagingSubpageViewController.swift; sourceTree = "<group>"; };
 		B3519FDB25A5C82500AE0F5C /* JXPagingViewListViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXPagingViewListViewable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +144,7 @@
 		19F153002387DCCC0043A86E /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				96965C892DA91859000AF6A9 /* PagingNestPaging */,
 				967E3C2F2D83F9610012BA6B /* PagingNestTwoCategory */,
 				967E3C282D83D0620012BA6B /* PagingNestCategory */,
 				19F153012387DCCC0043A86E /* NavigationBarHidden */,
@@ -279,6 +284,15 @@
 			path = PagingNestTwoCategory;
 			sourceTree = "<group>";
 		};
+		96965C892DA91859000AF6A9 /* PagingNestPaging */ = {
+			isa = PBXGroup;
+			children = (
+				96965C8A2DA91879000AF6A9 /* PagingNestPagingExampleViewController.swift */,
+				96965C8C2DA9192E000AF6A9 /* PagingNestPagingSubpageViewController.swift */,
+			);
+			path = PagingNestPaging;
+			sourceTree = "<group>";
+		};
 		D66270A02717E8FF527EB8FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19F153352387DCCC0043A86E /* VCViewController.swift in Sources */,
+				96965C8B2DA91879000AF6A9 /* PagingNestPagingExampleViewController.swift in Sources */,
 				19B9EA3D23B9F0340099E656 /* ListCollectionViewController.swift in Sources */,
 				194A933723B9BFF600C05DBA /* NestSubjectViewController.swift in Sources */,
 				19F153232387DCCC0043A86E /* NestViewController.swift in Sources */,
@@ -420,6 +435,7 @@
 				19F152EC2387DBA60043A86E /* AppDelegate.swift in Sources */,
 				967E3C352D83F9D60012BA6B /* PagingNestTwoCategorySecondLayerViewController.swift in Sources */,
 				19F153292387DCCC0043A86E /* UIWindow+JXSafeArea.swift in Sources */,
+				96965C8D2DA9192E000AF6A9 /* PagingNestPagingSubpageViewController.swift in Sources */,
 				19F153252387DCCC0043A86E /* ListRefreshViewController.swift in Sources */,
 				19F153282387DCCC0043A86E /* BaseViewController.swift in Sources */,
 				19F1532C2387DCCC0043A86E /* BaseNavigationController.swift in Sources */,
@@ -590,7 +606,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.monkey.pagingViewExample.33;
+				PRODUCT_BUNDLE_IDENTIFIER = com.monkey.pagingViewExample.333;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -614,7 +630,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.monkey.pagingViewExample.33;
+				PRODUCT_BUNDLE_IDENTIFIER = com.monkey.pagingViewExample.333;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

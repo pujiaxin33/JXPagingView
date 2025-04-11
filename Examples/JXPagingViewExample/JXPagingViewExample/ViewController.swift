@@ -71,6 +71,9 @@ class ViewController: UITableViewController {
         case 13:
             let vc = PagingNestTwoCategoryExampleViewController()
             self.navigationController?.pushViewController(vc, animated: true)
+        case 14:
+            let vc = PagingNestPagingExampleViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }
