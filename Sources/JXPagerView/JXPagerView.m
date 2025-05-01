@@ -34,6 +34,7 @@
         _validListDict = [NSMutableDictionary dictionary];
         _automaticallyDisplayListVerticalScrollIndicator = YES;
         _isListHorizontalScrollEnabled = YES;
+        _hideListContainerViewIfListEmpty = NO;
 
         _mainTableView = [[JXPagerMainTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         self.mainTableView.showsVerticalScrollIndicator = NO;
@@ -176,7 +177,12 @@
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    NSInteger listCount = [self.delegate numberOfListsInPagerView:self];
+    if (self.hideListContainerViewIfListEmpty && listCount <= 0) {
+        return 0;
+    } else {
+        return 1;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

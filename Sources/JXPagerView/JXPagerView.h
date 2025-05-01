@@ -101,6 +101,10 @@
  当allowsCacheList为true时，请务必实现代理方法`- (NSString *)pagerView:(JXPagerView *)pagerView listIdentifierAtIndex:(NSInteger)index`
  */
 @property (nonatomic, assign) BOOL allowsCacheList;
+/**
+ 当列表数量为空(依赖于`- (NSInteger)numberOfListsInPagerView:(JXPagerView *)pagerView`)时，是否隐藏 listContainerView。默认为：NO。
+ */
+@property (nonatomic, assign) BOOL hideListContainerViewIfListEmpty;
 
 - (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate;
 - (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate listContainerType:(JXPagerListContainerType)type NS_DESIGNATED_INITIALIZER;
