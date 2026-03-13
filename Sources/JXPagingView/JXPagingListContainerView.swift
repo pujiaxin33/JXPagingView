@@ -525,13 +525,17 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
 
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         //滑动到一半又取消滑动处理
-        if willAppearIndex != -1 || willDisappearIndex != -1 {
-            listWillDisappear(at: willAppearIndex)
-            listWillAppear(at: willDisappearIndex)
-            listDidDisappear(at: willAppearIndex)
-            listDidAppear(at: willDisappearIndex)
-            willDisappearIndex = -1
-            willAppearIndex = -1
+        if(CGFloat(currentIndex) * scrollView.frame.size.width == scrollView.contentOffset.x){
+            if willAppearIndex != -1 || willDisappearIndex != -1 {
+                listWillDisappear(at: willAppearIndex)
+                listWillAppear(at: willDisappearIndex)
+                listDidDisappear(at: willAppearIndex)
+                listDidAppear(at: willDisappearIndex)
+                willDisappearIndex = -1
+                willAppearIndex = -1
+            }
+        }else{
+            listDidAppearOrDisappear(scrollView: scrollView)
         }
         delegate?.listContainerViewDidEndScrolling(self)
     }
@@ -542,6 +546,18 @@ extension JXPagingListContainerView: UICollectionViewDataSource, UICollectionVie
 
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
+            if(CGFloat(currentIndex) * scrollView.frame.size.width == scrollView.contentOffset.x){
+                if willAppearIndex != -1 || willDisappearIndex != -1 {
+                    listWillDisappear(at: willAppearIndex)
+                    listWillAppear(at: willDisappearIndex)
+                    listDidDisappear(at: willAppearIndex)
+                    listDidAppear(at: willDisappearIndex)
+                    willDisappearIndex = -1
+                    willAppearIndex = -1
+                }
+            }else{
+                listDidAppearOrDisappear(scrollView: scrollView)
+            }
             delegate?.listContainerViewDidEndScrolling(self)
         }
     }
