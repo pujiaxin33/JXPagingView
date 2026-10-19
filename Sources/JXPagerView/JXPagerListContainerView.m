@@ -100,6 +100,8 @@
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXPagerViewListViewDelegate>> *validListDict;
 @property (nonatomic, assign) NSInteger willAppearIndex;
 @property (nonatomic, assign) NSInteger willDisappearIndex;
+//点击切换到从未展示过的index时，目标cell尚未创建，appear回调被推迟，记录待触发的index
+@property (nonatomic, assign) NSInteger pendingAppearIndex;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) JXPagerListContainerViewController *containerVC;
 @end
@@ -114,6 +116,7 @@
         _validListDict = [NSMutableDictionary dictionary];
         _willAppearIndex = -1;
         _willDisappearIndex = -1;
+        _pendingAppearIndex = -1;
         _initListPercent = 0.01;
         [self initializeViews];
     }
@@ -347,6 +350,8 @@
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    //用户手动接管滚动，取消点击切换的延迟appear，交由常规滚动生命周期处理
+    self.pendingAppearIndex = -1;
     if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerViewWillBeginDragging:)]) {
         [self.delegate listContainerViewWillBeginDragging:self];
     }
@@ -361,6 +366,8 @@
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    //点击切换的动画滚动结束，目标cell已创建，补发被推迟的appear回调
+    [self flushPendingClickAppearIfNeeded];
     if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerViewWDidEndScroll:)]) {
         [self.delegate listContainerViewWDidEndScroll:self];
     }
@@ -385,15 +392,44 @@
     }
     self.willAppearIndex = -1;
     self.willDisappearIndex = -1;
-    if (self.currentIndex != index) {
+    if (self.currentIndex == index && self.pendingAppearIndex == -1) {
+        return;
+    }
+    if (self.pendingAppearIndex != -1) {
+        //上一次点击的目标列表还处于等待cell创建状态，直接作废。
+        //它从未触发过appear回调，无需disappear；currentIndex的disappear回调在上一次点击时已经触发过，不能重复触发
+        self.pendingAppearIndex = -1;
+    }else {
         [self listWillDisappear:self.currentIndex];
         [self listDidDisappear:self.currentIndex];
-        [self listWillAppear:index];
-        [self listDidAppear:index];
     }
+    if (self.containerType == JXPagerListContainerType_CollectionView) {
+        NSIndexPath *targetIndexPath = [NSIndexPath indexPathForItem:index inSection:0];
+        if ([self.collectionView cellForItemAtIndexPath:targetIndexPath] == nil) {
+            //无动画切换时contentOffset已经就位，先尝试同步完成布局，让目标cell创建出来
+            [self.collectionView layoutIfNeeded];
+        }
+        if ([self.collectionView cellForItemAtIndexPath:targetIndexPath] == nil) {
+            //目标index从未展示过，且正处于动画滚动中，目标cell尚未创建。
+            //此时list无法挂载到cell、frame无效，推迟到滚动结束后再触发appear回调，
+            //避免业务侧在listDidAppear（如发起请求、计算cell高度）执行时frame为空
+            self.pendingAppearIndex = index;
+            return;
+        }
+    }
+    [self listWillAppear:index];
+    [self listDidAppear:index];
 }
 
 - (void)reloadData {
+    if (self.pendingAppearIndex != -1) {
+        //存在等待中的点击切换：先同步currentIndex（该列表appear回调从未触发，且马上要被重建，无需补发回调）
+        NSInteger index = self.pendingAppearIndex;
+        self.pendingAppearIndex = -1;
+        if ([self checkIndexValid:index]) {
+            self.currentIndex = index;
+        }
+    }
     for (id<JXPagerViewListViewDelegate> list in _validListDict.allValues) {
         [[list listView] removeFromSuperview];
         if ([list isKindOfClass:[UIViewController class]]) {
@@ -406,12 +442,32 @@
         self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width*[self.delegate numberOfListsInlistContainerView:self], self.scrollView.bounds.size.height);
     }else {
         [self.collectionView reloadData];
+        //先完成布局，确保currentIndex对应cell创建出来，listWillAppear时list才能正确挂载到cell并获得有效frame
+        [self.collectionView layoutIfNeeded];
     }
     [self listWillAppear:self.currentIndex];
     [self listDidAppear:self.currentIndex];
 }
 
 #pragma mark - Private
+
+- (void)flushPendingClickAppearIfNeeded {
+    if (self.pendingAppearIndex == -1) {
+        return;
+    }
+    NSInteger index = self.pendingAppearIndex;
+    self.pendingAppearIndex = -1;
+    if (![self checkIndexValid:index]) {
+        return;
+    }
+    if (self.containerType == JXPagerListContainerType_CollectionView &&
+        [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]] == nil) {
+        //目标cell仍未创建（如滚动被打断等极端场景），交由常规滚动生命周期处理
+        return;
+    }
+    [self listWillAppear:index];
+    [self listDidAppear:index];
+}
 
 - (void)initListIfNeededAtIndex:(NSInteger)index {
     if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerView:canInitListAtIndex:)]) {
